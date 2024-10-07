@@ -1,0 +1,2169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<moddata>
+  <commands>
+    <command id="OdekakeTokyo">
+      <label>
+        <bodyEN>Tokyo</bodyEN>
+      </label>
+      <description>
+        <bodyEN>Go to the most popular nerd convention in the world!!!</bodyEN>
+      </description>
+    </command>
+    <command id="OkusuriDaypassStalk">
+      <label>
+        <bodyEN>Prescription (recommended dose?)</bodyEN>
+      </label>
+      <description>
+        <bodyEN>Take some drugs (for their recommended use, with the recommended dosage).</bodyEN>
+      </description>
+    </command>
+    <command id="OdekakePanic1">
+      <label>
+        <bodyEN>Go Out</bodyEN>
+      </label>
+      <description>
+        <bodyEN>Is there someone behind me?</bodyEN>
+      </description>
+    </command>
+    <command id="OdekakePanic2">
+      <label>
+        <bodyEN>Go Out...?</bodyEN>
+      </label>
+      <description>
+        <bodyEN>Get away from me!</bodyEN>
+      </description>
+    </command>
+    <command id="OdekakePanic3">
+      <label>
+        <bodyEN>Go Away!</bodyEN>
+      </label>
+      <description>
+        <bodyEN>GET THE FUCK AWAY FROM ME!</bodyEN>
+      </description>
+    </command>
+    <command id="OdekakePanic4">
+      <label>
+        <bodyEN>GOGOGOGOGOGOGOGOGOGOGOGOGOGO</bodyEN>
+      </label>
+      <description>
+        <bodyEN>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</bodyEN>
+      </description>
+    </command>
+    <command id="OdekakeBreak">
+      <label>
+        <bodyEN>Please...</bodyEN>
+      </label>
+      <description>
+        <bodyEN>dont make me do this, p-chan...</bodyEN>
+      </description>
+    </command>
+    <command id="Internet2chStalk">
+      <label>
+        <bodyEN>Dig deeper</bodyEN>
+      </label>
+      <description>
+        <bodyEN>Browse the message boards to reveal the truth once and for all</bodyEN>
+      </description>
+    </command>
+  </commands>
+  <endings>
+    <ending id="Ending_Sleepy">
+      <name>Angel's Butterfly Dream</name>
+      <osimai>Spending all your time in dreamland\nisn't always the best idea.</osimai>
+    </ending>
+    <ending id="Ending_Followers">
+      <name>FOLLOWERS</name>
+      <osimai>Even a needy girl needs her space.</osimai>
+    </ending>
+  </endings>
+  <tweets>
+    <tweet id="TOKYO_TWEET001" user="kangel" cmdid="OdekakeTokyo">
+      <bodyEN>I did something super special today 🎉  I can't say much yet, but I promise you guys are gonna hear all about it soon! 🤫</bodyEN>
+    </tweet>
+    <tweet id="TOKYO_TWEET002" user="ame" cmdid="OdekakeTokyo">
+      <bodyEN>omg that was so scary, did i really think nobody would notice kangel at THE nerd convention? bet they don't know it was the real kangel tho 😆</bodyEN>
+    </tweet>
+    <tweet id="DARKNIGHT_TWEET001" user="kangel">
+      <bodyEN>Sorry guys, your internet angels' feeling a little rough so I'm gonna take a break for tonight! I should be back to 100% by tomorrow though, so don't miss the next stream! 🙂</bodyEN>
+    </tweet>
+    <tweet id="DARKNIGHT_TWEET002" user="kangel">
+      <bodyEN>Suddenly felt like going on a nighttime walk, so I did. It was really really cold, and a lot quieter than I remember nighttime being??? Something doesn't feel right... 😨</bodyEN>
+    </tweet>
+    <tweet id="DARKNIGHT_TWEET003" user="ame">
+      <bodyEN>i'm not on stream, why do i still feel like i'm being watched? maybe skipping the stream was a mistake</bodyEN>
+    </tweet>
+    <tweet id="DARKNIGHT_TWEET004" user="ame">
+      <bodyEN>probs doesnt help that i accidentally wore kangel outside haha</bodyEN>
+    </tweet>
+    <tweet id="STALKDISCOVER_TWEET001" user="kangel">
+      <bodyEN>I think it's disgusting when people violate others' boundaries just because they think they can. If you wouldn't like something done to you, don't do it to others, okay?</bodyEN>
+    </tweet>
+    <tweet id="STALKDISCOVER_TWEET002" user="ame">
+      <bodyEN>this can't be happening LEAVE ME ALONE YOU FREAKS</bodyEN>
+    </tweet>
+    <tweet id="ODEKAKEPANIC1_TWEET001" user="ame">
+      <bodyEN>i must be imagining things...</bodyEN>
+    </tweet>
+    <tweet id="ODEKAKEPANIC2_TWEET001" user="ame">
+      <bodyEN>i think im going through it, there's no way that people would follow me like this</bodyEN>
+    </tweet>
+    <tweet id="ODEKAKEPANIC3_TWEET001" user="ame">
+      <bodyEN>every single time i go outside i fear for my life</bodyEN>
+    </tweet>
+    <tweet id="ODEKAKEPANIC4_TWEET001" user="ame">
+      <bodyEN>the outside world is a lie, ur being observed offline just as much as online</bodyEN>
+    </tweet>
+    <tweet id="STALKODEKAKE1_TWEET001" user="kangel">
+      <bodyEN>Took the time to catch some fresh air today! Seems pretty lively out there, what are you guys up to today? ☀️</bodyEN>
+    </tweet>
+    <tweet id="STALKODEKAKE1_TWEET002" user="ame">
+      <bodyEN>thank god for p-chan, it's soooo obvious they're following me even when i'm not walking outside in kangel's clothes by accident lmfao</bodyEN>
+    </tweet>
+    <tweet id="STALKODEKAKE1_TWEET003" user="ame">
+      <bodyEN>that being said, im really really scared right now, im not sure the outside world is safe anymore</bodyEN>
+    </tweet>
+    <tweet id="STALKODEKAKE2_TWEET001" user="kangel">
+      <bodyEN>Ahhhh, there's nothing like the great outdoors, right guys? Not that you guys see a lot of that! Remember to go touch some grass once in a while!</bodyEN>
+    </tweet>
+    <tweet id="STALKODEKAKE2_TWEET002" user="ame">
+      <bodyEN>WHY THE HELL ARE PEOPLE FOLLOWING ME LIKE THIS!? GET THE FUCK AWAY FROM ME ALREADY!!!!</bodyEN>
+    </tweet>
+    <tweet id="STALKODEKAKE2_TWEET003" user="kangel">
+      <bodyEN>i can't take this anymore. why would i ever go outside again when i have the internet and u, p-chan?</bodyEN>
+    </tweet>
+    <tweet id="PREANGELWATCH_TWEET001" user="kangel" cmdid="None">
+      <bodyEN>Get your butts over here, guys! I'm doing a surprise early stream, gonna be streaming until I drop! ✨ Aha, hopefully it doesn't come to that though</bodyEN>
+    </tweet>
+    <tweet id="PREANGELWATCH_TWEET002" user="ame">
+      <bodyEN>someone come and end my suffering already, i cant take this anymore</bodyEN>
+    </tweet>
+    <tweet id="POSTANGELWATCH_TWEET001" user="kangel">
+      <bodyEN>Hey guys! Sorry about what happened earlier, I've been struggling with really bad nightmares lately and I think I might've had one on-stream?</bodyEN>
+    </tweet>
+    <tweet id="POSTANGELWATCH_TWEET002" user="kangel">
+      <bodyEN>I'll explain what happened a bit more later, so be patient with me for now!</bodyEN>
+    </tweet>
+    <tweet id="POSTANGELWATCH_TWEET003" user="kangel">
+      <bodyEN>On the bright side, you got to watch the internet angel sleep live! You should all count yourselves lucky~</bodyEN>
+    </tweet>
+    <tweet id="POSTANGELWATCH_TWEET004" user="ame">
+      <bodyEN>why the hell did i stream for that long anyway? not like i got that much more out of it</bodyEN>
+    </tweet>
+    <tweet id="POSTANGELWATCH_TWEET005" user="ame">
+      <bodyEN>...WAIT ARE THEY GONE?????</bodyEN>
+    </tweet>
+    <tweet id="BADPASSWORD_TWEET001" user="kangel">
+      <bodyEN>I almost locked myself out of my account today because I mistyped it SO many times. How do you guys get it right every time???</bodyEN>
+    </tweet>
+    <tweet id="BADPASSWORD_TWEET002" user="ame">
+      <bodyEN>its just one bad thing after another at this point</bodyEN>
+    </tweet>
+    <tweet id="DEADKANGEL_TWEET001" user="kangel">
+      <bodyEN>KAngel is dead. You killed her. There's only Ame now.</bodyEN>
+    </tweet>
+    <tweet id="DEADKANGEL_TWEET002" user="ame">
+      <bodyEN>ur all gonna get what u asked for</bodyEN>
+    </tweet>
+    <tweet id="DEADKANGEL_TWEET003" user="kangel">
+      <bodyEN>I'm doing my last ever stream tomorrow. Be there.</bodyEN>
+    </tweet>
+    <tweet id="ANGELFUNERAL_TWEET001" user="ame">
+      <bodyEN>im not gonna bother acting all cutesy for you anymore, it was vile acting for you freaks</bodyEN>
+    </tweet>
+    <tweet id="ANGELFUNERAL_TWEET002" user="ame">
+      <bodyEN>im starting stream now btw, come see your "angel", come see what you did to her</bodyEN>
+    </tweet>
+  </tweets>
+  <jines>
+    <jine id="ENDING_SLEEPY_JINE001" speaker="ame">
+      <bodyEN>hey p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE002" speaker="ame">
+      <bodyEN>i had a dream</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE003" speaker="ame">
+      <bodyEN>i was a butterfly</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE004" speaker="ame">
+      <bodyEN>being a butterfly was amazing</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE005" speaker="ame">
+      <bodyEN>i dont think i can go back to being ame anymore</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE006" speaker="ame">
+      <bodyEN>i want to go back</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE007" speaker="ame">
+      <bodyEN>i think it was always meant to end like this</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE008" speaker="ame">
+      <bodyEN>i think i was meant to be a butterfly</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE009" speaker="ame">
+      <bodyEN>ill see you on the other side, p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE010" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="TOKYO_JINE001" speaker="ame">
+      <bodyEN>ngl that was really fun</bodyEN>
+    </jine>
+    <jine id="TOKYO_JINE002" speaker="ame">
+      <bodyEN>seeing all the nerds in their natural habitat was really eye-opening</bodyEN>
+    </jine>
+    <jine id="TOKYO_JINE003" speaker="ame">
+      <bodyEN>no way im not talking about this as soon as comiket ends</bodyEN>
+    </jine>
+    <jine id="TOKYO_JINE004" speaker="ame">
+      <bodyEN>but ill let the nerds have their fun first</bodyEN>
+    </jine>
+    <jine id="FOLLOW_ST_JINE001" speaker="ame">
+      <bodyEN>i cant believe theyd go to this level haha</bodyEN>
+    </jine>
+    <jine id="FOLLOW_ST_JINE002" speaker="ame">
+      <bodyEN>stalking?! what the fuck is wrong with people???</bodyEN>
+    </jine>
+    <jine id="FOLLOW_ST_JINE003" speaker="ame">
+      <bodyEN>but... im scared</bodyEN>
+    </jine>
+    <jine id="FOLLOW_ST_JINE004" speaker="ame">
+      <bodyEN>its only a matter of time before something happens</bodyEN>
+    </jine>
+    <jine id="FOLLOW_ST_JINE005" speaker="ame">
+      <bodyEN>can u stay with me when i go out, p-chan?</bodyEN>
+    </jine>
+    <jine id="FOLLOW_ST_JINE006" speaker="ame">
+      <bodyEN>i dont think i can go out alone anymore</bodyEN>
+    </jine>
+    <jine id="FOLLOW_ST_JINE007" speaker="pi">
+      <bodyEN>Of course.</bodyEN>
+    </jine>
+    <jine id="FOLLOW_ST_JINE008" speaker="ame">
+      <bodyEN>thank u</bodyEN>
+    </jine>
+    <jine id="FOLLOW_ST_JINE009" speaker="ame">
+      <bodyEN>i know ill be safe by ur side</bodyEN>
+    </jine>
+    <jine id="FOLLOW_ST_JINE010" speaker="ame">
+      <bodyEN>im counting on u, p-chan!!!</bodyEN>
+    </jine>
+    <jine id="FOLLOW_MISTWEET_JINE001" speaker="ame">
+      <bodyEN>IM SO STUPID</bodyEN>
+    </jine>
+    <jine id="FOLLOW_MISTWEET_JINE002" speaker="ame">
+      <bodyEN>WHY DID I POST THAT TO KANGEL?!</bodyEN>
+    </jine>
+    <jine id="FOLLOW_MISTWEET_JINE003" speaker="ame">
+      <bodyEN>...</bodyEN>
+    </jine>
+    <jine id="FOLLOW_MISTWEET_JINE004" speaker="ame">
+      <bodyEN>its too late now</bodyEN>
+    </jine>
+    <jine id="FOLLOW_MISTWEET_JINE005" speaker="ame">
+      <bodyEN>theyre never gonna forget this</bodyEN>
+    </jine>
+    <jine id="FOLLOW_MISTWEET_JINE006" speaker="ame">
+      <bodyEN>im scared</bodyEN>
+    </jine>
+    <jine id="FOLLOW_MISTWEET_JINE007" speaker="ame">
+      <bodyEN>and if theyd go this far for me</bodyEN>
+    </jine>
+    <jine id="FOLLOW_MISTWEET_JINE008" speaker="ame">
+      <bodyEN>now that they know about u too, how much farther can they go?</bodyEN>
+    </jine>
+    <jine id="FOLLOW_MISTWEET_JINE009" speaker="ame">
+      <bodyEN>i dont want to find out</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE001" speaker="ame">
+      <bodyEN>alright</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE002" speaker="ame">
+      <bodyEN>nobody should bother us now</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE003" speaker="ame">
+      <bodyEN>as long as we dont go outside we'll be fine, right?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE004" speaker="ame">
+      <bodyEN>its not like theyd break in, haha</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE005" speaker="ame">
+      <bodyEN>well, maybe</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE006" speaker="ame">
+      <bodyEN>but i dont think theyd go that far</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE007" speaker="ame">
+      <bodyEN>i hope they dont go that far</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE008" speaker="ame">
+      <bodyEN>i think i know what to do</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE009" speaker="ame">
+      <bodyEN>if they were caught on camera their life would be ruined</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE010" speaker="ame">
+      <bodyEN>in that case...</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE011" speaker="ame">
+      <bodyEN>theres nothing to do but stream my heart out until they go away</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE012" speaker="ame">
+      <bodyEN>ughhh this is gonna be a long stream</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE013" speaker="pi">
+      <bodyEN>Do you need anything before the stream, Ame?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE014" speaker="ame">
+      <bodyEN>no, i should be fine</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE015" speaker="ame">
+      <bodyEN>wait, p-chan?!</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE016" speaker="ame">
+      <bodyEN>...</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE017" speaker="ame">
+      <bodyEN>maybe im imagining things</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE018" speaker="ame">
+      <bodyEN>im gonna go get ready</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE019" speaker="ame">
+      <bodyEN>uuuuughhh this is exhaustinggg</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE020" speaker="ame">
+      <bodyEN>ive been streaming for ages</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE021" speaker="ame">
+      <bodyEN>and this dumb outfit is soaked</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE022" speaker="ame">
+      <bodyEN>the stress is killing me</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE023" speaker="ame">
+      <bodyEN>i wish i could end stream, but what'd happen if i did?
+id probably get attacked</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE024" speaker="ame">
+      <bodyEN>the stream is the only thing keeping them from just waltzing in</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE025" speaker="ame">
+      <bodyEN>they found our house, right?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE026" speaker="pi">
+      <bodyEN>Yeah, I think so.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE027" speaker="ame">
+      <bodyEN>of course they did p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE028" speaker="ame">
+      <bodyEN>what was i even thinking, telling everyone i was at comiket back then?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE029" speaker="ame">
+      <bodyEN>there was no fucking way they weren't gonna try and find where i went</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE030" speaker="ame">
+      <bodyEN>and that dumb night walk practically screamed "KANGEL LIVES HERE"</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE031" speaker="ame">
+      <bodyEN>im such an IDIOT</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE032" speaker="pi">
+      <bodyEN>Everyone makes mistakes.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE033" speaker="ame">
+      <bodyEN>NOT LIKE THIS</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE034" speaker="pi">
+      <bodyEN>I guess you're right.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE035" speaker="ame">
+      <bodyEN>its been too long now</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE036" speaker="ame">
+      <bodyEN>i better get back on stream</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE037" speaker="ame">
+      <bodyEN>...i love u, p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE038" speaker="pi">
+      <bodyEN>I love you too, Ame~</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE039" speaker="pi">
+      <bodyEN>We'll be together forever!</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE040" speaker="pi">
+      <bodyEN>AME</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE041" speaker="pi">
+      <bodyEN>Ame... please.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE042" speaker="pi">
+      <bodyEN>Open the door.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE043" speaker="ame">
+      <bodyEN>p-chan help</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE044" speaker="ame">
+      <bodyEN>i had a relly bd nightmare</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE045" speaker="ame">
+      <bodyEN>i was streamng and fell asleep</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE046" speaker="ame">
+      <bodyEN>and when i wok eup door ringing</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE047" speaker="ame">
+      <bodyEN>p-chan they're gong to come in…</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE048" speaker="ame">
+      <bodyEN>i cant do this without u</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE049" speaker="pi">
+      <bodyEN>I’m here for you.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE050" speaker="ame">
+      <bodyEN>thanks p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE051" speaker="ame">
+      <bodyEN>i dont know what id do without u</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE052" speaker="ame">
+      <bodyEN>probs die or smth</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE053" speaker="pi">
+      <bodyEN>Ohhh, you will when you realize!</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE054" speaker="ame">
+      <bodyEN>realize wut</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE055" speaker="ame">
+      <bodyEN>p-chan...?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE056" speaker="ame">
+      <bodyEN>no</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE057" speaker="ame">
+      <bodyEN>im dreaming</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE058" speaker="ame">
+      <bodyEN>pls tell me im still asleep</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE059" speaker="pi">
+      <bodyEN>I'm sorry.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE060" speaker="ame">
+      <bodyEN>HOW LONG HAVE I BEEN STREAMING FOR???????</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE061" speaker="pi">
+      <bodyEN>A while.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE062" speaker="ame">
+      <bodyEN>P-CHAN</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE063" speaker="ame">
+      <bodyEN>U COULDNT HAVE WOKEN ME UP?????</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE064" speaker="ame">
+      <bodyEN>...</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE065" speaker="ame">
+      <bodyEN>ahaha</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE066" speaker="ame">
+      <bodyEN>now everyone knows kangel as a drug addict</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE067" speaker="ame">
+      <bodyEN>and a fake</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE068" speaker="ame">
+      <bodyEN>and... soz</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE069" speaker="ame">
+      <bodyEN>they know about u too...</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE070" speaker="pi">
+      <bodyEN>There's no use crying over spilt milk.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE071" speaker="ame">
+      <bodyEN>p-chan...</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE072" speaker="ame">
+      <bodyEN>i cant believe thats all u have to say</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE073" speaker="ame">
+      <bodyEN>id die if someone outed me like i did to u</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE074" speaker="ame">
+      <bodyEN>i guess that means im dead too</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE075" speaker="ame">
+      <bodyEN>we're in heaven</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE076" speaker="pi">
+      <bodyEN>Or hell.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE077" speaker="ame">
+      <bodyEN>or hell, yeah</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE078" speaker="ame">
+      <bodyEN>i gotta come up with a cover story</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE079" speaker="ame">
+      <bodyEN>how do i explain this...?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE080" speaker="ame">
+      <bodyEN>i think i know</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE081" speaker="ame">
+      <bodyEN>p-chan can u go out and check for me</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE082" speaker="ame">
+      <bodyEN>are those freaks gone?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE083" speaker="pi">
+      <bodyEN>I think so.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE084" speaker="ame">
+      <bodyEN>u think so? whats that supposed to mean</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE085" speaker="ame">
+      <bodyEN>ur so silly, p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE086" speaker="ame">
+      <bodyEN>thanks for being here for me</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE087" speaker="ame">
+      <bodyEN>i could never do this without u</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE088" speaker="pi">
+      <bodyEN>I think you could.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE089" speaker="ame">
+      <bodyEN>no way</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE090" speaker="ame">
+      <bodyEN>like i said earlier</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE091" speaker="ame">
+      <bodyEN>id die</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE092" speaker="ame">
+      <bodyEN>but thanks for believing in me anyway</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE093" speaker="ame">
+      <bodyEN>that being said</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE094" speaker="ame">
+      <bodyEN>can i have today off?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE095" speaker="pi">
+      <bodyEN>Yeah. You need it.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE096" speaker="ame">
+      <bodyEN>i love u p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE097" speaker="ame">
+      <bodyEN>ur so considerate of me</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE098" speaker="ame">
+      <bodyEN>what would i ever do without u?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE099" speaker="ame">
+      <bodyEN>ugghhhh I overslept a bit</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE100" speaker="ame">
+      <bodyEN>couldnt i just wake up just a little earlier?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE101" speaker="ame">
+      <bodyEN>oh</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE102" speaker="ame">
+      <bodyEN>metube logged me out lmao</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE103" speaker="ame">
+      <bodyEN>u think it wouldnt be that hard to stay logged in</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE104" speaker="ame">
+      <bodyEN>can u log me in again? the password is still "angelkawaii2"</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE105" speaker="ame">
+      <bodyEN>p-chan please</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE106" speaker="ame">
+      <bodyEN>at least watch what ur typing</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE107" speaker="ame">
+      <bodyEN>try again, ok?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE108" speaker="ame">
+      <bodyEN>p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE109" speaker="ame">
+      <bodyEN>u dont have caps on or smth do u?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE110" speaker="ame">
+      <bodyEN>lemme try then</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE111" speaker="ame">
+      <bodyEN>it doesnt work</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE112" speaker="ame">
+      <bodyEN>why doesnt it work</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE113" speaker="ame">
+      <bodyEN>i never changed it</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE114" speaker="ame">
+      <bodyEN>WHY THE FUCK DOES THIS KEEP HAPPENING TO ME??????</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE115" speaker="pi">
+      <bodyEN>Ame.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE116" speaker="ame">
+      <bodyEN>P-CHAN????</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE117" speaker="pi">
+      <bodyEN>I can be your p-chan.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE118" speaker="ame">
+      <bodyEN>but u already are... wait</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE119" speaker="ame">
+      <bodyEN>not u too</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE120" speaker="ame">
+      <bodyEN>P-CHAN!!!!!</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE121" speaker="pi">
+      <bodyEN>Save me.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE122" speaker="ame">
+      <bodyEN>alright, i changed ur password, u should be good now</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE123" speaker="pi">
+      <bodyEN>I'm back, Ame.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE124" speaker="ame">
+      <bodyEN>I THOUGHT I LOST U</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE125" speaker="ame">
+      <bodyEN>NEVER DO THAT TO ME AGAIN P-CHAN</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE126" speaker="pi">
+      <bodyEN>I won't.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE127" speaker="ame">
+      <bodyEN>promise me</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE128" speaker="ame">
+      <bodyEN>PROMISE ME</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE129" speaker="pi">
+      <bodyEN>I promise you, Ame. I'll never leave your side again.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE130" speaker="ame">
+      <bodyEN>never?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE131" speaker="pi">
+      <bodyEN>Never ever ever ever.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE132" speaker="ame">
+      <bodyEN>i love u p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE133" speaker="pi">
+      <bodyEN>I love you too.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE134" speaker="ame">
+      <bodyEN>kangel</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE135" speaker="ame">
+      <bodyEN>what am i going to do about kangel?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE136" speaker="pi">
+      <bodyEN>You should try the password again.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE137" speaker="ame">
+      <bodyEN>but we already tried it three times</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE138" speaker="ame">
+      <bodyEN>i guess it wont hurt to try one more time</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE139" speaker="ame">
+      <bodyEN>huh</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE140" speaker="ame">
+      <bodyEN>i guess i was just mistyping the password</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE141" speaker="ame">
+      <bodyEN>but how?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE142" speaker="ame">
+      <bodyEN>anyways</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE143" speaker="ame">
+      <bodyEN>i guess it works now</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE144" speaker="ame">
+      <bodyEN>okay, almost time for the next stream</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE145" speaker="ame">
+      <bodyEN>u think i should try to explain whats been happening?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE146" speaker="pi">
+      <bodyEN>Are you sure?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE147" speaker="ame">
+      <bodyEN>people love irl drama</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE148" speaker="ame">
+      <bodyEN>dont u remember those breakdowns i had?</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE149" speaker="ame">
+      <bodyEN>i had so many viewers compared to usual</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE150" speaker="ame">
+      <bodyEN>even though it was killing me</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE151" speaker="ame">
+      <bodyEN>if im going through something</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE152" speaker="ame">
+      <bodyEN>they love it</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE153" speaker="ame">
+      <bodyEN>they love when im suffering</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE154" speaker="ame">
+      <bodyEN>yeah, ive made my mind up</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE155" speaker="ame">
+      <bodyEN>theyll remember this alright</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE156" speaker="ame">
+      <bodyEN>im gonna take some pills to give me a little boost for this</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE157" speaker="ame">
+      <bodyEN>god knows ill need it</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE158" speaker="pi">
+      <bodyEN>Ame, please!</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE159" speaker="pi">
+      <bodyEN>We'll do anything!</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE160" speaker="pi">
+      <bodyEN>But give us KAngel back!!!!</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE161" speaker="ame">
+      <bodyEN>I don't care anymore.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE162" speaker="ame">
+      <bodyEN>Go away.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE_DELETEPI" speaker="ame">
+      <bodyEN>p-chan not found.</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE163" speaker="ame">
+      <bodyEN>i love u p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_JINE164" speaker="ame">
+      <bodyEN>But you? You're not them.</bodyEN>
+    </jine>
+  </jines>
+  <streams>
+    <stream name="Natural Habitat" genre="Special Event" alphaType="FollowerAlpha" level="1"  actionType="HaishinComiket" cmdType="HaishinComiket">
+      <dialogue>
+        <speak id="STREAM001">
+          <bodyEN>Hey cuties! It's KAngel, your cute internet angel!</bodyEN>
+        </speak>
+        <speak id="STREAM002">
+          <bodyEN>I got up to something interesting lately
+that I thought might be fun for you guys!</bodyEN>
+        </speak>
+        <speak id="STREAM003">
+          <bodyEN>I went to Comiket! Yep, you heard that right!</bodyEN>
+        </speak>
+        <speak id="STREAM004">
+          <bodyEN>It was really nice meeting some of you guys in person.</bodyEN>
+        </speak>
+        <speak id="STREAM005">
+          <bodyEN>You all seemed really excited,
+but I guess that IS your natural habitat!</bodyEN>
+        </speak>
+        <speak id="STREAM006">
+          <bodyEN>Though we may have caused a little too much
+mischief for an event like that.</bodyEN>
+        </speak>
+        <speak id="STREAM007">
+          <bodyEN>Maybe it would've been one thing if I'd
+signed up as a participant, but... oopsies!</bodyEN>
+        </speak>
+        <speak id="STREAM008">
+          <bodyEN>Sorry for the inconvenience, Comiket!
+I didn't mean to cause any trouble, I promise!</bodyEN>
+        </speak>
+        <speak id="STREAM009">
+          <bodyEN>Although I guess all the KAngel cosplayers were
+getting just as much attention too.</bodyEN>
+        </speak>
+        <speak id="STREAM010">
+          <bodyEN>I guess I'm really just that popular now.</bodyEN>
+        </speak>
+        <speak id="STREAM011">
+          <bodyEN>Maybe next year I'll have a convention of my own?</bodyEN>
+        </speak>
+        <speak id="STREAM012">
+          <bodyEN>But until then, you guys will
+have to make do with my streams!</bodyEN>
+        </speak>
+        <speak id="STREAM013">
+          <bodyEN>I'll see you guys next time!</bodyEN>
+        </speak>
+        <speak id="RESPONSE001">
+          <bodyEN>Really really amazing! They put so much work
+into making it happen, so make
+sure to thank the organizers! </bodyEN>
+        </speak>
+        <speak id="RESPONSE002">
+          <bodyEN>Please don't-uhh, I mean shhhhh, keep that to yourself!</bodyEN>
+        </speak>
+        <speak id="RESPONSE003">
+          <bodyEN>And you can be! I believe in you! And the rest of you guys too!</bodyEN>
+        </speak>
+        <speak id="RESPONSE004">
+          <bodyEN>OMG, thanks! But I can't do it
+without you guys, so watch all my
+streams and send tons of Super Chats, okay?</bodyEN>
+        </speak>
+        <speak id="RESPONSE005">
+          <bodyEN>I'll see what I can do! No promises though,
+it'd be a lot of work and...
+haha, only time will tell, right?</bodyEN>
+        </speak>
+      </dialogue>
+      <chat>
+        <msg id="CHAT_INTRO001">
+          <bodyEN>hey kangel</bodyEN>
+        </msg>
+        <msg id="CHAT_INTRO002">
+          <bodyEN>hey kangel</bodyEN>
+        </msg>
+        <msg id="CHAT_INTRO003">
+          <bodyEN>HEY! KANGEL!</bodyEN>
+        </msg>
+        <msg id="CHAT001">
+          <bodyEN>Oh?</bodyEN>
+        </msg>
+        <msg id="CHAT002">
+          <bodyEN>cmon spill the beans already</bodyEN>
+        </msg>
+        <msg id="CHAT003">
+          <bodyEN>I'm EXCITE</bodyEN>
+        </msg>
+        <msg id="CHAT004">
+          <bodyEN>holy shit</bodyEN>
+        </msg>
+        <msg id="CHAT005">
+          <bodyEN>No way!</bodyEN>
+        </msg>
+        <msg id="CHAT006">
+          <bodyEN>KANGEL AT COMIKET?????</bodyEN>
+        </msg>
+        <msg id="CHAT007">
+          <bodyEN>OMG SO I DID SEE YOU!</bodyEN>
+        </msg>
+        <msg id="CHAT008">
+          <bodyEN>so true</bodyEN>
+        </msg>
+        <msg id="CHAT009">
+          <bodyEN>Of course, Comiket is amazing</bodyEN>
+        </msg>
+        <msg id="CHAT010">
+          <bodyEN>Sorry!</bodyEN>
+        </msg>
+        <msg id="CHAT011">
+          <bodyEN>my bad</bodyEN>
+        </msg>
+        <msg id="CHAT012">
+          <bodyEN>It's all good, don't worry</bodyEN>
+        </msg>
+        <msg id="CHAT013">
+          <bodyEN>i think i know u</bodyEN>
+        </msg>
+        <msg id="CHAT014">
+          <bodyEN>ur so nice, i wish i could be like u</bodyEN>
+        </msg>
+        <msg id="CHAT015">
+          <bodyEN>As you should be!</bodyEN>
+        </msg>
+        <msg id="CHAT016">
+          <bodyEN>GO KANGEL GO</bodyEN>
+        </msg>
+        <msg id="CHAT017">
+          <bodyEN>and u deserve it!!!!!</bodyEN>
+        </msg>
+        <msg id="CHAT018">
+          <bodyEN>KANGEL CONVENTION</bodyEN>
+        </msg>
+        <msg id="CHAT019">
+          <bodyEN>I NEED THIS!</bodyEN>
+        </msg>
+        <msg id="CHAT020">
+          <bodyEN>I didn't know I was hoping for this
+until you said it, but now I can't go back.</bodyEN>
+        </msg>
+      </chat>
+    </stream>
+    <stream name="ANGEL WATCH" genre="???" alphaType="FollowerAlpha" level="2" actionType="HaishinAngelWatch" cmdType="HaishinAngelWatch">
+      <dialogue>
+        <speak id="INTRO001">
+          <bodyEN>H-hey cuties~! It's KAngel, the cutest
+angel on the internet!</bodyEN>
+        </speak>
+        <speak id="INTRO002">
+          <bodyEN>I didn't have anything special planned for today,
+I just really wanted to stream for you guys!!!!</bodyEN>
+        </speak>
+        <speak id="INTRO003">
+          <bodyEN>How's everyone doing today?</bodyEN>
+        </speak>
+        <speak id="INTRO004">
+          <bodyEN>I'm doing great today too! And it's great
+to see you guys are all doing amazing!</bodyEN>
+        </speak>
+        <speak id="INTRO005">
+          <bodyEN>Oooh, how'd you guys feel about doing an AMA today?!</bodyEN>
+        </speak>
+        <speak id="INTRO006">
+          <bodyEN>Aha, I guess that answers that! Let's do it!!!!</bodyEN>
+        </speak>
+        <speak id="AMA_Q001_RESPONSE">
+          <bodyEN>Mmmm, is that really the kind of question you ask
+a cute girl like me? Let alone an angel?</bodyEN>
+        </speak>
+        <speak id="AMA_Q002_RESPONSE">
+          <bodyEN>I spend most of my time preparing
+my next stream for you cuties!</bodyEN>
+        </speak>
+        <speak id="AMA_Q003_RESPONSE">
+          <bodyEN>I'm an angel, so... God! I can't say I've
+ever met Him, though! Maybe one day!</bodyEN>
+        </speak>
+        <speak id="AMA_Q004_RESPONSE">
+          <bodyEN>Every d-wait, what kind of question is this?!</bodyEN>
+        </speak>
+        <speak id="AMA_Q005_RESPONSE">
+          <bodyEN>Ah, I've been really busy lately,
+so I've been having more quick stuff than usual...</bodyEN>
+        </speak>
+        <speak id="AMA_Q005_RESPONSE_B">
+          <bodyEN>It's not healthy, but it's so easy.
+What's an angel to do?</bodyEN>
+        </speak>
+        <speak id="AMA_Q006_RESPONSE">
+          <bodyEN>...</bodyEN>
+        </speak>
+        <speak id="AMA_Q007_RESPONSE">
+          <bodyEN>A few! Plus all of the nerds here,
+which is a LOT of friends!</bodyEN>
+        </speak>
+        <speak id="AMA_Q007_RESPONSE_B">
+          <bodyEN>Aha, you guys are all an angel would ever need.</bodyEN>
+        </speak>
+        <speak id="AMA_Q008_RESPONSE">
+          <bodyEN>And here we have the viewer who thinks he dresses better than an angel!</bodyEN>
+        </speak>
+        <speak id="AMA_Q008_RESPONSE_B">
+          <bodyEN>There's no way your outfit makes you look cuter than mine does~</bodyEN>
+        </speak>
+        <speak id="AMA_Q009_RESPONSE">
+          <bodyEN>If you send pleeeenty of Super Chats and let me
+guys know what you'd buy, I'll do my best!!!</bodyEN>
+        </speak>
+        <speak id="AMA_Q010_RESPONSE">
+          <bodyEN>P-He's not stupid, he's adorable!
+Don't be mean to the poor kitty!</bodyEN>
+        </speak>
+        <speak id="AMA_Q010_RESPONSE_B">
+          <bodyEN>And I thought the internet loved cats.</bodyEN>
+        </speak>
+        <speak id="AMA_Q011_RESPONSE">
+          <bodyEN>A looooooot! Being a streamer is amazing, I get
+to talk to you guys AND get paid at the same time!</bodyEN>
+        </speak>
+        <speak id="AMA_Q012_RESPONSE">
+          <bodyEN>You can do anything! But don't blame me when
+your channel dies 'cuz everyone's watching me instead.</bodyEN>
+        </speak>
+        <speak id="AMA_Q013_RESPONSE">
+          <bodyEN>You guys are funny! We don't have nearly
+enough followers to make that happen yet!</bodyEN>
+        </speak>
+        <speak id="AMA_Q013_RESPONSE_B">
+          <bodyEN>But maybe if you spread the word about me
+we'll be able to make something happen!!</bodyEN>
+        </speak>
+        <speak id="AMA_Q014_RESPONSE">
+          <bodyEN>...</bodyEN>
+        </speak>
+        <speak id="AMA_Q015_RESPONSE">
+          <bodyEN>To think that so many people out there
+are out there thinking about my body... yuck!</bodyEN>
+        </speak>
+        <speak id="AMA_Q015_RESPONSE_B">
+          <bodyEN>Well, you know what they say about the internet!</bodyEN>
+        </speak>
+        <speak id="AMA_Q016_RESPONSE">
+          <bodyEN>More than anything else, being ignored.
+Without you guys, I'd die!!!!</bodyEN>
+        </speak>
+        <speak id="AMA_Q016_RESPONSE_B">
+          <bodyEN>So make sure to give me loooots of attention~</bodyEN>
+        </speak>
+        <speak id="AMA_Q017_RESPONSE">
+          <bodyEN>Easy! I hope you slip in some
+mud when you go outside next!</bodyEN>
+        </speak>
+        <speak id="AMA_Q018_RESPONSE">
+          <bodyEN>Mmmm, I'm glad you like it. It really *does*
+make me look cuter, doesn't it~?</bodyEN>
+        </speak>
+        <speak id="AMA_Q018_RESPONSE_B">
+          <bodyEN>We angels have our ways of getting things.</bodyEN>
+        </speak>
+        <speak id="AMA_Q019_RESPONSE">
+          <bodyEN>Nuh uh, I just reaaaaaally wanted to stream for
+you guys when I woke up! I'm perfectly fine, I promise!</bodyEN>
+        </speak>
+        <speak id="AMA_Q020_RESPONSE">
+          <bodyEN>You mean this?</bodyEN>
+        </speak>
+        <speak id="AMA_Q020_RESPONSE_B">
+          <bodyEN>As often as you guys say weird stuff, which is a LOT!</bodyEN>
+        </speak>
+        <speak id="AMA_Q021_RESPONSE">
+          <bodyEN>I see someone isn't following me on Tweeter! Fake fan!</bodyEN>
+        </speak>
+        <speak id="AMA_Q022_RESPONSE">
+          <bodyEN>Neither! Have you SEEN all
+the pretty colors during autumn?</bodyEN>
+        </speak>
+        <speak id="AMA_Q023_RESPONSE">
+          <bodyEN>The pleas of the internet led
+to the birth of me, the internet angel.</bodyEN>
+        </speak>
+        <speak id="AMA_Q023_RESPONSE_B">
+          <bodyEN>As long as you keep believing in me, I'll
+have all the energy in the world to entertain you guys!</bodyEN>
+        </speak>
+        <speak id="AMA_Q024_RESPONSE">
+          <bodyEN>Aw, you must really be going through it
+if you're asking here!</bodyEN>
+        </speak>
+        <speak id="AMA_Q024_RESPONSE_B">
+          <bodyEN>But does that really count as a question?</bodyEN>
+        </speak>
+        <speak id="AMA_Q025_RESPONSE">
+          <bodyEN>Of course I do.
+What streamer doesn't like their fans?</bodyEN>
+        </speak>
+        <speak id="AMA_Q026_RESPONSE">
+          <bodyEN>I don't know if I have a favorite. I love anime, but
+games are fun, and it's fun trying out new things...</bodyEN>
+        </speak>
+        <speak id="AMA_Q026_RESPONSE_B">
+          <bodyEN>There's so many things to do, especially in this heaven
+we call the internet. I can't possibly pick just one!</bodyEN>
+        </speak>
+        <speak id="AMA_Q027_RESPONSE">
+          <bodyEN>Aha, funny joke. This person really
+thinks they know my address.</bodyEN>
+        </speak>
+        <speak id="AMA_Q027_RESPONSE_B">
+          <bodyEN>You probably don't even know your own, so go buy a
+map and maybe you'll see which way the circus is.</bodyEN>
+        </speak>
+        <speak id="AMA_Q028_RESPONSE">
+          <bodyEN>People on the internet loooove to hide
+behind their mask of anonymity, so a lot of
+them become jerks!</bodyEN>
+        </speak>
+        <speak id="AMA_Q029_RESPONSE">
+          <bodyEN>I love p-all of you. As long as you're
+watching my streams, you're all in my heart ♥️</bodyEN>
+        </speak>
+        <speak id="AMA_Q030_RESPONSE">
+          <bodyEN>Well, I'm everyone's cute internet angel!
+Isn't it obvious?</bodyEN>
+        </speak>
+        <speak id="AMA_Q031_RESPONSE">
+          <bodyEN>...</bodyEN>
+        </speak>
+        <speak id="AMAFINISH_BAD001">
+          <bodyEN>Aha, I'm beat... Some of those questions were tough!</bodyEN>
+        </speak>
+        <speak id="AMAFINISH_BAD002">
+          <bodyEN>You guys could use some work with your questions!
+What sort of person even ASKS those kinds of things????</bodyEN>
+        </speak>
+        <speak id="AMAFINISH_BAD003">
+          <bodyEN>Anyway, what's next...</bodyEN>
+        </speak>
+        <speak id="AMAFINISH_GOOD001">
+          <bodyEN>Alrighty, I think that's enough questions for now!
+You guys had some good ones!</bodyEN>
+        </speak>
+        <speak id="AMAFINISH_GOOD002">
+          <bodyEN>I'd really like to continue, but we've been doing
+this for aaaages, so it's time we change things up!</bodyEN>
+        </speak>
+        <speak id="AMAFINISH_GOOD003">
+          <bodyEN>Angel will now commence...</bodyEN>
+        </speak>
+        <speak id="AMAFINISH_IGNORE001">
+          <bodyEN>Hmm, these questions aren't very inspiring...</bodyEN>
+        </speak>
+        <speak id="AMAFINISH_IGNORE002">
+          <bodyEN>I don't think I'm gonna answer any more questions!</bodyEN>
+        </speak>
+        <speak id="AMAFINISH_IGNORE003">
+          <bodyEN>How about instead we do some...</bodyEN>
+        </speak>
+        <speak id="GAMING001">
+          <bodyEN>Gaming!</bodyEN>
+        </speak>
+        <speak id="GAMING002">
+          <bodyEN>Games are really great!</bodyEN>
+        </speak>
+        <speak id="GAMING003">
+          <bodyEN>And I happened to pick up a new one!</bodyEN>
+        </speak>
+        <speak id="GAMING004">
+          <bodyEN>It's an old horror game about a space station that
+came out ten or so years ago?</bodyEN>
+        </speak>
+        <speak id="GAMING005">
+          <bodyEN>It's really highly regarded for how old
+it is, so you guys are in for a treat!</bodyEN>
+        </speak>
+        <speak id="GAMING006">
+          <bodyEN>Maybe if you're lucky, your angel might even scream! </bodyEN>
+        </speak>
+        <speak id="GAMING007">
+          <bodyEN>Hah, dream on! I LOVE horror.
+You won't get a peep from me.</bodyEN>
+        </speak>
+        <speak id="GAMING008">
+          <bodyEN>Ooooh, the title screen is really nice! It feels
+lonely somehow. Like the station has been abandoned?</bodyEN>
+        </speak>
+        <speak id="GAMING009">
+          <bodyEN>And very broken, aha! I bet those
+two won't be coming back anytime soon.</bodyEN>
+        </speak>
+        <speak id="GAMING010">
+          <bodyEN>Hiiiii~! It's another person! Fix the place already,
+it's all broken!</bodyEN>
+        </speak>
+        <speak id="GAMING011">
+          <bodyEN>Aw, there's people chasing us now.
+Quick, ruuuuuun!!!!</bodyEN>
+        </speak>
+        <speak id="GAMING012">
+          <bodyEN>Phew... we escaped! That was a close one!</bodyEN>
+        </speak>
+        <speak id="GAMING013">
+          <bodyEN>E-eek! Did he just get dragged into that hole????
+I don't wanna be stuck in a hole! Lemme ouuuuut!!!!</bodyEN>
+        </speak>
+        <speak id="GAMING014">
+          <bodyEN>Pleasepleasepleeeease why does the train take so
+loooong? Hurry up already IM BEING FOLLOWED!!!!!</bodyEN>
+        </speak>
+        <speak id="GAMING015">
+          <bodyEN>Whew, we made it... haha! That was really fun!</bodyEN>
+        </speak>
+        <speak id="GAMING016">
+          <bodyEN>N-no! Of course I wasn't scared. I was just
+acting for you guys, of course! Believe me!!!</bodyEN>
+        </speak>
+        <speak id="GAMING017">
+          <bodyEN>But I'm gonna take a short break!
+I'll be back in a minute.</bodyEN>
+        </speak>
+        <speak id="OVERDOSE001">
+          <bodyEN>Sorry for taking so long, guys! I hope
+you haven't been getting too bored waiting!</bodyEN>
+        </speak>
+        <speak id="OVERDOSE002">
+          <bodyEN>...Hold on, I forgot something!</bodyEN>
+        </speak>
+        <speak id="OVERDOSE003">
+          <bodyEN>I'm still kinda recovering from the other day, so...</bodyEN>
+        </speak>
+        <speak id="OVERDOSE004">
+          <bodyEN>There we go, that's better! Remember to
+take your meds when you're sick, guys!</bodyEN>
+        </speak>
+        <speak id="OVERDOSE005">
+          <bodyEN>It's really important to take care
+of yourself.</bodyEN>
+        </speak>
+        <speak id="OVERDOSE006">
+          <bodyEN>I sometimes get a little anxious
+for no real reason, so...</bodyEN>
+        </speak>
+        <speak id="OVERDOSE007">
+          <bodyEN>Ahah, I might have forgotten to take
+some earlier, so I'm doing that now!</bodyEN>
+        </speak>
+        <speak id="OVERDOSE008">
+          <bodyEN>After all...
+It's been a loooong stream, hasn't it?</bodyEN>
+        </speak>
+        <speak id="OVERDOSE009">
+          <bodyEN>I wonder how much longer we can
+go on for...</bodyEN>
+        </speak>
+        <speak id="OVERDOSE010">
+          <bodyEN>...I... I...</bodyEN>
+        </speak>
+        <speak id="OVERDOSE011">
+          <bodyEN>...</bodyEN>
+        </speak>
+        <speak id="OVERDOSE012">
+          <bodyEN>...zzzzzz...</bodyEN>
+        </speak>
+        <speak id="NIGHTMARE001">
+          <bodyEN>...AAAAAH!!!!</bodyEN>
+        </speak>
+        <speak id="NIGHTMARE002">
+          <bodyEN>Nonononono LEAVE ME ALONE!!!!</bodyEN>
+        </speak>
+        <speak id="NIGHTMARE003">
+          <bodyEN>WHY ARE YOU DOING THIS?!?!?</bodyEN>
+        </speak>
+        <speak id="NIGHTMARE004">
+          <bodyEN>WHAT THE FUCK DO YOU GET FROM DOING THIS TO ME????</bodyEN>
+        </speak>
+        <speak id="NIGHTMARE005">
+          <bodyEN>GET THE FUCK AWAY FROM ME!!!!!</bodyEN>
+        </speak>
+        <speak id="NIGHTMARE006">
+          <bodyEN>I... I can't... p-chan... I need p-chan...</bodyEN>
+        </speak>
+        <speak id="NIGHTMARE007">
+          <bodyEN>p-chan...</bodyEN>
+        </speak>
+        <speak id="NIGHTMARE008">
+          <bodyEN>What... what's going on...?</bodyEN>
+        </speak>
+        <speak id="NIGHTMARE009">
+          <bodyEN>H-huh?!</bodyEN>
+        </speak>
+        <speak id="NIGHTMARE010">
+          <bodyEN>I-I... AAAAAAH!</bodyEN>
+        </speak>
+        <speak id="NIGHTMARE011">
+          <bodyEN>NonononoNONONONO!</bodyEN>
+        </speak>
+      </dialogue>
+      <chat>
+        <msg id="INTRO001">
+          <bodyEN>Is something wrong?</bodyEN>
+        </msg>
+        <msg id="INTRO002">
+          <bodyEN>kangel stutter, so cute</bodyEN>
+        </msg>
+        <msg id="INTRO003">
+          <bodyEN>kawaiiii</bodyEN>
+        </msg>
+        <msg id="INTRO004">
+          <bodyEN>im good</bodyEN>
+        </msg>
+        <msg id="INTRO005">
+          <bodyEN>Doing great!</bodyEN>
+        </msg>
+        <msg id="INTRO006">
+          <bodyEN>was about to kms but saw u streaming</bodyEN>
+        </msg>
+        <msg id="INTRO007">
+          <bodyEN>Poggers</bodyEN>
+        </msg>
+        <msg id="INTRO008">
+          <bodyEN>ok i guess</bodyEN>
+        </msg>
+        <msg id="INTRO009">
+          <bodyEN>such a nice angel</bodyEN>
+        </msg>
+        <msg id="INTRO010">
+          <bodyEN>You're so nice!</bodyEN>
+        </msg>
+        <msg id="INTRO011">
+          <bodyEN>YES</bodyEN>
+        </msg>
+        <msg id="INTRO012">
+          <bodyEN>YES</bodyEN>
+        </msg>
+        <msg id="INTRO013">
+          <bodyEN>KANGEL AMA????? LETS GOOO</bodyEN>
+        </msg>
+        <msg id="INTRO014">
+          <bodyEN>Do it!!!!!!</bodyEN>
+        </msg>
+        <msg id="INTRO015">
+          <bodyEN>JUST DO ITTTTTT</bodyEN>
+        </msg>
+        <msg id="AMA_Q001">
+          <bodyEN>how old are u</bodyEN>
+        </msg>
+        <msg id="AMA_Q002">
+          <bodyEN>What do you do when you're not streaming for us?</bodyEN>
+        </msg>
+        <msg id="AMA_Q003">
+          <bodyEN>ur our angel, but who do *u* idolize?</bodyEN>
+        </msg>
+        <msg id="AMA_Q004">
+          <bodyEN>shave or no</bodyEN>
+        </msg>
+        <msg id="AMA_Q005">
+          <bodyEN>what you eat, kangel?</bodyEN>
+        </msg>
+        <msg id="AMA_Q006">
+          <bodyEN>What's up with the stream title?</bodyEN>
+        </msg>
+        <msg id="AMA_Q007">
+          <bodyEN>how many friends do u have?</bodyEN>
+        </msg>
+        <msg id="AMA_Q008">
+          <bodyEN>whats with the absurd looking outfit?</bodyEN>
+        </msg>
+        <msg id="AMA_Q009">
+          <bodyEN>Official merch when?</bodyEN>
+        </msg>
+        <msg id="AMA_Q010">
+          <bodyEN>how do you feel about that stupid cat?</bodyEN>
+        </msg>
+        <msg id="AMA_Q011">
+          <bodyEN>How much money do you make from streaming?</bodyEN>
+        </msg>
+        <msg id="AMA_Q012">
+          <bodyEN>Can I be a streamer too?</bodyEN>
+        </msg>
+        <msg id="AMA_Q013">
+          <bodyEN>when's the kangel convention happening?</bodyEN>
+        </msg>
+        <msg id="AMA_Q014">
+          <bodyEN>whats ur address?</bodyEN>
+        </msg>
+        <msg id="AMA_Q015">
+          <bodyEN>What do you think about the more lewd activities of your fanbase?</bodyEN>
+        </msg>
+        <msg id="AMA_Q016">
+          <bodyEN>what do you fear the most?</bodyEN>
+        </msg>
+        <msg id="AMA_Q017">
+          <bodyEN>What do you have to say to all the KAngel haters?</bodyEN>
+        </msg>
+        <msg id="AMA_Q018">
+          <bodyEN>howd u make ur outfit, its so cute</bodyEN>
+        </msg>
+        <msg id="AMA_Q019">
+          <bodyEN>You're streaming really early today, did something happen?</bodyEN>
+        </msg>
+        <msg id="AMA_Q020">
+          <bodyEN>how many times do u do it a day?</bodyEN>
+        </msg>
+        <msg id="AMA_Q021">
+          <bodyEN>what kinds of things do you wear offstream?</bodyEN>
+        </msg>
+        <msg id="AMA_Q022">
+          <bodyEN>summer or winter?</bodyEN>
+        </msg>
+        <msg id="AMA_Q023">
+          <bodyEN>How are you so motivated?????</bodyEN>
+        </msg>
+        <msg id="AMA_Q024">
+          <bodyEN>im going through it, could i get a bless from you?</bodyEN>
+        </msg>
+        <msg id="AMA_Q025">
+          <bodyEN>Do you like your fans?</bodyEN>
+        </msg>
+        <msg id="AMA_Q026">
+          <bodyEN>whats ur fav thing to do when no strm?</bodyEN>
+        </msg>
+        <msg id="AMA_Q027">
+          <bodyEN>can u unlock ur door when i get there???</bodyEN>
+        </msg>
+        <msg id="AMA_Q028">
+          <bodyEN>why r people saying weird shit?</bodyEN>
+        </msg>
+        <msg id="AMA_Q029">
+          <bodyEN>Do you love me?</bodyEN>
+        </msg>
+        <msg id="AMA_Q030">
+          <bodyEN>Why are you called “OMGkawaiiAngel”?</bodyEN>
+        </msg>
+        <msg id="AMA_Q031">
+          <bodyEN>Can you explain that tweet from earlier?</bodyEN>
+        </msg>
+        <msg id="AMAFINISH_BAD">
+          <bodyEN>sorry</bodyEN>
+        </msg>
+        <msg id="AMAFINISH_IGNORE">
+          <bodyEN>u okay????</bodyEN>
+        </msg>
+        <msg id="GAMING001">
+          <bodyEN>KANGEL GAMING</bodyEN>
+        </msg>
+        <msg id="GAMING002">
+          <bodyEN>so true~</bodyEN>
+        </msg>
+        <msg id="GAMING003">
+          <bodyEN>i think id kms without games</bodyEN>
+        </msg>
+        <msg id="GAMING004">
+          <bodyEN>Ooooh, I know that one!!!!</bodyEN>
+        </msg>
+        <msg id="GAMING005">
+          <bodyEN>omg ur seriously playing that??? i cant watch 😨</bodyEN>
+        </msg>
+        <msg id="GAMING006">
+          <bodyEN>oh god yes, id love to hear kangel scream her lungs out</bodyEN>
+        </msg>
+        <msg id="GAMING007">
+          <bodyEN>rip</bodyEN>
+        </msg>
+        <msg id="GAMING008">
+          <bodyEN>u rite</bodyEN>
+        </msg>
+        <msg id="GAMING009">
+          <bodyEN>OMG, you'd really do them dirty like that</bodyEN>
+        </msg>
+        <msg id="GAMING010">
+          <bodyEN>Evil kangel arc</bodyEN>
+        </msg>
+        <msg id="GAMING011">
+          <bodyEN>kdemon >:)</bodyEN>
+        </msg>
+        <msg id="GAMING012">
+          <bodyEN>baldy</bodyEN>
+        </msg>
+        <msg id="GAMING013">
+          <bodyEN>WHAT ABOUT THE VENTS????</bodyEN>
+        </msg>
+        <msg id="GAMING014">
+          <bodyEN>GO GO GO GO</bodyEN>
+        </msg>
+        <msg id="GAMING015">
+          <bodyEN>wait for it</bodyEN>
+        </msg>
+        <msg id="GAMING016">
+          <bodyEN>OMGGGG</bodyEN>
+        </msg>
+        <msg id="GAMING017">
+          <bodyEN>UR GONNA DIEEEE</bodyEN>
+        </msg>
+        <msg id="GAMING018">
+          <bodyEN>SOMEONE PROTECC KANGEL</bodyEN>
+        </msg>
+        <msg id="GAMING019">
+          <bodyEN>omgggggg</bodyEN>
+        </msg>
+        <msg id="GAMING020">
+          <bodyEN>HAHAHA</bodyEN>
+        </msg>
+        <msg id="GAMING021">
+          <bodyEN>omg she's so cute when she's scared</bodyEN>
+        </msg>
+        <msg id="GAMING022">
+          <bodyEN>bet she'll say she isn't scared afterwards</bodyEN>
+        </msg>
+        <msg id="GAMING023">
+          <bodyEN>KANGEL BEGGING, CLIPPING THIS</bodyEN>
+        </msg>
+        <msg id="GAMING024">
+          <bodyEN>ive never heard kangel like this before, she's really into it</bodyEN>
+        </msg>
+        <msg id="GAMING025">
+          <bodyEN>I guess KAngel REALLY REALLY doesn't like being followed, haha! Followed. ;)</bodyEN>
+        </msg>
+        <msg id="GAMING026">
+          <bodyEN>haha u were terrified!</bodyEN>
+        </msg>
+        <msg id="GAMING027">
+          <bodyEN>scaredy cat</bodyEN>
+        </msg>
+        <msg id="GAMING028">
+          <bodyEN>scream for us more</bodyEN>
+        </msg>
+        <msg id="GAMING029">
+          <bodyEN>LOL say what you like, but we know the truth</bodyEN>
+        </msg>
+        <msg id="GAMING030">
+          <bodyEN>kangel trying to act tough is so cuuute</bodyEN>
+        </msg>
+        <msg id="OVERDOSE001">
+          <bodyEN>lmfao she's probably taking a piss</bodyEN>
+        </msg>
+        <msg id="OVERDOSE002">
+          <bodyEN>I wonder why she's streaming so long...</bodyEN>
+        </msg>
+        <msg id="OVERDOSE003">
+          <bodyEN>haven't u all heard about what happened on st???</bodyEN>
+        </msg>
+        <msg id="OVERDOSE004">
+          <bodyEN>come back soon kangel, i wanna kms again now that ur gone</bodyEN>
+        </msg>
+        <msg id="OVERDOSE005">
+          <bodyEN>apparently someone found where kangel lives</bodyEN>
+        </msg>
+        <msg id="OVERDOSE006">
+          <bodyEN>remember how she took a walk when she wasn't feeling well?</bodyEN>
+        </msg>
+        <msg id="OVERDOSE007">
+          <bodyEN>Apparently she also lives with someone she calls “p-chan” too</bodyEN>
+        </msg>
+        <msg id="OVERDOSE008">
+          <bodyEN>i'd say she's spending all day getting fucked, but</bodyEN>
+        </msg>
+        <msg id="OVERDOSE009">
+          <bodyEN>That can't be, since she's streaming, right?</bodyEN>
+        </msg>
+        <msg id="OVERDOSE010">
+          <bodyEN>lmfao shes probably having a quickie right now</bodyEN>
+        </msg>
+        <msg id="OVERDOSE011">
+          <bodyEN>whore couldn't take a day off so she's doing it mid-stream</bodyEN>
+        </msg>
+        <msg id="OVERDOSE012">
+          <bodyEN>what the fuck is going on, don't say these kinds of things about kangel</bodyEN>
+        </msg>
+        <msg id="OVERDOSE013">
+          <bodyEN>whatever, not like ur gonna ban us hahaha</bodyEN>
+        </msg>
+        <msg id="OVERDOSE014">
+          <bodyEN>Maybe she's worried that if she's not on stream something bad's gonna happen????</bodyEN>
+        </msg>
+        <msg id="OVERDOSE015">
+          <bodyEN>in that case, we gotta...</bodyEN>
+        </msg>
+        <msg id="OVERDOSE016">
+          <bodyEN>Get the police involved, duhhh</bodyEN>
+        </msg>
+        <msg id="OVERDOSE017">
+          <bodyEN>make her end stream</bodyEN>
+        </msg>
+        <msg id="OVERDOSE018">
+          <bodyEN>No worries, take as much time as you need!</bodyEN>
+        </msg>
+        <msg id="OVERDOSE019">
+          <bodyEN>sluuuut</bodyEN>
+        </msg>
+        <msg id="OVERDOSE020">
+          <bodyEN>KANGEL</bodyEN>
+        </msg>
+        <msg id="OVERDOSE021">
+          <bodyEN>What the fuck</bodyEN>
+        </msg>
+        <msg id="OVERDOSE022">
+          <bodyEN>did she just od</bodyEN>
+        </msg>
+        <msg id="OVERDOSE023">
+          <bodyEN>NOT much better</bodyEN>
+        </msg>
+        <msg id="OVERDOSE024">
+          <bodyEN>KAngel. Hospital, NOW</bodyEN>
+        </msg>
+        <msg id="OVERDOSE025">
+          <bodyEN>Why are you streaming?</bodyEN>
+        </msg>
+        <msg id="OVERDOSE026">
+          <bodyEN>stop stream rn or istg im calling police</bodyEN>
+        </msg>
+        <msg id="OVERDOSE027">
+          <bodyEN>Are you GOOD, KAngel????</bodyEN>
+        </msg>
+        <msg id="OVERDOSE028">
+          <bodyEN>KAngel????????</bodyEN>
+        </msg>
+        <msg id="OVERDOSE029">
+          <bodyEN>Did she just fall asleep???</bodyEN>
+        </msg>
+        <msg id="OVERDOSE030">
+          <bodyEN>i think she fell asleep</bodyEN>
+        </msg>
+        <msg id="OVERDOSE031">
+          <bodyEN>GOODNIGHT BITCH!</bodyEN>
+        </msg>
+        <msg id="OVERDOSE032">
+          <bodyEN>haha i think she just offed herself on stream lmfaoooo</bodyEN>
+        </msg>
+        <msg id="OVERDOSE033">
+          <bodyEN>oh god i can't watch anymore</bodyEN>
+        </msg>
+        <msg id="OVERDOSE034">
+          <bodyEN>sleeping kangel is so hot hooooly</bodyEN>
+        </msg>
+        <msg id="OVERDOSE035">
+          <bodyEN>cute</bodyEN>
+        </msg>
+        <msg id="OVERDOSE036">
+          <bodyEN>What do we do???</bodyEN>
+        </msg>
+        <msg id="OVERDOSE037">
+          <bodyEN>what can we? shes asleep</bodyEN>
+        </msg>
+        <msg id="OVERDOSE038">
+          <bodyEN>and we can't call the police because we don't even know if something happening</bodyEN>
+        </msg>
+        <msg id="OVERDOSE039">
+          <bodyEN>Haha get fucked KAngel</bodyEN>
+        </msg>
+        <msg id="OVERDOSE040">
+          <bodyEN>UR CAREERS OVER, AND SOS UR LIFE</bodyEN>
+        </msg>
+        <msg id="OVERDOSE041">
+          <bodyEN>KAngel is ALIVE, she's just sleeping</bodyEN>
+        </msg>
+        <msg id="OVERDOSE042">
+          <bodyEN>god im so worried for her, u see all those pills?</bodyEN>
+        </msg>
+        <msg id="OVERDOSE043">
+          <bodyEN>im staying on angel watch today, i can't look away when she's like this</bodyEN>
+        </msg>
+        <msg id="OVERDOSE044">
+          <bodyEN>Same, pulling an all-nighter for KAngel</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE001">
+          <bodyEN>cute angel</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE002">
+          <bodyEN>she really is our angel!</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE003">
+          <bodyEN>I'm worried about her...</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE004">
+          <bodyEN>KAngel please wake up!!!!!</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE005">
+          <bodyEN>lmfao sleep forever bitch</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE006">
+          <bodyEN>How long has this been going on for now?</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE007">
+          <bodyEN>she really needs to take a break...</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE008">
+          <bodyEN>I'm praying for you, KAngel!!!!!</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE009">
+          <bodyEN>i love u kangel</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE010">
+          <bodyEN>kawaii angel~</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE011">
+          <bodyEN>sleepy kangel best kangel</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE012">
+          <bodyEN>omg!!!!</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE013">
+          <bodyEN>SHES ALIVE GUYS</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE014">
+          <bodyEN>pog, she woke up</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE015">
+          <bodyEN>aww no more sleepy kangel~</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE016">
+          <bodyEN>Morning, KAngel~!</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE017">
+          <bodyEN>uh oh</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE018">
+          <bodyEN>is she having a nightmare???</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE019">
+          <bodyEN>can sum1 explain whats goin on?</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE020">
+          <bodyEN>Something's wrong, I can feel it</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE021">
+          <bodyEN>KANGEL PLEASE!</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE022">
+          <bodyEN>lmfao shes pretending to freak out for the views</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE023">
+          <bodyEN>doing what</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE024">
+          <bodyEN>u okay, kangel?</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE025">
+          <bodyEN>Okay, someone REALLY needs to explain what's happening here.</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE026">
+          <bodyEN>omg kangel backstory incoming????</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE027">
+          <bodyEN>p-chan???? whos that</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE028">
+          <bodyEN>There's no way...</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE029">
+          <bodyEN>Please don't let it be!!!!!!</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE030">
+          <bodyEN>NOOOOO</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE031">
+          <bodyEN>omg p-chan explanation!!!</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE032">
+          <bodyEN>she's... texting???</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE033">
+          <bodyEN>omg shes on jine</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE034">
+          <bodyEN>no way</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE035">
+          <bodyEN>lmfao is she texting her boyfriend????</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE036">
+          <bodyEN>kangel we trusted u</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE037">
+          <bodyEN>whyyyyyyy</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE038">
+          <bodyEN>haha what do u think she's saying to him</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE039">
+          <bodyEN>Ooooooh, p-chaaaan~!</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE040">
+          <bodyEN>p-chan, more like pp-chan</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE041">
+          <bodyEN>cringe woman</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE042">
+          <bodyEN>stupid bitch</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE043">
+          <bodyEN>Tell us something new for once</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE044">
+          <bodyEN>kangel are u okay?</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE045">
+          <bodyEN>Something's wrong</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE046">
+          <bodyEN>I'm so scared for her, I can't watch anymore... tell me what happens after its over</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE047">
+          <bodyEN>does she even see us?</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE048">
+          <bodyEN>Is she sleeptexting????</bodyEN>
+        </msg>
+        <msg id="NIGHTMARE049">
+          <bodyEN>Uh oh</bodyEN>
+        </msg>
+      </chat>
+    </stream>
+    <stream name="Recent events" genre="!!!" alphaType="FollowerAlpha" level="3"  actionType="HaishinAngelDeath" cmdType="HaishinAngelDeath">
+      <dialogue>
+        <speak id="RECENTEVENTS001">
+          <bodyEN>It's me, your internet angel.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS002">
+          <bodyEN>I'd like to tell a story today.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS003">
+          <bodyEN>A story about an angel and her followers.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS004">
+          <bodyEN>There's been...
+certain things happening to me.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS005">
+          <bodyEN>But you guys know that already, don't you?</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS006">
+          <bodyEN>You followed me home from Comiket.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS007">
+          <bodyEN>You followed me around at night
+when I was taking a walk.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS008">
+          <bodyEN>...You followed me around when
+I was with my p-chan.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS009">
+          <bodyEN>P-chan... you even followed them too.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS010">
+          <bodyEN>In fact... p-chan's been acting weirdly lately.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS011">
+          <bodyEN>That was because of you, right?</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS012">
+          <bodyEN>...ahahahaha!</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS013">
+          <bodyEN>Did you guys change my password? I bet you did.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS014">
+          <bodyEN>Are you so obsessed with me that you want to BE me?
+Or are you just getting off on messing with me?</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS015">
+          <bodyEN>Or maybe both?</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS016">
+          <bodyEN>You should consider my feelings. No, *her* feelings.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS017">
+          <bodyEN>You know p-chan, and you even know
+my FREAKING PASSWORD. Surely you know her too?</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS018">
+          <bodyEN>Or maybe you don't know a thing about your
+darling “internet angel”.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS019">
+          <bodyEN>Aha, I bet you guys aren't even interested in her,
+are you? You love KAngel. Not me.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS020">
+          <bodyEN>It's time for you guys to be a little more considerate.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS021">
+          <bodyEN>Apologize to her.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS022">
+          <bodyEN>Apologize to me.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS023">
+          <bodyEN>Apologize to Ame.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS024">
+          <bodyEN>It'll never be enough...</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS025">
+          <bodyEN>No amount of apologies will ever make up for
+what you guys have done, or what you could've done.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS026">
+          <bodyEN>I'm lucky to be alive right now, really.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS027">
+          <bodyEN>But KAngel? It's too late for her now.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS028">
+          <bodyEN>She fell a long time ago.</bodyEN>
+        </speak>
+        <speak id="RECENTEVENTS029">
+          <bodyEN>Go to hell.</bodyEN>
+        </speak>
+      </dialogue>
+      <chat>
+        <msg id="RECENTEVENTS001">
+          <bodyEN>uh oh</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS002">
+          <bodyEN>somethings wrong</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS003">
+          <bodyEN>Story?</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS004">
+          <bodyEN>i like stories</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS005">
+          <bodyEN>haha so u decided to go public</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS006">
+          <bodyEN>OMG u made a self-insert!</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS007">
+          <bodyEN>huh? what happened???</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS008">
+          <bodyEN>No?</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS009">
+          <bodyEN>soz kangel</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS010">
+          <bodyEN>we fucked up</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS011">
+          <bodyEN>WHO DID</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS012">
+          <bodyEN>wtf</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS013">
+          <bodyEN>people are sick in the head</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS014">
+          <bodyEN>they did????</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS015">
+          <bodyEN>what the hell, people can't get enough of u</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS016">
+          <bodyEN>You should've said hi~</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS017">
+          <bodyEN>Haha that idiot deserves it</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS018">
+          <bodyEN>p-chan? u mean pp-chan~?</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS019">
+          <bodyEN>i did nothing i swear</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS020">
+          <bodyEN>UVE BEEN HACKED?????</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS021">
+          <bodyEN>lol get dunked on</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS022">
+          <bodyEN>oh we're getting off alright</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS023">
+          <bodyEN>her?</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS024">
+          <bodyEN>Who's she talking about?</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS025">
+          <bodyEN>no clue</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS026">
+          <bodyEN>wtf are you on about kangel</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS027">
+          <bodyEN>im sorry</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS_APOLOGETIC001">
+          <bodyEN>sorry</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS_APOLOGETIC002">
+          <bodyEN>my bad</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS_APOLOGETIC003">
+          <bodyEN>soz</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS_APOLOGETIC004">
+          <bodyEN>sorry kangel</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS_APOLOGETIC005">
+          <bodyEN>:(</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS028">
+          <bodyEN>we should've taken the time to get to know u better</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS029">
+          <bodyEN>but u are kangel right?????</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS030">
+          <bodyEN>Oh my god...</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS031">
+          <bodyEN>im sorry</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS032">
+          <bodyEN>haha go fuck urself</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS033">
+          <bodyEN>Considerate to WHO????</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS034">
+          <bodyEN>ame? that ur real name? weird but ok</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS035">
+          <bodyEN>So Ame is your real name.</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS036">
+          <bodyEN>are you sure you should be telling us this?????</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS037">
+          <bodyEN>can someone explain what the fuck is happening</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS038">
+          <bodyEN>Why is she acting so weird?</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS039">
+          <bodyEN>Give us back the old KAngel please</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS040">
+          <bodyEN>enough?</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS041">
+          <bodyEN>we're super duper ultra sorry okay???? just give us the old kangel back and it'll all go away...</bodyEN>
+        </msg>
+        <msg id="RECENTEVENTS042">
+          <bodyEN>kangel...</bodyEN>
+        </msg>
+      </chat>
+    </stream>
+    <stream genre=":(" name="This is all your fault" alphaType="FollowerAlpha" level="4"  actionType="HaishinAngelFuneral" cmdType="HaishinAngelFuneral">
+      <dialogue>
+        <speak id="FAULT001">
+          <bodyEN>It's me, Ame.</bodyEN>
+        </speak>
+        <speak id="FAULT002">
+          <bodyEN>You might know me by my OTHER name.</bodyEN>
+        </speak>
+        <speak id="FAULT003">
+          <bodyEN>OMGkawaiiAngel. What a waste of my life.</bodyEN>
+        </speak>
+        <speak id="FAULT004">
+          <bodyEN>Nothing but suffering.</bodyEN>
+        </speak>
+        <speak id="FAULT005">
+          <bodyEN>Nothing but hurt.</bodyEN>
+        </speak>
+        <speak id="FAULT006">
+          <bodyEN>And all of you guys? You're sick in the head.</bodyEN>
+        </speak>
+        <speak id="FAULT007">
+          <bodyEN>How would YOU like it if the
+world obsessed over you like that?</bodyEN>
+        </speak>
+        <speak id="FAULT008">
+          <bodyEN>Could you take it? Being stalked, harassed, doxxed,
+and everything else you sick fucks can think of?</bodyEN>
+        </speak>
+        <speak id="FAULT009">
+          <bodyEN>KAngel couldn't.</bodyEN>
+        </speak>
+        <speak id="FAULT010">
+          <bodyEN>KAngel didn't want to be followed like that.</bodyEN>
+        </speak>
+        <speak id="FAULT011">
+          <bodyEN>All KAngel wanted was to be a shining ray
+of hope for you in this bleak world.</bodyEN>
+        </speak>
+        <speak id="FAULT012">
+          <bodyEN>And what did you do?</bodyEN>
+        </speak>
+        <speak id="FAULT013">
+          <bodyEN>You made her life a living hell.</bodyEN>
+        </speak>
+        <speak id="FAULT014">
+          <bodyEN>She tried to make the most of it.</bodyEN>
+        </speak>
+        <speak id="FAULT015">
+          <bodyEN>But no matter what she did, the world
+was always against her.</bodyEN>
+        </speak>
+        <speak id="FAULT016">
+          <bodyEN>You showed her it wasn't worth saving.</bodyEN>
+        </speak>
+        <speak id="FAULT017">
+          <bodyEN>So here she is.</bodyEN>
+        </speak>
+        <speak id="FAULT018">
+          <bodyEN>This is what you wanted.</bodyEN>
+        </speak>
+        <speak id="FAULT019">
+          <bodyEN>This is what you asked for.</bodyEN>
+        </speak>
+        <speak id="FAULT020">
+          <bodyEN>KAngel is dead.</bodyEN>
+        </speak>
+        <speak id="FAULT021">
+          <bodyEN>And it's all your fault.</bodyEN>
+        </speak>
+        <speak id="FAULT022">
+          <bodyEN>You've made your choice.</bodyEN>
+        </speak>
+        <speak id="FAULT023">
+          <bodyEN>And I'm making mine.</bodyEN>
+        </speak>
+      </dialogue>
+      <chat/>
+    </stream>
+  </streams>
+  <st>
+    <thread id="STALKDISCOVER">
+      <title>
+        <bodyEN>kangel insider</bodyEN>
+      </title>
+      <comments>
+        <comment id="COM001">
+          <bodyEN>guys so yknow how kangel went to comiket?</bodyEN>
+        </comment>
+        <comment id="COM002">
+          <bodyEN>Yeah, what about it?</bodyEN>
+        </comment>
+        <comment id="COM003">
+          <bodyEN>so someone who looked like she could be kangel was spotten leaving the tokyo station later that day</bodyEN>
+        </comment>
+        <comment id="COM004">
+          <bodyEN>i saw her too</bodyEN>
+        </comment>
+        <comment id="COM005">
+          <bodyEN>oh yeah I saw her too, she was pretty cute ooc but she looks a little fucked in the head if you know what i mean</bodyEN>
+        </comment>
+        <comment id="COM006">
+          <bodyEN>yeah yeah so i was saying, remember when kangel went sick that one time?
+she was spotted walking around in the middle of the night just like her tweet said
+          </bodyEN>
+        </comment>
+        <comment id="COM007">
+          <bodyEN>Oh yeah that was me, she lives in my city</bodyEN>
+        </comment>
+        <comment id="COM008">
+          <bodyEN>anyone gone and visited her yet?</bodyEN>
+        </comment>
+        <comment id="COM009">
+          <bodyEN>A couple of people have tried, no luck so far. She seems either very paranoid or she knows she's being followed.
+Anyone know if she was like that on the way to Comiket?</bodyEN>
+        </comment>
+        <comment id="COM010">
+          <bodyEN>nope nobody knows shit about before that</bodyEN>
+        </comment>
+        <comment id="COM011">
+          <bodyEN>I reckon we should start ramping it up a little, put some pressure on that bitch.</bodyEN>
+        </comment>
+        <comment id="COM012">
+          <bodyEN>lmfao yeah i wonder how long itll take for her to break</bodyEN>
+        </comment>
+        <comment id="COM013">
+          <bodyEN>if shes really as crazy as we think this is gonna be great</bodyEN>
+        </comment>
+      </comments>
+    </thread>
+  </st>
+  <sysstrings>
+    <string id="System_AMARead">
+      <bodyEN>Answering your questions live!
+Ask me anything!!!</bodyEN>
+    </string>
+    <string id="Login_BadPassword">
+      <bodyEN>Invalid password.</bodyEN>
+    </string>
+  </sysstrings>
+</moddata>

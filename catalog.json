@@ -1,0 +1,98 @@
+{
+  "m_LocatorId": "AddressablesMainContentCatalog",
+  "m_InstanceProviderData": {
+    "m_Id": "UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider",
+    "m_ObjectType": {
+      "m_AssemblyName": "Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "m_ClassName": "UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider"
+    },
+    "m_Data": ""
+  },
+  "m_SceneProviderData": {
+    "m_Id": "UnityEngine.ResourceManagement.ResourceProviders.SceneProvider",
+    "m_ObjectType": {
+      "m_AssemblyName": "Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "m_ClassName": "UnityEngine.ResourceManagement.ResourceProviders.SceneProvider"
+    },
+    "m_Data": ""
+  },
+  "m_ResourceProviderData": [
+    {
+      "m_Id": "UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider",
+      "m_ObjectType": {
+        "m_AssemblyName": "Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "m_ClassName": "UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider"
+      },
+      "m_Data": ""
+    },
+    {
+      "m_Id": "UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider",
+      "m_ObjectType": {
+        "m_AssemblyName": "Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "m_ClassName": "UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider"
+      },
+      "m_Data": ""
+    },
+    {
+      "m_Id": "UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider",
+      "m_ObjectType": {
+        "m_AssemblyName": "Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "m_ClassName": "UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider"
+      },
+      "m_Data": ""
+    }
+  ],
+  "m_ProviderIds": [
+    "UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider",
+    "UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider",
+    ""
+  ],
+  "m_InternalIds": [
+    "{UnityEngine.AddressableAssets.Addressables.RuntimePath}\\StandaloneWindows64\\nmo_assets.bundle",
+    "Assets/login/login_bad.png",
+    "Assets/login/login_bad_invalid.png",
+    "Assets/stream_cho_break/stream_cho_break.anim",
+    "Assets/stream_cho_game_isolation1/stream_cho_game_isolation1.anim",
+    "Assets/stream_cho_game_isolation2/stream_cho_game_isolation2.anim",
+    "Assets/stream_cho_game_isolation3/stream_cho_game_isolation3.anim",
+    "Assets/stream_cho_game_isolation4/stream_cho_game_isolation4.anim",
+    "Assets/stream_cho_game_isolation5/stream_cho_game_isolation5.anim",
+    "Assets/stream_cho_jine/stream_cho_jine.anim",
+    "Assets/stream_cho_jine_idle/stream_cho_jine_idle.anim",
+    "Assets/stream_cho_watch_sleepy/stream_cho_watch_sleepy.anim",
+    "Assets/stream_cho_watch_sleepy2/stream_cho_watch_sleepy2.anim",
+    "Assets/viewer_closed/viewer_closed.anim",
+    "Assets/viewer_closing/viewer_closing.anim",
+    "Assets/viewer_open/viewer_open.anim",
+    "Assets/viewer_opening/viewer_opening.anim",
+    "Scenes/SampleScene"
+  ],
+  "m_KeyDataString": "JAAAAABEAAAAZGVmYXVsdGxvY2FsZ3JvdXBfYXNzZXRzX2FsbF9jZjc3YmZjMWQ2ODBjZDY4OWYxNzU3MzUwMmRmNDY2ZC5idW5kbGUADQAAAGxvZ2luX2JhZC5wbmcAIAAAADM0OTRmZjQ4YjU1ZDkwMjRiYjk2YWRlZjJjN2EyMDRmABUAAABsb2dpbl9iYWRfaW52YWxpZC5wbmcAIAAAAGZkZjJkN2NiZjgyYzQzYzQ1YjE4OTYxNjViZWJmN2ExABUAAABzdHJlYW1fY2hvX2JyZWFrLmFuaW0AIAAAAGI0MDE5NWE5NTUzYTc1ZTRmOTdlMTBjZGRiYjkyYjgyAB8AAABzdHJlYW1fY2hvX2dhbWVfaXNvbGF0aW9uMS5hbmltACAAAAA1ZDBiNjY3YWNlODQzMjU0ZDg4ZjJmYTcwYTBjNDI2YwAfAAAAc3RyZWFtX2Nob19nYW1lX2lzb2xhdGlvbjIuYW5pbQAgAAAAMTlkNDVhMTM5ZGNkMThlNDg5ZDhhZmIxYjI2ZTJiODIAHwAAAHN0cmVhbV9jaG9fZ2FtZV9pc29sYXRpb24zLmFuaW0AIAAAAGJhNGU5MzAwZmE5ZDNmYzQ3OThhMjQyOTgyZDE0YWIyAB8AAABzdHJlYW1fY2hvX2dhbWVfaXNvbGF0aW9uNC5hbmltACAAAAA4N2Y1ZDg4YzU1MzdjZDI0N2E4NjAyZmY3MDhjNTk2YgAfAAAAc3RyZWFtX2Nob19nYW1lX2lzb2xhdGlvbjUuYW5pbQAgAAAANzgxOTdhMTljMDg4Zjc1NDZiMTVlNGRkMDFmNjExNzMAFAAAAHN0cmVhbV9jaG9famluZS5hbmltACAAAAAxOTZkZjk3MDRmZDIyZjU0NjhiYmY1MTNkYTRlYjgzMAAZAAAAc3RyZWFtX2Nob19qaW5lX2lkbGUuYW5pbQAgAAAAMDUyMWI4NjAyMmQzMGJhNGRiZDA1NWZhNGM0NTQ3N2MAHAAAAHN0cmVhbV9jaG9fd2F0Y2hfc2xlZXB5LmFuaW0AIAAAADU4NjA4ZmZiMjA2Y2JiMjRjYmRmYjQxYzhjMDBmN2Y4AB0AAABzdHJlYW1fY2hvX3dhdGNoX3NsZWVweTIuYW5pbQAgAAAANjBjYWRhOTRhNjgwY2Q5NDBhMDAzOWExYmIyODNhZWQAEgAAAHZpZXdlcl9jbG9zZWQuYW5pbQAgAAAAN2JiOWYxNjYxNjY4NzA0NDY5YzRkNzNkZjJlMzE4NTQAEwAAAHZpZXdlcl9jbG9zaW5nLmFuaW0AIAAAADk3NGMzN2FkOGQxZjA3ODQyOWEzZDlmNmJlNTg4OTY3ABAAAAB2aWV3ZXJfb3Blbi5hbmltACAAAAAyMGYyYjFiYzcxMDE1MTQ0NWI5NDBjODRlZDRhMTg3ZgATAAAAdmlld2VyX29wZW5pbmcuYW5pbQAgAAAAMzAxYzk4MWVmMzJiZTU4NGRhZmM2Y2ZmMWI1MzAzNWMACwAAAFNhbXBsZVNjZW5lACAAAAAyY2RhOTkwZTI0MjNiYmY0ODkyZTY1OTBiYTA1NjcyOQQAAAAA",
+  "m_BucketDataString": "JAAAAAQAAAABAAAAAAAAAE0AAAACAAAAAQAAAAIAAABfAAAAAgAAAAEAAAACAAAAhAAAAAIAAAADAAAABAAAAJ4AAAACAAAAAwAAAAQAAADDAAAAAQAAAAUAAADdAAAAAQAAAAUAAAACAQAAAQAAAAYAAAAmAQAAAQAAAAYAAABLAQAAAQAAAAcAAABvAQAAAQAAAAcAAACUAQAAAQAAAAgAAAC4AQAAAQAAAAgAAADdAQAAAQAAAAkAAAABAgAAAQAAAAkAAAAmAgAAAQAAAAoAAABKAgAAAQAAAAoAAABvAgAAAQAAAAsAAACIAgAAAQAAAAsAAACtAgAAAQAAAAwAAADLAgAAAQAAAAwAAADwAgAAAQAAAA0AAAARAwAAAQAAAA0AAAA2AwAAAQAAAA4AAABYAwAAAQAAAA4AAAB9AwAAAQAAAA8AAACUAwAAAQAAAA8AAAC5AwAAAQAAABAAAADRAwAAAQAAABAAAAD2AwAAAQAAABEAAAALBAAAAQAAABEAAAAwBAAAAQAAABIAAABIBAAAAQAAABIAAABtBAAAAQAAABMAAAB9BAAAAQAAABMAAACiBAAAAQAAABMAAAA=",
+  "m_EntryDataString": "FAAAAAAAAAAAAAAA/////wAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAABTfNLb/////wEAAAABAAAAAQAAAAEAAAAAAAAAU3zS2/////8BAAAAAgAAAAIAAAABAAAAAAAAAFN80tv/////AwAAAAEAAAACAAAAAQAAAAAAAABTfNLb/////wMAAAACAAAAAwAAAAEAAAAAAAAAU3zS2/////8FAAAAAwAAAAQAAAABAAAAAAAAAFN80tv/////BwAAAAMAAAAFAAAAAQAAAAAAAABTfNLb/////wkAAAADAAAABgAAAAEAAAAAAAAAU3zS2/////8LAAAAAwAAAAcAAAABAAAAAAAAAFN80tv/////DQAAAAMAAAAIAAAAAQAAAAAAAABTfNLb/////w8AAAADAAAACQAAAAEAAAAAAAAAU3zS2/////8RAAAAAwAAAAoAAAABAAAAAAAAAFN80tv/////EwAAAAMAAAALAAAAAQAAAAAAAABTfNLb/////xUAAAADAAAADAAAAAEAAAAAAAAAU3zS2/////8XAAAAAwAAAA0AAAABAAAAAAAAAFN80tv/////GQAAAAMAAAAOAAAAAQAAAAAAAABTfNLb/////xsAAAADAAAADwAAAAEAAAAAAAAAU3zS2/////8dAAAAAwAAABAAAAABAAAAAAAAAFN80tv/////HwAAAAMAAAARAAAAAgAAAP////8AAAAA/////yEAAAAEAAAA",
+  "m_ExtraDataString": "B0xVbml0eS5SZXNvdXJjZU1hbmFnZXIsIFZlcnNpb249MC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsSlVuaXR5RW5naW5lLlJlc291cmNlTWFuYWdlbWVudC5SZXNvdXJjZVByb3ZpZGVycy5Bc3NldEJ1bmRsZVJlcXVlc3RPcHRpb25zsAIAAHsAIgBtAF8ASABhAHMAaAAiADoAIgBjAGYANwA3AGIAZgBjADEAZAA2ADgAMABjAGQANgA4ADkAZgAxADcANQA3ADMANQAwADIAZABmADQANgA2AGQAIgAsACIAbQBfAEMAcgBjACIAOgAxADQANAA4ADcAMAAxADEANgA2ACwAIgBtAF8AVABpAG0AZQBvAHUAdAAiADoAMAAsACIAbQBfAEMAaAB1AG4AawBlAGQAVAByAGEAbgBzAGYAZQByACIAOgBmAGEAbABzAGUALAAiAG0AXwBSAGUAZABpAHIAZQBjAHQATABpAG0AaQB0ACIAOgAtADEALAAiAG0AXwBSAGUAdAByAHkAQwBvAHUAbgB0ACIAOgAwACwAIgBtAF8AQgB1AG4AZABsAGUATgBhAG0AZQAiADoAIgAzAGQANgBlADEANgBlADgAOQBmADAANABjADYANgA4ADgAMABkAGMAZgA2ADYANgBlADkANgBiADQANQA0AGUAIgAsACIAbQBfAEEAcwBzAGUAdABMAG8AYQBkAE0AbwBkAGUAIgA6ADAALAAiAG0AXwBCAHUAbgBkAGwAZQBTAGkAegBlACIAOgAxADkAMAAwADgAOAA3ACwAIgBtAF8AVQBzAGUAQwByAGMARgBvAHIAQwBhAGMAaABlAGQAQgB1AG4AZABsAGUAcwAiADoAdAByAHUAZQAsACIAbQBfAFUAcwBlAFUAVwBSAEYAbwByAEwAbwBjAGEAbABCAHUAbgBkAGwAZQBzACIAOgBmAGEAbABzAGUALAAiAG0AXwBDAGwAZQBhAHIATwB0AGgAZQByAEMAYQBjAGgAZQBkAFYAZQByAHMAaQBvAG4AcwBXAGgAZQBuAEwAbwBhAGQAZQBkACIAOgBmAGEAbABzAGUAfQA=",
+  "m_resourceTypes": [
+    {
+      "m_AssemblyName": "Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "m_ClassName": "UnityEngine.ResourceManagement.ResourceProviders.IAssetBundleResource"
+    },
+    {
+      "m_AssemblyName": "UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "m_ClassName": "UnityEngine.Texture2D"
+    },
+    {
+      "m_AssemblyName": "UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "m_ClassName": "UnityEngine.Sprite"
+    },
+    {
+      "m_AssemblyName": "UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "m_ClassName": "UnityEngine.AnimationClip"
+    },
+    {
+      "m_AssemblyName": "Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "m_ClassName": "UnityEngine.ResourceManagement.ResourceProviders.SceneInstance"
+    }
+  ],
+  "m_InternalIdPrefixes": [
+  ]
+}
