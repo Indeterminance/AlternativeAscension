@@ -2165,5 +2165,8 @@ Ask me anything!!!</bodyEN>
     <string id="Login_BadPassword">
       <bodyEN>Invalid password.</bodyEN>
     </string>
+    <string id="System_InternetYamero">
+      <bodyEN>Quit the internet.</bodyEN>
+    </string>
   </sysstrings>
 </moddata>

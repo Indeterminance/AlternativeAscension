@@ -134,6 +134,7 @@
     <Compile Include="Haishin_AngelFuneral.cs" />
     <Compile Include="Login_Hacked.cs" />
     <Compile Include="Haishin_AngelDeath.cs" />
+    <Compile Include="Scenario_AfterAngelFuneral.cs" />
     <Compile Include="Scenario_AfterAngelDeath.cs" />
     <Compile Include="Scenario_BeforeAngelFuneral.cs" />
     <Compile Include="Scenario_BeforeAngelDeath.cs" />

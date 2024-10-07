@@ -55,7 +55,7 @@ namespace NeedyMintsOverdose
     {
         public const string id = "nso.needymintsoverdose";
         public const string modName = "Needy Mints Overdose";
-        public const string ver = "0.0.0.0";
+        public const string ver = "0.0.1";
         public const string assetdec = "NeedyMintsOD";
         public static string FILEPATH;
 
@@ -376,21 +376,23 @@ namespace NeedyMintsOverdose
             }
         }
 
-        /*
+        
         [HarmonyPatch(typeof(EndingDialog))]
         public static class EndingDialogPatches
         {
             [HarmonyPostfix]
             [HarmonyPatch(nameof(EndingDialog.OnLanguageChanged))]
-            public static void OnLanguageChangedPostfix(ref EndingDialog __instance)
+            public static void OnLanguageChangedPostfix(ref EndingDialog __instance, ref UnityEngine.UI.Button ____submitButton, EndingType ___end)
             {
-                if (!CheckModdedPrefix(typeof(EndingType), typeof(ModdedEndingType), __instance.end).Item1) return;
+                if (!CheckModdedPrefix(typeof(EndingType), typeof(ModdedEndingType), ___end).Item1) return;
 
-                ModdedEndingType endType = (ModdedEndingType)(int)__instance.end;
-                __instance._notionText.text = NeedyMintsMod.DATA.Endings.Ending.Find(end => end.Id == endType.ToString()).Osimai;
-                //__instance._submitButton.GetComponentInChildren<TMP_Text>().text = EndingConfirms.SLEEPY;
+                if ((ModdedEndingType)(int)___end == ModdedEndingType.Ending_Followers)
+                {
+
+                    ____submitButton.GetComponentInChildren<TMP_Text>().text = NgoEx.SystemTextFromType((SystemTextType)(int)ModdedSystemTextType.System_InternetYamero, SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
+                }
             }
-        }*/
+        }
 
         [HarmonyPatch(typeof(NgoEx))]
         public static class NgoExPatches
@@ -2528,6 +2530,17 @@ namespace NeedyMintsOverdose
                         return;
                     default: return;
                 }
+            }
+        }
+
+        [HarmonyPatch(typeof(TenchanView))]
+        public static class TenchanViewPatches
+        {
+            [HarmonyPrefix]
+            [HarmonyPatch(nameof(TenchanView.OnEndStream))]
+            public static bool OnEndStreamPrefix()
+            {
+                return SingletonMonoBehaviour<EventManager>.Instance.nowEnding != (EndingType)(int)ModdedEndingType.Ending_Followers;
             }
         }
 

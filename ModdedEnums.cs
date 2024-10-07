@@ -321,6 +321,7 @@ namespace NeedyEnums
     {
         System_AMARead = 1000,
         Login_BadPassword = 1001,
+        System_InternetYamero = 1002,
     }
 
     public enum ModdedSuperchatType

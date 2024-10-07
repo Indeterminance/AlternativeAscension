@@ -66,7 +66,7 @@ namespace NeedyMintsOverdose
             PostEffectManager.Instance.ResetShader();
             SingletonMonoBehaviour<EventManager>.Instance.nowEnding = (EndingType)(int)ModdedEndingType.Ending_Followers;
             await base.StartScenario();
-            SingletonMonoBehaviour<NotificationManager>.Instance.osimai();
+            SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_AfterAngelFuneral>();
 
         }
     }
