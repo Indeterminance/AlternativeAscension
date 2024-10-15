@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 namespace NeedyMintsOverdose
 {
-    public class Scenario_BeforeAngelFuneral : NgoEvent
+    public class Scenario_follower_day4_day : NgoEvent
     {
         // Token: 0x06001CF2 RID: 7410 RVA: 0x000843F9 File Offset: 0x000825F9
         public override void Awake()
@@ -23,6 +23,7 @@ namespace NeedyMintsOverdose
         // Token: 0x06001CF3 RID: 7411 RVA: 0x000BC20C File Offset: 0x000BA40C
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
+            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
             await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             base.startEvent(cancellationToken);
             GameObject.Find("MainPanel").GetComponent<Image>().color = Color.black;
@@ -32,15 +33,15 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<WindowManager>.Instance.CleanAll();
             IWindow jine = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine, true);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Jine);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_JINE158.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_JINE159.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_JINE160.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_JINE161.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_JINE162.Swap());
-            SingletonMonoBehaviour<JineManager>.Instance.addEventSeparator(ModdedJineType.ENDING_FOLLOWER_JINE_DELETEPI.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY4_JINE001.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY4_JINE002.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY4_JINE003.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY4_JINE004.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY4_JINE005.Swap());
+            SingletonMonoBehaviour<JineManager>.Instance.addEventSeparator(ModdedJineType.ENDING_FOLLOWER_DAY4_JINE_DELETEPI.Swap());
             await NgoEvent.DelaySkippable(Constants.MIDDLE);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_JINE163.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_JINE164.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY4_JINE006.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY4_JINE007.Swap());
             await NgoEvent.DelaySkippable(Constants.MIDDLE);
             for (int i = 0; i < 10; i++)
             {

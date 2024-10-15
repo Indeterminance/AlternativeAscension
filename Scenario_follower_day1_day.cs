@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace NeedyMintsOverdose
 {
-    public class Scenario_BeforeAngelWatch : NgoEvent
+    public class Scenario_follower_day1_day : NgoEvent
     {
         // Token: 0x06001CF2 RID: 7410 RVA: 0x000843F9 File Offset: 0x000825F9
         public override void Awake()
@@ -33,46 +33,55 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Jine);
             List<ModdedJineType> dlg = new List<ModdedJineType>()
             {
-                ModdedJineType.ENDING_FOLLOWER_JINE001,
-                ModdedJineType.ENDING_FOLLOWER_JINE002,
-                ModdedJineType.ENDING_FOLLOWER_JINE003,
-                ModdedJineType.ENDING_FOLLOWER_JINE004,
-                ModdedJineType.ENDING_FOLLOWER_JINE005,
-                ModdedJineType.ENDING_FOLLOWER_JINE006,
-                ModdedJineType.ENDING_FOLLOWER_JINE007,
-                ModdedJineType.ENDING_FOLLOWER_JINE008,
-                ModdedJineType.ENDING_FOLLOWER_JINE009,
-                ModdedJineType.ENDING_FOLLOWER_JINE010,
-                ModdedJineType.ENDING_FOLLOWER_JINE011,
-                ModdedJineType.ENDING_FOLLOWER_JINE012,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE001,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE002,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE003,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE004,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE005,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE006,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE007,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE008,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE009,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE010,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE011,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE012,
             };
             foreach (ModdedJineType type in dlg)
             {
                 await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(type.Swap());
             }
-            JineData data = new JineData(ModdedJineType.ENDING_FOLLOWER_JINE013.Swap());
+            JineData data = new JineData(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE013.Swap());
             data.user = JineUserType.pi;
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(data);
             await NgoEvent.DelaySkippable(Constants.MIDDLE);
             List<ModdedJineType> dlg2 = new List<ModdedJineType>() {
-                ModdedJineType.ENDING_FOLLOWER_JINE014,
-                ModdedJineType.ENDING_FOLLOWER_JINE015,
-                ModdedJineType.ENDING_FOLLOWER_JINE016
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE014,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE015,
+                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE016
             };
             foreach(ModdedJineType type in dlg2)
             {
                 await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(type.Swap());
             }
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_JINE017.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_JINE018.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE017.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE018.Swap());
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter, true);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Poketter);
-            SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.PREANGELWATCH_TWEET001.Swap());
+            SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.PREANGELWATCH_TWEET001.Swap(), new List<ModdedKusoRepType>
+            {
+                ModdedKusoRepType.PREANGELWATCH_TWEET001_KUSO001,
+                ModdedKusoRepType.PREANGELWATCH_TWEET001_KUSO002,
+                ModdedKusoRepType.PREANGELWATCH_TWEET001_KUSO003,
+                ModdedKusoRepType.PREANGELWATCH_TWEET001_KUSO004,
+                ModdedKusoRepType.PREANGELWATCH_TWEET001_KUSO005,
+            }.Swap());
             SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.PREANGELWATCH_TWEET002.Swap());
-            await UniTask.Delay(8000);
+            await UniTask.Delay(16000);
             SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.AngelWatch);
             SingletonMonoBehaviour<EventManager>.Instance.alpha = (AlphaType)(int)ModdedAlphaType.FollowerAlpha;
             SingletonMonoBehaviour<EventManager>.Instance.alphaLevel = 2;
+            PostEffectManager.Instance.SetShader(EffectType.GoCrazy);
+            PostEffectManager.Instance.SetShaderWeight(1f);
             SingletonMonoBehaviour<EventManager>.Instance.AddEventQueue<Action_HaishinStart>();
 
 

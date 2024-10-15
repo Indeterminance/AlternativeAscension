@@ -46,6 +46,8 @@ using static System.Net.Mime.MediaTypeNames;
 using static UnityEngine.Networking.UnityWebRequest;
 using static UnityEngine.Rendering.DebugUI;
 using UnityEngine.Audio;
+using Newtonsoft.Json;
+using System.Runtime.InteropServices;
 
 namespace NeedyMintsOverdose
 {
@@ -73,34 +75,33 @@ namespace NeedyMintsOverdose
             System.Xml.Serialization.XmlSerializer serializer = new XmlSerializer(typeof(ModData));
             using (StreamReader sr = new StreamReader(FILEPATH + "Strings.xml"))
             {
-
                 DATA = (ModData)serializer.Deserialize(sr);
             }
         }
 
-        private void RegenTenComments()
+        private void SetCatalogPath()
         {
-            string output = "\n";
-            int i = 10000;
-            foreach (Stream stream in DATA.Streams.Stream)
+            Assembly asm = this.GetType().Assembly;
+            string catalogPath = new Uri(asm.CodeBase).LocalPath.Replace(asm.GetName().Name + ".dll", "catalog.json");
+            string assetPath = new Uri(asm.CodeBase).LocalPath.Replace(asm.GetName().Name + ".dll", "nmo_assets.bundle");
+            string catalogData;
+            using (StreamReader sr = new StreamReader(catalogPath))
             {
-                output = output + stream.AlphaType + stream.AlphaLevel + $"_STREAMNAME = {i},\n";
-                i++;
-                foreach (Speak spk in stream.Dialogue.Speak)
+                catalogData = sr.ReadToEndAsync().GetAwaiter().GetResult();
+                if (!catalogData.Contains("nmo_assets.bundle") && catalogData.Contains("\"m_InternalIds\":[\"Assets/"))
                 {
-                    output = output + stream.AlphaType + stream.AlphaLevel + "_" + spk.Id + $" = {i},\n";
-                    i++;
+                    NeedyMintsMod.log.LogMessage("Fresh install, setting asset path!");
+                    catalogData = catalogData.Replace("\"m_InternalIds\":[\"Assets/", $"\"m_InternalIds\":[\"{assetPath.Replace("\\", "/")}\",\"Assets/");
                 }
             }
-            NeedyMintsMod.log.LogMessage($"New ModdedTenCommentType: {output}");
-        }
 
-        private void ShowSystemComments()
-        {
-            foreach (SystemTextMaster.Param param in NgoEx.getSystemTexts())
+            using (StreamWriter sw = new StreamWriter(catalogPath))
             {
-                NeedyMintsMod.log.LogMessage($"System text {param.Id} had {param.BodyEn}");
+                sw.Write(catalogData);
             }
+
+            Addressables.LoadContentCatalogAsync(catalogPath).WaitForCompletion();
+            log.LogMessage("Path is " + catalogPath);
         }
 
         private async void Awake()
@@ -112,20 +113,12 @@ namespace NeedyMintsOverdose
             log = Logger;
             try
             {
-                Assembly asm = this.GetType().Assembly; 
-                string path = new Uri(asm.CodeBase).LocalPath.Replace(asm.GetName().Name+".dll", "catalog.json");
-                Addressables.LoadContentCatalogAsync(path).WaitForCompletion();
-                log.LogMessage("Path is " + path);
-
-
+                SetCatalogPath();
                 harmony.PatchAll();
                 foreach (MethodBase patch in harmony.GetPatchedMethods())
                 {
                     log.LogMessage($"{patch.DeclaringType}.{patch.Name}");
                 }
-
-                //RegenTenComments();
-                //ShowSystemComments();
 
                 log.LogMessage("Patched NSO, press to continue...");
                 Console.ReadKey();
@@ -151,9 +144,8 @@ namespace NeedyMintsOverdose
             {
                 __instance.statuses.Add(new Status(ModdedStatusType.SleepyAmeCounter.Swap(), 0, 30, 0, false));
                 __instance.statuses.Add(new Status(ModdedStatusType.OdekakeCounter.Swap(), 0, 99, 0, false));
-                __instance.statuses.Add(new Status(ModdedStatusType.VisitedComiket.Swap(), 0, 99, 0, false));
                 __instance.statuses.Add(new Status(ModdedStatusType.OdekakeStressMultiplier.Swap(), 0, 11, 0, false));
-                __instance.statuses.Add(new Status(ModdedStatusType.FollowerPlotFlag.Swap(), 0, 10, 0, false));
+                __instance.statuses.Add(new Status(ModdedStatusType.FollowerPlotFlag.Swap(), 0, 20, 0, false));
                 __instance.statuses.Add(new Status(ModdedStatusType.OdekakeCountdown.Swap(), 2, 2, 0, false));
             }
 
@@ -582,13 +574,14 @@ namespace NeedyMintsOverdose
                         return;
                 }
                 __result = param.LabelEn;
-                NeedyMintsMod.log.LogMessage($"Outputting {__result}");
+                NeedyMintsMod.log.LogMessage($"Outputting {__result} from {Environment.StackTrace}");
             }
 
             [HarmonyPrefix]
             [HarmonyPatch(nameof(NgoEx.getCmds))]
             public static void getCmdsPrefix(out bool __state, List<CmdMaster.Param> ___Cmds)
             {
+                //NeedyMintsMod.log.LogMessage($"{Environment.StackTrace}");
                 __state = ___Cmds == null;
             }
 
@@ -916,16 +909,17 @@ namespace NeedyMintsOverdose
             public static bool GetEndingNamePre(EndingType end, out ModdedEndingType __state)
             {
                 Tuple<bool, int> tuple = CheckModdedPrefix(typeof(EndingType), typeof(ModdedEndingType), end);
-                __state = (ModdedEndingType)tuple.Item2;
+                __state = (ModdedEndingType)(int)tuple.Item2;
                 return !tuple.Item1;
             }
 
             [HarmonyPostfix]
             [HarmonyPatch(nameof(EndingManager.GetEndingName))]
-            public static void GetEndingNamePost(ModdedEndingType __state, ref string __result)
+            public static void GetEndingNamePost(EndingType end, ref string __result)
             {
-                if (__state == 0) return;
-                __result = NeedyMintsMod.DATA.GetEndingByID(__state.ToString()).Name;
+                Tuple<bool, int> data = CheckModdedPrefix(typeof(EndingType), typeof(ModdedEndingType), end);
+                if (!data.Item1) return;
+                __result = NeedyMintsMod.DATA.GetEndingByID(((ModdedEndingType)(int)end).ToString()).Name;
             }
         }
 
@@ -1114,14 +1108,6 @@ namespace NeedyMintsOverdose
         [HarmonyPatch(typeof(ActionButton))]
         public static class ActionButtonPatches
         {
-            [HarmonyPostfix]
-            [HarmonyPatch(nameof(ActionButton.OnPointerEnter))]
-            public static void OnPointerEnterPostfix(ActionButton __instance)
-            {
-                FieldInfo fieldInfo = typeof(ActionButton).GetField(nameof(ActionButton.actionType),BindingFlags.NonPublic | BindingFlags.Instance);
-                //NeedyMintsMod.log.LogMessage(fieldInfo.GetValue(__instance));
-            }
-
             [HarmonyPrefix]
             [HarmonyPatch(nameof(ActionButton.Awake))]
             public static bool AwakePrefix(ActionButton __instance, out int __state)
@@ -1254,29 +1240,28 @@ namespace NeedyMintsOverdose
             {
                 NeedyMintsMod.log.LogMessage("Fetching night...");
                 int status = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
-                int status2 = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.VisitedComiket.Swap());
+                int status2 = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
 
-                NeedyMintsMod.log.LogMessage($"Fetching night... {status == 16} & {status2 > 0}");
-                if (!__instance.isHorror && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.OdekakeBreak)
+                if (!__instance.isHorror && status2 == (int)FollowerPlotFlagValues.OdekakeBreak)
                 {
                     SingletonMonoBehaviour<StatusManager>.Instance.timePassingToNextMorning();
                     return false;
                 }
 
-                if (status == 16 && status2 > 0 &&
+                if (status == 16 && status2 == (int)FollowerPlotFlagValues.VisitedComiket &&
                     !(__instance.isWristCut && __instance.beforeWristCut) &&
                     !(__instance.isHakkyo && SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.Stress) == 100))
                 {
                     __instance.AddEvent<Scenario_PostComiket>();
                     return false;
                 }
-                if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelWatch)
+                if (status2 == (int)FollowerPlotFlagValues.AngelWatch)
                 {
                     return false;
                 }
-                if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelDeath)
+                if (status2 == (int)FollowerPlotFlagValues.AngelDeath)
                 {
-                    __instance.AddEvent<Scenario_BeforeAngelDeath>();
+                    __instance.AddEvent<Scenario_follower_day3_night>();
                     return false;
                 }
                 return true;
@@ -1287,27 +1272,40 @@ namespace NeedyMintsOverdose
             public static bool FetchDayEventPrefix(ref EventManager __instance)
             {
                 NeedyMintsMod.log.LogMessage("DayEvent");
-                if (!__instance.isHorror && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.OdekakeBreak)
+                int day = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
+                int plotflag = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
+                if (!__instance.isHorror && day == 27 && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.Follower) >= 500000 &&
+                    SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 0)
                 {
-                    __instance.AddEvent<Scenario_BeforeAngelWatch>();
+                    __instance.AddEvent<Event_MV_kowai>();
                     return false;
                 }
-                else if (!__instance.isHorror && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelWatch)
+                else if (plotflag == (int)FollowerPlotFlagValues.VisitedComiket && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex) == 16)
+                {
+                    __instance.AddEvent<Event_ComiketAlert>();
+                    return false;
+                }
+                else if (!__instance.isHorror && plotflag == (int)FollowerPlotFlagValues.OdekakeBreak)
+                {
+                    __instance.AddEvent<Scenario_follower_day1_day>();
+                    return false;
+                }
+                else if (!__instance.isHorror && plotflag == (int)FollowerPlotFlagValues.AngelWatch)
                 {
                     if (SingletonMonoBehaviour<WindowManager>.Instance.GetWindowFromApp(AppType.Broadcast) == null)
                     {
-                        __instance.AddEvent<Scenario_AfterAngelWatch>();
+                        __instance.AddEvent<Scenario_follower_day2_AfterAllNighterhaishin>();
                     }
                     return false;
                 }
-                else if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.BadPassword)
+                else if (plotflag == (int)FollowerPlotFlagValues.BadPassword)
                 {
-                    __instance.AddEvent<Scenario_Hacked>();
+                    __instance.AddEvent<Scenario_follower_day3_day>();
                     return false;
                 }
-                else if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelFuneral)
+                else if (plotflag == (int)FollowerPlotFlagValues.AngelFuneral)
                 {
-                    __instance.AddEvent<Scenario_BeforeAngelFuneral>();
+                    __instance.AddEvent<Scenario_follower_day4_day>();
                     return false;
                 }
                 return true;
@@ -1345,6 +1343,8 @@ namespace NeedyMintsOverdose
             public static void AwakePostfix(ref EventManager __instance)
             {
                 __instance.executingAction = CmdType.None;
+
+                __instance.transform.AddComponent<NeedyMintsModManager>();
             }
 
             [HarmonyPrefix]
@@ -1422,6 +1422,26 @@ namespace NeedyMintsOverdose
                 }
             }
 
+            [HarmonyPostfix]
+            [HarmonyPatch(nameof(TweetFetcher.getKusorepRawList))]
+            public static void getKusorepRawListPostfix(ref List<KRepMaster.Param> __result)
+            {
+                FieldInfo fieldInfo = typeof(TweetFetcher).GetField(nameof(TweetFetcher._KusorepRawList), BindingFlags.Static | BindingFlags.NonPublic);
+                List<KRepMaster.Param> impKusos = new List<KRepMaster.Param>();
+
+                foreach (KusoRep kuso in NeedyMintsMod.DATA.KusoReps.KusoRep)
+                {
+                    KRepMaster.Param param = new KRepMaster.Param()
+                    {
+                        Id = kuso.Id,
+                        BodyEn = kuso.BodyEN,
+                        IconId = "N/A",
+                        UserId = "N/A"
+                    };
+                    __result.Add(param);
+                }
+            }
+
             [HarmonyPrefix]
             [HarmonyPatch(nameof(TweetFetcher.IsEqualCommandId))]
             public static bool isEqualCommandIdPrefix(out bool __state, CommandType c)
@@ -1456,6 +1476,17 @@ namespace NeedyMintsOverdose
                 __result = (info.Invoke(null,null) as List<TweetMaster.Param>).Find((TweetMaster.Param tw) => tw.Id == mt.ToString());
             }
 
+            [HarmonyPostfix]
+            [HarmonyPatch(nameof(TweetFetcher.ConvertTypeToKusorep))]
+            public static void ConvertTypeToKusorepPostfix(KusoRepType t, ref KRepMaster.Param __result)
+            {
+                if (!CheckModdedPrefix(typeof(KusoRepType), typeof(ModdedKusoRepType), t).Item1) return;
+                ModdedKusoRepType mt = (ModdedKusoRepType)(int)t;
+
+                MethodInfo info = typeof(TweetFetcher).GetMethod(nameof(TweetFetcher.getKusorepRawList), BindingFlags.NonPublic | BindingFlags.Static);
+
+                __result = (info.Invoke(null, null) as List<KRepMaster.Param>).Find((KRepMaster.Param tw) => tw.Id == mt.ToString());
+            }
         }
 
         [HarmonyPatch(typeof(PoketterManager))]
@@ -1584,7 +1615,7 @@ namespace NeedyMintsOverdose
             public static bool isActiveReactionPrefix(ref Live __instance, ref bool __result)
             {
                 //NeedyMintsMod.log.LogMessage($"isActiveReactionPrefix: {__instance.isUncontrollable} {__instance.isOiwai} {AMAManager.isAMA}");
-                if (__instance.isUncontrollable && __instance.isOiwai && AngelWatchManager.isAMA)
+                if (__instance.isUncontrollable && __instance.isOiwai && SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAMA)
                 {
                     NeedyMintsMod.log.LogMessage($"AMA reroute!");
                     SingletonMonoBehaviour<CursorManager>.Instance.SetCursor(null, __instance.hotSpot, __instance.cursorMode);
@@ -1599,7 +1630,7 @@ namespace NeedyMintsOverdose
             public static bool RefreshYomuCommentLabelPrefix(ref Live __instance)
             {
                 NeedyMintsMod.log.LogMessage("RefreshYomuCommentLabelPostfix");
-                if (!AngelWatchManager.isAMA) return true;
+                if (!SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAMA) return true;
                 NeedyMintsMod.log.LogMessage("RefreshYomuCommentLabelPostfix modcheck");
                 LanguageType lang = SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value;
                 SystemTextType type = (SystemTextType)(int)ModdedSystemTextType.System_AMARead;
@@ -1702,10 +1733,10 @@ namespace NeedyMintsOverdose
                 Live live = UnityEngine.Object.FindObjectOfType<Live>();
 
                 // Cancel AMA request if either asked already, message isn't a valid AMA, or isn't AMAing with the right stream settings
-                bool askedAlready = AngelWatchManager.playedQuestions.Contains(playing);
+                bool askedAlready = SingletonMonoBehaviour<NeedyMintsModManager>.Instance.playedQuestions.Contains(playing);
                 bool isAMAChat = playing.henji != ""; 
                 NeedyMintsMod.log.LogMessage($"hirou activated for {playing}, while askedAlready is {askedAlready} and isAMAChat is {isAMAChat} with color {playing.color}");
-                if (!AngelWatchManager.isAMA || askedAlready ||
+                if (!SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAMA || askedAlready ||
                     !isAMAChat || !live.isOiwai) return;
 
                 //NeedyMintsMod.log.LogMessage($"Selected AMA \"{playing.nakami} with status {playing.diffStatusType} {playing.delta}\"");
@@ -1716,11 +1747,11 @@ namespace NeedyMintsOverdose
                 {
                     if (playing.delta != -99)
                     {
-                        AngelWatchManager.StressDelta += playing.delta;
+                        SingletonMonoBehaviour<NeedyMintsModManager>.Instance.StressDelta += playing.delta;
                     }
                     else
                     {
-                        AngelWatchManager.deleteComment = __instance;
+                        SingletonMonoBehaviour<NeedyMintsModManager>.Instance.deleteComment = __instance;
                         //NeedyMintsMod.log.LogMessage($"Deletecomment is {AMAManager.deleteComment.playing.nakami}");
                     }
                 }
@@ -1749,7 +1780,7 @@ namespace NeedyMintsOverdose
                 live.NowPlaying.playing.Insert(newAMAPos, new Playing(true, "", ModdedStatusType.AMAStatus.Swap(), 1,0,"","",playing.henjiAnim,true,SuperchatType.White,true, playing.nakami));
                 
                 // Register AMA as asked
-                AngelWatchManager.playedQuestions.Add(playing);
+                SingletonMonoBehaviour<NeedyMintsModManager>.Instance.playedQuestions.Add(playing);
 
 
                 // Change color of message to show its already been asked
@@ -1761,11 +1792,11 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(LiveComment.highlighted))]
             public static void highlightedPostfix(LiveComment __instance)
             {
-                if (!AngelWatchManager.isAMA) return;
+                if (!SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAMA) return;
 
 
                 Live live = typeof(LiveComment).GetField(nameof(LiveComment._live), BindingFlags.NonPublic | BindingFlags.Instance).GetValue(__instance) as Live;
-                if (live.isUncontrollable && live.isOiwai && !AngelWatchManager.playedQuestions.Contains(__instance.playing))
+                if (live.isUncontrollable && live.isOiwai && !SingletonMonoBehaviour<NeedyMintsModManager>.Instance.playedQuestions.Contains(__instance.playing))
                 {
                     NeedyMintsMod.log.LogMessage($"AMA reroute!");
                     SingletonMonoBehaviour<CursorManager>.Instance.SetCursor(null, live.hotSpot, live.cursorMode);
@@ -1790,11 +1821,11 @@ namespace NeedyMintsOverdose
                 switch (context.color.Swap())
                 {
                     case ModdedSuperchatType.AMA_START:
-                        AngelWatchManager.StartAMA(ref __instance);
+                        SingletonMonoBehaviour<NeedyMintsModManager>.Instance.StartAMA(ref __instance);
                         break;
 
                     case ModdedSuperchatType.AMA_END:
-                        AngelWatchManager.FinishAMA(ref __instance);
+                        SingletonMonoBehaviour<NeedyMintsModManager>.Instance.FinishAMA(ref __instance);
                         break;
 
                     case ModdedSuperchatType.EVENT_TIMEPASS:
@@ -1846,19 +1877,21 @@ namespace NeedyMintsOverdose
 
                     case ModdedSuperchatType.EVENT_CREATEDEPAZ:
                         IWindow pill = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow_NoInteractive((AppType)(int)ModdedAppType.PillDaypass_Follower);
+                        pill.Uncloseable();
                         NeedyMintsMod.log.LogMessage($"Created pill {pill}");
                         pill.setRandomPosition();
-                        AngelWatchManager.pills.Add(pill);
+                        SingletonMonoBehaviour<NeedyMintsModManager>.Instance.pills.Add(pill);
                         break;
 
                     case ModdedSuperchatType.EVENT_DOSE:
-                        IWindow takePill = AngelWatchManager.pills.Last();
+                        IWindow takePill = SingletonMonoBehaviour<NeedyMintsModManager>.Instance.pills.Last();
                         SheetView sheet = takePill.nakamiApp.GetComponentInChildren<SheetView>();
-                        
+
+                        takePill.Touched();
                         sheet.OnDose();
                         if (sheet.CurrentDoseCount.Value >= 3)
                         {
-                            AngelWatchManager.pills.Remove(takePill);
+                            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.pills.Remove(takePill);
                             SingletonMonoBehaviour<WindowManager>.Instance.Close(takePill);
                         }
                         else
@@ -1869,7 +1902,7 @@ namespace NeedyMintsOverdose
 
                     case ModdedSuperchatType.EVENT_SHADERWAIT:
 
-                        bool shaderCompleted = AngelWatchManager.anim.IsComplete();
+                        bool shaderCompleted = SingletonMonoBehaviour<NeedyMintsModManager>.Instance.anim.IsComplete();
 
                         if (!shaderCompleted)
                         {
@@ -1905,12 +1938,12 @@ namespace NeedyMintsOverdose
                         if (context.isLoopAnim)
                         {
                             float weight = 0f;
-                            AngelWatchManager.anim = DOTween.To(() => weight, delegate (float x)
+                            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.anim = DOTween.To(() => weight, delegate (float x)
                             {
                                 PostEffectManager.Instance.SetShaderWeight(x);
                             }, endVal, duration).SetEase(Ease.InExpo).SetAutoKill(false);
 
-                            AngelWatchManager.anim.Play<TweenerCore<float, float, FloatOptions>>();
+                            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.anim.Play<TweenerCore<float, float, FloatOptions>>();
                         }
                         else
                         {
@@ -1963,9 +1996,10 @@ namespace NeedyMintsOverdose
             public static void PlayPostfix(ref LiveScenario __instance, ref Playing context)
             {
                 NeedyMintsMod.log.LogMessage($"PlayPostfix!");
-                if (AngelWatchManager.deleteComment != null && context.antiComment == AngelWatchManager.deleteComment.playing.nakami)
+                NeedyMintsModManager nmmm = SingletonMonoBehaviour<NeedyMintsModManager>.Instance;
+                if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.deleteComment != null && context.antiComment == nmmm.deleteComment.playing.nakami)
                 {
-                    AngelWatchManager.deleteTime = true;
+                    nmmm.deleteTime = true;
                 }
 
                 switch (context.color.Swap())
@@ -2001,7 +2035,7 @@ namespace NeedyMintsOverdose
 
 
 
-                if (!AngelWatchManager.isAMA || context.nakami == "") return;
+                if (!nmmm.isAMA || context.nakami == "") return;
 
                 Live live = UnityEngine.Object.FindObjectOfType<Live>();
 
@@ -2014,17 +2048,17 @@ namespace NeedyMintsOverdose
                 {
 
                     float randMultiplier = (float)Math.Pow((double)(UnityEngine.Random.Range(1, 200) / 100f), 0.5f);
-                    speed = (randMultiplier * AngelWatchManager.PlannedAMALength / AngelWatchManager.QUESTIONS);
+                    speed = (randMultiplier * nmmm.PlannedAMALength / nmmm.QUESTIONS);
 
-                    NeedyMintsMod.log.LogMessage($"deleteComment {AngelWatchManager.deleteComment}");
-                    NeedyMintsMod.log.LogMessage($"deleteTime {AngelWatchManager.deleteTime}");
+                    NeedyMintsMod.log.LogMessage($"deleteComment {nmmm.deleteComment}");
+                    NeedyMintsMod.log.LogMessage($"deleteTime {nmmm.deleteTime}");
 
-                    if (AngelWatchManager.deleteComment != null && AngelWatchManager.deleteTime)
+                    if (nmmm.deleteComment != null && nmmm.deleteTime)
                     {
                         //AMAManager.deleteComment.honbun = "";
-                        AngelWatchManager.deleteComment.honbunView.text = "";
-                        AngelWatchManager.deleteComment = null;
-                        AngelWatchManager.deleteTime = false;
+                        nmmm.deleteComment.honbunView.text = "";
+                        nmmm.deleteComment = null;
+                        nmmm.deleteTime = false;
                     }
 
                 }
@@ -2101,13 +2135,8 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(Shortcut.Start))]
             public static bool StartPrefix(Shortcut __instance, UnityEngine.UI.Button ____shortcut)
             {
-                if (__instance.appType == AppType.GoOut)
-                {
-                    Alternates.PanicQuitOdekakeShortcut(__instance, ____shortcut);
-
-                    return false;
-                }
-                return true;
+                Alternates.PanicQuitOdekakeShortcut(__instance, ____shortcut);
+                return false;
             }
 
             /*[HarmonyPostfix]
@@ -2161,6 +2190,31 @@ namespace NeedyMintsOverdose
                     GameObject.Destroy(trans.GetChild(0).gameObject);
 
                     mergedApps.Add(followTaiki);
+                }
+
+                if (!mergedApps.Any(app => app.appType == (AppType)(int)ModdedAppType.AltPoketter))
+                {
+                    AppTypeToData poketter = mergedApps.Find(App => App.appType == AppType.Poketter);
+                    AppTypeToData altPoketter = new AppTypeToData(false)
+                    {
+                        appIcon = poketter.appIcon,
+                        AppName = poketter.AppName,
+                        AppNameJP = poketter.AppNameJP,
+                        appType = (AppType)(int)ModdedAppType.AltPoketter,
+                        FirstHeight = poketter.FirstHeight,
+                        FirstWidth = poketter.FirstWidth,
+                        FirstPosX = poketter.FirstPosX,
+                        FirstPosY = poketter.FirstPosY,
+                        is2DWindow = poketter.is2DWindow,
+                        InnerContent = UnityEngine.Object.Instantiate(poketter.InnerContent),
+                        isOnly = true
+                    };
+                    PoketterView2D view = altPoketter.InnerContent.GetComponent<PoketterView2D>();
+                    NeedyMintsMod.log.LogMessage($"Poketter component: {view}");
+
+                    AltPoketter newPoke = altPoketter.InnerContent.AddComponent<AltPoketter>();
+
+                    mergedApps.Add(altPoketter);
                 }
 
 
@@ -2373,7 +2427,18 @@ namespace NeedyMintsOverdose
                 PoketterCell2D inst = __instance;
                 Alternates.FavRtMoveAlternate(inst);
                 return false;
+            }
 
+            [HarmonyPostfix]
+            [HarmonyPatch(nameof(PoketterCell2D.Awake))]
+            public static void AwakePostfix(ref PoketterCell2D __instance, ref TweetDrawable ___tweetDrawable)
+            {
+                PoketterCell2D inst = __instance;
+                if (!___tweetDrawable.IsOmote) return;
+                SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAmeDelete.Where((bool v) => v).Subscribe(delegate (bool _)
+                {
+                    inst.gameObject.SetActive(false);
+                }).AddTo(__instance.gameObject);
             }
         }
 
@@ -2388,6 +2453,35 @@ namespace NeedyMintsOverdose
                 Boot inst = __instance;
                 Alternates.SetChosenDayTextAlternate(inst, lang, _DataNumber);
                 return false;
+            }
+
+            [HarmonyTranspiler]
+            [HarmonyPatch(nameof(Boot.Start))]
+            public static IEnumerable<CodeInstruction> StartTranspiler(IEnumerable<CodeInstruction> instructions)
+            {
+                List<CodeInstruction> baseInstructions = instructions.ToList();
+                List<CodeInstruction> newIns = new List<CodeInstruction>();
+                bool nextPop = false;
+
+                for (int i = 0; i < baseInstructions.Count; i++)
+                {
+                    newIns.Add(baseInstructions[i]);
+                    if (baseInstructions[i].opcode == OpCodes.Callvirt && (baseInstructions[i].operand as MethodInfo)?.Name == nameof(List<EndingType>.Remove))
+                    {
+                        nextPop = true;
+                    }
+                    if (baseInstructions[i].opcode == OpCodes.Pop && nextPop)
+                    {
+                        nextPop = false;
+                        foreach (ModdedEndingType ending in Enum.GetValues(typeof(ModdedEndingType)))
+                        {
+                            newIns.Add(new CodeInstruction(OpCodes.Ldc_I4_S, (int)ending));
+                            newIns.Add(new CodeInstruction(OpCodes.Callvirt, typeof(List<EndingType>).GetMethod(nameof(List<EndingType>.Remove), BindingFlags.Instance)));
+                            newIns.Add(new CodeInstruction(OpCodes.Pop));
+                        }
+                    }
+                }
+                return newIns;
             }
         }
 
@@ -2465,6 +2559,10 @@ namespace NeedyMintsOverdose
                          _goCrazy.enabled = true;
                          _anmaku.enabled = true;
                      }
+                     if (type == (EffectType)(int)ModdedEffectType.Hazy)
+                     {
+                         _bloomlight.enabled = true;
+                     }
                  }).AddTo(__instance.gameObject);
             }
 
@@ -2499,6 +2597,11 @@ namespace NeedyMintsOverdose
                     ____goCrazy.weight *= 0.1f;
                     ____anmaku.weight *= 0.07f;
                 }
+                else if (type == (EffectType)(int)ModdedEffectType.Hazy)
+                {
+                    ____bloomlight.weight = 0.2f * weight;
+                    ____audioEffect.UpdateAudioEffect((EffectType)(int)ModdedEffectType.Hazy, weight);
+                }
             }
         }
 
@@ -2528,6 +2631,22 @@ namespace NeedyMintsOverdose
                         ____audioMixer.SetFloat("Echo_WetMix", 0f + ____ageSlider);
                         ____audioMixer.SetFloat("Highpass_Cutoff", 10f);
                         return;
+                    case ModdedEffectType.Hazy:
+                        ____audioMixer.SetFloat("Master_Pitch", 1f - weight*0.3f);
+                        ____audioMixer.SetFloat("Dist_Level", 0f);
+                        ____audioMixer.SetFloat("PS_Pitch", 1f);
+                        ____audioMixer.SetFloat("Flange_Drymix", 1f);
+                        ____audioMixer.SetFloat("Flange_WetMix", weight * 0.5f);
+                        ____audioMixer.SetFloat("Flange_Depth", 1f + 2f * weight);
+                        ____audioMixer.SetFloat("Flange_Rate", 0.3f + 0.2f * weight);
+                        ____audioMixer.SetFloat("Lowpass_Cutoff", 22000f);
+                        ____audioMixer.SetFloat("Lowpass_Resonance", 1f);
+                        ____audioMixer.SetFloat("Echo_Delay", 500f);
+                        ____audioMixer.SetFloat("Echo_Decay", 0f);
+                        ____audioMixer.SetFloat("Echo_DryMix", 1f + 2f * weight);
+                        ____audioMixer.SetFloat("Echo_WetMix", 0.5f * weight);
+                        ____audioMixer.SetFloat("Highpass_Cutoff", 10f);
+                        return;
                     default: return;
                 }
             }
@@ -2541,6 +2660,50 @@ namespace NeedyMintsOverdose
             public static bool OnEndStreamPrefix()
             {
                 return SingletonMonoBehaviour<EventManager>.Instance.nowEnding != (EndingType)(int)ModdedEndingType.Ending_Followers;
+            }
+        }
+
+        [HarmonyPatch(typeof(PoketterView2D))]
+        public static class PoketterView2DPatches
+        {
+            [HarmonyPostfix]
+            [HarmonyPatch(nameof(PoketterView2D.Start))]
+            public static void StartPostfix(ref PoketterView2D __instance)
+            {
+                PoketterView2D inst = __instance;
+                if (!inst.HasComponent<AltPoketter>()) return;
+                SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAmeDelete.Where((bool v) => v).Subscribe(delegate (bool _)
+                {
+                    Alternates.showDeleteModeAme(inst);
+                }).AddTo(__instance.gameObject);
+
+            }
+            
+            [HarmonyPatch]
+            public static class ModePatches
+            {
+                [HarmonyTargetMethods]
+                public static IEnumerable<MethodBase> Target()
+                {
+                    List<MethodBase> bases = new List<MethodBase>() {
+                        AccessTools.Method(typeof(PoketterView2D), nameof(PoketterView2D.showBlockMode)),
+                        AccessTools.Method(typeof(PoketterView2D), nameof(PoketterView2D.showDeleteMode))
+                    };
+                    return bases;
+                }
+
+                public static bool Prefix(ref PoketterView2D __instance)
+                {
+                    foreach (Component c in __instance.gameObject.GetComponents<Component>())
+                    {
+                        NeedyMintsMod.log.LogMessage($"Mode component: {c}");
+                    }
+
+
+
+
+                    return !__instance.gameObject.HasComponent<AltPoketter>();
+                }
             }
         }
 

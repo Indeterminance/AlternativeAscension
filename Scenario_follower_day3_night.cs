@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 namespace NeedyMintsOverdose
 {
-    public class Scenario_BeforeAngelDeath : NgoEvent
+    public class Scenario_follower_day3_night : NgoEvent
     {
         // Token: 0x06001CF2 RID: 7410 RVA: 0x000843F9 File Offset: 0x000825F9
         public override void Awake()
@@ -23,9 +23,10 @@ namespace NeedyMintsOverdose
         // Token: 0x06001CF3 RID: 7411 RVA: 0x000BC20C File Offset: 0x000BA40C
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
-            await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
+            //await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             base.startEvent(cancellationToken);
             GameObject.Find("MainPanel").GetComponent<Image>().color = Color.black;
+            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0.4f);
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
             //await UniTask.Delay(Constants.MIDDLE);
@@ -33,13 +34,13 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine, true);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Jine);
             await UniTask.Delay(Constants.MIDDLE);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_JINE144.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_JINE145.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE001.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE002.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
             {
-                ModdedJineType.ENDING_FOLLOWER_JINE146.Swap()
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE003.Swap()
             });
-            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_JINE146.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
+            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE003.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
             {
                 await NgoEvent.DelaySkippable(Constants.FAST);
                 await this.eventContinue1();
@@ -50,17 +51,17 @@ namespace NeedyMintsOverdose
         {
             List<ModdedJineType> jines = new List<ModdedJineType>()
             {
-                ModdedJineType.ENDING_FOLLOWER_JINE147,
-                ModdedJineType.ENDING_FOLLOWER_JINE148,
-                ModdedJineType.ENDING_FOLLOWER_JINE149,
-                ModdedJineType.ENDING_FOLLOWER_JINE150,
-                ModdedJineType.ENDING_FOLLOWER_JINE151,
-                ModdedJineType.ENDING_FOLLOWER_JINE152,
-                ModdedJineType.ENDING_FOLLOWER_JINE153,
-                ModdedJineType.ENDING_FOLLOWER_JINE154,
-                ModdedJineType.ENDING_FOLLOWER_JINE155,
-                ModdedJineType.ENDING_FOLLOWER_JINE156,
-                ModdedJineType.ENDING_FOLLOWER_JINE157,
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE004,
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE005,
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE006,
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE007,
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE008,
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE009,
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE010,
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE011,
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE012,
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE013,
+                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE014,
             };
             foreach (ModdedJineType jine in jines)
             {
@@ -87,6 +88,8 @@ namespace NeedyMintsOverdose
                 SingletonMonoBehaviour<WindowManager>.Instance.Close(pill);
             }
             SingletonMonoBehaviour<WindowManager>.Instance.CleanAll();
+            PostEffectManager.Instance.SetShader(EffectType.BloomLight);
+            PostEffectManager.Instance.SetShaderWeight(0.3f);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Bank);
             AudioManager.Instance.PlayBgmByType(SoundType.BANK_bank, false);
             await UniTask.Delay(6000, false, PlayerLoopTiming.Update, default(CancellationToken), false);

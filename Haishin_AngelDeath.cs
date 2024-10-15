@@ -129,7 +129,7 @@ namespace NeedyMintsOverdose
             PostEffectManager.Instance.ResetShader();
             await base.StartScenario();
             this._Live.HaishinClean();
-            SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_AfterAngelDeath>();
+            SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_follower_day3_Afterhaishin>();
         }
     }
 }

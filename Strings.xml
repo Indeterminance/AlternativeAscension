@@ -57,6 +57,14 @@
         <bodyEN>dont make me do this, p-chan...</bodyEN>
       </description>
     </command>
+    <command id="OdekakeFollower">
+      <label>
+        <bodyEN>The end</bodyEN>
+      </label>
+      <description>
+        <bodyEN>i'm going to show them, p-chan. just watch me</bodyEN>
+      </description>
+    </command>
     <command id="Internet2chStalk">
       <label>
         <bodyEN>Dig deeper</bodyEN>
@@ -69,7 +77,8 @@
   <endings>
     <ending id="Ending_Sleepy">
       <name>Angel's Butterfly Dream</name>
-      <osimai>Spending all your time in dreamland\nisn't always the best idea.</osimai>
+      <osimai>Spending all your time in dreamland
+isn't always the best idea.</osimai>
     </ending>
     <ending id="Ending_Followers">
       <name>FOLLOWERS</name>
@@ -105,7 +114,7 @@
       <bodyEN>i must be imagining things...</bodyEN>
     </tweet>
     <tweet id="ODEKAKEPANIC2_TWEET001" user="ame">
-      <bodyEN>i think im going through it, there's no way that people would follow me like this</bodyEN>
+      <bodyEN>i think im losing it, there's no way that people would follow me like this</bodyEN>
     </tweet>
     <tweet id="ODEKAKEPANIC3_TWEET001" user="ame">
       <bodyEN>every single time i go outside i fear for my life</bodyEN>
@@ -174,9 +183,119 @@
       <bodyEN>im starting stream now btw, come see your "angel", come see what you did to her</bodyEN>
     </tweet>
   </tweets>
+  <kusos>
+    <kuso id="TOKYO_TWEET001_KUSO001">
+      <bodyEN>omg what is it kangel?????</bodyEN>
+    </kuso>
+    <kuso id="TOKYO_TWEET001_KUSO002">
+      <bodyEN>Please take a break, I'm running out of money for SuperChats...</bodyEN>
+    </kuso>
+    <kuso id="TOKYO_TWEET001_KUSO003">
+      <bodyEN>CANT WAIT</bodyEN>
+    </kuso>
+    <kuso id="TOKYO_TWEET001_KUSO004">
+      <bodyEN>ooh oooh ooh i bet she went out somewhere cool!</bodyEN>
+    </kuso>
+    <kuso id="STALKODEKAKE2_TWEET001_KUSO001">
+      <bodyEN>more than u thats for sure</bodyEN>
+    </kuso>
+    <kuso id="STALKODEKAKE2_TWEET001_KUSO002">
+      <bodyEN>Yeah whatever, not like you'd know.</bodyEN>
+    </kuso>
+    <kuso id="STALKODEKAKE2_TWEET001_KUSO003">
+      <bodyEN>I like grass! Show me yours?</bodyEN>
+    </kuso>
+    <kuso id="STALKODEKAKE2_TWEET003_KUSO001">
+      <bodyEN>no way</bodyEN>
+    </kuso>
+    <kuso id="STALKODEKAKE2_TWEET003_KUSO002">
+      <bodyEN>I KNEW IT YOU LYING WHORE</bodyEN>
+    </kuso>
+    <kuso id="STALKODEKAKE2_TWEET003_KUSO003">
+      <bodyEN>my hearttttt, why would you do this to us???</bodyEN>
+    </kuso>
+    <kuso id="STALKODEKAKE2_TWEET003_KUSO004">
+      <bodyEN>What did you expect guys? Of course she's already taken.</bodyEN>
+    </kuso>
+    <kuso id="STALKODEKAKE2_TWEET003_KUSO005">
+      <bodyEN>You should introduce us to them sometime!</bodyEN>
+    </kuso>
+    <kuso id="STALKODEKAKE2_TWEET003_KUSO006">
+      <bodyEN>p-chan? that's a cute nickname!!! can i call you k-chan?</bodyEN>
+    </kuso>
+    <kuso id="STALKODEKAKE2_TWEET003_KUSO007">
+      <bodyEN>Yeah you have us</bodyEN>
+    </kuso>
+    <kuso id="PREANGELWATCH_TWEET001_KUSO001">
+      <bodyEN>early stream???? lets go!!!!!!!!</bodyEN>
+    </kuso>
+    <kuso id="PREANGELWATCH_TWEET001_KUSO002">
+      <bodyEN>We're watching, KAngel! Do your best.</bodyEN>
+    </kuso>
+    <kuso id="PREANGELWATCH_TWEET001_KUSO003">
+      <bodyEN>Just make sure to take care of yourself! We can't lose our angel now!!!</bodyEN>
+    </kuso>
+    <kuso id="PREANGELWATCH_TWEET001_KUSO004">
+      <bodyEN>thank god, i was gonna kms but ur notification came at just the right time. ur a real angel</bodyEN>
+    </kuso>
+    <kuso id="PREANGELWATCH_TWEET001_KUSO005">
+      <bodyEN>Drop for us~</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET001_KUSO001">
+      <bodyEN>Are you okay? A lot happened...</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET001_KUSO002">
+      <bodyEN>Uggghh school's gonna suck today, didn't get any sleep because of you</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET001_KUSO003">
+      <bodyEN>you should still go to the hospital</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET001_KUSO004">
+      <bodyEN>go back to sleep, but don't wake up this time</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET002_KUSO001">
+      <bodyEN>Everyone already knows what happened, you're the talk of the internet right now.</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET002_KUSO002">
+      <bodyEN>How about you be a patient instead?</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET002_KUSO003">
+      <bodyEN>interneto interneto interneto OVERDOSE</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET003_KUSO001">
+      <bodyEN>sleepy angel kawaiiii</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET003_KUSO002">
+      <bodyEN>god that was some good material, do that again sometime</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET003_KUSO003">
+      <bodyEN>🙏BLESS🙏</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET003_KUSO004">
+      <bodyEN>damn, she forgot to turn off the stream...</bodyEN>
+    </kuso>
+    <kuso id="POSTANGELWATCH_TWEET003_KUSO005">
+      <bodyEN>had my best night's sleep in years thanks to ur stream, i love u kangel</bodyEN>
+    </kuso>
+    <kuso id="BADPASSWORD_TWEET001_KUSO001">
+      <bodyEN>Ikr???? Passwords are pain</bodyEN>
+    </kuso>
+    <kuso id="BADPASSWORD_TWEET001_KUSO002">
+      <bodyEN>It's not that hard to remember :P</bodyEN>
+    </kuso>
+    <kuso id="BADPASSWORD_TWEET001_KUSO003">
+      <bodyEN>omg we almost lost u??? sad</bodyEN>
+    </kuso>
+    <kuso id="BADPASSWORD_TWEET001_KUSO004">
+      <bodyEN>OUR ANGEL RETURNS!!!!!!!</bodyEN>
+    </kuso>
+  </kusos>
   <jines>
-    <jine id="ENDING_SLEEPY_JINE001" speaker="ame">
-      <bodyEN>hey p-chan</bodyEN>
+    <jine id="EVENT_COMIKETALERT001" speaker="ame">
+      <bodyEN>p-chan!!! comiket is over now</bodyEN>
+    </jine>
+    <jine id="EVENT_COMIKETALERT002" speaker="ame">
+      <bodyEN>don't forget, we gotta tell the nerds all about it tonight!</bodyEN>
     </jine>
     <jine id="ENDING_SLEEPY_JINE002" speaker="ame">
       <bodyEN>i had a dream</bodyEN>
@@ -216,6 +335,153 @@
     </jine>
     <jine id="TOKYO_JINE004" speaker="ame">
       <bodyEN>but ill let the nerds have their fun first</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC1_POST001" speaker="ame">
+      <bodyEN>going outside is so scary now</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC1_POST002" speaker="ame">
+      <bodyEN>i swear they're following me</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC1_POST003" speaker="ame">
+      <bodyEN>every step of the way</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC2_POST001" speaker="ame">
+      <bodyEN>i don't wanna go outside again</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC2_POST002" speaker="ame">
+      <bodyEN>i don't feel safe out there</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC2_POST003" speaker="ame">
+      <bodyEN>even the message boards are better</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC2_POST004" speaker="ame">
+      <bodyEN>please just let me stay inside, p-chan</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC3_POST001" speaker="ame">
+      <bodyEN>p-chan… i can't do this</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC3_POST002" speaker="ame">
+      <bodyEN>i feel them watching</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC3_POST003" speaker="ame">
+      <bodyEN>always watching</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC3_POST004" speaker="ame">
+      <bodyEN>just out of sight</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC3_POST005" speaker="ame">
+      <bodyEN>waiting</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC4_POST001" speaker="ame">
+      <bodyEN>i have so many followers</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC4_POST002" speaker="ame">
+      <bodyEN>thousands of people</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC4_POST003" speaker="ame">
+      <bodyEN>following my every move</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC4_POST004" speaker="ame">
+      <bodyEN>walking the same path as me</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC4_POST005" speaker="ame">
+      <bodyEN>kill me</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC5_POST001" speaker="ame">
+      <bodyEN>eyes</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC5_POST002" speaker="ame">
+      <bodyEN>so many eyes</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC5_POST003" speaker="ame">
+      <bodyEN>im being watched</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC5_POST004" speaker="ame">
+      <bodyEN>every face full of hate</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC5_POST005" speaker="ame">
+      <bodyEN>they try and hide it behind pretty smiles</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC5_POST006" speaker="ame">
+      <bodyEN>i see them for what they are</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC6_POST001" speaker="ame">
+      <bodyEN>p-chan... i can't do this</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC6_POST002" speaker="ame">
+      <bodyEN>i'm not going out again</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC6_POST003" speaker="ame">
+      <bodyEN>i'll do anything but that</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC6_POST004" speaker="ame">
+      <bodyEN>i feel the weight of the world on me</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC6_POST005" speaker="ame">
+      <bodyEN>let me take some pills to calm down, at least</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC7_POST001" speaker="ame">
+      <bodyEN>pleasepleasepleaseplease</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC7_POST002" speaker="ame">
+      <bodyEN>p-chan</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC7_POST003" speaker="ame">
+      <bodyEN>i'll do ANYTHING</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC7_POST004" speaker="ame">
+      <bodyEN>just don't force me to go out there ever again</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC7_POST005" speaker="ame">
+      <bodyEN>i can't take it anymore</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC8_POST001" speaker="ame">
+      <bodyEN>AAAAAAAAAAAAAAAAAAA</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC8_POST002" speaker="ame">
+      <bodyEN>P-CHAN</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC8_POST003" speaker="ame">
+      <bodyEN>THE FOOTSTEPS ARE DEAFENING</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC8_POST004" speaker="ame">
+      <bodyEN>VOICES SHRIEKING</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC8_POST005" speaker="ame">
+      <bodyEN>GAZES PIERCING</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC8_POST006" speaker="ame">
+      <bodyEN>I FEEL THEM</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC8_POST007" speaker="ame">
+      <bodyEN>EVERYONE</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC8_POST008" speaker="ame">
+      <bodyEN>WATCHING, OBSERVING, JUDGING</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC8_POST009" speaker="ame">
+      <bodyEN>I WANT TO END IT</bodyEN>
+    </jine>
+    <jine id="ODEKAKEPANIC8_POST010" speaker="ame">
+      <bodyEN>ILL DO ANYTHING TO END IT</bodyEN>
+    </jine>
+    <jine id="EVENT_SONG_DENY001" speaker="ame">
+      <bodyEN>hey look at this dm</bodyEN>
+    </jine>>
+    <jine id="EVENT_SONG_DENY002" speaker="ame">
+      <bodyEN>a composer said they wanted to write a song for me!</bodyEN>
+    </jine>>
+    <jine id="EVENT_SONG_DENY003" speaker="ame">
+      <bodyEN>ive come so far... but...</bodyEN>
+    </jine>
+    <jine id="EVENT_SONG_DENY004" speaker="ame">
+      <bodyEN>theres no way i can go to the studio</bodyEN>
+    </jine>
+    <jine id="EVENT_SONG_DENY005" speaker="ame">
+      <bodyEN>they're all watching me....</bodyEN>
+    </jine>
+    <jine id="EVENT_SONG_DENY006" speaker="ame">
+      <bodyEN>it's tough being so... popular</bodyEN>
     </jine>
     <jine id="FOLLOW_ST_JINE001" speaker="ame">
       <bodyEN>i cant believe theyd go to this level haha</bodyEN>
@@ -274,500 +540,500 @@
     <jine id="FOLLOW_MISTWEET_JINE009" speaker="ame">
       <bodyEN>i dont want to find out</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE001" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE001" speaker="ame">
       <bodyEN>alright</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE002" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE002" speaker="ame">
       <bodyEN>nobody should bother us now</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE003" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE003" speaker="ame">
       <bodyEN>as long as we dont go outside we'll be fine, right?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE004" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE004" speaker="ame">
       <bodyEN>its not like theyd break in, haha</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE005" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE005" speaker="ame">
       <bodyEN>well, maybe</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE006" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE006" speaker="ame">
       <bodyEN>but i dont think theyd go that far</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE007" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE007" speaker="ame">
       <bodyEN>i hope they dont go that far</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE008" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE008" speaker="ame">
       <bodyEN>i think i know what to do</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE009" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE009" speaker="ame">
       <bodyEN>if they were caught on camera their life would be ruined</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE010" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE010" speaker="ame">
       <bodyEN>in that case...</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE011" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE011" speaker="ame">
       <bodyEN>theres nothing to do but stream my heart out until they go away</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE012" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE012" speaker="ame">
       <bodyEN>ughhh this is gonna be a long stream</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE013" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE013" speaker="pi">
       <bodyEN>Do you need anything before the stream, Ame?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE014" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE014" speaker="ame">
       <bodyEN>no, i should be fine</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE015" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE015" speaker="ame">
       <bodyEN>wait, p-chan?!</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE016" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE016" speaker="ame">
       <bodyEN>...</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE017" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE017" speaker="ame">
       <bodyEN>maybe im imagining things</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE018" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY1_JINE018" speaker="ame">
       <bodyEN>im gonna go get ready</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE019" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE001" speaker="ame">
       <bodyEN>uuuuughhh this is exhaustinggg</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE020" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE002" speaker="ame">
       <bodyEN>ive been streaming for ages</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE021" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE003" speaker="ame">
       <bodyEN>and this dumb outfit is soaked</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE022" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE004" speaker="ame">
       <bodyEN>the stress is killing me</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE023" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE005" speaker="ame">
       <bodyEN>i wish i could end stream, but what'd happen if i did?
 id probably get attacked</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE024" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE006" speaker="ame">
       <bodyEN>the stream is the only thing keeping them from just waltzing in</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE025" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE007" speaker="ame">
       <bodyEN>they found our house, right?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE026" speaker="pi">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE008" speaker="pi">
       <bodyEN>Yeah, I think so.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE027" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE009" speaker="ame">
       <bodyEN>of course they did p-chan</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE028" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE010" speaker="ame">
       <bodyEN>what was i even thinking, telling everyone i was at comiket back then?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE029" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE011" speaker="ame">
       <bodyEN>there was no fucking way they weren't gonna try and find where i went</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE030" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE012" speaker="ame">
       <bodyEN>and that dumb night walk practically screamed "KANGEL LIVES HERE"</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE031" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE013" speaker="ame">
       <bodyEN>im such an IDIOT</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE032" speaker="pi">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE014" speaker="pi">
       <bodyEN>Everyone makes mistakes.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE033" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE015" speaker="ame">
       <bodyEN>NOT LIKE THIS</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE034" speaker="pi">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE016" speaker="pi">
       <bodyEN>I guess you're right.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE035" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE017" speaker="ame">
       <bodyEN>its been too long now</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE036" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE018" speaker="ame">
       <bodyEN>i better get back on stream</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE037" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE019" speaker="ame">
       <bodyEN>...i love u, p-chan</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE038" speaker="pi">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE020" speaker="pi">
       <bodyEN>I love you too, Ame~</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE039" speaker="pi">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE021" speaker="pi">
       <bodyEN>We'll be together forever!</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE040" speaker="pi">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE022" speaker="pi">
       <bodyEN>AME</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE041" speaker="pi">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE023" speaker="pi">
       <bodyEN>Ame... please.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE042" speaker="pi">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE024" speaker="pi">
       <bodyEN>Open the door.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE043" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE025" speaker="ame">
       <bodyEN>p-chan help</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE044" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE026" speaker="ame">
       <bodyEN>i had a relly bd nightmare</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE045" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE027" speaker="ame">
       <bodyEN>i was streamng and fell asleep</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE046" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE028" speaker="ame">
       <bodyEN>and when i wok eup door ringing</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE047" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE029" speaker="ame">
       <bodyEN>p-chan they're gong to come in…</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE048" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE030" speaker="ame">
       <bodyEN>i cant do this without u</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE049" speaker="pi">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE031" speaker="pi">
       <bodyEN>I’m here for you.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE050" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE032" speaker="ame">
       <bodyEN>thanks p-chan</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE051" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE033" speaker="ame">
       <bodyEN>i dont know what id do without u</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE052" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE034" speaker="ame">
       <bodyEN>probs die or smth</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE053" speaker="pi">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE035" speaker="pi">
       <bodyEN>Ohhh, you will when you realize!</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE054" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE036" speaker="ame">
       <bodyEN>realize wut</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE055" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE037" speaker="ame">
       <bodyEN>p-chan...?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE056" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE038" speaker="ame">
       <bodyEN>no</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE057" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE039" speaker="ame">
       <bodyEN>im dreaming</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE058" speaker="ame">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE040" speaker="ame">
       <bodyEN>pls tell me im still asleep</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE059" speaker="pi">
+    <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE041" speaker="pi">
       <bodyEN>I'm sorry.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE060" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE001" speaker="ame">
       <bodyEN>HOW LONG HAVE I BEEN STREAMING FOR???????</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE061" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE002" speaker="pi">
       <bodyEN>A while.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE062" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE003" speaker="ame">
       <bodyEN>P-CHAN</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE063" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE004" speaker="ame">
       <bodyEN>U COULDNT HAVE WOKEN ME UP?????</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE064" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE005" speaker="ame">
       <bodyEN>...</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE065" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE006" speaker="ame">
       <bodyEN>ahaha</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE066" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE007" speaker="ame">
       <bodyEN>now everyone knows kangel as a drug addict</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE067" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE008" speaker="ame">
       <bodyEN>and a fake</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE068" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE009" speaker="ame">
       <bodyEN>and... soz</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE069" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE010" speaker="ame">
       <bodyEN>they know about u too...</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE070" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE011" speaker="pi">
       <bodyEN>There's no use crying over spilt milk.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE071" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE012" speaker="ame">
       <bodyEN>p-chan...</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE072" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE013" speaker="ame">
       <bodyEN>i cant believe thats all u have to say</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE073" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE014" speaker="ame">
       <bodyEN>id die if someone outed me like i did to u</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE074" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE015" speaker="ame">
       <bodyEN>i guess that means im dead too</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE075" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE016" speaker="ame">
       <bodyEN>we're in heaven</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE076" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE017" speaker="pi">
       <bodyEN>Or hell.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE077" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE018" speaker="ame">
       <bodyEN>or hell, yeah</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE078" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE019" speaker="ame">
       <bodyEN>i gotta come up with a cover story</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE079" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE020" speaker="ame">
       <bodyEN>how do i explain this...?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE080" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE021" speaker="ame">
       <bodyEN>i think i know</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE081" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE022" speaker="ame">
       <bodyEN>p-chan can u go out and check for me</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE082" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE023" speaker="ame">
       <bodyEN>are those freaks gone?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE083" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE024" speaker="pi">
       <bodyEN>I think so.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE084" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE025" speaker="ame">
       <bodyEN>u think so? whats that supposed to mean</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE085" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE026" speaker="ame">
       <bodyEN>ur so silly, p-chan</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE086" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE027" speaker="ame">
       <bodyEN>thanks for being here for me</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE087" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE028" speaker="ame">
       <bodyEN>i could never do this without u</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE088" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE029" speaker="pi">
       <bodyEN>I think you could.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE089" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE030" speaker="ame">
       <bodyEN>no way</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE090" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE031" speaker="ame">
       <bodyEN>like i said earlier</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE091" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE032" speaker="ame">
       <bodyEN>id die</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE092" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE033" speaker="ame">
       <bodyEN>but thanks for believing in me anyway</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE093" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE034" speaker="ame">
       <bodyEN>that being said</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE094" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE035" speaker="ame">
       <bodyEN>can i have today off?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE095" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE036" speaker="pi">
       <bodyEN>Yeah. You need it.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE096" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE037" speaker="ame">
       <bodyEN>i love u p-chan</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE097" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE038" speaker="ame">
       <bodyEN>ur so considerate of me</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE098" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY2_JINE039" speaker="ame">
       <bodyEN>what would i ever do without u?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE099" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE001" speaker="ame">
       <bodyEN>ugghhhh I overslept a bit</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE100" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE002" speaker="ame">
       <bodyEN>couldnt i just wake up just a little earlier?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE101" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE003" speaker="ame">
       <bodyEN>oh</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE102" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE004" speaker="ame">
       <bodyEN>metube logged me out lmao</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE103" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE005" speaker="ame">
       <bodyEN>u think it wouldnt be that hard to stay logged in</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE104" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE006" speaker="ame">
       <bodyEN>can u log me in again? the password is still "angelkawaii2"</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE105" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE007" speaker="ame">
       <bodyEN>p-chan please</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE106" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE008" speaker="ame">
       <bodyEN>at least watch what ur typing</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE107" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE009" speaker="ame">
       <bodyEN>try again, ok?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE108" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE010" speaker="ame">
       <bodyEN>p-chan</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE109" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE011" speaker="ame">
       <bodyEN>u dont have caps on or smth do u?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE110" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE012" speaker="ame">
       <bodyEN>lemme try then</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE111" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE013" speaker="ame">
       <bodyEN>it doesnt work</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE112" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE014" speaker="ame">
       <bodyEN>why doesnt it work</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE113" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE015" speaker="ame">
       <bodyEN>i never changed it</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE114" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE016" speaker="ame">
       <bodyEN>WHY THE FUCK DOES THIS KEEP HAPPENING TO ME??????</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE115" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE017" speaker="pi">
       <bodyEN>Ame.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE116" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE018" speaker="ame">
       <bodyEN>P-CHAN????</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE117" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE019" speaker="pi">
       <bodyEN>I can be your p-chan.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE118" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE020" speaker="ame">
       <bodyEN>but u already are... wait</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE119" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE021" speaker="ame">
       <bodyEN>not u too</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE120" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE022" speaker="ame">
       <bodyEN>P-CHAN!!!!!</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE121" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE023" speaker="pi">
       <bodyEN>Save me.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE122" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE024" speaker="ame">
       <bodyEN>alright, i changed ur password, u should be good now</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE123" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE025" speaker="pi">
       <bodyEN>I'm back, Ame.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE124" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE026" speaker="ame">
       <bodyEN>I THOUGHT I LOST U</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE125" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE027" speaker="ame">
       <bodyEN>NEVER DO THAT TO ME AGAIN P-CHAN</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE126" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE028" speaker="pi">
       <bodyEN>I won't.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE127" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE029" speaker="ame">
       <bodyEN>promise me</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE128" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE030" speaker="ame">
       <bodyEN>PROMISE ME</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE129" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE031" speaker="pi">
       <bodyEN>I promise you, Ame. I'll never leave your side again.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE130" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE032" speaker="ame">
       <bodyEN>never?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE131" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE033" speaker="pi">
       <bodyEN>Never ever ever ever.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE132" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE034" speaker="ame">
       <bodyEN>i love u p-chan</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE133" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE035" speaker="pi">
       <bodyEN>I love you too.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE134" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE036" speaker="ame">
       <bodyEN>kangel</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE135" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE037" speaker="ame">
       <bodyEN>what am i going to do about kangel?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE136" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE038" speaker="pi">
       <bodyEN>You should try the password again.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE137" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE039" speaker="ame">
       <bodyEN>but we already tried it three times</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE138" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE040" speaker="ame">
       <bodyEN>i guess it wont hurt to try one more time</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE139" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE041" speaker="ame">
       <bodyEN>huh</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE140" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE042" speaker="ame">
       <bodyEN>i guess i was just mistyping the password</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE141" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE043" speaker="ame">
       <bodyEN>but how?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE142" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE044" speaker="ame">
       <bodyEN>anyways</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE143" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE045" speaker="ame">
       <bodyEN>i guess it works now</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE144" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE001" speaker="ame">
       <bodyEN>okay, almost time for the next stream</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE145" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE002" speaker="ame">
       <bodyEN>u think i should try to explain whats been happening?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE146" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE003" speaker="pi">
       <bodyEN>Are you sure?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE147" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE004" speaker="ame">
       <bodyEN>people love irl drama</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE148" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE005" speaker="ame">
       <bodyEN>dont u remember those breakdowns i had?</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE149" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE006" speaker="ame">
       <bodyEN>i had so many viewers compared to usual</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE150" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE007" speaker="ame">
       <bodyEN>even though it was killing me</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE151" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE008" speaker="ame">
       <bodyEN>if im going through something</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE152" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE009" speaker="ame">
       <bodyEN>they love it</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE153" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE010" speaker="ame">
       <bodyEN>they love when im suffering</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE154" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE011" speaker="ame">
       <bodyEN>yeah, ive made my mind up</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE155" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE012" speaker="ame">
       <bodyEN>theyll remember this alright</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE156" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE013" speaker="ame">
       <bodyEN>im gonna take some pills to give me a little boost for this</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE157" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY3_PRESTREAM_JINE014" speaker="ame">
       <bodyEN>god knows ill need it</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE158" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY4_JINE001" speaker="pi">
       <bodyEN>Ame, please!</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE159" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY4_JINE002" speaker="pi">
       <bodyEN>We'll do anything!</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE160" speaker="pi">
+    <jine id="ENDING_FOLLOWER_DAY4_JINE003" speaker="pi">
       <bodyEN>But give us KAngel back!!!!</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE161" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY4_JINE004" speaker="ame">
       <bodyEN>I don't care anymore.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE162" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY4_JINE005" speaker="ame">
       <bodyEN>Go away.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE_DELETEPI" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY4_JINE_DELETEPI" speaker="ame">
       <bodyEN>p-chan not found.</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE163" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY4_JINE006" speaker="ame">
       <bodyEN>i love u p-chan</bodyEN>
     </jine>
-    <jine id="ENDING_FOLLOWER_JINE164" speaker="ame">
+    <jine id="ENDING_FOLLOWER_DAY4_JINE007" speaker="ame">
       <bodyEN>But you? You're not them.</bodyEN>
     </jine>
   </jines>
@@ -829,7 +1095,8 @@ sure to thank the organizers! </bodyEN>
           <bodyEN>Please don't-uhh, I mean shhhhh, keep that to yourself!</bodyEN>
         </speak>
         <speak id="RESPONSE003">
-          <bodyEN>And you can be! I believe in you! And the rest of you guys too!</bodyEN>
+          <bodyEN>And you can be! I believe in you!
+And the rest of you guys too!</bodyEN>
         </speak>
         <speak id="RESPONSE004">
           <bodyEN>OMG, thanks! But I can't do it
@@ -982,7 +1249,7 @@ which is a LOT of friends!</bodyEN>
 guys know what you'd buy, I'll do my best!!!</bodyEN>
         </speak>
         <speak id="AMA_Q010_RESPONSE">
-          <bodyEN>P-He's not stupid, he's adorable!
+          <bodyEN>P-They're not stupid, they're adorable!
 Don't be mean to the poor kitty!</bodyEN>
         </speak>
         <speak id="AMA_Q010_RESPONSE_B">
@@ -2167,6 +2434,14 @@ Ask me anything!!!</bodyEN>
     </string>
     <string id="System_InternetYamero">
       <bodyEN>Quit the internet.</bodyEN>
+    </string>
+    <string id="System_ComiketStreamUpcoming">
+      <bodyEN>No way, I gotta let the nerds know
+about Comiket tonight!</bodyEN>
+    </string>
+    <string id="Poketter_AmeQuit">
+      <bodyEN>The user @raincandy_U
+does not exist.</bodyEN>
     </string>
   </sysstrings>
 </moddata>

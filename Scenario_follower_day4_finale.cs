@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 namespace NeedyMintsOverdose
 {
-    public class Scenario_AfterAngelFuneral : NgoEvent
+    public class Scenario_follower_day4_finale : NgoEvent
     {
         // Token: 0x06001CF2 RID: 7410 RVA: 0x000843F9 File Offset: 0x000825F9
         public override void Awake()
@@ -24,10 +24,19 @@ namespace NeedyMintsOverdose
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
             base.startEvent(cancellationToken);
+            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
             SingletonMonoBehaviour<EventManager>.Instance.nowEnding = (EndingType)(int)ModdedEndingType.Ending_Followers;
-            SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter).Uncloseable();
+            IWindow poke = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter);
+            poke.Uncloseable();
+            await UniTask.Delay(1000);
+            IWindow altPoke = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow((AppType)(int)ModdedAppType.AltPoketter);
+            altPoke.Uncloseable();
+            //altPoke.nakamiApp.transform.position = poke.nakamiApp.transform.position + new Vector3(10, 10);
+            NeedyMintsMod.log.LogMessage($"old pos: {poke.nakamiApp.transform.position}");
             await UniTask.Delay(Constants.FAST);
             SingletonMonoBehaviour<PoketterManager>.Instance.isDeleted.Value = true;
+            await UniTask.Delay(1000);
+            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAmeDelete.Value = true;
             await UniTask.Delay(Constants.FAST);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.TaskManager).Uncloseable();
             int followers = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.Follower);

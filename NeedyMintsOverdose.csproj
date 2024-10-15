@@ -55,6 +55,18 @@
     <Reference Include="DOTweenPro.Scripts">
       <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\NEEDY GIRL OVERDOSE\Windose_Data\Managed\DOTweenPro.Scripts.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\NEEDY GIRL OVERDOSE\Windose_Data\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\NEEDY GIRL OVERDOSE\Windose_Data\Managed\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Windows">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\NEEDY GIRL OVERDOSE\Windose_Data\Managed\Rewired_Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Windows_Functions">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\NEEDY GIRL OVERDOSE\Windose_Data\Managed\Rewired_Windows_Functions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -131,21 +143,24 @@
   <ItemGroup>
     <Compile Include="Action_Internet2chStalk.cs" />
     <Compile Include="Action_OdekakeBreak.cs" />
+    <Compile Include="Event_MV_kowai.cs" />
+    <Compile Include="Event_ComiketAlert.cs" />
     <Compile Include="Haishin_AngelFuneral.cs" />
+    <Compile Include="AltPoketter.cs" />
     <Compile Include="Login_Hacked.cs" />
     <Compile Include="Haishin_AngelDeath.cs" />
-    <Compile Include="Scenario_AfterAngelFuneral.cs" />
-    <Compile Include="Scenario_AfterAngelDeath.cs" />
-    <Compile Include="Scenario_BeforeAngelFuneral.cs" />
-    <Compile Include="Scenario_BeforeAngelDeath.cs" />
-    <Compile Include="Scenario_Hacked.cs" />
-    <Compile Include="Scenario_AfterAngelWatch.cs" />
+    <Compile Include="Scenario_follower_day4_finale.cs" />
+    <Compile Include="Scenario_follower_day3_Afterhaishin.cs" />
+    <Compile Include="Scenario_follower_day4_day.cs" />
+    <Compile Include="Scenario_follower_day3_night.cs" />
+    <Compile Include="Scenario_follower_day3_day.cs" />
+    <Compile Include="Scenario_follower_day2_AfterAllNighterhaishin.cs" />
     <Compile Include="Action_OdekakePanic1.cs" />
     <Compile Include="Action_OdekakePanic2.cs" />
     <Compile Include="Action_OdekakePanic3.cs" />
     <Compile Include="Action_OdekakePanic4.cs" />
     <Compile Include="Alternates.cs" />
-    <Compile Include="AngelWatchManager.cs" />
+    <Compile Include="NeedyMintsModManager.cs" />
     <Compile Include="ChipGet_FollowerAlpha_1.cs" />
     <Compile Include="Ending_Sleepy.cs" />
     <Compile Include="Action_OkusuriDaypassStalk.cs" />
@@ -159,7 +174,7 @@
     <Compile Include="Haishin_AngelWatch.cs" />
     <Compile Include="Haishin_Comiket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenario_BeforeAngelWatch.cs" />
+    <Compile Include="Scenario_follower_day1_day.cs" />
     <Compile Include="Scenario_PostComiket.cs" />
     <Compile Include="Viewer.cs" />
   </ItemGroup>
@@ -179,7 +194,12 @@
     <PostBuildEvent>mkdir "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"
 copy /Y "$(TargetPath)" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"
 copy /Y "$(ProjectDir)\\Strings.xml" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"
-copy /Y "$(ProjectDir)\\nmo_assets.bundle" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\Windose_Data\\StreamingAssets\\aa\\StandaloneWindows64\\nmo_assets.bundle"
+copy /Y "$(ProjectDir)\\nmo_assets.bundle" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"
 copy /Y "$(ProjectDir)\\catalog.json" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"</PostBuildEvent>
   </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties catalog_1json__JsonSchema="format" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

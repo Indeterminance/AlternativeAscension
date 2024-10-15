@@ -64,8 +64,22 @@ namespace NeedyMintsOverdose
                 switch (odekakesLeft)
                 {
                     case 2:
-                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE1_TWEET001.Swap(), null, null);
-                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE1_TWEET002.Swap(), null, null);
+                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE1_TWEET001.Swap(), new List<ModdedKusoRepType>
+                        {
+                            ModdedKusoRepType.STALKODEKAKE2_TWEET001_KUSO001,
+                            ModdedKusoRepType.STALKODEKAKE2_TWEET001_KUSO002,
+                            ModdedKusoRepType.STALKODEKAKE2_TWEET001_KUSO003,
+                        }.Swap(), null);
+                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE1_TWEET002.Swap(), new List<ModdedKusoRepType>
+                        {
+                            ModdedKusoRepType.STALKODEKAKE2_TWEET003_KUSO001,
+                            ModdedKusoRepType.STALKODEKAKE2_TWEET003_KUSO002,
+                            ModdedKusoRepType.STALKODEKAKE2_TWEET003_KUSO003,
+                            ModdedKusoRepType.STALKODEKAKE2_TWEET003_KUSO004,
+                            ModdedKusoRepType.STALKODEKAKE2_TWEET003_KUSO005,
+                            ModdedKusoRepType.STALKODEKAKE2_TWEET003_KUSO006,
+                            ModdedKusoRepType.STALKODEKAKE2_TWEET003_KUSO007,
+                        }.Swap(), null);
                         SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE1_TWEET003.Swap(), null, null);
                         AudioManager.Instance.PlaySeByType(SoundType.SE_chime);
                         break;
@@ -80,6 +94,101 @@ namespace NeedyMintsOverdose
                     default: break;
                 }
                 await SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatus(ModdedStatusType.OdekakeCountdown.Swap(), -1);
+            }
+            await NgoEvent.DelaySkippable(Constants.MIDDLE);
+
+            // Post-odekake quotes
+            List<ModdedJineType> jines = new List<ModdedJineType>();
+            switch (weight)
+            {
+                case 1:
+                    jines = new List<ModdedJineType>
+                    {
+                        ModdedJineType.ODEKAKEPANIC1_POST001,
+                        ModdedJineType.ODEKAKEPANIC1_POST002,
+                        ModdedJineType.ODEKAKEPANIC1_POST003
+                    };
+                    break;
+                case 2:
+                    jines = new List<ModdedJineType>
+                    {
+                        ModdedJineType.ODEKAKEPANIC2_POST001,
+                        ModdedJineType.ODEKAKEPANIC2_POST002,
+                        ModdedJineType.ODEKAKEPANIC2_POST003,
+                        ModdedJineType.ODEKAKEPANIC2_POST004
+                    };
+                    break;
+                case 3:
+                    jines = new List<ModdedJineType>
+                    {
+                        ModdedJineType.ODEKAKEPANIC3_POST001,
+                        ModdedJineType.ODEKAKEPANIC3_POST002,
+                        ModdedJineType.ODEKAKEPANIC3_POST003,
+                        ModdedJineType.ODEKAKEPANIC3_POST004,
+                        ModdedJineType.ODEKAKEPANIC3_POST005
+                    };
+                    break;
+                case 4:
+                    jines = new List<ModdedJineType>
+                    {
+                        ModdedJineType.ODEKAKEPANIC4_POST001,
+                        ModdedJineType.ODEKAKEPANIC4_POST002,
+                        ModdedJineType.ODEKAKEPANIC4_POST003,
+                        ModdedJineType.ODEKAKEPANIC4_POST004,
+                        ModdedJineType.ODEKAKEPANIC4_POST005
+                    };
+                    break;
+                case 5:
+                    jines = new List<ModdedJineType>
+                    {
+                        ModdedJineType.ODEKAKEPANIC5_POST001,
+                        ModdedJineType.ODEKAKEPANIC5_POST002,
+                        ModdedJineType.ODEKAKEPANIC5_POST003,
+                        ModdedJineType.ODEKAKEPANIC5_POST004,
+                        ModdedJineType.ODEKAKEPANIC5_POST005,
+                        ModdedJineType.ODEKAKEPANIC5_POST006
+                    };
+                    break;
+                case 6:
+                    jines = new List<ModdedJineType>
+                    {
+                        ModdedJineType.ODEKAKEPANIC6_POST001,
+                        ModdedJineType.ODEKAKEPANIC6_POST002,
+                        ModdedJineType.ODEKAKEPANIC6_POST003,
+                        ModdedJineType.ODEKAKEPANIC6_POST004,
+                        ModdedJineType.ODEKAKEPANIC6_POST005
+                    };
+                    break;
+                case 7:
+                    jines = new List<ModdedJineType>
+                    {
+                        ModdedJineType.ODEKAKEPANIC7_POST001,
+                        ModdedJineType.ODEKAKEPANIC7_POST002,
+                        ModdedJineType.ODEKAKEPANIC7_POST003,
+                        ModdedJineType.ODEKAKEPANIC7_POST004,
+                        ModdedJineType.ODEKAKEPANIC7_POST005
+                    };
+                    break;
+                case 8:
+                    jines = new List<ModdedJineType>
+                    {
+                        ModdedJineType.ODEKAKEPANIC8_POST001,
+                        ModdedJineType.ODEKAKEPANIC8_POST002,
+                        ModdedJineType.ODEKAKEPANIC8_POST003,
+                        ModdedJineType.ODEKAKEPANIC8_POST004,
+                        ModdedJineType.ODEKAKEPANIC8_POST005,
+                        ModdedJineType.ODEKAKEPANIC8_POST006,
+                        ModdedJineType.ODEKAKEPANIC8_POST007,
+                        ModdedJineType.ODEKAKEPANIC8_POST008,
+                        ModdedJineType.ODEKAKEPANIC8_POST009,
+                        ModdedJineType.ODEKAKEPANIC8_POST010
+                    };
+                    break;
+                default: break;
+            }
+            foreach (ModdedJineType jine in jines)
+            {
+                await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(jine.Swap());
             }
         }
 
@@ -125,12 +234,23 @@ namespace NeedyMintsOverdose
                 AddHint.Invoke(shortcut, null);
             }
 
+            
+
+            
+
             // Redo click listeners
             _shortcut.onClick.RemoveAllListeners();
             _shortcut.onClick.AddListener(delegate
             {
                 // Don't click if the odekake countdown has ticked to its limit!
-                if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0)
+                if (shortcut.appType != AppType.GoOut && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelDeath)
+                {
+                    _shortcut.interactable = false;
+                    _tooltip.isShowTooltip = false;
+                    return;
+                }
+
+                else if (shortcut.appType == AppType.GoOut && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0)
                 {
                     _shortcut.interactable = false;
                     _tooltip.isShowTooltip = true;
@@ -143,7 +263,7 @@ namespace NeedyMintsOverdose
             });
 
             // Same thing as the click event, but we're gonna run it once beforehand too
-            if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0)
+            if (shortcut.appType == AppType.GoOut && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0)
             {
                 _shortcut.interactable = false;
                 _tooltip.isShowTooltip = true;
@@ -306,7 +426,7 @@ namespace NeedyMintsOverdose
             }
             NewGame.OnClickAsObservable().Subscribe(delegate (Unit _)
             {
-                app.StartGame();
+                new Traverse(app).Method(nameof(App_LoadDataComponent.StartGame)).GetValue();
             }).AddTo(app.gameObject);
         }
 
@@ -459,6 +579,16 @@ namespace NeedyMintsOverdose
                     _favText.text = ConvertGigaNumber.GetValue<string>(tweetDrawable.FavNumber);
                 }).Play<TweenerCore<int, int, NoOptions>>();
             }
+        }
+
+        public static void showDeleteModeAme(this PoketterView2D poke)
+        {
+            Traverse t = new Traverse(poke);
+            t.Field(nameof(PoketterView2D._Header)).GetValue<TMP_Text>().text = NgoEx.SystemTextFromType(ModdedSystemTextType.Poketter_AmeQuit.Swap(), SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
+            t.Field(nameof(PoketterView2D._Desc)).GetValue<TMP_Text>().text = NgoEx.SystemTextFromType(SystemTextType.Poketter_Deleteded_Description, SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
+            t.Field(nameof(PoketterView2D._scrollRect)).GetValue<ScrollRect>().gameObject.SetActive(false);
+            t.Field(nameof(PoketterView2D._Header)).GetValue<TMP_Text>().gameObject.SetActive(true);
+            t.Field(nameof(PoketterView2D._Desc)).GetValue<TMP_Text>().gameObject.SetActive(true);
         }
     }
 }

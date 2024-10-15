@@ -101,12 +101,34 @@ namespace NeedyXML
         public string Text;
     }
 
+    [XmlRoot(ElementName = "kuso")]
+    public class KusoRep
+    {
+
+        [XmlElement(ElementName = "bodyEN")]
+        public string BodyEN;
+
+        [XmlAttribute(AttributeName = "id")]
+        public string Id = "None";
+
+        [XmlText]
+        public string Text;
+    }
+
     [XmlRoot(ElementName = "tweets")]
     public class Tweets
     {
 
         [XmlElement(ElementName = "tweet")]
         public List<Tweet> Tweet;
+    }
+
+    [XmlRoot(ElementName = "kusos")]
+    public class KusoReps
+    {
+
+        [XmlElement(ElementName = "kuso")]
+        public List<KusoRep> KusoRep;
     }
 
     [XmlRoot(ElementName = "jine")]
@@ -298,7 +320,6 @@ namespace NeedyXML
     [XmlRoot(ElementName = "moddata")]
     public class ModData
     {
-
         [XmlElement(ElementName = "commands")]
         public Commands Commands;
 
@@ -307,6 +328,9 @@ namespace NeedyXML
 
         [XmlElement(ElementName = "tweets")]
         public Tweets Tweets;
+
+        [XmlElement(ElementName = "kusos")]
+        public KusoReps KusoReps;
 
         [XmlElement(ElementName = "jines")]
         public Jines Jines;
@@ -319,6 +343,8 @@ namespace NeedyXML
 
         [XmlElement(ElementName = "sysstrings")]
         public Sysstrings SysStrings;
+
+
 
 
         public Ending GetEndingByID(string id)

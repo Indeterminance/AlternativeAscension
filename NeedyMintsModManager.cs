@@ -25,29 +25,68 @@ using UnityEngine.EventSystems;
 using HarmonyLib;
 using System.Runtime.Remoting.Messaging;
 using System.Security.Policy;
+using UnityEngine.AddressableAssets;
+using System.Threading;
 
 namespace NeedyMintsOverdose
 {
-    public static class AngelWatchManager
+    public class NeedyMintsModManager : SingletonMonoBehaviour<NeedyMintsModManager>
     {
+        public override void Awake()
+        {
+            base.Awake();
+            NeedyMintsMod.log.LogMessage("Awoken manager!");
+            InitViewers();
+            isFollowerBG.Where((bool v) => v).Subscribe(delegate (bool _)
+            {
+                this.ChangeBG();
+            }).AddTo(base.gameObject);
+            viewing.Where((bool v) => v).Subscribe(delegate (bool _)
+            {
+                this.SpawnLoop();
+            }).AddTo(base.gameObject);
+        }
+
+        public void Start()
+        {
+            _windowParent = new Traverse(SingletonMonoBehaviour<WindowManager>.Instance).Field(nameof(WindowManager._windowparent)).GetValue<Transform>();
+        }
+
+        public void InitViewers()
+        {
+            Viewer = Addressables.LoadAssetAsync<GameObject>("ViewerContainer.prefab").WaitForCompletion();
+            Viewer.transform.GetChild(0).gameObject.AddComponent<Viewer>();
+        }
+
         // AMA stuff
-        public static int QUESTIONS = 20;
-        public static int QUESTIONS_ASKED = 0;
-        public static int PlannedAMALength = 120000;
-        public static List<Playing> playedQuestions = new List<Playing>();
-        public static bool deleteTime = false;
-        public static LiveComment deleteComment = null;
-        public static bool isAMA = false;
-        public static bool wasUncontrollable = false;
-        public static int oldSpeed = 1;
-        public static DateTime startTime;
-        public static int delta;
-        public static int StressDelta = 0;
+        public int QUESTIONS = 20;
+        public int QUESTIONS_ASKED = 0;
+        public int PlannedAMALength = 120000;
+        public List<Playing> playedQuestions = new List<Playing>();
+        public bool deleteTime = false;
+        public LiveComment deleteComment = null;
+        public bool isAMA = false;
+        public bool wasUncontrollable = false;
+        public int oldSpeed = 1;
+        public DateTime startTime;
+        public int delta;
+        public int StressDelta = 0;
 
-        public static TweenerCore<float, float, FloatOptions> anim;
-        public static List<IWindow> pills = new List<IWindow>();
+        public GameObject Viewer;
+        protected Transform _windowParent;
 
-        public static int GetStressDelta(string question)
+        public ReactiveProperty<bool> isAmeDelete = new ReactiveProperty<bool>(false);
+        public ReactiveProperty<bool> isFollowerBG = new ReactiveProperty<bool>(false);
+        public ReactiveProperty<bool> viewing = new ReactiveProperty<bool>(false);
+        public ReactiveProperty<Color> viewColor = new ReactiveProperty<Color>(Color.red);
+
+        public Sprite defaultBG;
+        public Sprite followerBG = Addressables.LoadAssetAsync<Sprite>("eyes_bg.png").WaitForCompletion();
+
+        public TweenerCore<float, float, FloatOptions> anim;
+        public List<IWindow> pills = new List<IWindow>();
+
+        public int GetAMAStressDelta(string question)
         {
             //NeedyMintsMod.log.LogMessage($"Getting delta for question \"{question}\"");
             int delta = 0;
@@ -77,7 +116,7 @@ namespace NeedyMintsOverdose
             return delta;
         }
 
-        public static List<Playing> GetAMAEnd()
+        public List<Playing> GetAMAEnd()
         {
             string prefix = ModdedAlphaType.FollowerAlpha.ToString() + "2_AMAFINISH_";
             string mid;
@@ -109,7 +148,7 @@ namespace NeedyMintsOverdose
             return list;
         }
 
-        public static void StartAMA(ref LiveScenario scenario)
+        public void StartAMA(ref LiveScenario scenario)
         {
             isAMA = true;
             startTime = DateTime.Now;
@@ -130,7 +169,7 @@ namespace NeedyMintsOverdose
             live.CommentLabel.text = text;
         }
 
-        public static void FinishAMA(ref LiveScenario scenario)
+        public void FinishAMA(ref LiveScenario scenario)
         {
             isAMA = false;
             Live live = new Traverse(scenario).Field(nameof(LiveScenario._Live)).GetValue() as Live;
@@ -152,6 +191,55 @@ namespace NeedyMintsOverdose
 
             NeedyMintsMod.log.LogMessage("FinishAMA finished");
             
+        }
+
+        public void ChangeBG()
+        {
+            GameObject mainPanel = GameObject.Find("MainPanel");
+            Sprite sprite = mainPanel.GetComponent<Image>().sprite;
+            if (sprite != followerBG) defaultBG = sprite;
+            mainPanel.GetComponent<Image>().sprite = followerBG;
+        }
+
+        public void CreateViewer()
+        {
+            RectTransform mainPanel = GameObject.Find("MainPanel").transform as RectTransform;
+            float maxX = mainPanel.rect.width / mainPanel.localScale.x;
+            float maxY = mainPanel.rect.height / mainPanel.localScale.y;
+            float num = UnityEngine.Random.Range(0, maxX);
+            float num2 = UnityEngine.Random.Range(0, maxY);
+
+            GameObject obj = null;
+            if (transform.childCount < 200)
+            {
+                obj = UnityEngine.Object.Instantiate(Viewer, new Vector2(num, num2), Quaternion.identity, transform);
+            }
+            else
+            {
+                bool foundObject = false;
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    obj = transform.GetChild(i).gameObject;
+                    if (!obj.activeSelf)
+                    {
+                        foundObject = true;
+                        break;
+                    }
+                }
+                if (!foundObject) return;
+            }
+            obj.transform.GetChild(0).position = new Vector2(num, num2);
+
+        }
+
+
+        public async UniTask SpawnLoop()
+        {
+            while (viewing.Value)
+            {
+                await UniTask.Delay(160);
+                CreateViewer();
+            }
         }
     }
 }

@@ -15,7 +15,6 @@ namespace NeedyMintsOverdose
         // Token: 0x06000FD5 RID: 4053 RVA: 0x00049280 File Offset: 0x00047480
         public override void Awake()
         {
-            DateTime dt = DateTime.Now;
             base.Awake();
             this._Live.isOiwai = false;
             this.defaultEffectType = EffectType.GoCrazy;

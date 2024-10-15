@@ -111,9 +111,9 @@ namespace NeedyMintsOverdose
             int day = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
             int dayPart = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayPart);
             int followers = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.Follower);
-            int visits = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.VisitedComiket.Swap());
+            int plotflag = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
 
-            return ((day >= 14 && day <= 16) && dayPart != 2 && followers >= 250000 && visits == 0);
+            return ((day >= 14 && day <= 16) && dayPart != 2 && followers >= 250000 && plotflag == (int)FollowerPlotFlagValues.None);
         }
 
         public static void BumpDayMax()
@@ -154,14 +154,16 @@ namespace NeedyMintsOverdose
         public enum FollowerPlotFlagValues
         {
             None = 0,
-            PostComiket = 1,
-            PostDepaz = 2,
-            StalkReveal = 3,
-            OdekakeBreak = 4,
-            AngelWatch = 5,
-            BadPassword = 6,
-            AngelDeath = 7,
-            AngelFuneral = 8,
+            VisitedComiket = 1,
+            PostComiket = 2,
+            PostDepaz = 3,
+            StalkReveal = 4,
+            OdekakeBreak = 5,
+            AngelWatch = 6,
+            BadPassword = 7,
+            AngelDeath = 8,
+            FinalOdekake = 9,
+            AngelFuneral = 10,
         }
     }
 }

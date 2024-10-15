@@ -7,7 +7,9 @@ using ngov3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Lifetime;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -63,7 +65,9 @@ namespace NeedyMintsOverdose
         public override void Awake()
         {
             base.Awake();
+            PostEffectManager.Instance.ResetShader();
             _Live.isOiwai = true;
+            _Live._HaisinSkip.interactable = false;
             defaultEffectType = EffectType.GoCrazy;
             title = NgoEx.TenTalk(pre+"STREAMNAME", _lang);
 
@@ -99,7 +103,7 @@ namespace NeedyMintsOverdose
             {
                 playing.Add(new Playing(false, false, " "));
                 //playing.Add(new Playing(true, "", delta: 10, color: ModdedSuperchatType.EVENT_DELAYFRAME.Swap()));
-                if (i % 20 == 0)
+                if (i % 40 == 0)
                 {
                     playing.Add(new Playing(SoundType.SE_chime_horror, false));
                 }
@@ -180,7 +184,7 @@ namespace NeedyMintsOverdose
                 new string[]{ "AMA_Q031", "stream_cho_reaction2",                                       "RESPONSE" },
                 };
 
-            while (AMAS.Count > 31 - AngelWatchManager.QUESTIONS)
+            while (AMAS.Count > 31 - SingletonMonoBehaviour<NeedyMintsModManager>.Instance.QUESTIONS)
             {
                 int index = UnityEngine.Random.Range(0, AMAS.Count);
                 string[] ama = AMAS[index];
@@ -215,7 +219,7 @@ namespace NeedyMintsOverdose
             kome("GAMING009");
             kome("GAMING010");
             kome("GAMING011");
-            tenTalk("GAMING009", "stream_cho_game_isolation", true);
+            tenTalk("GAMING009", "stream_cho_game_isolation1", true);
             kome("GAMING012");
             kome("GAMING013");
             tenTalk("GAMING010", "stream_cho_game_isolation3", true);
@@ -224,7 +228,7 @@ namespace NeedyMintsOverdose
             kome("GAMING016");
             kome("GAMING017");
             kome("GAMING018");
-            tenTalk("GAMING011", "stream_cho_game_isolation", true);
+            tenTalk("GAMING011", "stream_cho_game_isolation1", true);
             kome("GAMING019");
             tenTalk("GAMING012");
             kome("GAMING020");
@@ -238,7 +242,7 @@ namespace NeedyMintsOverdose
             kome("GAMING026");
             kome("GAMING027");
             kome("GAMING028");
-            tenTalk("GAMING015", "stream_cho_game_isolation", true);
+            tenTalk("GAMING015", "stream_cho_game_isolation1", true);
             kome("GAMING029");
             kome("GAMING030");
             tenTalk("GAMING016", "stream_cho_unrest", true);
@@ -254,46 +258,46 @@ namespace NeedyMintsOverdose
             //     - Fall asleep frames
             playing.Add(new Playing(false, "", StatusType.Tension, 1, 0, "", "", "", false, ModdedSuperchatType.JINE_INIT.Swap(), false, ""));
             playing.Add(new Playing(false, "", delta: 2000, color: ModdedSuperchatType.EVENT_DELAYFRAME.Swap()));
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE019, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE001, anim: "", idleAfter: false);
             kome("OVERDOSE001");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE020, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE002, anim: "", idleAfter: false);
             kome("OVERDOSE002");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE021, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE003, anim: "", idleAfter: false);
             kome("OVERDOSE003");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE022, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE004, anim: "", idleAfter: false);
             kome("OVERDOSE004");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE023, anim: "", idleAfter: false);
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE024, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE005, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE006, anim: "", idleAfter: false);
             kome("OVERDOSE005");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE025, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE007, anim: "", idleAfter: false);
             kome("OVERDOSE006");
-            sendChoiceJINE(ModdedJineType.ENDING_FOLLOWER_JINE026); //choice
-            verifyJINE(ModdedJineType.ENDING_FOLLOWER_JINE026);
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE027, anim: "", idleAfter: false);
+            sendChoiceJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE008); //choice
+            verifyJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE008);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE009, anim: "", idleAfter: false);
             kome("OVERDOSE007");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE028, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE010, anim: "", idleAfter: false);
             kome("OVERDOSE008");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE029, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE011, anim: "", idleAfter: false);
             kome("OVERDOSE009");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE030, anim: "", idleAfter: false);
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE031, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE012, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE013, anim: "", idleAfter: false);
             kome("OVERDOSE010");
             kome("OVERDOSE011");
-            sendChoiceJINE(ModdedJineType.ENDING_FOLLOWER_JINE032); // choice
+            sendChoiceJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE014); // choice
             kome("OVERDOSE012");
-            verifyJINE(ModdedJineType.ENDING_FOLLOWER_JINE032);
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE033, anim: "", idleAfter: false);
+            verifyJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE014);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE015, anim: "", idleAfter: false);
             kome("OVERDOSE013");
-            sendChoiceJINE(ModdedJineType.ENDING_FOLLOWER_JINE034); // choice!!!
-            verifyJINE(ModdedJineType.ENDING_FOLLOWER_JINE034);
+            sendChoiceJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE016); // choice!!!
+            verifyJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE016);
             kome("OVERDOSE014");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE035, anim: "", idleAfter: false);
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE036, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE017, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE018, anim: "", idleAfter: false);
             kome("OVERDOSE015");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE037, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE019, anim: "", idleAfter: false);
             kome("OVERDOSE016");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE038, anim: "", idleAfter: false);
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE039, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE020, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE021, anim: "", idleAfter: false);
             kome("OVERDOSE017");
             tenNoTalk("stream_cho_chance_blackout_back", true);
             playing.Add(new Playing(false, "", StatusType.Tension, 1, 0, "", "", "", false, ModdedSuperchatType.JINE_DESTROY.Swap(), false, ""));
@@ -305,13 +309,13 @@ namespace NeedyMintsOverdose
 
             // Overdose!
             for (int i = 0; i < 12; i++) playing.Add(new Playing(false, "", StatusType.Tension, 1, 0, "", "", "", false, ModdedSuperchatType.EVENT_CREATEDEPAZ.Swap(), false, ""));
-            playing.Add(SuperPlaying(false, SoundType.BGM_event_kincho.ToString(), isLoopAnim: true, color: ModdedSuperchatType.EVENT_MUSICCHANGE.Swap()));
+            playing.Add(new Playing(false, ModdedEffectType.Hazy.ToString(), delta: 100, AdditionalTension: 500, isLoopAnim: true, color: ModdedSuperchatType.EVENT_SHADER.Swap()));
             for (int i = 0; i < 12; i++) playing.Add(new Playing(false, "", StatusType.Tension, 1, 0, "", "", "", false, ModdedSuperchatType.EVENT_DOSE.Swap(), false, ""));
 
             playing.Add(new Playing(false, "", StatusType.Tension, 1, 0, "", "", "", false, ModdedSuperchatType.JINE_INIT.Swap(), false, ""));
             //playing.Add(new Playing(false, "OD3", delta: 80, AdditionalTension: 200, color: ModdedSuperchatType.EVENT_SHADER.Swap()));
             playing.Add(new Playing(false, "", delta: 5000, color: ModdedSuperchatType.EVENT_DELAYFRAME.Swap()));
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE040, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE022, anim: "", idleAfter: false);
             kome("OVERDOSE020");
             kome("OVERDOSE021");
             kome("OVERDOSE022");
@@ -343,8 +347,8 @@ namespace NeedyMintsOverdose
             kome("OVERDOSE034");
             kome("OVERDOSE035");
             playing.Add(new Playing(false, "", StatusType.Tension, 1, 0, "", "", "", false, ModdedSuperchatType.JINE_INIT.Swap(), false, ""));
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE041, anim: "", idleAfter: false);
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE042, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE023, anim: "", idleAfter: false);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE024, anim: "", idleAfter: false);
             playing.Add(new Playing(SoundType.SE_chime, false));
             playing.Add(new Playing(false, "", StatusType.Tension, 1, 0, "", "", "", false, ModdedSuperchatType.JINE_DESTROY.Swap(), false, ""));
             //playing.Add(SuperPlaying(false, "", color: ModdedSuperchatType.EVENT_SHADERWAIT.Swap()));
@@ -375,7 +379,7 @@ namespace NeedyMintsOverdose
             //    - Wake up in horror
             //    - Sleepy text
             //    - Horrified text expression
-            playing.Add(new Playing(SoundType.SE_chime_horror, false));
+            //playing.Add(new Playing(SoundType.SE_chime_horror, false));
             kome("NIGHTMARE001");
             kome("NIGHTMARE002");
             kome("NIGHTMARE003");
@@ -385,7 +389,7 @@ namespace NeedyMintsOverdose
             kome("NIGHTMARE006");
             kome("NIGHTMARE007");
             kome("NIGHTMARE008");
-            playing.Add(new Playing(SoundType.SE_chime_horror, false));
+            //playing.Add(new Playing(SoundType.SE_chime_horror, false));
             kome("NIGHTMARE009");
             kome("NIGHTMARE010");
             kome("NIGHTMARE011");
@@ -417,46 +421,46 @@ namespace NeedyMintsOverdose
             kome("NIGHTMARE030");
             kome("NIGHTMARE031");
             playing.Add(new Playing(false, "", StatusType.Tension, 1, 0, "", "", "", false, ModdedSuperchatType.JINE_INIT.Swap(), false, ""));
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE043);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE025);
             kome("NIGHTMARE032");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE044);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE026);
             kome("NIGHTMARE033");
             kome("NIGHTMARE034");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE045);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE027);
             kome("NIGHTMARE035");
             kome("NIGHTMARE036");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE046);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE028);
             kome("NIGHTMARE037");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE047);
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE048);
-            sendChoiceJINE(ModdedJineType.ENDING_FOLLOWER_JINE049);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE029);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE030);
+            sendChoiceJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE031);
             //kome("NIGHTMARE037");
-            verifyJINE(ModdedJineType.ENDING_FOLLOWER_JINE049);
+            verifyJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE031);
             tenTalk("NIGHTMARE007");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE050); // Break point 2
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE032); // Break point 2
             kome("NIGHTMARE038");
             kome("NIGHTMARE039");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE051);
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE052);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE033);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE034);
             kome("NIGHTMARE040");
             kome("NIGHTMARE041");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE053, "", false, false);
-            //verifyJINE(ModdedJineType.ENDING_FOLLOWER_JINE053);
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE054);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE035, "", false, false);
+            //verifyJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE053);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE036);
             tenTalk("NIGHTMARE008");
             kome("NIGHTMARE042");
             kome("NIGHTMARE043");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE055);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE037);
             playing.Add(new Playing(false, "", isLoopAnim: true, color: ModdedSuperchatType.EVENT_MUSICCHANGE.Swap()));
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE056);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE038);
             kome("NIGHTMARE044");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE057);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE039);
             kome("NIGHTMARE045");
-            sendJINE(ModdedJineType.ENDING_FOLLOWER_JINE058);
+            sendJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE040);
             kome("NIGHTMARE046"); // Break point 3
             kome("NIGHTMARE047");
-            sendChoiceJINE(ModdedJineType.ENDING_FOLLOWER_JINE059);
-            verifyJINE(ModdedJineType.ENDING_FOLLOWER_JINE059);
+            sendChoiceJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE041);
+            verifyJINE(ModdedJineType.ENDING_FOLLOWER_ANGELWATCH_JINE041);
             playing.Add(new Playing(false, EffectType.GoCrazy.ToString(), delta: 30, AdditionalTension: 0, isLoopAnim: false, color: ModdedSuperchatType.EVENT_SHADER.Swap()));
             playing.Add(new Playing(false, "", StatusType.Tension, 1, 0, "", "", "", false, ModdedSuperchatType.JINE_DESTROY.Swap(), false, ""));
             tenTalk("NIGHTMARE009");
@@ -479,7 +483,7 @@ namespace NeedyMintsOverdose
             }
 
             bool loopAnim = question != "AMA_Q003";
-            this.playing.Add(new Playing(false, NgoEx.Kome(pre + question, this._lang), StatusType.Stress, AngelWatchManager.GetStressDelta(question), 0, response, anim, "", loopAnim, ModdedSuperchatType.AMA_White.Swap(), false, ""));
+            this.playing.Add(new Playing(false, NgoEx.Kome(pre + question, this._lang), StatusType.Stress, SingletonMonoBehaviour<NeedyMintsModManager>.Instance.GetAMAStressDelta(question), 0, response, anim, "", loopAnim, ModdedSuperchatType.AMA_White.Swap(), false, ""));
         }
 
 
@@ -489,7 +493,7 @@ namespace NeedyMintsOverdose
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_mainloop_shuban, true);
             await base.StartScenario();
             this._Live.HaishinClean();
-            SingletonMonoBehaviour<EventManager>.Instance.AddEventQueue<Scenario_AfterAngelWatch>();
+            SingletonMonoBehaviour<EventManager>.Instance.AddEventQueue<Scenario_follower_day2_AfterAllNighterhaishin>();
         }
     }
 }

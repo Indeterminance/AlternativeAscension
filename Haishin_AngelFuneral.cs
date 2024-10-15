@@ -62,11 +62,11 @@ namespace NeedyMintsOverdose
         // Token: 0x06000FD6 RID: 4054 RVA: 0x0004A57C File Offset: 0x0004877C
         public override async UniTask StartScenario()
         {
-            AudioManager.Instance.StopBgm();
+            AudioManager.Instance.PlayBgmByType(SoundType.BGM_heartbeat, true);
             PostEffectManager.Instance.ResetShader();
             SingletonMonoBehaviour<EventManager>.Instance.nowEnding = (EndingType)(int)ModdedEndingType.Ending_Followers;
             await base.StartScenario();
-            SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_AfterAngelFuneral>();
+            SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_follower_day4_finale>();
 
         }
     }

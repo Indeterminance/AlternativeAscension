@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 namespace NeedyMintsOverdose
 {
-    public class Scenario_AfterAngelDeath : NgoEvent
+    public class Scenario_follower_day3_Afterhaishin : NgoEvent
     {
         // Token: 0x06001CF2 RID: 7410 RVA: 0x000843F9 File Offset: 0x000825F9
         public override void Awake()
@@ -27,6 +27,7 @@ namespace NeedyMintsOverdose
             GameObject.Find("MainPanel").GetComponent<Image>().color = Color.black;
             PostEffectManager.Instance.SetShaderWeight(0.5f, (EffectType)(int)ModdedEffectType.Vengeful);
             SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.AngelFuneral);
+            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0.4f);
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
             //await UniTask.Delay(Constants.MIDDLE);

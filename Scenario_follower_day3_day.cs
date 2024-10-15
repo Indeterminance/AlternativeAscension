@@ -22,7 +22,7 @@ using DG.Tweening.Plugins.Options;
 
 namespace NeedyMintsOverdose
 {
-    public class Scenario_Hacked : NgoEvent
+    public class Scenario_follower_day3_day : NgoEvent
     {
         private LoginHacked loginComp;
         public override void Awake()
@@ -33,6 +33,7 @@ namespace NeedyMintsOverdose
         // TODO: WHY ISN'T THIS BEING RUN????
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
+            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
             await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             base.startEvent(cancellationToken);
             SingletonMonoBehaviour<StatusManager>.Instance.timePassing(1);
@@ -42,15 +43,15 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<WindowManager>.Instance.CleanAll();
 
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE099.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE100.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE001.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE002.Swap());
             SetupLogin();
             await NgoEvent.DelaySkippable(800);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE101.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE003.Swap());
             await NgoEvent.DelaySkippable(1000);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE102.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE103.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE104.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE004.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE005.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE006.Swap());
             loginComp._input.interactable = true;
         }
 
@@ -71,9 +72,9 @@ namespace NeedyMintsOverdose
             PostEffectManager.Instance.SetShader(EffectType.OD);
             PostEffectManager.Instance.SetShaderWeight(0.01f);
             await UniTask.Delay(Constants.FAST);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE105.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE106.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE107.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE007.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE008.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE009.Swap());
             await UniTask.Delay(Constants.FAST);
         }
 
@@ -82,9 +83,9 @@ namespace NeedyMintsOverdose
             PostEffectManager.Instance.SetShader(EffectType.OD);
             PostEffectManager.Instance.SetShaderWeight(0.03f);
             await UniTask.Delay(Constants.FAST);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE108.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE109.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE110.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE010.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE011.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE012.Swap());
             
             await UniTask.Delay(Constants.FAST);
             IWindow login = SingletonMonoBehaviour<WindowManager>.Instance.GetWindowFromApp((AppType)(int)ModdedAppType.Login_Hacked);
@@ -103,7 +104,6 @@ namespace NeedyMintsOverdose
             await UniTask.Delay(60);
             login.Touched();
             ExecuteEvents.Execute(loginComp._login.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
-            loginComp._input.interactable = false;
         }
 
         public async UniTask attempt3(CancellationToken cancellationToken = default(CancellationToken))
@@ -113,21 +113,21 @@ namespace NeedyMintsOverdose
             PostEffectManager.Instance.SetShader(EffectType.Kakusei);
             PostEffectManager.Instance.SetShaderWeight(0.1f);
             await UniTask.Delay(Constants.FAST);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE111.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE112.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE113.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE114.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE115.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE116.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE117.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE118.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE119.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE120.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE013.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE014.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE015.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE016.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE017.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE018.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE019.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE020.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE021.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE022.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
             {
-                ModdedJineType.ENDING_FOLLOWER_JINE121.Swap()
+                ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE023.Swap()
             });
-            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_JINE121.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
+            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE023.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
             {
                 this.attempt3_2();
             }).AddTo(this.compositeDisposable);
@@ -154,12 +154,12 @@ namespace NeedyMintsOverdose
             }, 0.03f, 2).SetEase(Ease.InSine).Play();
             await UniTask.Delay(2000);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine).Uncloseable();
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE122.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE024.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
             {
-                ModdedJineType.ENDING_FOLLOWER_JINE123.Swap()
+                ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE025.Swap()
             });
-            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_JINE123.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
+            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE025.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
             {
                 this.attempt3_3();
             }).AddTo(this.compositeDisposable);
@@ -168,13 +168,13 @@ namespace NeedyMintsOverdose
         public async UniTask attempt3_3(CancellationToken cancellationToken = default(CancellationToken))
         {
             await NgoEvent.DelaySkippable(Constants.FAST);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE124.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE125.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE026.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE027.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
             {
-                ModdedJineType.ENDING_FOLLOWER_JINE126.Swap()
+                ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE028.Swap()
             });
-            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_JINE126.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
+            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE028.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
             {
                 this.attempt3_4();
             }).AddTo(this.compositeDisposable);
@@ -183,13 +183,13 @@ namespace NeedyMintsOverdose
         public async UniTask attempt3_4(CancellationToken cancellationToken = default(CancellationToken))
         {
             await NgoEvent.DelaySkippable(Constants.FAST);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE127.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE128.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE029.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE030.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
             {
-                ModdedJineType.ENDING_FOLLOWER_JINE129.Swap()
+                ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE031.Swap()
             });
-            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_JINE129.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
+            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE031.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
             {
                 this.attempt3_5();
             }).AddTo(this.compositeDisposable);
@@ -198,12 +198,12 @@ namespace NeedyMintsOverdose
         public async UniTask attempt3_5(CancellationToken cancellationToken = default(CancellationToken))
         {
             await NgoEvent.DelaySkippable(Constants.FAST);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE130.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE032.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
             {
-                ModdedJineType.ENDING_FOLLOWER_JINE131.Swap()
+                ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE033.Swap()
             });
-            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_JINE131.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
+            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE033.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
             {
                 this.attempt3_6();
             }).AddTo(this.compositeDisposable);
@@ -212,12 +212,12 @@ namespace NeedyMintsOverdose
         public async UniTask attempt3_6(CancellationToken cancellationToken = default(CancellationToken))
         {
             await NgoEvent.DelaySkippable(Constants.FAST);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE132.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE034.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
             {
-                ModdedJineType.ENDING_FOLLOWER_JINE133.Swap()
+                ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE035.Swap()
             });
-            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_JINE133.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
+            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE035.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
             {
                 this.attempt3_7();
             }).AddTo(this.compositeDisposable);
@@ -226,13 +226,13 @@ namespace NeedyMintsOverdose
         public async UniTask attempt3_7(CancellationToken cancellationToken = default(CancellationToken))
         {
             await NgoEvent.DelaySkippable(Constants.FAST);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE134.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE135.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE036.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE037.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
             {
-                ModdedJineType.ENDING_FOLLOWER_JINE136.Swap()
+                ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE038.Swap()
             });
-            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_JINE136.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
+            SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE038.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
             {
                 this.attempt3_8();
             }).AddTo(this.compositeDisposable);
@@ -241,8 +241,11 @@ namespace NeedyMintsOverdose
         public async UniTask attempt3_8(CancellationToken cancellationToken = default(CancellationToken))
         {
             await NgoEvent.DelaySkippable(Constants.FAST);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE137.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE138.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE039.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE040.Swap());
+
+            // Queue the event ahead of time, just in case
+            loginComp.loginActions.Enqueue(new Func<UniTask>(async () => { await attempt4(); }));
 
             IWindow login = SingletonMonoBehaviour<WindowManager>.Instance.GetWindowFromApp((AppType)(int)ModdedAppType.Login_Hacked);
             login.Touched();
@@ -252,13 +255,12 @@ namespace NeedyMintsOverdose
                 await UniTask.Delay(60);
                 loginComp._input.text = input;
                 //await loginComp._input.ObserveEveryValueChanged((TMP_InputField t) => t.text, FrameCountType.Update, false);
-            }
+            } 
             await UniTask.Delay(1380);
             login.Touched();
             ExecuteEvents.Execute(loginComp._login.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerDownHandler);
             await UniTask.Delay(60);
             login.Touched();
-            loginComp.loginActions.Enqueue(new Func<UniTask>(async () => { await attempt4(); }));
             ExecuteEvents.Execute(loginComp._login.gameObject, new PointerEventData(EventSystem.current), ExecuteEvents.pointerClickHandler);
         }
 
@@ -270,15 +272,21 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Webcam);
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp((AppType)(int)ModdedAppType.Login_Hacked);
             await UniTask.Delay(2000);
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE139.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE140.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE141.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE142.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_JINE143.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE041.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE042.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE043.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE044.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE045.Swap());
             await NgoEvent.DelaySkippable(Constants.MIDDLE);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Poketter);
-            SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.BADPASSWORD_TWEET001.Swap());
+            SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.BADPASSWORD_TWEET001.Swap(), new List<ModdedKusoRepType>
+            {
+                ModdedKusoRepType.BADPASSWORD_TWEET001_KUSO001,
+                ModdedKusoRepType.BADPASSWORD_TWEET001_KUSO002,
+                ModdedKusoRepType.BADPASSWORD_TWEET001_KUSO003,
+                ModdedKusoRepType.BADPASSWORD_TWEET001_KUSO004,
+            }.Swap());
             SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.BADPASSWORD_TWEET002.Swap());
             BumpDayMax();
             SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.AngelDeath);

@@ -3,6 +3,7 @@ using ngov3;
 using System.Threading;
 using NeedyEnums;
 using static NeedyMintsOverdose.MintyOverdosePatches;
+using System.Collections.Generic;
 
 namespace NeedyMintsOverdose
 {
@@ -20,13 +21,19 @@ namespace NeedyMintsOverdose
             base.startEvent(cancellationToken, true);
             await base.GoOut();
             StatusManager sm = SingletonMonoBehaviour<StatusManager>.Instance;
-            bool firstTime = sm.GetStatus((StatusType)ModdedStatusType.VisitedComiket) == 0;
+            bool firstTime = sm.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.None;
             if (firstTime)
             {
-                SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.TOKYO_TWEET001.Swap(), null, null);
+                SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.TOKYO_TWEET001.Swap(), new List<ModdedKusoRepType>
+                {
+                    ModdedKusoRepType.TOKYO_TWEET001_KUSO001,
+                    ModdedKusoRepType.TOKYO_TWEET001_KUSO002,
+                    ModdedKusoRepType.TOKYO_TWEET001_KUSO003,
+                    ModdedKusoRepType.TOKYO_TWEET001_KUSO004,
+                }.Swap(), null);
                 SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.TOKYO_TWEET002.Swap(), null, null);
             }
-            await sm.UpdateStatus((StatusType)ModdedStatusType.VisitedComiket, 1);
+            await sm.UpdateStatus(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.VisitedComiket);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Webcam, true);
             await base.BackFromOdekake();
             SingletonMonoBehaviour<JineManager>.Instance.StartStamp();
