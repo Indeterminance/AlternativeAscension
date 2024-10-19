@@ -96,6 +96,7 @@ namespace NeedyEnums
         OdekakeStressMultiplier,
         OdekakeCountdown,
         AMAStatus,
+        AMAStress,
     }
     public enum ModdedEndingType
     {
@@ -384,6 +385,7 @@ namespace NeedyEnums
         OdekakePanic4,
         OdekakeBreak,
         Internet2chStalk,
+        OdekakeFuneral
     }
 
     public enum ModdedCmdType
@@ -400,6 +402,7 @@ namespace NeedyEnums
         OdekakePanic4,
         OdekakeBreak,
         Internet2chStalk,
+        OdekakeFuneral
     }
 
     public enum ModdedCommandType
@@ -415,6 +418,7 @@ namespace NeedyEnums
         System_AMARead,
         Login_BadPassword,
         System_InternetYamero,
+        System_RealYamero,
         Poketter_AmeQuit
     }
 
@@ -518,6 +522,21 @@ namespace NeedyEnums
         BADPASSWORD_TWEET001_KUSO002,
         BADPASSWORD_TWEET001_KUSO003,
         BADPASSWORD_TWEET001_KUSO004,
+        DEADKANGEL_TWEET001_KUSO001,
+        DEADKANGEL_TWEET001_KUSO002,
+        DEADKANGEL_TWEET001_KUSO003,
+        DEADKANGEL_TWEET001_KUSO004,
+        DEADKANGEL_TWEET001_KUSO005,
+        DEADKANGEL_TWEET001_KUSO006,
+        DEADKANGEL_TWEET001_KUSO007,
+        DEADKANGEL_TWEET002_KUSO001,
+        DEADKANGEL_TWEET002_KUSO002,
+        DEADKANGEL_TWEET002_KUSO003,
+        DEADKANGEL_TWEET002_KUSO004,
+        DEADKANGEL_TWEET002_KUSO005,
+        DEADKANGEL_TWEET003_KUSO001,
+        DEADKANGEL_TWEET003_KUSO002,
+        DEADKANGEL_TWEET003_KUSO003,
     }
 
     public enum ModdedAlphaType
@@ -704,7 +723,7 @@ namespace NeedyEnums
 
     public enum ModdedAppType
     {
-        PillDaypass_Follower = 91,
+        PillDaypass_Follower = 1000,
         Login_Hacked,
         Follower_taiki,
         AltPoketter

@@ -80,6 +80,18 @@ namespace NeedyMintsOverdose
             YamiDelta = 15,
         };
 
+        public static CmdMaster.Param OdekakeFuneralParam = new CmdMaster.Param()
+        {
+            ParentAct = "",
+            Id = "OdekakeFuneral",
+            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeFuneral").Name.BodyEN,
+            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeFuneral").Desc.BodyEN,
+            PassingTime = 0,
+            FavorDelta = 0,
+            StressDelta = 0,
+            YamiDelta = 0,
+        };
+
         public static CmdMaster.Param Internet2chStalkParam = new CmdMaster.Param()
         {
             ParentAct = "Internet2ch",
@@ -192,6 +204,12 @@ namespace NeedyMintsOverdose
         {
             Id = "OdekakeBreak",
             TitleEn = "..."
+        };
+
+        public static ActMaster.Param OdekakeFuneralParam = new ActMaster.Param()
+        {
+            Id = "OdekakeFuneral",
+            TitleEn = "The end"
         };
 
     }

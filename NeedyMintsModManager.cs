@@ -71,6 +71,7 @@ namespace NeedyMintsOverdose
         public DateTime startTime;
         public int delta;
         public int StressDelta = 0;
+        public int overnightStreamStartDay = 0;
 
         public GameObject Viewer;
         protected Transform _windowParent;
@@ -78,10 +79,14 @@ namespace NeedyMintsOverdose
         public ReactiveProperty<bool> isAmeDelete = new ReactiveProperty<bool>(false);
         public ReactiveProperty<bool> isFollowerBG = new ReactiveProperty<bool>(false);
         public ReactiveProperty<bool> viewing = new ReactiveProperty<bool>(false);
+        public ReactiveProperty<int> viewInterval = new ReactiveProperty<int>(160);
         public ReactiveProperty<Color> viewColor = new ReactiveProperty<Color>(Color.red);
 
         public Sprite defaultBG;
         public Sprite followerBG = Addressables.LoadAssetAsync<Sprite>("eyes_bg.png").WaitForCompletion();
+
+        public Sprite followerEndBG = Addressables.LoadAssetAsync<Sprite>("stream_ame_follower_end_bg.png").WaitForCompletion();
+        public Sprite followerDarkEndBG = Addressables.LoadAssetAsync<Sprite>("stream_ame_follower_end_dark_bg.png").WaitForCompletion();
 
         public TweenerCore<float, float, FloatOptions> anim;
         public List<IWindow> pills = new List<IWindow>();
@@ -120,7 +125,8 @@ namespace NeedyMintsOverdose
         {
             string prefix = ModdedAlphaType.FollowerAlpha.ToString() + "2_AMAFINISH_";
             string mid;
-            if (StressDelta > 15)
+            SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(ModdedStatusType.AMAStress.Swap(), StressDelta);
+            if (StressDelta >= 15)
             {
                 mid = "BAD";
             }
@@ -210,7 +216,7 @@ namespace NeedyMintsOverdose
             float num2 = UnityEngine.Random.Range(0, maxY);
 
             GameObject obj = null;
-            if (transform.childCount < 200)
+            if (transform.childCount < 300)
             {
                 obj = UnityEngine.Object.Instantiate(Viewer, new Vector2(num, num2), Quaternion.identity, transform);
             }
@@ -237,7 +243,7 @@ namespace NeedyMintsOverdose
         {
             while (viewing.Value)
             {
-                await UniTask.Delay(160);
+                await UniTask.Delay(viewInterval.Value);
                 CreateViewer();
             }
         }

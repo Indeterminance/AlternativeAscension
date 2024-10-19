@@ -35,9 +35,30 @@ namespace NeedyMintsOverdose
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_wind, true);
             IWindow tweeter = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter);
             tweeter.Uncloseable();
-            SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusorepsAmeBreak(ModdedTweetType.DEADKANGEL_TWEET001.Swap());
-            SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusorepsAmeBreak(ModdedTweetType.DEADKANGEL_TWEET002.Swap());
-            SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusorepsAmeBreak(ModdedTweetType.DEADKANGEL_TWEET003.Swap());
+            SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusorepsAmeBreak(ModdedTweetType.DEADKANGEL_TWEET001.Swap(), new List<ModdedKusoRepType>
+            {
+                ModdedKusoRepType.DEADKANGEL_TWEET001_KUSO001,
+                ModdedKusoRepType.DEADKANGEL_TWEET001_KUSO002,
+                ModdedKusoRepType.DEADKANGEL_TWEET001_KUSO003,
+                ModdedKusoRepType.DEADKANGEL_TWEET001_KUSO004,
+                ModdedKusoRepType.DEADKANGEL_TWEET001_KUSO005,
+                ModdedKusoRepType.DEADKANGEL_TWEET001_KUSO006,
+                ModdedKusoRepType.DEADKANGEL_TWEET001_KUSO007,
+            }.Swap(), null);
+            SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusorepsAmeBreak(ModdedTweetType.DEADKANGEL_TWEET002.Swap(), new List<ModdedKusoRepType>
+            {
+                ModdedKusoRepType.DEADKANGEL_TWEET002_KUSO001,
+                ModdedKusoRepType.DEADKANGEL_TWEET002_KUSO002,
+                ModdedKusoRepType.DEADKANGEL_TWEET002_KUSO003,
+                ModdedKusoRepType.DEADKANGEL_TWEET002_KUSO004,
+                ModdedKusoRepType.DEADKANGEL_TWEET002_KUSO005
+            }.Swap(), null);
+            SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusorepsAmeBreak(ModdedTweetType.DEADKANGEL_TWEET003.Swap(), new List<ModdedKusoRepType>
+            {
+                ModdedKusoRepType.DEADKANGEL_TWEET003_KUSO001,
+                ModdedKusoRepType.DEADKANGEL_TWEET003_KUSO002,
+                ModdedKusoRepType.DEADKANGEL_TWEET003_KUSO003
+            }.Swap(), null);
             SingletonMonoBehaviour<NotificationManager>.Instance.AddDayPassingNotifier();
             base.endEvent();
         }

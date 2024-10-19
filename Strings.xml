@@ -57,12 +57,13 @@
         <bodyEN>dont make me do this, p-chan...</bodyEN>
       </description>
     </command>
-    <command id="OdekakeFollower">
+    <command id="OdekakeFuneral">
       <label>
-        <bodyEN>The end</bodyEN>
+        <bodyEN>END</bodyEN>
       </label>
       <description>
-        <bodyEN>i'm going to show them, p-chan. just watch me</bodyEN>
+        <bodyEN>I'm ██████, but you can
+call me ███!</bodyEN>
       </description>
     </command>
     <command id="Internet2chStalk">
@@ -289,6 +290,51 @@ isn't always the best idea.</osimai>
     <kuso id="BADPASSWORD_TWEET001_KUSO004">
       <bodyEN>OUR ANGEL RETURNS!!!!!!!</bodyEN>
     </kuso>
+    <kuso id="DEADKANGEL_TWEET001_KUSO001">
+      <bodyEN>istg if you quit im gonna kms</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET001_KUSO002">
+      <bodyEN>NOOOOOO MY ANGELLL</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET001_KUSO003">
+      <bodyEN>welp, there it is. sooner than expected too</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET001_KUSO004">
+      <bodyEN>Best of luck with your future endeavors, KAngel!</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET001_KUSO005">
+      <bodyEN>fucking whore quits at the first bit of drama in her career, the state of metube these days</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET001_KUSO006">
+      <bodyEN>omg i checked ur priv and… ur such a bitch????</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET001_KUSO007">
+      <bodyEN>I spent SuperChats on you...</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET002_KUSO001">
+      <bodyEN>thats a threat, calling the police!</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET002_KUSO002">
+      <bodyEN>Oh wow, I looked through your posts and... honestly, I think I love you more than KAngel</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET002_KUSO003">
+      <bodyEN>Omg you're such a horrible person, can't believe the things you've been saying behind our backs.</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET002_KUSO004">
+      <bodyEN>wow, being cute really is your only redeeming quality</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET002_KUSO005">
+      <bodyEN>kill yourself</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET003_KUSO001">
+      <bodyEN>Don't worry guys, she'll be back the next day! She's just milking the drama, like every other MeTuber who's running out of content.</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET003_KUSO002">
+      <bodyEN>dont u dare quit on us kangle</bodyEN>
+    </kuso>
+    <kuso id="DEADKANGEL_TWEET003_KUSO003">
+      <bodyEN>but i loved you kangel...</bodyEN>
+    </kuso>
   </kusos>
   <jines>
     <jine id="EVENT_COMIKETALERT001" speaker="ame">
@@ -297,7 +343,7 @@ isn't always the best idea.</osimai>
     <jine id="EVENT_COMIKETALERT002" speaker="ame">
       <bodyEN>don't forget, we gotta tell the nerds all about it tonight!</bodyEN>
     </jine>
-    <jine id="ENDING_SLEEPY_JINE002" speaker="ame">
+    <jine id="ENDING_SLEEPY_JINE001" speaker="ame">
       <bodyEN>i had a dream</bodyEN>
     </jine>
     <jine id="ENDING_SLEEPY_JINE003" speaker="ame">
@@ -2434,6 +2480,9 @@ Ask me anything!!!</bodyEN>
     </string>
     <string id="System_InternetYamero">
       <bodyEN>Quit the internet.</bodyEN>
+    </string>
+    <string id="System_RealYamero">
+      <bodyEN>Quit.</bodyEN>
     </string>
     <string id="System_ComiketStreamUpcoming">
       <bodyEN>No way, I gotta let the nerds know

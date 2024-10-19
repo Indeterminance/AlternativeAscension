@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action_Internet2chStalk.cs" />
+    <Compile Include="OdekakeFuneral.cs" />
     <Compile Include="Action_OdekakeBreak.cs" />
     <Compile Include="Event_MV_kowai.cs" />
     <Compile Include="Event_ComiketAlert.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Viewer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Licencing.txt" />
     <Content Include="Strings.xml" />
   </ItemGroup>
   <ItemGroup>

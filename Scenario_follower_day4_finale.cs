@@ -28,8 +28,10 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<EventManager>.Instance.nowEnding = (EndingType)(int)ModdedEndingType.Ending_Followers;
             IWindow poke = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter);
             poke.Uncloseable();
+            poke.GameObjectTransform.position = new Vector2(-10, 5);
             await UniTask.Delay(1000);
             IWindow altPoke = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow((AppType)(int)ModdedAppType.AltPoketter);
+            poke.GameObjectTransform.position = new Vector2(10, -5);
             altPoke.Uncloseable();
             //altPoke.nakamiApp.transform.position = poke.nakamiApp.transform.position + new Vector3(10, 10);
             NeedyMintsMod.log.LogMessage($"old pos: {poke.nakamiApp.transform.position}");

@@ -64,13 +64,20 @@ namespace NeedyMintsOverdose
                 switch (odekakesLeft)
                 {
                     case 2:
-                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE1_TWEET001.Swap(), new List<ModdedKusoRepType>
+                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE1_TWEET001.Swap(), null, null);
+                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE1_TWEET002.Swap(), null, null);
+                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE1_TWEET003.Swap(), null, null);
+                        AudioManager.Instance.PlaySeByType(SoundType.SE_chime);
+                        break;
+                    case 1:
+                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE2_TWEET001.Swap(), new List<ModdedKusoRepType>
                         {
                             ModdedKusoRepType.STALKODEKAKE2_TWEET001_KUSO001,
                             ModdedKusoRepType.STALKODEKAKE2_TWEET001_KUSO002,
                             ModdedKusoRepType.STALKODEKAKE2_TWEET001_KUSO003,
                         }.Swap(), null);
-                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE1_TWEET002.Swap(), new List<ModdedKusoRepType>
+                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE2_TWEET002.Swap(), null, null);
+                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE2_TWEET003.Swap(), new List<ModdedKusoRepType>
                         {
                             ModdedKusoRepType.STALKODEKAKE2_TWEET003_KUSO001,
                             ModdedKusoRepType.STALKODEKAKE2_TWEET003_KUSO002,
@@ -80,13 +87,6 @@ namespace NeedyMintsOverdose
                             ModdedKusoRepType.STALKODEKAKE2_TWEET003_KUSO006,
                             ModdedKusoRepType.STALKODEKAKE2_TWEET003_KUSO007,
                         }.Swap(), null);
-                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE1_TWEET003.Swap(), null, null);
-                        AudioManager.Instance.PlaySeByType(SoundType.SE_chime);
-                        break;
-                    case 1:
-                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE2_TWEET001.Swap(), null, null);
-                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE2_TWEET002.Swap(), null, null);
-                        SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.STALKODEKAKE2_TWEET003.Swap(), null, null);
                         AudioManager.Instance.PlaySeByType(SoundType.SE_chime);
                         //SingletonMonoBehaviour<EventManager>.Instance.AddEventQueue<TimePassing1>();
                         SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.OdekakeBreak);
@@ -192,27 +192,19 @@ namespace NeedyMintsOverdose
             }
         }
 
-        public static void PanicQuitOdekake(Shortcut shortcut)
-        {
-            FieldInfo shortcutInfo = typeof(Shortcut).GetField(nameof(Shortcut._shortcut), BindingFlags.NonPublic | BindingFlags.Instance);
-            FieldInfo tooltipInfo = typeof(Shortcut).GetField(nameof(Shortcut._tooltip), BindingFlags.NonPublic | BindingFlags.Instance);
-
-            Button oldButton = shortcutInfo.GetValue(shortcut) as Button;
-            oldButton.interactable = false;
-            shortcutInfo.SetValue(shortcut, oldButton);
-
-            TooltipCaller oldTooltip = tooltipInfo.GetValue(shortcut) as TooltipCaller;
-            oldTooltip.isShowTooltip = true;
-            oldTooltip.type = TooltipType.Tooltip_Angel;
-            tooltipInfo.SetValue(shortcut, oldTooltip);
-
-            //SingletonMonoBehaviour<WindowManager>.Instance.GetWindowFromApp(AppType.GoOut).Close();
-        }
-
-
         // TODO: Investigate why the odekake shortcut doesn't instantiate properly
-        public static void PanicQuitOdekakeShortcut(this Shortcut shortcut, UnityEngine.UI.Button button)
+        public static bool ShortcutStartAlternate(this Shortcut shortcut)
         {
+            if (SingletonMonoBehaviour<StatusManager>.Instance == null) return true;
+
+            // Get flags
+            bool isOdekake = shortcut.appType == AppType.GoOut;
+            NeedyMintsMod.log.LogMessage("BLABLABLA");
+            bool angelFuneral = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelFuneral;
+
+            // Allow vanilla functions to run if not Odekake or funeral
+            if (!isOdekake && !angelFuneral) return true;
+
             // Get private fields
             Button _shortcut = new Traverse(shortcut).Field(nameof(Shortcut._shortcut)).GetValue<Button>();
             TooltipCaller _tooltip = new Traverse(shortcut).Field(nameof(Shortcut._tooltip)).GetValue<TooltipCaller>();
@@ -236,21 +228,12 @@ namespace NeedyMintsOverdose
 
             
 
-            
-
             // Redo click listeners
             _shortcut.onClick.RemoveAllListeners();
-            _shortcut.onClick.AddListener(delegate
-            {
-                // Don't click if the odekake countdown has ticked to its limit!
-                if (shortcut.appType != AppType.GoOut && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelDeath)
-                {
-                    _shortcut.interactable = false;
-                    _tooltip.isShowTooltip = false;
-                    return;
-                }
 
-                else if (shortcut.appType == AppType.GoOut && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0)
+            if (isOdekake) _shortcut.onClick.AddListener(delegate
+            {
+                if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0 && !angelFuneral)
                 {
                     _shortcut.interactable = false;
                     _tooltip.isShowTooltip = true;
@@ -258,17 +241,30 @@ namespace NeedyMintsOverdose
                     return;
                 }
 
-                SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(shortcut.appType, true);
+                IWindow w = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(shortcut.appType, true);
+
+                if (angelFuneral)
+                {
+                    _shortcut.interactable = false;
+                    _tooltip.isShowTooltip = false;
+                    w.Uncloseable();
+                    w.UnMovable();
+                    //w.GameObjectTransform.position = Vector3.zero;
+                }
                 return;
             });
 
             // Same thing as the click event, but we're gonna run it once beforehand too
-            if (shortcut.appType == AppType.GoOut && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0)
+            if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0 && isOdekake && !angelFuneral)
             {
                 _shortcut.interactable = false;
                 _tooltip.isShowTooltip = true;
                 _tooltip.type = TooltipType.Tooltip_Angel;
-                return;
+            }
+            else if (angelFuneral && !isOdekake)
+            {
+                _shortcut.interactable = false;
+                _tooltip.isShowTooltip = false;
             }
             
             // Add the shortcut label
@@ -279,6 +275,7 @@ namespace NeedyMintsOverdose
                 SetTooltipText.Invoke(shortcut, new object[] { tt });
             }).AddTo(_shortcut);
             AddLabel.Invoke(shortcut, null);
+            return false;
         }
 
         public static void DayPassingStartAlternate(this ngov3.Effect.DayPassing dayPass)

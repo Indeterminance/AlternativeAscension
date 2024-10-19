@@ -89,7 +89,7 @@ namespace NeedyMintsOverdose
             }
             SingletonMonoBehaviour<WindowManager>.Instance.CleanAll();
             PostEffectManager.Instance.SetShader(EffectType.BloomLight);
-            PostEffectManager.Instance.SetShaderWeight(0.3f);
+            PostEffectManager.Instance.SetShaderWeight(0.1f);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Bank);
             AudioManager.Instance.PlayBgmByType(SoundType.BANK_bank, false);
             await UniTask.Delay(6000, false, PlayerLoopTiming.Update, default(CancellationToken), false);

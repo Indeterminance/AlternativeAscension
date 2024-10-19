@@ -108,7 +108,7 @@ namespace NeedyMintsOverdose
                     playing.Add(new Playing(SoundType.SE_chime_horror, false));
                 }
             }
-            playing.Add(new Playing(false, "RED", color: ModdedSuperchatType.EVENT_MAINPANELCOLOR.Swap()));
+            playing.Add(new Playing(false, "RED_EYES", color: ModdedSuperchatType.EVENT_MAINPANELCOLOR.Swap()));
 
             // Pain
             if (!SKIPNIGHTMARE) Nightmare();
@@ -483,17 +483,24 @@ namespace NeedyMintsOverdose
             }
 
             bool loopAnim = question != "AMA_Q003";
-            this.playing.Add(new Playing(false, NgoEx.Kome(pre + question, this._lang), StatusType.Stress, SingletonMonoBehaviour<NeedyMintsModManager>.Instance.GetAMAStressDelta(question), 0, response, anim, "", loopAnim, ModdedSuperchatType.AMA_White.Swap(), false, ""));
+            this.playing.Add(new Playing(false, NgoEx.Kome(pre + question, this._lang), ModdedStatusType.AMAStress.Swap(), SingletonMonoBehaviour<NeedyMintsModManager>.Instance.GetAMAStressDelta(question), 0, response, anim, "", loopAnim, ModdedSuperchatType.AMA_White.Swap(), false, ""));
         }
 
 
         // Token: 0x06000FD6 RID: 4054 RVA: 0x0004A57C File Offset: 0x0004877C
         public override async UniTask StartScenario()
         {
+            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.overnightStreamStartDay = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_mainloop_shuban, true);
             await base.StartScenario();
             this._Live.HaishinClean();
             SingletonMonoBehaviour<EventManager>.Instance.AddEventQueue<Scenario_follower_day2_AfterAllNighterhaishin>();
+        }
+
+        public new async UniTask EndScenario()
+        {
+            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.overnightStreamStartDay = 0;
+            await base.EndScenario();
         }
     }
 }

@@ -15,6 +15,7 @@ namespace NeedyMintsOverdose
 {
     public class Haishin_AngelFuneral : LiveScenario
     {
+        bool dark;
         // Token: 0x06000FD5 RID: 4053 RVA: 0x00049280 File Offset: 0x00047480
         public override void Awake()
         {
@@ -30,6 +31,8 @@ namespace NeedyMintsOverdose
             string pre = ModdedAlphaType.FollowerAlpha.ToString()+"4_";
             this.title = NgoEx.TenTalk(pre+"STREAMNAME", this._lang);
             Action<string, string> tenTalk = new Action<string, string>((name, anim) => this.playing.Add(new Playing(true, NgoEx.TenTalk(pre + name, this._lang), StatusType.Tension, 1, 0, "", "", anim, true, SuperchatType.White, false, "")));
+            
+            
             tenTalk("FAULT001", "stream_ame_idle_anxiety_c");
             tenTalk("FAULT002", "");
             tenTalk("FAULT003", "stream_ame_idle_iraira_c");
@@ -51,9 +54,20 @@ namespace NeedyMintsOverdose
             tenTalk("FAULT019", "");
             tenTalk("FAULT020", "");
             tenTalk("FAULT021", "");
-            tenTalk("FAULT022", "stream_ame_idle_iraira_c");
-            tenTalk("FAULT023", "");
-            playing.Add(SuperPlaying(true, "", animation: "stream_ame_out_b"));
+            if (!(SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 7 &&
+                SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.AMAStress.Swap()) >= 15))
+            {
+                tenTalk("FAULT022", "stream_ame_follower_end");
+                tenTalk("FAULT023", "");
+            }
+            else
+            {
+                tenTalk("FAULT022", "stream_ame_follower_end_dark");
+                playing.Add(new Playing(false, "", delta: 300, color: ModdedSuperchatType.EVENT_DELAYFRAME.Swap()));
+                playing.Add(new Playing(false, "", color: ModdedSuperchatType.EVENT_MUSICCHANGE.Swap()));
+                tenTalk("FAULT023", "stream_ame_follower_end_dark2");
+            }
+            //playing.Add(SuperPlaying(true, "", animation: "stream_ame_out_b"));
             playing.Add(new Playing(false, "", delta: 500, color: ModdedSuperchatType.EVENT_DELAYFRAME.Swap()));
 
 
@@ -62,12 +76,31 @@ namespace NeedyMintsOverdose
         // Token: 0x06000FD6 RID: 4054 RVA: 0x0004A57C File Offset: 0x0004877C
         public override async UniTask StartScenario()
         {
-            AudioManager.Instance.PlayBgmByType(SoundType.BGM_heartbeat, true);
+            if (dark) SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewInterval.Value = 120;
+            if (dark) SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewing.Value = true;
+            GameObject.Find("stack").SetActive(false);
+            PostEffectManager.Instance.ResetShader();
+            if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 7 &&
+                SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.AMAStress.Swap()) >= 15)
+            {
+                AudioManager.Instance.PlayBgmByType(SoundType.BGM_heartbeat, true);
+            }
+            else
+            {
+                AudioManager.Instance.StopBgm();
+            }
             PostEffectManager.Instance.ResetShader();
             SingletonMonoBehaviour<EventManager>.Instance.nowEnding = (EndingType)(int)ModdedEndingType.Ending_Followers;
             await base.StartScenario();
-            SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_follower_day4_finale>();
-
+            if (!(SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 7 &&
+                SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.AMAStress.Swap()) >= 15))
+            {
+                SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_follower_day4_finale>();
+            }
+            else
+            {
+                SingletonMonoBehaviour<NotificationManager>.Instance.osimai();
+            }
         }
     }
 }

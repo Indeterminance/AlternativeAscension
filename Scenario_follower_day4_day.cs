@@ -26,7 +26,18 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
             await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             base.startEvent(cancellationToken);
-            GameObject.Find("MainPanel").GetComponent<Image>().color = Color.black;
+            NeedyMintsMod.log.LogMessage($"Stress mult : {SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap())}");
+            NeedyMintsMod.log.LogMessage($"AMA stress : {SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.AMAStress.Swap())}");
+            if ((SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 7 &&
+                SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.AMAStress.Swap()) >= 15))
+            {
+                GameObject.Find("MainPanel").GetComponent<Image>().color = Color.black;
+                SingletonMonoBehaviour<StatusManager>.Instance.timePassing(2);
+            }
+            else
+            {
+                GameObject.Find("MainPanel").GetComponent<Image>().color = Color.white;
+            }
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0.4f);
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
             //await UniTask.Delay(Constants.MIDDLE);
@@ -61,10 +72,9 @@ namespace NeedyMintsOverdose
             await UniTask.Delay(10000);
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(AppType.Poketter);
 
-            IWindow taiki = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow_Compact((AppType)(int)ModdedAppType.Follower_taiki);
-
-            taiki.Uncloseable();
-            taiki.UnMovable();
+            
+            SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(true, 0.1f);
+            SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(true);
             base.endEvent();
         }
     }

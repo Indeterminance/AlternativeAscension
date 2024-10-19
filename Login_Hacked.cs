@@ -79,7 +79,7 @@ namespace NeedyMintsOverdose
             Func<UniTask> action = loginActions.Dequeue();
             await action();
 
-            _input.interactable = true;
+            if (_input != null) _input.interactable = true;
         }
 
         private void couldLogin(string text)

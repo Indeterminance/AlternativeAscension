@@ -1,0 +1,3 @@
+﻿Sprites for Isolation sequence of ANGEL WATCH are based on YT playthroughs of Alien: Isolation
+Background sprite for last stream of FOLLOWERS was found here and modified (https://commons.wikimedia.org/wiki/File:Tokiwa_Park,_Asahikawa_City,_Hokkaido,_Japan_-_panoramio.jpg), credit goes to the author for the unmodified version
+Close-up sprite for last stream of FOLLOWERS was found here and modified (https://pxhere.com/en/photo/666853), credit goes to the author for the unmodified version

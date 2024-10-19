@@ -116,7 +116,8 @@ namespace NeedyMintsOverdose
         {
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Poketter);
-            await UniTask.Delay(12500);
+            //await UniTask.Delay(12500);
+            await UniTask.WaitUntil(() => !SingletonMonoBehaviour<PoketterManager>.Instance.isShootRunning.Value, PlayerLoopTiming.Update, default, false);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine, true);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Jine);
             PostEffectManager.Instance.SetShader(EffectType.GoCrazy);
@@ -124,6 +125,7 @@ namespace NeedyMintsOverdose
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE002.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE003.Swap());
+            await UniTask.Delay(5000);
             await NgoEx.DelayNGO(Constants.MIDDLE);
             await DeleteFirstTweet();
 
@@ -139,7 +141,7 @@ namespace NeedyMintsOverdose
 
         public async UniTask DeleteFirstTweet()
         {
-            PoketterView2D tweeterWindow = SingletonMonoBehaviour<PoketterView2D>.Instance;
+            PoketterView2D tweeterWindow = SingletonMonoBehaviour<WindowManager>.Instance.GetWindowFromApp(AppType.Poketter).nakamiApp.GetComponent<PoketterView2D>();
             RectTransform trav = (RectTransform)Traverse.Create(tweeterWindow).Field(nameof(PoketterView2D._Waku)).GetValue();
             Fader2D fader = trav.GetChild(1).gameObject.GetComponent<Fader2D>();
             await fader.DOFade(0.5f, 0f);
