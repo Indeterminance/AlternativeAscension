@@ -15,7 +15,7 @@ using static NeedyMintsOverdose.Alternates;
 
 namespace NeedyMintsOverdose
 {
-    public class OdekakeFuneral : NgoEvent
+    public class Action_OdekakeFuneral : NgoEvent
     {
         bool dark = false;
         // Token: 0x06001CF2 RID: 7410 RVA: 0x000843F9 File Offset: 0x000825F9
@@ -55,8 +55,6 @@ namespace NeedyMintsOverdose
             taiki.UnMovable();
             SingletonMonoBehaviour<EventManager>.Instance.ClearEventQueue();
             base.endEvent();
-            //PostEffectManager.Instance.ResetShaderCalmly();
-            //SingletonMonoBehaviour<JineManager>.Instance.StartStamp();
         }
 
         protected async UniTask GoOut()

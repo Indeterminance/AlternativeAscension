@@ -68,7 +68,6 @@ namespace NeedyMintsOverdose
         public bool isAMA = false;
         public bool wasUncontrollable = false;
         public int oldSpeed = 1;
-        public DateTime startTime;
         public int delta;
         public int StressDelta = 0;
         public int overnightStreamStartDay = 0;
@@ -81,6 +80,8 @@ namespace NeedyMintsOverdose
         public ReactiveProperty<bool> viewing = new ReactiveProperty<bool>(false);
         public ReactiveProperty<int> viewInterval = new ReactiveProperty<int>(160);
         public ReactiveProperty<Color> viewColor = new ReactiveProperty<Color>(Color.red);
+
+        public bool isLove = false;
 
         public Sprite defaultBG;
         public Sprite followerBG = Addressables.LoadAssetAsync<Sprite>("eyes_bg.png").WaitForCompletion();
@@ -157,7 +158,6 @@ namespace NeedyMintsOverdose
         public void StartAMA(ref LiveScenario scenario)
         {
             isAMA = true;
-            startTime = DateTime.Now;
             playedQuestions.Clear();
 
             Live live = new Traverse(scenario).Field(nameof(LiveScenario._Live)).GetValue() as Live;
@@ -177,6 +177,7 @@ namespace NeedyMintsOverdose
 
         public void FinishAMA(ref LiveScenario scenario)
         {
+            if (!isAMA) return;
             isAMA = false;
             Live live = new Traverse(scenario).Field(nameof(LiveScenario._Live)).GetValue() as Live;
             live.isUncontrollable = wasUncontrollable;
@@ -236,6 +237,16 @@ namespace NeedyMintsOverdose
             }
             obj.transform.GetChild(0).position = new Vector2(num, num2);
 
+        }
+
+        public async UniTask SetViewersInactive()
+        {
+            viewing.Value = false;
+            await UniTask.Delay(viewInterval.Value);
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
 
 

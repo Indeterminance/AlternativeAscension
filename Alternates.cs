@@ -197,14 +197,6 @@ namespace NeedyMintsOverdose
         {
             if (SingletonMonoBehaviour<StatusManager>.Instance == null) return true;
 
-            // Get flags
-            bool isOdekake = shortcut.appType == AppType.GoOut;
-            NeedyMintsMod.log.LogMessage("BLABLABLA");
-            bool angelFuneral = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelFuneral;
-
-            // Allow vanilla functions to run if not Odekake or funeral
-            if (!isOdekake && !angelFuneral) return true;
-
             // Get private fields
             Button _shortcut = new Traverse(shortcut).Field(nameof(Shortcut._shortcut)).GetValue<Button>();
             TooltipCaller _tooltip = new Traverse(shortcut).Field(nameof(Shortcut._tooltip)).GetValue<TooltipCaller>();
@@ -216,55 +208,62 @@ namespace NeedyMintsOverdose
             MethodInfo SetTooltipText = typeof(Shortcut).GetMethod(nameof(Shortcut.SetTooltipText), flag);
 
             // Add hints
-            if (SingletonMonoBehaviour<StatusManager>.Instance != null)
+            _dayPart.SetValue(SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(StatusType.DayPart));
+            _dayPart.GetValue<ReactiveProperty<int>>().Subscribe(delegate (int _)
             {
-                _dayPart.SetValue(SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(StatusType.DayPart));
-                _dayPart.GetValue<ReactiveProperty<int>>().Subscribe(delegate (int _)
-                {
-                    AddHint.Invoke(shortcut, null);
-                }).AddTo(shortcut.gameObject);
                 AddHint.Invoke(shortcut, null);
-            }
+            }).AddTo(shortcut.gameObject);
+            AddHint.Invoke(shortcut, null);
 
-            
+            SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(ModdedStatusType.FollowerPlotFlag.Swap()).Subscribe(delegate (int _)
+            {
+                NeedyMintsMod.log.LogMessage($"Plot observable {_}");
+                if (_ == (int)FollowerPlotFlagValues.AngelFuneral)
+                {
+                    if (shortcut.appType != AppType.GoOut) _shortcut.interactable = false;
+                    else _shortcut.interactable = true;
+                    _tooltip.isShowTooltip = false;
+                    return;
+                }
+            }).AddTo(shortcut.gameObject);
+
+
 
             // Redo click listeners
             _shortcut.onClick.RemoveAllListeners();
 
-            if (isOdekake) _shortcut.onClick.AddListener(delegate
+            _shortcut.onClick.AddListener(delegate
             {
-                if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0 && !angelFuneral)
-                {
-                    _shortcut.interactable = false;
-                    _tooltip.isShowTooltip = true;
-                    _tooltip.type = TooltipType.Tooltip_Angel;
-                    return;
-                }
+                //bool isFuneral = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelFuneral;
+                //if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0 &&
+                //    !isFuneral)
+                //{
+                //    _shortcut.interactable = false;
+                //    _tooltip.isShowTooltip = true;
+                //    _tooltip.type = TooltipType.Tooltip_Angel;
+                //    return;
+                //}
 
                 IWindow w = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(shortcut.appType, true);
-
-                if (angelFuneral)
-                {
-                    _shortcut.interactable = false;
-                    _tooltip.isShowTooltip = false;
-                    w.Uncloseable();
-                    w.UnMovable();
-                    //w.GameObjectTransform.position = Vector3.zero;
-                }
+                //if (isFuneral) w.Uncloseable();
                 return;
             });
 
+            bool funeral = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelFuneral;
+
             // Same thing as the click event, but we're gonna run it once beforehand too
-            if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0 && isOdekake && !angelFuneral)
+            if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelFuneral)
+            {
+                NeedyMintsMod.log.LogMessage($"Shortcut plot Funeral");
+                if (shortcut.appType != AppType.GoOut) _shortcut.interactable = false;
+                else _shortcut.interactable = true;
+                _tooltip.isShowTooltip = false;
+            }
+            else if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeCountdown.Swap()) == 0 && shortcut.appType == AppType.GoOut)
             {
                 _shortcut.interactable = false;
                 _tooltip.isShowTooltip = true;
                 _tooltip.type = TooltipType.Tooltip_Angel;
-            }
-            else if (angelFuneral && !isOdekake)
-            {
-                _shortcut.interactable = false;
-                _tooltip.isShowTooltip = false;
             }
             
             // Add the shortcut label

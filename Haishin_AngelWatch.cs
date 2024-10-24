@@ -67,7 +67,7 @@ namespace NeedyMintsOverdose
             base.Awake();
             PostEffectManager.Instance.ResetShader();
             _Live.isOiwai = true;
-            _Live._HaisinSkip.interactable = false;
+            _Live._HaisinSkip.gameObject.SetActive(false);
             defaultEffectType = EffectType.GoCrazy;
             title = NgoEx.TenTalk(pre+"STREAMNAME", _lang);
 
@@ -491,9 +491,11 @@ namespace NeedyMintsOverdose
         public override async UniTask StartScenario()
         {
             SingletonMonoBehaviour<NeedyMintsModManager>.Instance.overnightStreamStartDay = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
+            SingletonMonoBehaviour<JineManager>.Instance.Uncontrolable();
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_mainloop_shuban, true);
             await base.StartScenario();
             this._Live.HaishinClean();
+            SingletonMonoBehaviour<JineManager>.Instance.StartStamp();
             SingletonMonoBehaviour<EventManager>.Instance.AddEventQueue<Scenario_follower_day2_AfterAllNighterhaishin>();
         }
 

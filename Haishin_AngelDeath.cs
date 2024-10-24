@@ -23,7 +23,7 @@ namespace NeedyMintsOverdose
             this._Live.isUncontrollable = true;
             this._Live.SetSpeedLock(true);
             this._Live.Speed = 1;
-            this._Live._HaisinSkip.gameObject.SetActive(false);
+            //this._Live._HaisinSkip.gameObject.SetActive(false);
             this._Live._HaisinSpeed.gameObject.SetActive(false);
 
 

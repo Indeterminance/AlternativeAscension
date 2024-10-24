@@ -11,12 +11,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using NeedyEnums;
+using UniRx;
 
 namespace NeedyMintsOverdose
 {
     internal partial class MintyOverdosePatches {
         public class Ending_Sleepy : NgoEvent
         {
+            JineManager jm;
+
             // Token: 0x06001CF2 RID: 7410 RVA: 0x000843F9 File Offset: 0x000825F9
             public override void Awake()
             {
@@ -26,44 +29,57 @@ namespace NeedyMintsOverdose
             // Token: 0x06001CF3 RID: 7411 RVA: 0x000BC20C File Offset: 0x000BA40C
             public override async UniTask startEvent(CancellationToken cancellationToken = default)
             {
+                jm = SingletonMonoBehaviour<JineManager>.Instance;
                 base.startEvent(cancellationToken);
-                AudioManager.Instance.StopBgm();
+                await NgoEvent.DelaySkippable(Constants.MIDDLE);
                 SingletonMonoBehaviour<EventManager>.Instance.nowEnding = (EndingType)ModdedEndingType.Ending_Sleepy;
                 SingletonMonoBehaviour<CommandManager>.Instance.disableAllCommands();
                 SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0f);
                 SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
-                SingletonMonoBehaviour<JineManager>.Instance.addEventSeparator("Sleep: Never enough");
-                List<ModdedJineType> endingJines = new List<ModdedJineType>()
+                SingletonMonoBehaviour<WindowManager>.Instance.CleanAll();
+                SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine).Uncloseable();
+                await NgoEvent.DelaySkippable(Constants.SLOW);
+                AudioManager.Instance.PlayBgmByType(SoundType.BGM_event_emo);
+                jm.addEventSeparator("Sleep: Never enough");
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE001.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE002.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE003.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE004.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE005.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE006.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE007.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE008.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE009.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE010.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE011.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE012.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE013.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE014.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE015.Swap());
+                SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
                 {
-                    ModdedJineType.ENDING_SLEEPY_JINE001,
-                    ModdedJineType.ENDING_SLEEPY_JINE002,
-                    ModdedJineType.ENDING_SLEEPY_JINE003,
-                    ModdedJineType.ENDING_SLEEPY_JINE004,
-                    ModdedJineType.ENDING_SLEEPY_JINE005,
-                    ModdedJineType.ENDING_SLEEPY_JINE006,
-                    ModdedJineType.ENDING_SLEEPY_JINE007,
-                    ModdedJineType.ENDING_SLEEPY_JINE008,
-                    ModdedJineType.ENDING_SLEEPY_JINE009,
-                    ModdedJineType.ENDING_SLEEPY_JINE010
-                };
-                PostEffectManager pem = PostEffectManager.Instance;
-                pem.SetShader(EffectType.Anmaku);
-                foreach (ModdedJineType jine in endingJines)
+                    ModdedJineType.ENDING_SLEEPY_JINE016.Swap()
+                });
+                SingletonMonoBehaviour<JineManager>.Instance.OnChangeHistory.Where((CollectionAddEvent<JineData> x) => x.Value.id == ModdedJineType.ENDING_SLEEPY_JINE016.Swap()).Subscribe(async delegate (CollectionAddEvent<JineData> _)
                 {
-                    pem.SetShaderWeight((float)(endingJines.IndexOf(jine)+1)/11f,EffectType.Anmaku);
-                    await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(jine.Swap());
+                    await NgoEvent.DelaySkippable(Constants.FAST);
+                    this.eventContinue1();
+                }).AddTo(this.compositeDisposable);
+            }
 
-                }
-                pem.SetShaderWeight(0.98f, EffectType.Anmaku);
-                IWindow ame = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Webcam, true);
-                ame.Uncloseable();
-                SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_out_e");
-                await UniTask.Delay(3400, false, PlayerLoopTiming.Update, default(CancellationToken), false);
-                //SingletonMonoBehaviour<TooltipManager>.Instance.Show(TooltipType.Tooltip_yaru);
-                await NgoEvent.DelaySkippable(Constants.MIDDLE);
+            private async UniTask eventContinue1()
+            {
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE017.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE018.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE019.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE020.Swap());
+                await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE021.Swap());
+                PostEffectManager.Instance.AnmakuWeight(0.6f);
+                await SingletonMonoBehaviour<Poem>.Instance.StartPoem(NgoEx.SystemTextFromType(ModdedSystemTextType.Poem_Sleepy.Swap(), SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value), false);
+                await NgoEvent.DelaySkippable(Constants.SLOW);
+                SingletonMonoBehaviour<Poem>.Instance.CleanPoem();
+                SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(AppType.Jine);
                 SingletonMonoBehaviour<NotificationManager>.Instance.osimai();
-                base.endEvent();
-
             }
         }
     }

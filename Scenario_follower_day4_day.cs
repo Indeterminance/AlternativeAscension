@@ -9,11 +9,16 @@ using UniRx;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using HarmonyLib;
+using UniRx.Triggers;
+using UnityEngine.EventSystems;
 
 namespace NeedyMintsOverdose
 {
     public class Scenario_follower_day4_day : NgoEvent
     {
+        bool isDark = false;
+
         // Token: 0x06001CF2 RID: 7410 RVA: 0x000843F9 File Offset: 0x000825F9
         public override void Awake()
         {
@@ -23,13 +28,17 @@ namespace NeedyMintsOverdose
         // Token: 0x06001CF3 RID: 7411 RVA: 0x000BC20C File Offset: 0x000BA40C
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
-            await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             base.startEvent(cancellationToken);
+            await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
+            isDark = (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 7 &&
+                SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.AMAStress.Swap()) >= 15);
+
+            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
+            SingletonMonoBehaviour<JineManager>.Instance.Uncontrolable();
+
             NeedyMintsMod.log.LogMessage($"Stress mult : {SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap())}");
             NeedyMintsMod.log.LogMessage($"AMA stress : {SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.AMAStress.Swap())}");
-            if ((SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 7 &&
-                SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.AMAStress.Swap()) >= 15))
+            if (isDark)
             {
                 GameObject.Find("MainPanel").GetComponent<Image>().color = Color.black;
                 SingletonMonoBehaviour<StatusManager>.Instance.timePassing(2);
@@ -72,10 +81,11 @@ namespace NeedyMintsOverdose
             await UniTask.Delay(10000);
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(AppType.Poketter);
 
-            
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(true, 0.1f);
-            SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(true);
+            //SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(true);
+            // TODO: The below "end event" function isn't running. Figure out why.
             base.endEvent();
+            NeedyMintsMod.log.LogMessage($"Ended event!");
         }
     }
 }

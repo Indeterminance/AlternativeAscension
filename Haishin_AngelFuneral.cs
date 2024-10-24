@@ -76,8 +76,7 @@ namespace NeedyMintsOverdose
         // Token: 0x06000FD6 RID: 4054 RVA: 0x0004A57C File Offset: 0x0004877C
         public override async UniTask StartScenario()
         {
-            if (dark) SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewInterval.Value = 120;
-            if (dark) SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewing.Value = true;
+            await SingletonMonoBehaviour<NeedyMintsModManager>.Instance.SetViewersInactive();
             GameObject.Find("stack").SetActive(false);
             PostEffectManager.Instance.ResetShader();
             if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 7 &&

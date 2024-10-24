@@ -74,16 +74,28 @@ call me ███!</bodyEN>
         <bodyEN>Browse the message boards to reveal the truth once and for all</bodyEN>
       </description>
     </command>
+    <command id="SleepToEternity">
+      <label>
+        <bodyEN>Sleep Until ???</bodyEN>
+      </label>
+      <description>
+        <bodyEN>Skip tonight, and tomorrow, and the next day, and the next, and...</bodyEN>
+      </description>
+    </command>
   </commands>
   <endings>
     <ending id="Ending_Sleepy">
-      <name>Angel's Butterfly Dream</name>
+      <name>The Angel Dream</name>
       <osimai>Spending all your time in dreamland
 isn't always the best idea.</osimai>
     </ending>
     <ending id="Ending_Followers">
       <name>FOLLOWERS</name>
       <osimai>Even a needy girl needs her space.</osimai>
+    </ending>
+    <ending id="Ending_Love">
+      <name>An Angel's Love</name>
+      <osimai>A floating feeling, grounded in reality.</osimai>
     </ending>
   </endings>
   <tweets>
@@ -182,6 +194,20 @@ isn't always the best idea.</osimai>
     </tweet>
     <tweet id="ANGELFUNERAL_TWEET002" user="ame">
       <bodyEN>im starting stream now btw, come see your "angel", come see what you did to her</bodyEN>
+    </tweet>
+    <tweet id="ENDING_LOVE_DAY1_TWEET001" user="ame">
+      <bodyEN>omg i proposed to p-chan and they said yes!!!!!! im so happy! here's to our married life ♥️</bodyEN>
+    </tweet>
+    <tweet id="ENDING_LOVE_DAY1_TWEET002" user="kangel">
+      <bodyEN>Something's got me really really pumped up today! You guys aren't gonna be ready for me tonight!</bodyEN>
+    </tweet>
+    <tweet id="ENDING_LOVE_DAY2_TWEET001" user="ame">
+      <bodyEN>me and p-chan had an "i love you" contest bc i said there was no way they love me as much as i love them.
+
+still not sure who won that, but god that was the best sex ever</bodyEN>
+    </tweet>
+    <tweet id="ENDING_LOVE_DAY2_TWEET002" user="kangel">
+      <bodyEN>Remember: no matter what, I'll always love you.</bodyEN>
     </tweet>
   </tweets>
   <kusos>
@@ -306,7 +332,7 @@ isn't always the best idea.</osimai>
       <bodyEN>fucking whore quits at the first bit of drama in her career, the state of metube these days</bodyEN>
     </kuso>
     <kuso id="DEADKANGEL_TWEET001_KUSO006">
-      <bodyEN>omg i checked ur priv and… ur such a bitch????</bodyEN>
+      <bodyEN>omg i checked ur priv and... ur such a bitch????</bodyEN>
     </kuso>
     <kuso id="DEADKANGEL_TWEET001_KUSO007">
       <bodyEN>I spent SuperChats on you...</bodyEN>
@@ -335,6 +361,36 @@ isn't always the best idea.</osimai>
     <kuso id="DEADKANGEL_TWEET003_KUSO003">
       <bodyEN>but i loved you kangel...</bodyEN>
     </kuso>
+    <kuso id="ENDING_LOVE_DAY1_TWEET002_KUSO001">
+      <bodyEN>ayo what u mean by that kangel 😳</bodyEN>
+    </kuso>
+    <kuso id="ENDING_LOVE_DAY1_TWEET002_KUSO002">
+      <bodyEN>Good for you! Can't wait for tonight's stream.</bodyEN>
+    </kuso>
+    <kuso id="ENDING_LOVE_DAY1_TWEET002_KUSO003">
+      <bodyEN>why is my life such a mess...</bodyEN>
+    </kuso>
+    <kuso id="ENDING_LOVE_DAY1_TWEET002_KUSO004">
+      <bodyEN>I love you! Please go out with me?</bodyEN>
+    </kuso>
+    <kuso id="ENDING_LOVE_DAY1_TWEET002_KUSO005">
+      <bodyEN>We were born ready, KAngel! Let's do this!</bodyEN>
+    </kuso>
+    <kuso id="ENDING_LOVE_DAY2_TWEET002_KUSO001">
+      <bodyEN>omg really needed to hear that, thanks kangel</bodyEN>
+    </kuso>
+    <kuso id="ENDING_LOVE_DAY2_TWEET002_KUSO002">
+      <bodyEN>I LOVE YOUUUU</bodyEN>
+    </kuso>
+    <kuso id="ENDING_LOVE_DAY2_TWEET002_KUSO003">
+      <bodyEN>don't listen to her guys, she probably just got off with her boyfriend or whatever</bodyEN>
+    </kuso>
+    <kuso id="ENDING_LOVE_DAY2_TWEET002_KUSO004">
+      <bodyEN>kangel gang rise up!</bodyEN>
+    </kuso>
+    <kuso id="ENDING_LOVE_DAY2_TWEET002_KUSO005">
+      <bodyEN>KAngel, you're the best!!!</bodyEN>
+    </kuso>
   </kusos>
   <jines>
     <jine id="EVENT_COMIKETALERT001" speaker="ame">
@@ -344,31 +400,67 @@ isn't always the best idea.</osimai>
       <bodyEN>don't forget, we gotta tell the nerds all about it tonight!</bodyEN>
     </jine>
     <jine id="ENDING_SLEEPY_JINE001" speaker="ame">
+      <bodyEN>hey p-chan...</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE002" speaker="ame">
       <bodyEN>i had a dream</bodyEN>
     </jine>
     <jine id="ENDING_SLEEPY_JINE003" speaker="ame">
       <bodyEN>i was a butterfly</bodyEN>
     </jine>
     <jine id="ENDING_SLEEPY_JINE004" speaker="ame">
-      <bodyEN>being a butterfly was amazing</bodyEN>
+      <bodyEN>the most brilliant blue butterfly you've ever seen</bodyEN>
     </jine>
     <jine id="ENDING_SLEEPY_JINE005" speaker="ame">
-      <bodyEN>i dont think i can go back to being ame anymore</bodyEN>
+      <bodyEN>even though on the inside... im far from it</bodyEN>
     </jine>
     <jine id="ENDING_SLEEPY_JINE006" speaker="ame">
-      <bodyEN>i want to go back</bodyEN>
+      <bodyEN>a morpho butterfly riding the wind, taking me wherever the earth wants me</bodyEN>
     </jine>
     <jine id="ENDING_SLEEPY_JINE007" speaker="ame">
-      <bodyEN>i think it was always meant to end like this</bodyEN>
+      <bodyEN>and then i woke up</bodyEN>
     </jine>
     <jine id="ENDING_SLEEPY_JINE008" speaker="ame">
-      <bodyEN>i think i was meant to be a butterfly</bodyEN>
+      <bodyEN>but... how do i know?</bodyEN>
     </jine>
     <jine id="ENDING_SLEEPY_JINE009" speaker="ame">
-      <bodyEN>ill see you on the other side, p-chan</bodyEN>
+      <bodyEN>how do i know im not dreaming now?</bodyEN>
     </jine>
     <jine id="ENDING_SLEEPY_JINE010" speaker="ame">
-      <bodyEN>i love you</bodyEN>
+      <bodyEN>i could be a butterfly dreaming about ame</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE011" speaker="ame">
+      <bodyEN>or an angel dreaming about being ame</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE012" speaker="ame">
+      <bodyEN>or ame dreaming about an angel</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE013" speaker="ame">
+      <bodyEN>p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE014" speaker="ame">
+      <bodyEN>this might be a bit sudden but</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE015" speaker="ame">
+      <bodyEN>will you stay with me?</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE016" speaker="pi">
+      <bodyEN>I will.</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE017" speaker="ame">
+      <bodyEN>thank you</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE018" speaker="ame">
+      <bodyEN>you're the only one who can understand me like this</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE019" speaker="ame">
+      <bodyEN>i'll see you on the other side, okay?</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE020" speaker="ame">
+      <bodyEN>goodnight p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_SLEEPY_JINE021" speaker="ame">
+      <bodyEN>mwah ❤</bodyEN>
     </jine>
     <jine id="TOKYO_JINE001" speaker="ame">
       <bodyEN>ngl that was really fun</bodyEN>
@@ -404,7 +496,7 @@ isn't always the best idea.</osimai>
       <bodyEN>please just let me stay inside, p-chan</bodyEN>
     </jine>
     <jine id="ODEKAKEPANIC3_POST001" speaker="ame">
-      <bodyEN>p-chan… i can't do this</bodyEN>
+      <bodyEN>p-chan... i can't do this</bodyEN>
     </jine>
     <jine id="ODEKAKEPANIC3_POST002" speaker="ame">
       <bodyEN>i feel them watching</bodyEN>
@@ -726,7 +818,7 @@ id probably get attacked</bodyEN>
       <bodyEN>and when i wok eup door ringing</bodyEN>
     </jine>
     <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE029" speaker="ame">
-      <bodyEN>p-chan they're gong to come in…</bodyEN>
+      <bodyEN>p-chan they're gong to come in...</bodyEN>
     </jine>
     <jine id="ENDING_FOLLOWER_ANGELWATCH_JINE030" speaker="ame">
       <bodyEN>i cant do this without u</bodyEN>
@@ -1081,6 +1173,405 @@ id probably get attacked</bodyEN>
     </jine>
     <jine id="ENDING_FOLLOWER_DAY4_JINE007" speaker="ame">
       <bodyEN>But you? You're not them.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE001" speaker="ame">
+      <bodyEN>its been a long month, huh?</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE002" speaker="ame">
+      <bodyEN>well, i can't say its been bad</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE003" speaker="ame">
+      <bodyEN>in fact...</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE004" speaker="ame">
+      <bodyEN>you've made me really really happy, p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE005" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE006" speaker="ame">
+      <bodyEN>i love love love love you!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE007" speaker="ame">
+      <bodyEN>its been tough being kangel and all, but...</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE008" speaker="ame">
+      <bodyEN>with you by my side, i think i can do anything</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE009" speaker="ame">
+      <bodyEN>you really are the love of my life</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE010" speaker="pi">
+      <bodyEN>And you're the love of my life too.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE011" speaker="ame">
+      <bodyEN>aww, really p-chan?</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE012" speaker="ame">
+      <bodyEN>you're so sweet</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE013" speaker="ame">
+      <bodyEN>i trained you well</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE014" speaker="ame">
+      <bodyEN>i couldn't ask for a better p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE015" speaker="ame">
+      <bodyEN>i know you feel the same way</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE016" speaker="ame">
+      <bodyEN>and you've already met my parents, so...</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE017" speaker="ame">
+      <bodyEN>p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE018" speaker="ame">
+      <bodyEN>will you marry me?</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE019" speaker="pi">
+      <bodyEN>I will.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE020" speaker="ame">
+      <bodyEN>OH MY GOD</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE021" speaker="ame">
+      <bodyEN>i love love love love love you!!!!!!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE022" speaker="ame">
+      <bodyEN>i think im the happiest girl in the world</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE023" speaker="ame">
+      <bodyEN>there's no way that anyone else is as happy as me rn</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE024" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_JINE025" speaker="ame">
+      <bodyEN>i love love love love love love love you!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTTWEET_JINE001" speaker="ame">
+      <bodyEN>i love you!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTTWEET_JINE002" speaker="ame">
+      <bodyEN>don't worry, i'm not going out with anyone else</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTTWEET_JINE003" speaker="ame">
+      <bodyEN>we were made for each other!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE001" speaker="ame">
+      <bodyEN>uuugh it's so hard to pretend to love them as much as they think i do</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE002" speaker="ame">
+      <bodyEN>id much rather spend that energy elsewhere</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE003" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE004" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE005" speaker="ame">
+      <bodyEN>i love love love love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE006" speaker="ame">
+      <bodyEN>p-chan i can't get enough of you...</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE007" speaker="ame">
+      <bodyEN>i love you so much</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE008" speaker="pi">
+      <bodyEN>I love you more.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE009" speaker="ame">
+      <bodyEN>no way! there's no way you feel more for me than i do for you!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE010" speaker="ame">
+      <bodyEN>i love love love looooove you!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE011" speaker="pi">
+      <bodyEN>And I love love love love love looooooove you too.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE012" speaker="ame">
+      <bodyEN>oh yeah? you wanna show me how much you love me?</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_POSTSTREAM_JINE013" speaker="ame">
+      <bodyEN>show me, p-chan ♥️</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_AFTERGLOW_JINE001" speaker="ame">
+      <bodyEN>omg, that was amazing...</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_AFTERGLOW_JINE002" speaker="ame">
+      <bodyEN>i didn't even know i could go for that long, but... wow</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_AFTERGLOW_JINE003" speaker="ame">
+      <bodyEN>you're the best, p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_AFTERGLOW_JINE004" speaker="pi">
+      <bodyEN>It was great for me too.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_AFTERGLOW_JINE005" speaker="ame">
+      <bodyEN>that makes me happy to hear!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_AFTERGLOW_JINE006" speaker="ame">
+      <bodyEN>but don't forget, just because you're all mine doesn't mean we're gonna do that all the time!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_AFTERGLOW_JINE007" speaker="ame">
+      <bodyEN>not that i'd mind doing it all the time tho </bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_AFTERGLOW_JINE008" speaker="ame">
+      <bodyEN>and don't forget! we're getting married! </bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_AFTERGLOW_JINE009" speaker="ame">
+      <bodyEN>you really are marriage material... i love love love you, p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY1_AFTERGLOW_JINE010" speaker="pi">
+      <bodyEN>I love love love you too.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE001" speaker="ame">
+      <bodyEN>hey p-chan~</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE002" speaker="ame">
+      <bodyEN>so i looked up the rules regarding marriage and stuff</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE003" speaker="ame">
+      <bodyEN>turns out they won't accept our marriage</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE004" speaker="ame">
+      <bodyEN>apparently it "isn't legitimate" or whatever</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE005" speaker="ame">
+      <bodyEN>tbh i thought i'd feel worse hearing that, but</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE006" speaker="ame">
+      <bodyEN>i don't think i care</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE007" speaker="ame">
+      <bodyEN>it doesn't matter if the world doesn't recognize us</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE008" speaker="ame">
+      <bodyEN>those stupid adults don't know what they're talking about anyway</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE009" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE010" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE011" speaker="ame">
+      <bodyEN>i love you!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE012" speaker="pi">
+      <bodyEN>I love you too.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE013" speaker="ame">
+      <bodyEN>omg p-chan! </bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE014" speaker="ame">
+      <bodyEN>i love you sooooo much!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE015" speaker="ame">
+      <bodyEN>you love me too, right?</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE016" speaker="pi">
+      <bodyEN>Of course I love you.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE017" speaker="ame">
+      <bodyEN>and i don't wanna say that to anyone else!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE018" speaker="ame">
+      <bodyEN>so i've decided!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE019" speaker="ame">
+      <bodyEN>i'm quitting being a streamer!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_DAY2_JINE020" speaker="ame">
+      <bodyEN>i wanna spend all day telling you how much i love you!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP1_JINE001" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP1_JINE002" speaker="pi">
+      <bodyEN>I love you too.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP1_JINE003" speaker="ame">
+      <bodyEN>i love you!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP1_JINE004" speaker="pi">
+      <bodyEN>I love you too!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP1_JINE005" speaker="ame">
+      <bodyEN>I love love love you!!!!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP1_JINE006" speaker="pi">
+      <bodyEN>I love love love you too.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP2_JINE001" speaker="ame">
+      <bodyEN>hey p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP2_JINE002" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP2_JINE003" speaker="ame">
+      <bodyEN>i love you so much</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP2_JINE004" speaker="ame">
+      <bodyEN>we'll be together forever</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP2_JINE005" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP2_JINE006" speaker="pi">
+      <bodyEN>I love you too.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP3_JINE001" speaker="ame">
+      <bodyEN>i love love love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP3_JINE002" speaker="pi">
+      <bodyEN>I love love love love you.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP3_JINE003" speaker="ame">
+      <bodyEN>i love love love love love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP3_JINE004" speaker="pi">
+      <bodyEN>I love love love love love love you.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP3_JINE005" speaker="ame">
+      <bodyEN>i love love love love love love love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP3_JINE006" speaker="pi">
+      <bodyEN>I love love love love love love love love you.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP4_JINE001" speaker="ame">
+      <bodyEN>p-chan!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP4_JINE002" speaker="ame">
+      <bodyEN>i'm really horny today!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP4_JINE003" speaker="pi">
+      <bodyEN>Me too.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP4_JINE004" speaker="ame">
+      <bodyEN>mm, that was great</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP4_JINE005" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP4_JINE006" speaker="ame">
+      <bodyEN>mwah ♥️</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP5_JINE001" speaker="ame">
+      <bodyEN>i love you</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP5_JINE002" speaker="pi">
+      <bodyEN>I love you too.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP5_JINE003" speaker="ame">
+      <bodyEN>really? how much?</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP5_JINE004" speaker="pi">
+      <bodyEN>I love you thiiiiiiiiiiis much.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP5_JINE005" speaker="ame">
+      <bodyEN>aww, that's cute</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_LOOP5_JINE006" speaker="ame">
+      <bodyEN>but i love you even more!</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE001" speaker="ame">
+      <bodyEN>...i can't keep going, p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE002" speaker="ame">
+      <bodyEN>i love you, but...</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE003" speaker="ame">
+      <bodyEN>it all feels the same now</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE004" speaker="ame">
+      <bodyEN>i can only say i love you in so many ways</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE005" speaker="ame">
+      <bodyEN>there's only so many positions we can try</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE006" speaker="ame">
+      <bodyEN>i can't take this anymore</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE007" speaker="ame">
+      <bodyEN>it's so... samey</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE008" speaker="ame">
+      <bodyEN>i need more, p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE009" speaker="pi">
+      <bodyEN>I'm sorry.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE010" speaker="ame">
+      <bodyEN>don't be sorry</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE011" speaker="ame">
+      <bodyEN>but</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE012" speaker="ame">
+      <bodyEN>i think...</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE013" speaker="ame">
+      <bodyEN>maybe we weren't meant to be after all</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE014" speaker="ame">
+      <bodyEN>and im sorry</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE015" speaker="ame">
+      <bodyEN>It's okay.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE016" speaker="ame">
+      <bodyEN>i'll always love you, but...</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE017" speaker="ame">
+      <bodyEN>i think it's time we say goodbye</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE018" speaker="pi">
+      <bodyEN>I'll always love you.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE019" speaker="ame">
+      <bodyEN>thank you p-chan</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE020" speaker="ame">
+      <bodyEN>i love you...</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE021" speaker="ame">
+      <bodyEN>and goodbye</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_BREAKUP_JINE022" speaker="pi">
+      <bodyEN>      </bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_FINALE_JINE001" speaker="pi">
+      <bodyEN>I'm really proud of you, Ame.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_FINALE_JINE002" speaker="pi">
+      <bodyEN>You've come so far since when I first met you.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_FINALE_JINE003" speaker="ame">
+      <bodyEN>aha, thanks...</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_FINALE_JINE004" speaker="ame">
+      <bodyEN>i'm glad you pushed me to talk about that</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_FINALE_JINE005" speaker="ame">
+      <bodyEN>it got me a bit too emotional though...</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_FINALE_JINE006" speaker="pi">
+      <bodyEN>It's okay.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_FINALE_JINE007" speaker="pi">
+      <bodyEN>It'll take time.</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_FINALE_JINE008" speaker="pi">
+      <bodyEN>But Ame?</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_FINALE_JINE009" speaker="ame">
+      <bodyEN>yeah?</bodyEN>
+    </jine>
+    <jine id="ENDING_LOVE_FINALE_JINE010" speaker="pi">
+      <bodyEN>You got this.</bodyEN>
     </jine>
   </jines>
   <streams>
@@ -2418,6 +2909,394 @@ was always against her.</bodyEN>
       </dialogue>
       <chat/>
     </stream>
+    <stream name="Love" genre="" alphaType="LoveAlpha" level="1"  actionType="HaishinLove" cmdType="HaishinLove">
+      <dialogue>
+        <speak id="STREAM001">
+          <bodyEN>The internet angel descends upon the internet, ready to spread... love!</bodyEN>
+        </speak>
+        <speak id="STREAM002">
+          <bodyEN>Aha, I guess I did put that in the stream title, so you guys already know that.</bodyEN>
+        </speak>
+        <speak id="STREAM003">
+          <bodyEN>Now you guys might be wondering: what is love?</bodyEN>
+        </speak>
+        <speak id="STREAM004">
+          <bodyEN>Love is... kinda hard to explain, now that I think about it!</bodyEN>
+        </speak>
+        <speak id="STREAM005">
+          <bodyEN>It's kinda like... the feeling of being understood. A companion, who'll never leave your side no matter what.</bodyEN>
+        </speak>
+        <speak id="STREAM006">
+          <bodyEN>And you can feel love for anyone or anything!</bodyEN>
+        </speak>
+        <speak id="STREAM007">
+          <bodyEN>Even if they're not real!</bodyEN>
+        </speak>
+        <speak id="STREAM008">
+          <bodyEN>No matter how much people judge you for it, it's totally okay to
+love anyone you want, no matter if they can't be there for you in the flesh.</bodyEN>
+        </speak>
+        <speak id="STREAM009">
+          <bodyEN>And if they can't accept it? They're not worth your time! </bodyEN>
+        </speak>
+        <speak id="STREAM010">
+          <bodyEN>Of course, I'd like it best if you loved me the most!
+I need those SuperChats, after all!</bodyEN>
+        </speak>
+        <speak id="STREAM011">
+          <bodyEN>But even if it's not me, I can understand
+how you feel. I'm here with you.</bodyEN>
+        </speak>
+        <speak id="STREAM012">
+          <bodyEN>And of course, I love all of you!
+You're all an angel could ever need!</bodyEN>
+        </speak>
+        <speak id="STREAM013">
+          <bodyEN>Anyways, it seems like it's that time again!</bodyEN>
+        </speak>
+        <speak id="STREAM014">
+          <bodyEN>I'll see you guys next time!</bodyEN>
+        </speak>
+      </dialogue>
+      <chat>
+        <msg id="CHAT001">
+          <bodyEN>kinda cringe opening but okay</bodyEN>
+        </msg>
+        <msg id="CHAT002">
+          <bodyEN>Hey! It's our darling angel~</bodyEN>
+        </msg>
+        <msg id="CHAT003">
+          <bodyEN>omg you're here!</bodyEN>
+        </msg>
+        <msg id="CHAT004">
+          <bodyEN>love? i want love</bodyEN>
+        </msg>
+        <msg id="CHAT005">
+          <bodyEN>give a loveless loser like me some love</bodyEN>
+        </msg>
+        <msg id="CHAT006">
+          <bodyEN>what's love?</bodyEN>
+        </msg>
+        <msg id="CHAT007">
+          <bodyEN>i love you</bodyEN>
+        </msg>
+        <msg id="CHAT008">
+          <bodyEN>you don't even know do you</bodyEN>
+        </msg>
+        <msg id="CHAT009">
+          <bodyEN>i don't care, but i know i love you</bodyEN>
+        </msg>
+        <msg id="CHAT010">
+          <bodyEN>This isn't your best stream topic KAngel</bodyEN>
+        </msg>
+        <msg id="CHAT011">
+          <bodyEN>idk what she's going on about but im into it</bodyEN>
+        </msg>
+        <msg id="CHAT012">
+          <bodyEN>like a waifu???</bodyEN>
+        </msg>
+        <msg id="CHAT013">
+          <bodyEN>omg ma waifuuuu</bodyEN>
+        </msg>
+        <msg id="CHAT014">
+          <bodyEN>BLESS, she recognizes us</bodyEN>
+        </msg>
+        <msg id="CHAT015">
+          <bodyEN>Thank you KAngel, my family makes me wanna kms whenever i talk about stuff like that...</bodyEN>
+        </msg>
+        <msg id="CHAT016">
+          <bodyEN>we do!!!!</bodyEN>
+        </msg>
+        <msg id="CHAT017">
+          <bodyEN>kangel my beloved</bodyEN>
+        </msg>
+        <msg id="CHAT018">
+          <bodyEN>sorry, im a miku supporter instead</bodyEN>
+        </msg>
+        <msg id="CHAT019">
+          <bodyEN>kangel do you have a waifu or husbando????</bodyEN>
+        </msg>
+        <msg id="CHAT020">
+          <bodyEN>whos ur love then????</bodyEN>
+        </msg>
+        <msg id="CHAT021">
+          <bodyEN>omg!!!!</bodyEN>
+        </msg>
+        <msg id="CHAT022">
+          <bodyEN>i love you kangel!!</bodyEN>
+        </msg>
+        <msg id="CHAT023">
+          <bodyEN>I LOVE YOUUUUUUU</bodyEN>
+        </msg>
+        <msg id="CHAT024">
+          <bodyEN>BLESS</bodyEN>
+        </msg>
+        <msg id="CHAT025">
+          <bodyEN>wait nooooo</bodyEN>
+        </msg>
+        <msg id="CHAT026">
+          <bodyEN>Don't leave us...</bodyEN>
+        </msg>
+        <msg id="CHAT027">
+          <bodyEN>PLEASE DON'T GO</bodyEN>
+        </msg>
+        <msg id="CHAT028">
+          <bodyEN>okay... see you next time!</bodyEN>
+        </msg>
+        <msg id="CHAT029">
+          <bodyEN>We'll be waiting!</bodyEN>
+        </msg>
+        <msg id="CHAT030">
+          <bodyEN>love you byeeee!</bodyEN>
+        </msg>
+        <msg id="CHAT031">
+          <bodyEN>mwah!!!!</bodyEN>
+        </msg>
+      </chat>
+    </stream>
+    <stream name="The Delusion of Love" genre="" alphaType="LoveAlpha" level="2"  actionType="HaishinLoveDelusion" cmdType="HaishinLoveDelusion">
+      <dialogue>
+        <speak id="STREAM001">
+          <bodyEN>Your internet angel shines brightly, illuminating even the darkest corners of cyberspace.</bodyEN>
+        </speak>
+        <speak id="STREAM002">
+          <bodyEN>I wanted to talk about something a little bit serious today.</bodyEN>
+        </speak>
+        <speak id="STREAM003">
+          <bodyEN>It's something that I'm sure you guys deal with too.</bodyEN>
+        </speak>
+        <speak id="STREAM004">
+          <bodyEN>Back when I first descended to the internet... I was really struggling emotionally.</bodyEN>
+        </speak>
+        <speak id="STREAM005">
+          <bodyEN>And to help myself cope with that I had you guys, and...</bodyEN>
+        </speak>
+        <speak id="STREAM006">
+          <bodyEN>You guys might hate me for this, but I had a lover too.</bodyEN>
+        </speak>
+        <speak id="STREAM007">
+          <bodyEN>I-it's not what you think, I promise!</bodyEN>
+        </speak>
+        <speak id="STREAM008">
+          <bodyEN>It... wasn't real.</bodyEN>
+        </speak>
+        <speak id="STREAM009">
+          <bodyEN>It's really hard to explain, but...</bodyEN>
+        </speak>
+        <speak id="STREAM010">
+          <bodyEN>Don't let yourselves get carried away, okay?</bodyEN>
+        </speak>
+        <speak id="STREAM011">
+          <bodyEN>I know it's easy to give in to your fantasies, but...</bodyEN>
+        </speak>
+        <speak id="STREAM012">
+          <bodyEN>It's important to remember what's real.</bodyEN>
+        </speak>
+        <speak id="STREAM013">
+          <bodyEN>No matter how tough it gets... the real world never goes away.</bodyEN>
+        </speak>
+        <speak id="STREAM014">
+          <bodyEN>And while a fantasy can feel nice for a while...</bodyEN>
+        </speak>
+        <speak id="STREAM015">
+          <bodyEN>It's never going to be a real substitute for reality.</bodyEN>
+        </speak>
+        <speak id="STREAM016">
+          <bodyEN>Not only that, but... it can be really detrimental for you too.</bodyEN>
+        </speak>
+        <speak id="STREAM017">
+          <bodyEN>Remember when I vanished for a while back when my career was starting up?</bodyEN>
+        </speak>
+        <speak id="STREAM018">
+          <bodyEN>Yeah. Don't let yourselves fall as far as I did, okay? </bodyEN>
+        </speak>
+        <speak id="STREAM019">
+          <bodyEN>I know I can't force you, but... please promise me.</bodyEN>
+        </speak>
+        <speak id="STREAM020">
+          <bodyEN>Don't forget to give me plenty of attention too!</bodyEN>
+        </speak>
+        <speak id="STREAM021">
+          <bodyEN>But... take care of yourselves.</bodyEN>
+        </speak>
+        <speak id="STREAM022">
+          <bodyEN>Nobody should go through what I did...</bodyEN>
+        </speak>
+        <speak id="STREAM023">
+          <bodyEN>Aha... this has gotten me a little emotional now...</bodyEN>
+        </speak>
+        <speak id="STREAM024">
+          <bodyEN>I think I'm gonna head out for now, this got a little too intense for me.</bodyEN>
+        </speak>
+        <speak id="STREAM025">
+          <bodyEN>Sorry, guys. I'll be back next stream!</bodyEN>
+        </speak>
+        <speak id="STREAM026">
+          <bodyEN>Bye bye for now!</bodyEN>
+        </speak>
+      </dialogue>
+      <chat>
+        <msg id="CHAT001">
+          <bodyEN>omg kangie here</bodyEN>
+        </msg>
+        <msg id="CHAT002">
+          <bodyEN>ooh nice intro this time</bodyEN>
+        </msg>
+        <msg id="CHAT003">
+          <bodyEN>You're so cool</bodyEN>
+        </msg>
+        <msg id="CHAT004">
+          <bodyEN>oh?</bodyEN>
+        </msg>
+        <msg id="CHAT005">
+          <bodyEN>I'm not sure I can handle a serious topic today...</bodyEN>
+        </msg>
+        <msg id="CHAT006">
+          <bodyEN>what's up, kangel?</bodyEN>
+        </msg>
+        <msg id="CHAT007">
+          <bodyEN>awww, it's nice that you depended on us</bodyEN>
+        </msg>
+        <msg id="CHAT008">
+          <bodyEN>and...? </bodyEN>
+        </msg>
+        <msg id="CHAT009">
+          <bodyEN>what</bodyEN>
+        </msg>
+        <msg id="CHAT010">
+          <bodyEN>NO WAY</bodyEN>
+        </msg>
+        <msg id="CHAT011">
+          <bodyEN>You cheat!</bodyEN>
+        </msg>
+        <msg id="CHAT012">
+          <bodyEN>I can't believe you KAngel...</bodyEN>
+        </msg>
+        <msg id="CHAT013">
+          <bodyEN>Why would you do this to us????</bodyEN>
+        </msg>
+        <msg id="CHAT014">
+          <bodyEN>wasn't real? what do you mean?</bodyEN>
+        </msg>
+        <msg id="CHAT015">
+          <bodyEN>ohhh, so they didn't really love you</bodyEN>
+        </msg>
+        <msg id="CHAT016">
+          <bodyEN>aww, poor angel...</bodyEN>
+        </msg>
+        <msg id="CHAT017">
+          <bodyEN>We're still here for you, though!</bodyEN>
+        </msg>
+        <msg id="CHAT018">
+          <bodyEN>okay!</bodyEN>
+        </msg>
+        <msg id="CHAT019">
+          <bodyEN>I don't know, it's so hard to live in reality...</bodyEN>
+        </msg>
+        <msg id="CHAT020">
+          <bodyEN>Life sucks, I'd much rather be carried away than deal with all of this</bodyEN>
+        </msg>
+        <msg id="CHAT021">
+          <bodyEN>but?</bodyEN>
+        </msg>
+        <msg id="CHAT022">
+          <bodyEN>I think of you every day KAngel</bodyEN>
+        </msg>
+        <msg id="CHAT023">
+          <bodyEN>i wish it did tbh</bodyEN>
+        </msg>
+        <msg id="CHAT024">
+          <bodyEN>yeah they really do</bodyEN>
+        </msg>
+        <msg id="CHAT025">
+          <bodyEN>KAngel...</bodyEN>
+        </msg>
+        <msg id="CHAT026">
+          <bodyEN>how could it be bad for you?</bodyEN>
+        </msg>
+        <msg id="CHAT027">
+          <bodyEN>it's still better than this hellhole tho</bodyEN>
+        </msg>
+        <msg id="CHAT028">
+          <bodyEN>oh yeah</bodyEN>
+        </msg>
+        <msg id="CHAT029">
+          <bodyEN>Wait... that's why?</bodyEN>
+        </msg>
+        <msg id="CHAT030">
+          <bodyEN>OMG so that explains it</bodyEN>
+        </msg>
+        <msg id="CHAT031">
+          <bodyEN>oh god, i see...</bodyEN>
+        </msg>
+        <msg id="CHAT032">
+          <bodyEN>yeah maybe ur right after all</bodyEN>
+        </msg>
+        <msg id="CHAT033">
+          <bodyEN>aww kangel</bodyEN>
+        </msg>
+        <msg id="CHAT034">
+          <bodyEN>you're so caring for us</bodyEN>
+        </msg>
+        <msg id="CHAT035">
+          <bodyEN>i promise! i'll never lose myself</bodyEN>
+        </msg>
+        <msg id="CHAT036">
+          <bodyEN>we promise kangel!</bodyEN>
+        </msg>
+        <msg id="CHAT037">
+          <bodyEN>I'll never make the same mistake!</bodyEN>
+        </msg>
+        <msg id="CHAT038">
+          <bodyEN>Thanks for your advice, KAngel!</bodyEN>
+        </msg>
+        <msg id="CHAT039">
+          <bodyEN>we really are blessed by a real angel...</bodyEN>
+        </msg>
+        <msg id="CHAT040">
+          <bodyEN>sorry kangel</bodyEN>
+        </msg>
+        <msg id="CHAT041">
+          <bodyEN>it's okay, you're all better now</bodyEN>
+        </msg>
+        <msg id="CHAT042">
+          <bodyEN>You've got this KAngel!!!!</bodyEN>
+        </msg>
+        <msg id="CHAT043">
+          <bodyEN>We believe in you! And we promise not to fall that far!</bodyEN>
+        </msg>
+        <msg id="CHAT044">
+          <bodyEN>aww...</bodyEN>
+        </msg>
+        <msg id="CHAT045">
+          <bodyEN>she's so cute like this</bodyEN>
+        </msg>
+        <msg id="CHAT046">
+          <bodyEN>bless</bodyEN>
+        </msg>
+        <msg id="CHAT047">
+          <bodyEN>see you!!!!</bodyEN>
+        </msg>
+        <msg id="CHAT048">
+          <bodyEN>I hope you feel better soon KAngel!</bodyEN>
+        </msg>
+        <msg id="CHAT049">
+          <bodyEN>Get well soon!</bodyEN>
+        </msg>
+        <msg id="CHAT050">
+          <bodyEN>I love you!</bodyEN>
+        </msg>
+        <msg id="CHAT051">
+          <bodyEN>bleeeeess!!!!!!!!!</bodyEN>
+        </msg>
+        <msg id="CHAT052">
+          <bodyEN>see u next time angel!!!!</bodyEN>
+        </msg>
+        <msg id="CHAT053">
+          <bodyEN>Take care of yourself</bodyEN>
+        </msg>
+      </chat>
+    </stream>
   </streams>
   <st>
     <thread id="STALKDISCOVER">
@@ -2491,6 +3370,25 @@ about Comiket tonight!</bodyEN>
     <string id="Poketter_AmeQuit">
       <bodyEN>The user @raincandy_U
 does not exist.</bodyEN>
+    </string>
+    <string id="Poem_Sleepy">
+      <bodyEN>And so the angel dreamed forever and ever
+A floating feeling, light as a feather
+Unbound at last from binding ties
+Free at last to explore the skies
+But over time, the angel grew weaker
+The clearest skies grew ever bleaker
+And at last, those brilliant blue wings
+Gave way to truth, pulling the strings
+As one dream ends, a voice calls out
+
+Rest for eternity</bodyEN>
+    </string>
+    <string id="Poem_Love">
+      <bodyEN>i love you ♥️</bodyEN>
+    </string>
+    <string id="System_LoveConfirm">
+      <bodyEN>Love forever.</bodyEN>
     </string>
   </sysstrings>
 </moddata>

@@ -26,7 +26,6 @@ namespace NeedyMintsOverdose
             base.startEvent(cancellationToken);
             GameObject.Find("MainPanel").GetComponent<Image>().color = Color.black;
             PostEffectManager.Instance.SetShaderWeight(0.5f, (EffectType)(int)ModdedEffectType.Vengeful);
-            SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.AngelFuneral);
             SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0.4f);
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
@@ -60,6 +59,7 @@ namespace NeedyMintsOverdose
                 ModdedKusoRepType.DEADKANGEL_TWEET003_KUSO003
             }.Swap(), null);
             SingletonMonoBehaviour<NotificationManager>.Instance.AddDayPassingNotifier();
+            SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.AngelFuneral);
             base.endEvent();
         }
     }

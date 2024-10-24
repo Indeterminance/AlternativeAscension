@@ -142,7 +142,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action_Internet2chStalk.cs" />
-    <Compile Include="OdekakeFuneral.cs" />
+    <Compile Include="Action_SleepToEternity.cs" />
+    <Compile Include="Action_OdekakeFuneral.cs" />
     <Compile Include="Action_OdekakeBreak.cs" />
     <Compile Include="Event_MV_kowai.cs" />
     <Compile Include="Event_ComiketAlert.cs" />

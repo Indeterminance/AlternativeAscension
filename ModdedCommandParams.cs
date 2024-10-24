@@ -166,6 +166,17 @@ namespace NeedyMintsOverdose
             StressDelta = 10,
             YamiDelta = 1,
         };
+
+        public static CmdMaster.Param SleepToEternityParam = new CmdMaster.Param()
+        {
+            ParentAct = "SleepToTomorrow",
+            Id = "SleepToEternity",
+            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "SleepToEternity").Name.BodyEN,
+            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "SleepToEternity").Desc.BodyEN,
+            PassingTime = 99,
+            StressDelta = -120,
+            YamiDelta = 999,
+        };
     }
 
     internal class ModdedActionParams
@@ -210,6 +221,12 @@ namespace NeedyMintsOverdose
         {
             Id = "OdekakeFuneral",
             TitleEn = "The end"
+        };
+
+        public static ActMaster.Param SleepToEternityParam = new ActMaster.Param()
+        {
+            Id = "SleepToEternity",
+            TitleEn = "Sleep Forever"
         };
 
     }
