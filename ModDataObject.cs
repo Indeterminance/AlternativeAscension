@@ -66,6 +66,9 @@ namespace NeedyXML
         [XmlElement(ElementName = "osimai")]
         public string Osimai;
 
+        [XmlElement(ElementName = "jisseki")]
+        public string JissekiEn;
+
         [XmlAttribute(AttributeName = "id")]
         public string Id;
 

@@ -19,6 +19,8 @@ namespace NeedyMintsOverdose
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
             base.startEvent(cancellationToken);
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_c");
+            await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.EVENT_SONG_DENY001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.EVENT_SONG_DENY002.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.EVENT_SONG_DENY003.Swap());

@@ -28,12 +28,16 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Jine);
             PostEffectManager.Instance.SetShader(EffectType.GoCrazy);
             PostEffectManager.Instance.SetShaderWeight(2);
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_craziness");
+            await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE002.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE003.Swap());
             await UniTask.Delay(Constants.MIDDLE);
-            DeleteTweet();                        
-                                                  
+            DeleteTweet();
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_talk_c");
+            await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
+
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE004.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE005.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE006.Swap());
@@ -48,7 +52,7 @@ namespace NeedyMintsOverdose
             PoketterManager pm = SingletonMonoBehaviour<PoketterManager>.Instance;
             pm.history.RemoveAt(pm.history.Count - 1);
 
-            NeedyMintsMod.log.LogMessage($"Waku: {SingletonMonoBehaviour<PoketterView>.Instance._Waku}");
+            //NeedyMintsMod.log.LogMessage($"Waku: {SingletonMonoBehaviour<PoketterView>.Instance._Waku}");
 
             //Transform trans = rt.transform.GetChild(1);
             //NeedyMintsMod.log.LogMessage(trans.name);

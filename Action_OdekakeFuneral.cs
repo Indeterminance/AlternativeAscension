@@ -39,13 +39,15 @@ namespace NeedyMintsOverdose
                 PostEffectManager.Instance.SetShader(EffectType.Bleeding);
                 PostEffectManager.Instance.SetShaderWeight(0.8f);
                 GameObject.Find("ShortCutParent").GetComponent<CanvasGroup>().alpha = 0.5f;
+                SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_out_d");
+                await UniTask.Delay(3000, false, PlayerLoopTiming.Update, default, false);
             }
             GameObject.Find("ShortCutParent").GetComponent<CanvasGroup>().alpha = 0f;
             GameObject.Find("ShortCutParent").GetComponent<CanvasGroup>().interactable = false;
             GameObject.Find("ShortCutParent").GetComponent<CanvasGroup>().blocksRaycasts = false;
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
             SingletonMonoBehaviour<TaskbarManager>.Instance.TaskBarGroup.alpha = 0f;
-            NeedyMintsMod.log.LogMessage($"Followers!");
+            //NeedyMintsMod.log.LogMessage($"Followers!");
             await GoOut();
 
 

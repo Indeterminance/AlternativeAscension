@@ -6,7 +6,7 @@ using static NeedyMintsOverdose.MintyOverdosePatches;
 
 namespace NeedyMintsOverdose
 {
-    public class Scenario_PostComiket : NgoEvent
+    public class Event_PostComiket : NgoEvent
     {
         // Token: 0x06001CF2 RID: 7410 RVA: 0x000843F9 File Offset: 0x000825F9
         public override void Awake()

@@ -31,22 +31,22 @@ namespace NeedyMintsOverdose
 
         private void Start()
         {
-            NeedyMintsMod.log.LogMessage("LoginHacked!");
+            //NeedyMintsMod.log.LogMessage("LoginHacked!");
             _input.interactable = false;
-            NeedyMintsMod.log.LogMessage("LoginHacked2!");
+            //NeedyMintsMod.log.LogMessage("LoginHacked2!");
             _passText.gameObject.SetActive(false);
-            NeedyMintsMod.log.LogMessage("LoginHacked!3");
+            //NeedyMintsMod.log.LogMessage("LoginHacked!3");
             _placeholderText.text = NgoEx.SystemTextFromType((SystemTextType)(int)ModdedSystemTextType.Login_BadPassword, SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
-            NeedyMintsMod.log.LogMessage("LoginHacked4!");
+            //NeedyMintsMod.log.LogMessage("LoginHacked4!");
             _placeholderText.gameObject.SetActive(false);
-            NeedyMintsMod.log.LogMessage("LoginHacked5!");
+            //NeedyMintsMod.log.LogMessage("LoginHacked5!");
             SteamInput();
 
             Transform trans = this.transform.parent;
-            for (int i = 0; i < trans.childCount; i++)
-            {
-                NeedyMintsMod.log.LogMessage($"LoginChild: {trans.GetChild(i)}");
-            }
+            //for (int i = 0; i < trans.childCount; i++)
+            //{
+            //    NeedyMintsMod.log.LogMessage($"LoginChild: {trans.GetChild(i)}");
+            //}
 
             _imageContainer.sprite = baseImage;
         }

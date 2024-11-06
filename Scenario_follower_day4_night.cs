@@ -15,9 +15,8 @@ using UnityEngine.EventSystems;
 
 namespace NeedyMintsOverdose
 {
-    public class Scenario_follower_day4_day : NgoEvent
+    public class Scenario_follower_day4_night : NgoEvent
     {
-
         // Token: 0x06001CF2 RID: 7410 RVA: 0x000843F9 File Offset: 0x000825F9
         public override void Awake()
         {
@@ -29,11 +28,15 @@ namespace NeedyMintsOverdose
         {
             base.startEvent(cancellationToken);
             await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
-
+            
             SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
             SingletonMonoBehaviour<JineManager>.Instance.Uncontrolable();
-            
-            GameObject.Find("MainPanel").GetComponent<Image>().color = Color.white;
+
+            NeedyMintsMod.log.LogMessage($"Stress mult : {SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap())}");
+            NeedyMintsMod.log.LogMessage($"AMA stress : {SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.AMAStress.Swap())}");
+
+            GameObject.Find("MainPanel").GetComponent<Image>().color = Color.black;
+            SingletonMonoBehaviour<StatusManager>.Instance.timePassing(2);
 
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0.4f);
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);

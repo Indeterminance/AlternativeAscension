@@ -18,7 +18,7 @@ namespace NeedyMintsOverdose
             base.Awake();
             this._Live.isOiwai = false;
             this.defaultEffectType = EffectType.GoCrazy;
-            NeedyMintsMod.log.LogMessage($"Playing starts at : {playing.Count}");
+            //NeedyMintsMod.log.LogMessage($"Playing starts at : {playing.Count}");
 
             string pre = ModdedAlphaType.FollowerAlpha.ToString()+"1_";
             this.title = NgoEx.TenTalk(pre+"STREAMNAME", this._lang);

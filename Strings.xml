@@ -88,14 +88,17 @@ call me ███!</bodyEN>
       <name>The Angel Dream</name>
       <osimai>Spending all your time in dreamland
 isn't always the best idea.</osimai>
+      <jisseki>When the sun came up, I couldn't tell where Heaven stopped and Earth began.</jisseki>
     </ending>
     <ending id="Ending_Followers">
       <name>FOLLOWERS</name>
       <osimai>Even a needy girl needs her space.</osimai>
+      <jisseki>What is a follower really? A fan, or something more? Or perhaps something less?</jisseki>
     </ending>
     <ending id="Ending_Love">
       <name>An Angel's Love</name>
       <osimai>A floating feeling, grounded in reality.</osimai>
+      <jisseki>Before you can love another, you first must learn to love yourself.</jisseki>
     </ending>
   </endings>
   <tweets>
@@ -201,12 +204,12 @@ isn't always the best idea.</osimai>
     <tweet id="ENDING_LOVE_DAY1_TWEET002" user="kangel">
       <bodyEN>Something's got me really really pumped up today! You guys aren't gonna be ready for me tonight!</bodyEN>
     </tweet>
-    <tweet id="ENDING_LOVE_DAY2_TWEET001" user="ame">
+    <tweet id="ENDING_LOVE_DAY1_TWEET003" user="ame">
       <bodyEN>me and p-chan had an "i love you" contest bc i said there was no way they love me as much as i love them.
 
 still not sure who won that, but god that was the best sex ever</bodyEN>
     </tweet>
-    <tweet id="ENDING_LOVE_DAY2_TWEET002" user="kangel">
+    <tweet id="ENDING_LOVE_DAY1_TWEET004" user="kangel">
       <bodyEN>Remember: no matter what, I'll always love you.</bodyEN>
     </tweet>
   </tweets>
@@ -376,19 +379,19 @@ still not sure who won that, but god that was the best sex ever</bodyEN>
     <kuso id="ENDING_LOVE_DAY1_TWEET002_KUSO005">
       <bodyEN>We were born ready, KAngel! Let's do this!</bodyEN>
     </kuso>
-    <kuso id="ENDING_LOVE_DAY2_TWEET002_KUSO001">
+    <kuso id="ENDING_LOVE_DAY1_TWEET004_KUSO001">
       <bodyEN>omg really needed to hear that, thanks kangel</bodyEN>
     </kuso>
-    <kuso id="ENDING_LOVE_DAY2_TWEET002_KUSO002">
+    <kuso id="ENDING_LOVE_DAY1_TWEET004_KUSO002">
       <bodyEN>I LOVE YOUUUU</bodyEN>
     </kuso>
-    <kuso id="ENDING_LOVE_DAY2_TWEET002_KUSO003">
+    <kuso id="ENDING_LOVE_DAY1_TWEET004_KUSO003">
       <bodyEN>don't listen to her guys, she probably just got off with her boyfriend or whatever</bodyEN>
     </kuso>
-    <kuso id="ENDING_LOVE_DAY2_TWEET002_KUSO004">
+    <kuso id="ENDING_LOVE_DAY1_TWEET004_KUSO004">
       <bodyEN>kangel gang rise up!</bodyEN>
     </kuso>
-    <kuso id="ENDING_LOVE_DAY2_TWEET002_KUSO005">
+    <kuso id="ENDING_LOVE_DAY1_TWEET004_KUSO005">
       <bodyEN>KAngel, you're the best!!!</bodyEN>
     </kuso>
   </kusos>
@@ -1343,7 +1346,7 @@ id probably get attacked</bodyEN>
       <bodyEN>tbh i thought i'd feel worse hearing that, but</bodyEN>
     </jine>
     <jine id="ENDING_LOVE_DAY2_JINE006" speaker="ame">
-      <bodyEN>i don't think i care</bodyEN>
+      <bodyEN>i don't think i care!</bodyEN>
     </jine>
     <jine id="ENDING_LOVE_DAY2_JINE007" speaker="ame">
       <bodyEN>it doesn't matter if the world doesn't recognize us</bodyEN>
@@ -1519,7 +1522,7 @@ id probably get attacked</bodyEN>
     <jine id="ENDING_LOVE_BREAKUP_JINE014" speaker="ame">
       <bodyEN>and im sorry</bodyEN>
     </jine>
-    <jine id="ENDING_LOVE_BREAKUP_JINE015" speaker="ame">
+    <jine id="ENDING_LOVE_BREAKUP_JINE015" speaker="pi">
       <bodyEN>It's okay.</bodyEN>
     </jine>
     <jine id="ENDING_LOVE_BREAKUP_JINE016" speaker="ame">
@@ -2912,19 +2915,23 @@ was always against her.</bodyEN>
     <stream name="Love" genre="" alphaType="LoveAlpha" level="1"  actionType="HaishinLove" cmdType="HaishinLove">
       <dialogue>
         <speak id="STREAM001">
-          <bodyEN>The internet angel descends upon the internet, ready to spread... love!</bodyEN>
+          <bodyEN>The internet angel descends upon the
+internet, ready to spread... love!</bodyEN>
         </speak>
         <speak id="STREAM002">
-          <bodyEN>Aha, I guess I did put that in the stream title, so you guys already know that.</bodyEN>
+          <bodyEN>Aha, I guess I did put that in the
+stream title, so you guys already know that.</bodyEN>
         </speak>
         <speak id="STREAM003">
           <bodyEN>Now you guys might be wondering: what is love?</bodyEN>
         </speak>
         <speak id="STREAM004">
-          <bodyEN>Love is... kinda hard to explain, now that I think about it!</bodyEN>
+          <bodyEN>Love is... kinda hard to explain, now
+that I think about it!</bodyEN>
         </speak>
         <speak id="STREAM005">
-          <bodyEN>It's kinda like... the feeling of being understood. A companion, who'll never leave your side no matter what.</bodyEN>
+          <bodyEN>It's kinda like... the feeling of being understood.
+Someone who'll never leave your side no matter what.</bodyEN>
         </speak>
         <speak id="STREAM006">
           <bodyEN>And you can feel love for anyone or anything!</bodyEN>
@@ -2933,23 +2940,24 @@ was always against her.</bodyEN>
           <bodyEN>Even if they're not real!</bodyEN>
         </speak>
         <speak id="STREAM008">
-          <bodyEN>No matter how much people judge you for it, it's totally okay to
-love anyone you want, no matter if they can't be there for you in the flesh.</bodyEN>
+          <bodyEN>And it's totally okay to love anyone you want,
+no matter if they can't be there for you in the flesh.</bodyEN>
         </speak>
         <speak id="STREAM009">
-          <bodyEN>And if they can't accept it? They're not worth your time! </bodyEN>
+          <bodyEN>And if they can't accept it?
+They're not worth your time! </bodyEN>
         </speak>
         <speak id="STREAM010">
           <bodyEN>Of course, I'd like it best if you loved me the most!
-I need those SuperChats, after all!</bodyEN>
+I need those SuperChats, after all~</bodyEN>
         </speak>
         <speak id="STREAM011">
           <bodyEN>But even if it's not me, I can understand
-how you feel. I'm here with you.</bodyEN>
+how you feel. I'm here with you!</bodyEN>
         </speak>
         <speak id="STREAM012">
           <bodyEN>And of course, I love all of you!
-You're all an angel could ever need!</bodyEN>
+You're all an angel could ever need.</bodyEN>
         </speak>
         <speak id="STREAM013">
           <bodyEN>Anyways, it seems like it's that time again!</bodyEN>
@@ -3054,25 +3062,30 @@ You're all an angel could ever need!</bodyEN>
         </msg>
       </chat>
     </stream>
-    <stream name="The Delusion of Love" genre="" alphaType="LoveAlpha" level="2"  actionType="HaishinLoveDelusion" cmdType="HaishinLoveDelusion">
+    <stream name="Fantasy" genre="" alphaType="LoveAlpha" level="2"  actionType="HaishinLoveDelusion" cmdType="HaishinLoveDelusion">
       <dialogue>
         <speak id="STREAM001">
-          <bodyEN>Your internet angel shines brightly, illuminating even the darkest corners of cyberspace.</bodyEN>
+          <bodyEN>Your internet angel shines brightly,
+illuminating even the darkest corners of cyberspace.</bodyEN>
         </speak>
         <speak id="STREAM002">
-          <bodyEN>I wanted to talk about something a little bit serious today.</bodyEN>
+          <bodyEN>I wanted to talk about something
+a little bit serious today.</bodyEN>
         </speak>
         <speak id="STREAM003">
           <bodyEN>It's something that I'm sure you guys deal with too.</bodyEN>
         </speak>
         <speak id="STREAM004">
-          <bodyEN>Back when I first descended to the internet... I was really struggling emotionally.</bodyEN>
+          <bodyEN>Back when I first descended to the internet...
+I was really struggling emotionally.</bodyEN>
         </speak>
         <speak id="STREAM005">
-          <bodyEN>And to help myself cope with that I had you guys, and...</bodyEN>
+          <bodyEN>And to help myself cope with
+that I had you guys, and...</bodyEN>
         </speak>
         <speak id="STREAM006">
-          <bodyEN>You guys might hate me for this, but I had a lover too.</bodyEN>
+          <bodyEN>You guys might hate me for
+this, but I had a lover too.</bodyEN>
         </speak>
         <speak id="STREAM007">
           <bodyEN>I-it's not what you think, I promise!</bodyEN>
@@ -3093,7 +3106,8 @@ You're all an angel could ever need!</bodyEN>
           <bodyEN>It's important to remember what's real.</bodyEN>
         </speak>
         <speak id="STREAM013">
-          <bodyEN>No matter how tough it gets... the real world never goes away.</bodyEN>
+          <bodyEN>No matter how tough it gets...
+the real world never goes away.</bodyEN>
         </speak>
         <speak id="STREAM014">
           <bodyEN>And while a fantasy can feel nice for a while...</bodyEN>
@@ -3102,13 +3116,16 @@ You're all an angel could ever need!</bodyEN>
           <bodyEN>It's never going to be a real substitute for reality.</bodyEN>
         </speak>
         <speak id="STREAM016">
-          <bodyEN>Not only that, but... it can be really detrimental for you too.</bodyEN>
+          <bodyEN>Not only that, but... it can be
+really detrimental for you too.</bodyEN>
         </speak>
         <speak id="STREAM017">
-          <bodyEN>Remember when I vanished for a while back when my career was starting up?</bodyEN>
+          <bodyEN>Remember when I vanished for a while
+back when my career was starting up?</bodyEN>
         </speak>
         <speak id="STREAM018">
-          <bodyEN>Yeah. Don't let yourselves fall as far as I did, okay? </bodyEN>
+          <bodyEN>Yeah. Don't let yourselves
+fall as far as I did, okay? </bodyEN>
         </speak>
         <speak id="STREAM019">
           <bodyEN>I know I can't force you, but... please promise me.</bodyEN>
@@ -3126,7 +3143,8 @@ You're all an angel could ever need!</bodyEN>
           <bodyEN>Aha... this has gotten me a little emotional now...</bodyEN>
         </speak>
         <speak id="STREAM024">
-          <bodyEN>I think I'm gonna head out for now, this got a little too intense for me.</bodyEN>
+          <bodyEN>I think I'm gonna head out for now,
+this got a little too intense for me.</bodyEN>
         </speak>
         <speak id="STREAM025">
           <bodyEN>Sorry, guys. I'll be back next stream!</bodyEN>
@@ -3389,6 +3407,9 @@ Rest for eternity</bodyEN>
     </string>
     <string id="System_LoveConfirm">
       <bodyEN>Love forever.</bodyEN>
+    </string>
+    <string id="System_LoveDay">
+      <bodyEN>LOVE</bodyEN>
     </string>
   </sysstrings>
 </moddata>

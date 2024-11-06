@@ -193,27 +193,14 @@ namespace NeedyMintsOverdose
         }
 
         // TODO: Investigate why the odekake shortcut doesn't instantiate properly
-        public static bool ShortcutStartAlternate(this Shortcut shortcut)
+        public static void ShortcutStartAlternate(this Shortcut shortcut)
         {
-            if (SingletonMonoBehaviour<StatusManager>.Instance == null) return true;
+            if (SingletonMonoBehaviour<StatusManager>.Instance == null) return;
 
             // Get private fields
             Button _shortcut = new Traverse(shortcut).Field(nameof(Shortcut._shortcut)).GetValue<Button>();
             TooltipCaller _tooltip = new Traverse(shortcut).Field(nameof(Shortcut._tooltip)).GetValue<TooltipCaller>();
             Traverse _dayPart = new Traverse(shortcut).Field(nameof(Shortcut._dayPart));
-
-            BindingFlags flag = BindingFlags.Instance | BindingFlags.InvokeMethod | BindingFlags.NonPublic;
-            MethodInfo AddLabel = typeof(Shortcut).GetMethod(nameof(Shortcut.AddLabel), flag);
-            MethodInfo AddHint = typeof(Shortcut).GetMethod(nameof(Shortcut.AddHint), flag);
-            MethodInfo SetTooltipText = typeof(Shortcut).GetMethod(nameof(Shortcut.SetTooltipText), flag);
-
-            // Add hints
-            _dayPart.SetValue(SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(StatusType.DayPart));
-            _dayPart.GetValue<ReactiveProperty<int>>().Subscribe(delegate (int _)
-            {
-                AddHint.Invoke(shortcut, null);
-            }).AddTo(shortcut.gameObject);
-            AddHint.Invoke(shortcut, null);
 
             SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(ModdedStatusType.FollowerPlotFlag.Swap()).Subscribe(delegate (int _)
             {
@@ -227,9 +214,20 @@ namespace NeedyMintsOverdose
                 }
             }).AddTo(shortcut.gameObject);
 
+            SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(ModdedStatusType.OdekakeCountdown.Swap()).Subscribe(delegate (int _)
+            {
+                NeedyMintsMod.log.LogMessage($"Odekake countdown: {_}");
+                if (_ == 0 && shortcut.appType == AppType.GoOut && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) != (int)FollowerPlotFlagValues.AngelFuneral)
+                {
+                    _shortcut.interactable = false;
+                    _tooltip.isShowTooltip = true;
+                    _tooltip.type = TooltipType.Tooltip_Angel;
+                }
+            }).AddTo(shortcut.gameObject);
 
 
-            // Redo click listeners
+
+            /*/ Redo click listeners
             _shortcut.onClick.RemoveAllListeners();
 
             _shortcut.onClick.AddListener(delegate
@@ -243,13 +241,18 @@ namespace NeedyMintsOverdose
                 //    _tooltip.type = TooltipType.Tooltip_Angel;
                 //    return;
                 //}
+                if (shortcut.appType == AppType.Pills)
+                {
 
+                }
+                else
+                {
+
+                }
                 IWindow w = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(shortcut.appType, true);
                 //if (isFuneral) w.Uncloseable();
                 return;
-            });
-
-            bool funeral = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelFuneral;
+            });*/
 
             // Same thing as the click event, but we're gonna run it once beforehand too
             if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelFuneral)
@@ -265,16 +268,6 @@ namespace NeedyMintsOverdose
                 _tooltip.isShowTooltip = true;
                 _tooltip.type = TooltipType.Tooltip_Angel;
             }
-            
-            // Add the shortcut label
-            SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Subscribe(delegate (LanguageType _)
-            {
-                AddLabel.Invoke(shortcut, null);
-                SystemTextType tt = new Traverse(shortcut).Field(nameof(Shortcut.tooltipTextType)).GetValue<SystemTextType>();
-                SetTooltipText.Invoke(shortcut, new object[] { tt });
-            }).AddTo(_shortcut);
-            AddLabel.Invoke(shortcut, null);
-            return false;
         }
 
         public static void DayPassingStartAlternate(this ngov3.Effect.DayPassing dayPass)
@@ -320,7 +313,8 @@ namespace NeedyMintsOverdose
             _heartSprite.GetValue<SpriteRenderer>().gameObject.SetActive(true);
             _dayIndex.GetValue<ReactiveProperty<int>>().Where((int d) => true).Subscribe(delegate (int t)
             {
-                NeedyMintsMod.log.LogMessage($"dayIndex: {_dayIndex.GetValue<ReactiveProperty<int>>().Value}");
+                //NeedyMintsMod.log.LogMessage($"dayIndex: {_dayIndex.GetValue<ReactiveProperty<int>>().Value}");
+                if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.lockDayCount) return;
                 Traverse method = new Traverse(dayPass).Method(nameof(DayPassing2D.dayPass), new Type[] {typeof(int), typeof(int), typeof(int)});
                 method.GetValue(new object[] {
                     _dayIndex.GetValue<ReactiveProperty<int>>().Value, 0, 0
@@ -458,7 +452,7 @@ namespace NeedyMintsOverdose
                 data.FavNumber = (int)(Mathf.Max(Mathf.Log10((float)follower), 0.5f) * (float)TweetFetcher.ConvertTypeToTweet(t).BuzzPowerFav * 2f) + global::UnityEngine.Random.Range(1, 10);
                 data.RtNumber = (int)(Mathf.Max(Mathf.Log10((float)follower), 1f) * (float)TweetFetcher.ConvertTypeToTweet(t).BuzzPowerRT) + global::UnityEngine.Random.Range(1, 10);
             }
-            NeedyMintsMod.log.LogMessage($"Created special tweet data with {data.FavNumber} favs and {data.RtNumber} rts");
+            //NeedyMintsMod.log.LogMessage($"Created special tweet data with {data.FavNumber} favs and {data.RtNumber} rts");
             return data;
         }
 
@@ -559,7 +553,7 @@ namespace NeedyMintsOverdose
 
             Traverse ConvertGigaNumber = new Traverse(cell).Method(nameof(PoketterCell2D.ConvertGigaNumber), new Type[] { typeof(int) });
 
-            NeedyMintsMod.log.LogMessage($"Giga: {ConvertGigaNumber.GetValue(tweetDrawable.RtNumber)}");
+            //NeedyMintsMod.log.LogMessage($"Giga: {ConvertGigaNumber.GetValue(tweetDrawable.RtNumber)}");
             float num = (float)_buzzMillisecond / 1000f;
             if (tweetDrawable.RtNumber > 0)
             {
@@ -585,6 +579,19 @@ namespace NeedyMintsOverdose
             t.Field(nameof(PoketterView2D._scrollRect)).GetValue<ScrollRect>().gameObject.SetActive(false);
             t.Field(nameof(PoketterView2D._Header)).GetValue<TMP_Text>().gameObject.SetActive(true);
             t.Field(nameof(PoketterView2D._Desc)).GetValue<TMP_Text>().gameObject.SetActive(true);
+        }
+
+        public static void AddLoveBake(this DayBaketter baketter)
+        {
+            TMP_Text label = new Traverse(baketter).Field(nameof(DayBaketter.label)).GetValue<TMP_Text>();
+
+            if (label == null)
+            {
+                return;
+            }
+            int day;
+            int.TryParse(label.text, out day);
+            if (day > 31) label.text = "❤❤";
         }
     }
 }

@@ -75,6 +75,8 @@ namespace NeedyMintsOverdose
                 await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE020.Swap());
                 await jm.AddJineHistory(ModdedJineType.ENDING_SLEEPY_JINE021.Swap());
                 PostEffectManager.Instance.AnmakuWeight(0.6f);
+                SingletonMonoBehaviour<WebCamManager>.Instance.GoOut();
+                await UniTask.Delay(Constants.MIDDLE * 2, false, PlayerLoopTiming.Update, default, false);
                 await SingletonMonoBehaviour<Poem>.Instance.StartPoem(NgoEx.SystemTextFromType(ModdedSystemTextType.Poem_Sleepy.Swap(), SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value), false);
                 await NgoEvent.DelaySkippable(Constants.SLOW);
                 SingletonMonoBehaviour<Poem>.Instance.CleanPoem();

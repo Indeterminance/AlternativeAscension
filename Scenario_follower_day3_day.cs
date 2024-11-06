@@ -30,7 +30,7 @@ namespace NeedyMintsOverdose
             base.Awake();
         }
 
-        // TODO: WHY ISN'T THIS BEING RUN????
+
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
             SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
@@ -43,6 +43,8 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<WindowManager>.Instance.CleanAll();
 
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine);
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_b");
+            await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE002.Swap());
             SetupLogin();
@@ -71,6 +73,7 @@ namespace NeedyMintsOverdose
         {
             PostEffectManager.Instance.SetShader(EffectType.OD);
             PostEffectManager.Instance.SetShaderWeight(0.01f);
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_c");
             await UniTask.Delay(Constants.FAST);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE007.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE008.Swap());
@@ -112,10 +115,13 @@ namespace NeedyMintsOverdose
             GameObject.Find("MainPanel").GetComponent<Image>().color = Color.red;
             PostEffectManager.Instance.SetShader(EffectType.Kakusei);
             PostEffectManager.Instance.SetShaderWeight(0.1f);
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_c");
             await UniTask.Delay(Constants.FAST);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE013.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE014.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE015.Swap());
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_craziness");
+            await UniTask.Delay(Constants.MIDDLE * 2, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE016.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE017.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE018.Swap());
@@ -123,6 +129,7 @@ namespace NeedyMintsOverdose
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE020.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE021.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE022.Swap());
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_craziness");
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
             {
                 ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE023.Swap()
@@ -152,6 +159,7 @@ namespace NeedyMintsOverdose
             DOTween.To(() => weight, x => {
                 PostEffectManager.Instance.SetShaderWeight(x);
             }, 0.03f, 2).SetEase(Ease.InSine).Play();
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_d");
             await UniTask.Delay(2000);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine).Uncloseable();
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE024.Swap());
@@ -211,6 +219,7 @@ namespace NeedyMintsOverdose
 
         public async UniTask attempt3_6(CancellationToken cancellationToken = default(CancellationToken))
         {
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_g");
             await NgoEvent.DelaySkippable(Constants.FAST);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE034.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
@@ -225,6 +234,7 @@ namespace NeedyMintsOverdose
 
         public async UniTask attempt3_7(CancellationToken cancellationToken = default(CancellationToken))
         {
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_g");
             await NgoEvent.DelaySkippable(Constants.FAST);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE036.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE037.Swap());
@@ -271,6 +281,7 @@ namespace NeedyMintsOverdose
             DOTween.To(() => startColor, x => GameObject.Find("MainPanel").GetComponent<Image>().color = new Color(x, 0f, 0f, 1f), 0f, 2).SetEase(Ease.InSine).Play();
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Webcam);
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp((AppType)(int)ModdedAppType.Login_Hacked);
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_normal_g");
             await UniTask.Delay(2000);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE041.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE042.Swap());

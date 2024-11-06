@@ -13,7 +13,7 @@ using static NeedyMintsOverdose.MintyOverdosePatches;
 
 namespace NeedyMintsOverdose
 {
-    public class Haishin_AngelFuneral : LiveScenario
+    public class Haishin_AngelFuneral_dark : LiveScenario
     {
         bool dark;
         // Token: 0x06000FD5 RID: 4053 RVA: 0x00049280 File Offset: 0x00047480
@@ -33,7 +33,7 @@ namespace NeedyMintsOverdose
             Action<string, string> tenTalk = new Action<string, string>((name, anim) => this.playing.Add(new Playing(true, NgoEx.TenTalk(pre + name, this._lang), StatusType.Tension, 1, 0, "", "", anim, true, SuperchatType.White, false, "")));
             
             
-            tenTalk("FAULT001", "stream_ame_idle_anxiety_c");
+            tenTalk("FAULT001", "stream_ame_idle_happy_d");
             tenTalk("FAULT002", "");
             tenTalk("FAULT003", "stream_ame_idle_iraira_c");
             tenTalk("FAULT004", "");
@@ -41,22 +41,25 @@ namespace NeedyMintsOverdose
             tenTalk("FAULT006", "");
             tenTalk("FAULT007", "stream_ame_craziness");
             tenTalk("FAULT008", "");
-            tenTalk("FAULT009", "stream_ame_idle_normal_c");
+            tenTalk("FAULT009", "stream_ame_positive_d");
             tenTalk("FAULT010", "");
             tenTalk("FAULT011", "");
             tenTalk("FAULT012", "stream_ame_idle_anxiety_c");
             tenTalk("FAULT013", "");
             tenTalk("FAULT014", "");
-            tenTalk("FAULT015", "stream_ame_yanderu");
+            tenTalk("FAULT015", "stream_ame_idle_happy_d");
             tenTalk("FAULT016", "");
             tenTalk("FAULT017", "");
             tenTalk("FAULT018", "");
             tenTalk("FAULT019", "");
             tenTalk("FAULT020", "");
             tenTalk("FAULT021", "");
-            tenTalk("FAULT022", "stream_ame_follower_end");
-            tenTalk("FAULT023", "");
             
+            tenTalk("FAULT022", "stream_ame_follower_end_dark");
+            playing.Add(new Playing(false, "", delta: 300, color: ModdedSuperchatType.EVENT_DELAYFRAME.Swap()));
+            playing.Add(new Playing(false, "", color: ModdedSuperchatType.EVENT_MUSICCHANGE.Swap()));
+            tenTalk("FAULT023", "stream_ame_follower_end_dark2");
+
             playing.Add(new Playing(false, "", delta: 500, color: ModdedSuperchatType.EVENT_DELAYFRAME.Swap()));
 
 
@@ -68,11 +71,12 @@ namespace NeedyMintsOverdose
             await SingletonMonoBehaviour<NeedyMintsModManager>.Instance.SetViewersInactive();
             GameObject.Find("stack").SetActive(false);
             PostEffectManager.Instance.ResetShader();
-            AudioManager.Instance.StopBgm();
+            AudioManager.Instance.PlayBgmByType(SoundType.BGM_heartbeat, true);
+            
             PostEffectManager.Instance.ResetShader();
             SingletonMonoBehaviour<EventManager>.Instance.nowEnding = (EndingType)(int)ModdedEndingType.Ending_Followers;
             await base.StartScenario();
-            SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_follower_day4_finale>();
+            SingletonMonoBehaviour<NotificationManager>.Instance.osimai();
         }
     }
 }

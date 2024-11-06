@@ -23,6 +23,7 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine.EventSystems;
 using System.Runtime.CompilerServices;
+using Extensions;
 
 namespace NeedyMintsOverdose
 {
@@ -68,42 +69,8 @@ namespace NeedyMintsOverdose
         public class ModdedSlotData : SlotData
         {
             public int sleepCount;
-        }
-
-        private static ModdedSlotData LoadModdedSlotByES3(string fileName)
-        {
-            return new ModdedSlotData
-            {
-                jineHistory = ES3.Load<List<JineData>>("JINEHISTORY", fileName),
-                poketterHistory = ES3.Load<List<TweetData>>("POKETTERHISTORY", fileName),
-                eventsHistory = ES3.Load<List<string>>("EVENTHISTORY", fileName),
-                dayActionHistory = ES3.Load<List<string>>("DAYACTIONHISTORY", fileName, new List<string>()),
-                loop = (int)ES3.Load("LOOPCOUNT", fileName),
-                midokumushi = (int)ES3.Load("MIDOKUCOUNT", fileName),
-                psycheCount = ES3.Load<int>("PSYCHECOUNT", fileName, 0),
-                havingNetas = ES3.Load<List<AlphaLevel>>("HAVINGNETAS", fileName),
-                usedNetas = ES3.Load<List<AlphaLevel>>("USEDNETAS", fileName),
-                isJuncho = ES3.Load<bool>("ISJUNCHO", fileName),
-                isHearTrauma = ES3.Load<bool>("ISHEARTRAUMA", fileName),
-                trauma = ES3.Load<JineType>("TRAUMA", fileName),
-                firstDate = ES3.Load<CmdType>("FIRSTDATE", fileName, CmdType.None),
-                isHappaOK = ES3.Load<bool>("ISHAPPAOK", fileName),
-                isHorror = ES3.Load<bool>("ISHORROR", fileName),
-                isGedatsu = ES3.Load<bool>("ISGEDATSU", fileName),
-                beforeWristCut = ES3.Load<bool>("BEFOREWRISTCUT", fileName, false),
-                isWristCut = ES3.Load<bool>("ISWRISTCUT", fileName, false),
-                isHakkyo = ES3.Load<bool>("ISHAKKYO", fileName, false),
-                wishlist = ES3.Load<int>("WISHLIST", fileName, 0),
-                loveDiary = ES3.Load<int>("LOVEDIARY", fileName, 0),
-                isShurokued = ES3.Load<bool>("ISSHUROKUED", fileName, false),
-                kyuusiCount = ES3.Load<int>("KYUUSICOUNT", fileName, 0),
-                isOpenGinga = ES3.Load<bool>("ISOPENGINGA", fileName, false),
-                is150mil = ES3.Load<bool>("IS150MIL", fileName, false),
-                is300mil = ES3.Load<bool>("IS300MIL", fileName, false),
-                is500mil = ES3.Load<bool>("IS500MIL", fileName, false),
-                stats = ES3.Load<List<Status>>("STATUS", fileName),
-                sleepCount = ES3.Load<int>("SLEEPCOUNT", fileName, 0)
-            };
+            public bool isLove;
+            public bool isLoveLoop;
         }
 
         public static bool CheckTokyoAvailable()
@@ -162,8 +129,51 @@ namespace NeedyMintsOverdose
             AngelWatch = 6,
             BadPassword = 7,
             AngelDeath = 8,
-            FinalOdekake = 9,
-            AngelFuneral = 10,
+            AngelFuneral = 9,
+        }
+
+        public static Array GetBothEndings()
+        {
+            //NeedyMintsMod.log.LogMessage($"GetBothEndings!");
+            object[] endings = new object[] { };
+            foreach (EndingType end in Enum.GetValues(typeof(EndingType)))
+            {
+                endings = endings.Append(end).ToArray();
+            }
+            foreach (ModdedEndingType end in Enum.GetValues(typeof(ModdedEndingType)))
+            {
+                endings = endings.Append(end.Swap()).ToArray();
+            }
+            //foreach (object obj in endings)
+            //{
+            //    NeedyMintsMod.log.LogMessage($"Ending : {obj}");
+            //}
+            return endings;
+        }
+
+        public static string[] GetBothEndingNames()
+        {
+            List<string> strings = Enum.GetNames(typeof(EndingType)).ToList();
+            strings.AddRange(Enum.GetNames(typeof(ModdedEndingType)));
+            return strings.ToArray();
+        }
+
+        public static void EndingBlockMaker(Transform parent, int endingsPerRow)
+        {
+            HorizontalLayoutGroup hgroup = parent.GetComponent<HorizontalLayoutGroup>();
+
+            Vector2 vals = (parent.GetChild(0).transform as RectTransform).sizeDelta;
+            RectOffset roff = hgroup.padding;
+
+            UnityEngine.Object.DestroyImmediate(hgroup);
+            GridLayoutGroup grid = parent.AddComponent<GridLayoutGroup>();
+            grid.startAxis = GridLayoutGroup.Axis.Horizontal;
+            grid.startCorner = GridLayoutGroup.Corner.UpperLeft;
+            grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            grid.constraintCount = endingsPerRow;
+            grid.spacing = new Vector2(8, 8);
+            grid.childAlignment = TextAnchor.MiddleCenter;
+            grid.cellSize = vals;
         }
     }
 }

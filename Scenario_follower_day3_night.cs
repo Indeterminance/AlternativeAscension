@@ -33,6 +33,8 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<WindowManager>.Instance.CleanOnCommand();
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine, true);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Jine);
+
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_normal_c");
             await UniTask.Delay(Constants.MIDDLE);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE002.Swap());
@@ -49,25 +51,22 @@ namespace NeedyMintsOverdose
 
         public async UniTask eventContinue1(CancellationToken cancellationToken = default(CancellationToken))
         {
-            List<ModdedJineType> jines = new List<ModdedJineType>()
-            {
-                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE004,
-                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE005,
-                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE006,
-                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE007,
-                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE008,
-                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE009,
-                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE010,
-                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE011,
-                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE012,
-                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE013,
-                ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE014,
-            };
-            foreach (ModdedJineType jine in jines)
-            {
-                await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(jine.Swap());
-            }
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE004.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE005.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE006.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE007.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE008.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE009.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE010.Swap());
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_happy_d");
+            await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE011.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE012.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE013.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE014.Swap());
 
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim(SingletonMonoBehaviour<EventManager>.Instance.PlatformDiffAnimationMaster.GetAnimationNameFromKey(PlatformDiffAnimationKey.DAYPASS));
+            await UniTask.Delay(Constants.FAST,false, PlayerLoopTiming.Update, default, false);
             Queue<IWindow> pillWindows = new Queue<IWindow> { };
             for (int i = 0; i < 20; i++)
             {

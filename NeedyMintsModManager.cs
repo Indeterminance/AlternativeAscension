@@ -37,6 +37,7 @@ namespace NeedyMintsOverdose
             base.Awake();
             NeedyMintsMod.log.LogMessage("Awoken manager!");
             InitViewers();
+            InitEffects();
             isFollowerBG.Where((bool v) => v).Subscribe(delegate (bool _)
             {
                 this.ChangeBG();
@@ -58,6 +59,12 @@ namespace NeedyMintsOverdose
             Viewer.transform.GetChild(0).gameObject.AddComponent<Viewer>();
         }
 
+        public void InitEffects()
+        {
+            loveEffect = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("LoveEffect.prefab").WaitForCompletion(),transform);
+
+        }
+
         // AMA stuff
         public int QUESTIONS = 20;
         public int QUESTIONS_ASKED = 0;
@@ -71,8 +78,10 @@ namespace NeedyMintsOverdose
         public int delta;
         public int StressDelta = 0;
         public int overnightStreamStartDay = 0;
+        public bool lockDayCount = false;
 
         public GameObject Viewer;
+        public GameObject loveEffect;
         protected Transform _windowParent;
 
         public ReactiveProperty<bool> isAmeDelete = new ReactiveProperty<bool>(false);
@@ -81,7 +90,9 @@ namespace NeedyMintsOverdose
         public ReactiveProperty<int> viewInterval = new ReactiveProperty<int>(160);
         public ReactiveProperty<Color> viewColor = new ReactiveProperty<Color>(Color.red);
 
-        public bool isLove = false;
+        public bool isLove;
+        public bool isLoveLoop;
+        public int sleepCount;
 
         public Sprite defaultBG;
         public Sprite followerBG = Addressables.LoadAssetAsync<Sprite>("eyes_bg.png").WaitForCompletion();
@@ -165,13 +176,13 @@ namespace NeedyMintsOverdose
             //Live live = UnityEngine.Object.FindObjectOfType<Live>();
             wasUncontrollable = live.isUncontrollable;
             live.isUncontrollable = true;
-            NeedyMintsMod.log.LogMessage($"Live was {live}");
+            //NeedyMintsMod.log.LogMessage($"Live was {live}");
 
             // Change comment label
             LanguageType lang = SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value;
             SystemTextType type = (SystemTextType)(int)ModdedSystemTextType.System_AMARead;
             string text = NgoEx.SystemTextFromType(type, lang);
-            NeedyMintsMod.log.LogMessage($"AMA systext {text}!");
+            //NeedyMintsMod.log.LogMessage($"AMA systext {text}!");
             live.CommentLabel.text = text;
         }
 
@@ -187,13 +198,13 @@ namespace NeedyMintsOverdose
             scenario.playing.InsertRange(1, amaEndText);
 
 
-            NeedyMintsMod.log.LogMessage($"FinishAMA finishing with {live}...");
+            //NeedyMintsMod.log.LogMessage($"FinishAMA finishing with {live}...");
 
             // Change comment label
             LanguageType lang = SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value;
             SystemTextType type = SystemTextType.Sysyem_NotReadComment;
             string text = NgoEx.SystemTextFromType(type, lang);
-            NeedyMintsMod.log.LogMessage($"AMA systext {text}!");
+            //NeedyMintsMod.log.LogMessage($"AMA systext {text}!");
             live.CommentLabel.text = text;
 
             NeedyMintsMod.log.LogMessage("FinishAMA finished");

@@ -90,8 +90,7 @@ namespace NeedyEnums
 
     public enum ModdedStatusType
     {
-        SleepyAmeCounter = 25,
-        OdekakeCounter,
+        OdekakeCounter = 25,
         FollowerPlotFlag,
         OdekakeStressMultiplier,
         OdekakeCountdown,
@@ -582,6 +581,7 @@ namespace NeedyEnums
         Poem_Sleepy,
         Poem_Love,
         System_LoveConfirm,
+        System_LoveDay,
     }
 
     public enum ModdedSuperchatType
@@ -647,8 +647,8 @@ namespace NeedyEnums
         ANGELFUNERAL_TWEET002,
         ENDING_LOVE_DAY1_TWEET001,
         ENDING_LOVE_DAY1_TWEET002,
-        ENDING_LOVE_DAY2_TWEET001,
-        ENDING_LOVE_DAY2_TWEET002,
+        ENDING_LOVE_DAY1_TWEET003,
+        ENDING_LOVE_DAY1_TWEET004,
     }
 
     public enum ModdedKusoRepType
@@ -708,17 +708,18 @@ namespace NeedyEnums
         ENDING_LOVE_DAY1_TWEET002_KUSO003,
         ENDING_LOVE_DAY1_TWEET002_KUSO004,
         ENDING_LOVE_DAY1_TWEET002_KUSO005,
-        ENDING_LOVE_DAY2_TWEET002_KUSO001,
-        ENDING_LOVE_DAY2_TWEET002_KUSO002,
-        ENDING_LOVE_DAY2_TWEET002_KUSO003,
-        ENDING_LOVE_DAY2_TWEET002_KUSO004,
-        ENDING_LOVE_DAY2_TWEET002_KUSO005,
+        ENDING_LOVE_DAY1_TWEET004_KUSO001,
+        ENDING_LOVE_DAY1_TWEET004_KUSO002,
+        ENDING_LOVE_DAY1_TWEET004_KUSO003,
+        ENDING_LOVE_DAY1_TWEET004_KUSO004,
+        ENDING_LOVE_DAY1_TWEET004_KUSO005,
     }
 
     public enum ModdedAlphaType
     {
         FollowerAlpha = 13,
-        LoveAlpha = 13,
+        // We don't use value 14, because for some reason the first stream uses value 14 instead of its designated value (99)
+        LoveAlpha = 15,
     }
 
     // TODO: Add TenCommentTypes from lover streams
@@ -950,7 +951,8 @@ namespace NeedyEnums
     public enum ModdedEffectType
     {
         Vengeful = 23,
-        Hazy
+        Hazy,
+        Love
     }
 }
 

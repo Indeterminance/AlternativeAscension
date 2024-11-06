@@ -31,28 +31,31 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(AppType.TaskManager);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine, true);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Jine);
-            List<ModdedJineType> dlg = new List<ModdedJineType>()
-            {
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE001,
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE002,
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE003,
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE004,
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE005,
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE006,
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE007,
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE008,
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE009,
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE010,
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE011,
-                ModdedJineType.ENDING_FOLLOWER_DAY1_JINE012,
-            };
-            foreach (ModdedJineType type in dlg)
-            {
-                await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(type.Swap());
-            }
+
+
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_c");
+            await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE001.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE002.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE003.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE004.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE005.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE006.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE007.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE008.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE009.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE010.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE011.Swap());
+
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_negative_c");
+            await UniTask.Delay(Constants.MIDDLE * 2, false, PlayerLoopTiming.Update, default, false);
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE012.Swap());
+
+            
             JineData data = new JineData(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE013.Swap());
             data.user = JineUserType.pi;
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(data);
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_anxiety_c");
             await NgoEvent.DelaySkippable(Constants.MIDDLE);
             List<ModdedJineType> dlg2 = new List<ModdedJineType>() {
                 ModdedJineType.ENDING_FOLLOWER_DAY1_JINE014,
@@ -65,6 +68,7 @@ namespace NeedyMintsOverdose
             }
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE017.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE018.Swap());
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_talk_c");
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter, true);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Poketter);
             SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.PREANGELWATCH_TWEET001.Swap(), new List<ModdedKusoRepType>

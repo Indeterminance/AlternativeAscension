@@ -31,7 +31,7 @@ namespace NeedyMintsOverdose
             poke.GameObjectTransform.position = new Vector2(-10, 5);
             await UniTask.Delay(1000);
             IWindow altPoke = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow((AppType)(int)ModdedAppType.AltPoketter);
-            poke.GameObjectTransform.position = new Vector2(10, -5);
+            altPoke.GameObjectTransform.position = new Vector2(10, -5);
             altPoke.Uncloseable();
             //altPoke.nakamiApp.transform.position = poke.nakamiApp.transform.position + new Vector3(10, 10);
             NeedyMintsMod.log.LogMessage($"old pos: {poke.nakamiApp.transform.position}");
@@ -45,7 +45,9 @@ namespace NeedyMintsOverdose
             DOTween.To(() => followers, x => {
                 SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(StatusType.Follower, x);
             }, 0, 1).Play();
-            await UniTask.Delay(1000);
+            await UniTask.Delay(Constants.MIDDLE);
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_out_b");
+            await UniTask.Delay(Constants.SLOW);
             SingletonMonoBehaviour<NotificationManager>.Instance.osimai();
         }
     }
