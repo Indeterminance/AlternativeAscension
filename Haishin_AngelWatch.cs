@@ -13,9 +13,9 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Haishin_AngelWatch : LiveScenario
     {
@@ -184,7 +184,7 @@ namespace NeedyMintsOverdose
                 new string[]{ "AMA_Q031", "stream_cho_reaction2",                                       "RESPONSE" },
                 };
 
-            while (AMAS.Count > 31 - SingletonMonoBehaviour<NeedyMintsModManager>.Instance.QUESTIONS)
+            while (AMAS.Count > 31 - SingletonMonoBehaviour<AltAscModManager>.Instance.QUESTIONS)
             {
                 int index = UnityEngine.Random.Range(0, AMAS.Count);
                 string[] ama = AMAS[index];
@@ -483,14 +483,14 @@ namespace NeedyMintsOverdose
             }
 
             bool loopAnim = question != "AMA_Q003";
-            this.playing.Add(new Playing(false, NgoEx.Kome(pre + question, this._lang), ModdedStatusType.AMAStress.Swap(), SingletonMonoBehaviour<NeedyMintsModManager>.Instance.GetAMAStressDelta(question), 0, response, anim, "", loopAnim, ModdedSuperchatType.AMA_White.Swap(), false, ""));
+            this.playing.Add(new Playing(false, NgoEx.Kome(pre + question, this._lang), ModdedStatusType.AMAStress.Swap(), SingletonMonoBehaviour<AltAscModManager>.Instance.GetAMAStressDelta(question), 0, response, anim, "", loopAnim, ModdedSuperchatType.AMA_White.Swap(), false, ""));
         }
 
 
         // Token: 0x06000FD6 RID: 4054 RVA: 0x0004A57C File Offset: 0x0004877C
         public override async UniTask StartScenario()
         {
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.overnightStreamStartDay = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
+            SingletonMonoBehaviour<AltAscModManager>.Instance.overnightStreamStartDay = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
             SingletonMonoBehaviour<JineManager>.Instance.Uncontrolable();
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_mainloop_shuban, true);
             await base.StartScenario();
@@ -501,7 +501,7 @@ namespace NeedyMintsOverdose
 
         public new async UniTask EndScenario()
         {
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.overnightStreamStartDay = 0;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.overnightStreamStartDay = 0;
             await base.EndScenario();
         }
     }

@@ -25,9 +25,9 @@ using UnityEngine.EventSystems;
 using System.Runtime.CompilerServices;
 using Extensions;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
-    internal static partial class MintyOverdosePatches
+    internal static partial class AAPatches
     {
         public static T DeepClone<T>(this T obj)
         {
@@ -56,8 +56,8 @@ namespace NeedyMintsOverdose
             bool isModded = Enum.IsDefined(moddedType, (int)val);
 
 
-            if (isVanilla && isModded) NeedyMintsMod.log.LogError($"ID conflict between {baseType} and {moddedType} ID {val}");
-            if (!isVanilla && !isModded) NeedyMintsMod.log.LogError($"ID {val} doesn't exist in either {baseType} or {moddedType}");
+            if (isVanilla && isModded) AltAscMod.log.LogError($"ID conflict between {baseType} and {moddedType} ID {val}");
+            if (!isVanilla && !isModded) AltAscMod.log.LogError($"ID {val} doesn't exist in either {baseType} or {moddedType}");
             if (isVanilla && !isModded)
             {
                 return new Tuple<bool, int>(false, (int)val);

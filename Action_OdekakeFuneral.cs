@@ -11,9 +11,9 @@ using System.Reflection;
 using HarmonyLib;
 using DG.Tweening;
 using System.Collections.Generic;
-using static NeedyMintsOverdose.Alternates;
+using static AlternativeAscension.Alternates;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Action_OdekakeFuneral : NgoEvent
     {
@@ -84,8 +84,8 @@ namespace NeedyMintsOverdose
             }
 
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(TrainTime, true);
-            if (dark) SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewing.Value = true;
-            if (dark) SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewInterval.Value = 80;
+            if (dark) SingletonMonoBehaviour<AltAscModManager>.Instance.viewing.Value = true;
+            if (dark) SingletonMonoBehaviour<AltAscModManager>.Instance.viewInterval.Value = 80;
             this.ClickableAllScreen(true);
 
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_Train, false);

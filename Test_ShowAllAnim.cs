@@ -14,9 +14,9 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Test_ShowAllAnim : LiveScenario
     {
@@ -51,14 +51,14 @@ namespace NeedyMintsOverdose
                     if (id.IsNotEmpty())
                     {
                         ids.Add(id);
-                        NeedyMintsMod.log.LogMessage($"Stream ID : {id} > {key}");
+                        AltAscMod.log.LogMessage($"Stream ID : {id} > {key}");
                     }
                 }
             }
 
             ids = ids.Distinct().ToList();
             playing.AddRange(ids.Select(id => new Playing(true, id, animation: id)));
-            NeedyMintsMod.log.LogMessage($"Playing {playing.Count} anims...");
+            AltAscMod.log.LogMessage($"Playing {playing.Count} anims...");
         }
 
         // Token: 0x06000FD6 RID: 4054 RVA: 0x0004A57C File Offset: 0x0004877C

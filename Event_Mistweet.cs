@@ -2,14 +2,14 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System.Reflection;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Event_Mistweet : NgoEvent
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeedyEnums;
-using NeedyMintsOverdose;
+using AlternativeAscension;
 using NGO;
 using UniRx;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 
 namespace ngov3
 {
@@ -26,7 +26,7 @@ namespace ngov3
             base.startEvent(cancellationToken);
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0f);
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLove = true;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.isLove = true;
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_endng_normal, true);
 
             SingletonMonoBehaviour<WindowManager>.Instance.CleanAll();

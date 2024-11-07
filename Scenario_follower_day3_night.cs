@@ -2,7 +2,7 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System.Collections.Generic;
 using UniRx;
@@ -10,7 +10,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Scenario_follower_day3_night : NgoEvent
     {
@@ -26,7 +26,7 @@ namespace NeedyMintsOverdose
             //await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             base.startEvent(cancellationToken);
             GameObject.Find("MainPanel").GetComponent<Image>().color = Color.black;
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.isFollowerBG.Value = true;
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0.4f);
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
             //await UniTask.Delay(Constants.MIDDLE);

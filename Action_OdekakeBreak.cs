@@ -11,9 +11,9 @@ using System.Reflection;
 using HarmonyLib;
 using DG.Tweening;
 using System.Collections.Generic;
-using static NeedyMintsOverdose.Alternates;
+using static AlternativeAscension.Alternates;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Action_OdekakeBreak : NgoEvent
     {

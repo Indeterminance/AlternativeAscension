@@ -13,9 +13,9 @@ using System.Threading.Tasks;
 using NeedyEnums;
 using UniRx;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
-    internal partial class MintyOverdosePatches {
+    internal partial class AAPatches {
         public class Ending_Sleepy : NgoEvent
         {
             JineManager jm;

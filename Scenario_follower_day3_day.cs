@@ -2,13 +2,13 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System;
 using UniRx.Triggers;
 using UnityEngine.EventSystems;
 using UnityEngine;
-using static NeedyMintsOverdose.Alternates;
+using static AlternativeAscension.Alternates;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UniRx;
@@ -20,7 +20,7 @@ using TMPro;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Scenario_follower_day3_day : NgoEvent
     {
@@ -33,7 +33,7 @@ namespace NeedyMintsOverdose
 
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.isFollowerBG.Value = true;
             await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             base.startEvent(cancellationToken);
             SingletonMonoBehaviour<StatusManager>.Instance.timePassing(1);

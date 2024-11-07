@@ -2,13 +2,13 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Action_Internet2chStalk : NgoEvent
     {

@@ -2,11 +2,11 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System.Collections.Generic;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Scenario_follower_day1_day : NgoEvent
     {

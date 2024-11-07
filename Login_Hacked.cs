@@ -17,7 +17,7 @@ using NGO;
 using UnityEngine.AddressableAssets;
 using System.Threading;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class LoginHacked : MonoBehaviour
     {
@@ -64,7 +64,7 @@ namespace NeedyMintsOverdose
             {
                 await SetInvalid();
                 attempts++;
-                NeedyMintsMod.log.LogMessage($"Attempted to log in {attempts} times");
+                AltAscMod.log.LogMessage($"Attempted to log in {attempts} times");
             }).AddTo(gameObject);
         }
 

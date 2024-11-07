@@ -7,8 +7,8 @@
     <ProjectGuid>{46132637-9586-4A91-94BB-4553205EAB70}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NeedyMintsOverdose</RootNamespace>
-    <AssemblyName>NeedyMintsOverdose</AssemblyName>
+    <RootNamespace>AlternativeAscension</RootNamespace>
+    <AssemblyName>AlternativeAscension</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -170,6 +170,7 @@
     <Compile Include="Action_SleepToEternity.cs" />
     <Compile Include="Action_OdekakeFuneral.cs" />
     <Compile Include="Action_OdekakeBreak.cs" />
+    <Compile Include="AlternativeAscensionPatches.cs" />
     <Compile Include="Event_MV_kowai.cs" />
     <Compile Include="Event_ComiketAlert.cs" />
     <Compile Include="Haishin_AngelFuneral_dark.cs" />
@@ -204,7 +205,7 @@
     <Compile Include="Action_OdekakePanic3.cs" />
     <Compile Include="Action_OdekakePanic4.cs" />
     <Compile Include="Alternates.cs" />
-    <Compile Include="NeedyMintsModManager.cs" />
+    <Compile Include="AltAscModManager.cs" />
     <Compile Include="ChipGet_FollowerAlpha_1.cs" />
     <Compile Include="Ending_Sleepy.cs" />
     <Compile Include="Action_OkusuriDaypassStalk.cs" />
@@ -213,7 +214,7 @@
     <Compile Include="ModDataObject.cs" />
     <Compile Include="ModdedCommandParams.cs" />
     <Compile Include="ModdedEnums.cs" />
-    <Compile Include="NeedyMintsOverdose.cs" />
+    <Compile Include="AlternativeAscension.cs" />
     <Compile Include="Action_OdekakeTokyo.cs" />
     <Compile Include="Haishin_AngelWatch.cs" />
     <Compile Include="Haishin_Comiket.cs" />
@@ -227,8 +228,12 @@
     <Content Include="Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="catalog.json" />
     <None Include="nmo_assets.bundle" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="catalog.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -238,9 +243,7 @@
   <PropertyGroup>
     <PostBuildEvent>mkdir "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"
 copy /Y "$(TargetPath)" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"
-copy /Y "$(ProjectDir)\\Strings.xml" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"
-copy /Y "$(ProjectDir)\\nmo_assets.bundle" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"
-copy /Y "$(ProjectDir)\\catalog.json" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"</PostBuildEvent>
+copy /Y "$(ProjectDir)\\nmo_assets.bundle" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"</PostBuildEvent>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

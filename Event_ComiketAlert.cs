@@ -2,10 +2,10 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Event_ComiketAlert : NgoEvent
     {

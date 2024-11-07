@@ -2,7 +2,7 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System.Collections.Generic;
 using UniRx;
@@ -10,7 +10,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Scenario_follower_day4_finale : NgoEvent
     {
@@ -24,7 +24,7 @@ namespace NeedyMintsOverdose
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
             base.startEvent(cancellationToken);
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.isFollowerBG.Value = true;
             SingletonMonoBehaviour<EventManager>.Instance.nowEnding = (EndingType)(int)ModdedEndingType.Ending_Followers;
             IWindow poke = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter);
             poke.Uncloseable();
@@ -34,11 +34,11 @@ namespace NeedyMintsOverdose
             altPoke.GameObjectTransform.position = new Vector2(10, -5);
             altPoke.Uncloseable();
             //altPoke.nakamiApp.transform.position = poke.nakamiApp.transform.position + new Vector3(10, 10);
-            NeedyMintsMod.log.LogMessage($"old pos: {poke.nakamiApp.transform.position}");
+            AltAscMod.log.LogMessage($"old pos: {poke.nakamiApp.transform.position}");
             await UniTask.Delay(Constants.FAST);
             SingletonMonoBehaviour<PoketterManager>.Instance.isDeleted.Value = true;
             await UniTask.Delay(1000);
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAmeDelete.Value = true;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.isAmeDelete.Value = true;
             await UniTask.Delay(Constants.FAST);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.TaskManager).Uncloseable();
             int followers = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.Follower);

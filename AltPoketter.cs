@@ -20,7 +20,7 @@ using System.Reflection;
 using Rewired;
 using Extensions;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class AltPoketter : MonoBehaviour
     {

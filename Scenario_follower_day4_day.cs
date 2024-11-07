@@ -2,7 +2,7 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System.Collections.Generic;
 using UniRx;
@@ -13,7 +13,7 @@ using HarmonyLib;
 using UniRx.Triggers;
 using UnityEngine.EventSystems;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Scenario_follower_day4_day : NgoEvent
     {
@@ -30,7 +30,7 @@ namespace NeedyMintsOverdose
             base.startEvent(cancellationToken);
             await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
 
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.isFollowerBG.Value = true;
             SingletonMonoBehaviour<JineManager>.Instance.Uncontrolable();
             
             GameObject.Find("MainPanel").GetComponent<Image>().color = Color.white;
@@ -73,7 +73,7 @@ namespace NeedyMintsOverdose
             //SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(true);
             // TODO: The below "end event" function isn't running. Figure out why.
             base.endEvent();
-            NeedyMintsMod.log.LogMessage($"Ended event!");
+            AltAscMod.log.LogMessage($"Ended event!");
         }
     }
 }

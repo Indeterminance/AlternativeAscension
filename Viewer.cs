@@ -13,7 +13,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     [RequireComponent(typeof(Image))]
     [RequireComponent(typeof(Animator))]
@@ -31,7 +31,7 @@ namespace NeedyMintsOverdose
         public void Start()
         {
             Animate();
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewColor.ObserveEveryValueChanged((ReactiveProperty<Color> c) => c.Value, FrameCountType.Update, false).Subscribe(delegate (Color col)
+            SingletonMonoBehaviour<AltAscModManager>.Instance.viewColor.ObserveEveryValueChanged((ReactiveProperty<Color> c) => c.Value, FrameCountType.Update, false).Subscribe(delegate (Color col)
             {
                 behindMask.color = col;
             }).AddTo(this);

@@ -2,15 +2,15 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System;
 using UniRx.Triggers;
 using UnityEngine.EventSystems;
 using UnityEngine;
-using static NeedyMintsOverdose.Alternates;
+using static AlternativeAscension.Alternates;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Action_OdekakePanic2 : NgoEvent
     {

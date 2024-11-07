@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using NeedyEnums;
-using NeedyMintsOverdose;
+using AlternativeAscension;
 using NGO;
 using UniRx;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 
 namespace ngov3
 {

@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NeedyEnums;
 using System.Security.Policy;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Action_OkusuriDaypassStalk : NgoEvent
     {

@@ -22,7 +22,7 @@ using TMPro;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine.EventSystems;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using System.Runtime.CompilerServices;
 using ngov3.Effect;
 using HarmonyLib;
@@ -30,7 +30,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using UnityEngine.Rendering;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     static internal class Alternates
     {
@@ -38,7 +38,7 @@ namespace NeedyMintsOverdose
         public static async UniTask BackFromPanicOdekake(int weight)
         {
             bool stalkOdekake = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.StalkReveal;
-            NeedyMintsMod.log.LogMessage($"Follower plot flag: {stalkOdekake}");
+            AltAscMod.log.LogMessage($"Follower plot flag: {stalkOdekake}");
             if (!stalkOdekake)
             {
                 switch (weight)
@@ -204,7 +204,7 @@ namespace NeedyMintsOverdose
 
             SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(ModdedStatusType.FollowerPlotFlag.Swap()).Subscribe(delegate (int _)
             {
-                NeedyMintsMod.log.LogMessage($"Plot observable {_}");
+                AltAscMod.log.LogMessage($"Plot observable {_}");
                 if (_ == (int)FollowerPlotFlagValues.AngelFuneral)
                 {
                     if (shortcut.appType != AppType.GoOut) _shortcut.interactable = false;
@@ -216,7 +216,7 @@ namespace NeedyMintsOverdose
 
             SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(ModdedStatusType.OdekakeCountdown.Swap()).Subscribe(delegate (int _)
             {
-                NeedyMintsMod.log.LogMessage($"Odekake countdown: {_}");
+                AltAscMod.log.LogMessage($"Odekake countdown: {_}");
                 if (_ == 0 && shortcut.appType == AppType.GoOut && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) != (int)FollowerPlotFlagValues.AngelFuneral)
                 {
                     _shortcut.interactable = false;
@@ -257,7 +257,7 @@ namespace NeedyMintsOverdose
             // Same thing as the click event, but we're gonna run it once beforehand too
             if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelFuneral)
             {
-                NeedyMintsMod.log.LogMessage($"Shortcut plot Funeral");
+                AltAscMod.log.LogMessage($"Shortcut plot Funeral");
                 if (shortcut.appType != AppType.GoOut) _shortcut.interactable = false;
                 else _shortcut.interactable = true;
                 _tooltip.isShowTooltip = false;
@@ -274,7 +274,7 @@ namespace NeedyMintsOverdose
         {
             // I'm not actually sure this is ever used, but this is here for consistency's sake just in case.
             // ...in fact, I'm not sure if any of the "non-2D" variants of objects are used...
-            NeedyMintsMod.log.LogMessage("DayPassing");
+            AltAscMod.log.LogMessage("DayPassing");
             dayPass._dayIndex = SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(StatusType.DayIndex);
             dayPass._dayPart = SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(StatusType.DayPart);
             dayPass._dayIndex.Where((int d) => true).Subscribe(delegate (int t)
@@ -290,7 +290,7 @@ namespace NeedyMintsOverdose
 
         public static async void DayPassing2DStartAlternate(this ngov3.Effect.DayPassing2D dayPass)
         {
-            NeedyMintsMod.log.LogMessage("DayPassing2D");
+            AltAscMod.log.LogMessage("DayPassing2D");
             // Get (a lot) of private fields
             Traverse _dayIndex = new Traverse(dayPass).Field(nameof(DayPassing2D._dayIndex));
             Traverse _dayPart = new Traverse(dayPass).Field(nameof(DayPassing2D._dayPart));
@@ -314,7 +314,7 @@ namespace NeedyMintsOverdose
             _dayIndex.GetValue<ReactiveProperty<int>>().Where((int d) => true).Subscribe(delegate (int t)
             {
                 //NeedyMintsMod.log.LogMessage($"dayIndex: {_dayIndex.GetValue<ReactiveProperty<int>>().Value}");
-                if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.lockDayCount) return;
+                if (SingletonMonoBehaviour<AltAscModManager>.Instance.lockDayCount) return;
                 Traverse method = new Traverse(dayPass).Method(nameof(DayPassing2D.dayPass), new Type[] {typeof(int), typeof(int), typeof(int)});
                 method.GetValue(new object[] {
                     _dayIndex.GetValue<ReactiveProperty<int>>().Value, 0, 0

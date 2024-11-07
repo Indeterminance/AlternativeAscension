@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     internal class ModdedCommandParams
     {
@@ -14,8 +14,8 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "OdekakeTokyo",
             Id = "OdekakeTokyo",
-            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeTokyo").Name.BodyEN,
-            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeTokyo").Desc.BodyEN,
+            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeTokyo").Name.BodyEN,
+            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeTokyo").Desc.BodyEN,
             PassingTime = 2,
             StressDelta = 5,
             YamiDelta = 10,
@@ -25,8 +25,8 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "OdekakePanic",
             Id = "OdekakePanic1",
-            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic1").Name.BodyEN,
-            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic1").Desc.BodyEN,
+            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic1").Name.BodyEN,
+            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic1").Desc.BodyEN,
             PassingTime = 2,
             FavorDelta = 4,
             StressDelta = -10,
@@ -37,8 +37,8 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "OdekakePanic",
             Id = "OdekakePanic2",
-            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic2").Name.BodyEN,
-            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic2").Desc.BodyEN,
+            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic2").Name.BodyEN,
+            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic2").Desc.BodyEN,
             PassingTime = 2,
             FavorDelta = 2,
             StressDelta = -10,
@@ -49,8 +49,8 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "OdekakePanic",
             Id = "OdekakePanic3",
-            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic3").Name.BodyEN,
-            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic3").Desc.BodyEN,
+            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic3").Name.BodyEN,
+            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic3").Desc.BodyEN,
             PassingTime = 2,
             StressDelta = -10,
             YamiDelta = 6,
@@ -60,8 +60,8 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "OdekakePanic",
             Id = "OdekakePanic4",
-            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic4").Name.BodyEN,
-            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic4").Desc.BodyEN,
+            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic4").Name.BodyEN,
+            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakePanic4").Desc.BodyEN,
             PassingTime = 2,
             FavorDelta = -3,
             StressDelta = -10,
@@ -72,8 +72,8 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "OdekakePanic",
             Id = "OdekakeBreak",
-            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeBreak").Name.BodyEN,
-            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeBreak").Desc.BodyEN,
+            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeBreak").Name.BodyEN,
+            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeBreak").Desc.BodyEN,
             PassingTime = 2,
             FavorDelta = -15,
             StressDelta = -12,
@@ -84,8 +84,8 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "",
             Id = "OdekakeFuneral",
-            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeFuneral").Name.BodyEN,
-            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeFuneral").Desc.BodyEN,
+            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeFuneral").Name.BodyEN,
+            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeFuneral").Desc.BodyEN,
             PassingTime = 0,
             FavorDelta = 0,
             StressDelta = 0,
@@ -96,8 +96,8 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "Internet2ch",
             Id = "Internet2chStalk",
-            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "Internet2chStalk").Name.BodyEN,
-            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "Internet2chStalk").Desc.BodyEN,
+            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "Internet2chStalk").Name.BodyEN,
+            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "Internet2chStalk").Desc.BodyEN,
             PassingTime = 1,
             FavorDelta = -3,
             StressDelta = 8,
@@ -108,7 +108,7 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "Haishin",
             Id = "HaishinComiket",
-            LabelEn = NeedyMintsMod.DATA.Streams.Stream.Find(s => s.AlphaType == ModdedAlphaType.FollowerAlpha.ToString() && s.AlphaLevel == "1").Genre,
+            LabelEn = AltAscMod.DATA.Streams.Stream.Find(s => s.AlphaType == ModdedAlphaType.FollowerAlpha.ToString() && s.AlphaLevel == "1").Genre,
             DescEn = "",
             FollowerDelta = 30,
             PassingTime = 1,
@@ -121,7 +121,7 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "Haishin",
             Id = "HaishinAngelWatch",
-            LabelEn = NeedyMintsMod.DATA.Streams.Stream.Find(s => s.AlphaType == ModdedAlphaType.FollowerAlpha.ToString() && s.AlphaLevel == "2").Name,
+            LabelEn = AltAscMod.DATA.Streams.Stream.Find(s => s.AlphaType == ModdedAlphaType.FollowerAlpha.ToString() && s.AlphaLevel == "2").Name,
             DescEn = "",
             PassingTime = 0,
             FollowerDelta = 0,
@@ -134,7 +134,7 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "Haishin",
             Id = "HaishinAngelDeath",
-            LabelEn = NeedyMintsMod.DATA.Streams.Stream.Find(s => s.AlphaType == ModdedAlphaType.FollowerAlpha.ToString() && s.AlphaLevel == "3").Name,
+            LabelEn = AltAscMod.DATA.Streams.Stream.Find(s => s.AlphaType == ModdedAlphaType.FollowerAlpha.ToString() && s.AlphaLevel == "3").Name,
             DescEn = "",
             PassingTime = 1,
             FollowerDelta = 0,
@@ -147,7 +147,7 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "Haishin",
             Id = "HaishinAngelFuneral",
-            LabelEn = NeedyMintsMod.DATA.Streams.Stream.Find(s => s.AlphaType == ModdedAlphaType.FollowerAlpha.ToString() && s.AlphaLevel == "4").Name,
+            LabelEn = AltAscMod.DATA.Streams.Stream.Find(s => s.AlphaType == ModdedAlphaType.FollowerAlpha.ToString() && s.AlphaLevel == "4").Name,
             DescEn = "",
             PassingTime = 1,
             FollowerDelta = 0,
@@ -160,8 +160,8 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "OkusuriDaypassStalk",
             Id = "OkusuriDaypassStalk",
-            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OkusuriDaypassStalk").Name.BodyEN,
-            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "OkusuriDaypassStalk").Desc.BodyEN,
+            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OkusuriDaypassStalk").Name.BodyEN,
+            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OkusuriDaypassStalk").Desc.BodyEN,
             PassingTime = 1,
             StressDelta = 10,
             YamiDelta = 1,
@@ -171,8 +171,8 @@ namespace NeedyMintsOverdose
         {
             ParentAct = "SleepToTomorrow",
             Id = "SleepToEternity",
-            LabelEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "SleepToEternity").Name.BodyEN,
-            DescEn = NeedyMintsMod.DATA.Commands.Command.Find(s => s.Id == "SleepToEternity").Desc.BodyEN,
+            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "SleepToEternity").Name.BodyEN,
+            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "SleepToEternity").Desc.BodyEN,
             PassingTime = 99,
             StressDelta = -120,
             YamiDelta = 999,

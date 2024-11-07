@@ -2,19 +2,19 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System;
 using UniRx.Triggers;
 using UnityEngine.EventSystems;
 using UnityEngine;
-using static NeedyMintsOverdose.Alternates;
+using static AlternativeAscension.Alternates;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UniRx;
 using DG.Tweening;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Scenario_follower_day2_AfterAllNighterhaishin : NgoEvent
     {
@@ -37,7 +37,7 @@ namespace NeedyMintsOverdose
 
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0.4f);
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isFollowerBG.Value = true;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.isFollowerBG.Value = true;
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_wind, true);
 
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(AppType.TaskManager);

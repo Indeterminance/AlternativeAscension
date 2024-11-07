@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Haishin_AngelFuneral_dark : LiveScenario
     {
@@ -68,7 +68,7 @@ namespace NeedyMintsOverdose
         // Token: 0x06000FD6 RID: 4054 RVA: 0x0004A57C File Offset: 0x0004877C
         public override async UniTask StartScenario()
         {
-            await SingletonMonoBehaviour<NeedyMintsModManager>.Instance.SetViewersInactive();
+            await SingletonMonoBehaviour<AltAscModManager>.Instance.SetViewersInactive();
             GameObject.Find("stack").SetActive(false);
             PostEffectManager.Instance.ResetShader();
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_heartbeat, true);

@@ -4,10 +4,10 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using NeedyEnums;
-using NeedyMintsOverdose;
+using AlternativeAscension;
 using NGO;
 using UniRx;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 
 namespace ngov3
 {
@@ -80,7 +80,7 @@ namespace ngov3
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY2_JINE018.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY2_JINE019.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY2_JINE020.Swap());
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLoveLoop = true;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop = true;
             SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_love_loop1_day>();
             SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_normal_f");
             //SingletonMonoBehaviour<WindowManager>.Instance.LoveOut(); ;

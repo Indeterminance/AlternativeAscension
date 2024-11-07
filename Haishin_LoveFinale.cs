@@ -10,9 +10,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Haishin_LoveFinale : LiveScenario
     {

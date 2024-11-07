@@ -9,7 +9,7 @@ using NeedyEnums;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 
 namespace NeedyXML
 {

@@ -2,7 +2,7 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System.Collections.Generic;
 using UniRx;
@@ -11,7 +11,7 @@ using UnityEngine;
 using ngov3.Effect;
 using HarmonyLib;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Scenario_love_loopbase : NgoEvent
     {
@@ -40,7 +40,7 @@ namespace NeedyMintsOverdose
             }
             catch (OperationCanceledException ex) when (cts.IsCancellationRequested)
             {
-                NeedyMintsMod.log.LogMessage($"{ex.Message}");
+                AltAscMod.log.LogMessage($"{ex.Message}");
                 SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_love_loopbreak>();
                 await breakLoop();
             }
@@ -56,7 +56,7 @@ namespace NeedyMintsOverdose
 
         protected async UniTask breakLoop()
         {
-            NeedyMintsMod.log.LogMessage($"Loop broken!");
+            AltAscMod.log.LogMessage($"Loop broken!");
             //SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_love_loopbreak>();
         }
 
@@ -79,7 +79,7 @@ namespace NeedyMintsOverdose
 
             if (breakLoop)
             {
-                NeedyMintsMod.log.LogMessage("Ignored message!");
+                AltAscMod.log.LogMessage("Ignored message!");
                 cts.Cancel();
             }
             else

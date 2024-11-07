@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Haishin_Comiket : LiveScenario
     {

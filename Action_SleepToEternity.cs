@@ -2,12 +2,12 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Action_SleepToEternity : NgoEvent
     {

@@ -28,14 +28,14 @@ using System.Security.Policy;
 using UnityEngine.AddressableAssets;
 using System.Threading;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
-    public class NeedyMintsModManager : SingletonMonoBehaviour<NeedyMintsModManager>
+    public class AltAscModManager : SingletonMonoBehaviour<AltAscModManager>
     {
         public override void Awake()
         {
             base.Awake();
-            NeedyMintsMod.log.LogMessage("Awoken manager!");
+            AltAscMod.log.LogMessage("Awoken manager!");
             InitViewers();
             InitEffects();
             isFollowerBG.Where((bool v) => v).Subscribe(delegate (bool _)
@@ -207,7 +207,7 @@ namespace NeedyMintsOverdose
             //NeedyMintsMod.log.LogMessage($"AMA systext {text}!");
             live.CommentLabel.text = text;
 
-            NeedyMintsMod.log.LogMessage("FinishAMA finished");
+            AltAscMod.log.LogMessage("FinishAMA finished");
             
         }
 

@@ -2,15 +2,15 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System;
 using UniRx.Triggers;
 using UnityEngine.EventSystems;
 using UnityEngine;
-using static NeedyMintsOverdose.Alternates;
+using static AlternativeAscension.Alternates;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Action_OdekakePanic3 : NgoEvent
     {
@@ -31,7 +31,7 @@ namespace NeedyMintsOverdose
             await GoOut();
             //await UniTask.Delay(Constants.MIDDLE);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Webcam, true);
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewing.Value = false;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.viewing.Value = false;
             await BackFromPanicOdekake(weight);
             PostEffectManager.Instance.ResetShaderCalmly();
             SingletonMonoBehaviour<JineManager>.Instance.StartStamp();
@@ -40,8 +40,8 @@ namespace NeedyMintsOverdose
 
         protected async UniTask GoOut()
         {
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewing.Value = true;
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewColor.Value = Color.red;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.viewing.Value = true;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.viewColor.Value = Color.red;
             SingletonMonoBehaviour<JineManager>.Instance.Uncontrolable();
             AudioManager.Instance.PlaySeByType(SoundType.SE_Odekake_zazaza, false);
             SingletonMonoBehaviour<WebCamManager>.Instance.GoOut();

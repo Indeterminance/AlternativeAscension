@@ -2,7 +2,7 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System.Collections.Generic;
 using UniRx;
@@ -11,7 +11,7 @@ using UnityEngine;
 using ngov3.Effect;
 using HarmonyLib;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Scenario_love_loopbreak : NgoEvent
     {
@@ -23,7 +23,7 @@ namespace NeedyMintsOverdose
 
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLoveLoop = false;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop = false;
             PostEffectManager.Instance.ResetShaderCalmly();
             SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_a");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE001.Swap());
@@ -92,7 +92,7 @@ namespace NeedyMintsOverdose
             SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_out_a");
             await UniTask.Delay(Constants.SLOW, false, PlayerLoopTiming.Update, default, false);
             await GameObject.Find("DayPassingCover").GetComponent<IDayPassing>().yearsPass(true);
-            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLoveLoop = false;
+            SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop = false;
 
             StatusManager sm = SingletonMonoBehaviour<StatusManager>.Instance;
             int followers = sm.GetStatus(StatusType.Follower);

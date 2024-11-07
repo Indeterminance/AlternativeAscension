@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Xml.Serialization;
 using UniRx;
 using UnityEngine;
@@ -18,127 +17,25 @@ using NeedyEnums;
 using Stream = NeedyXML.Stream;
 using System.Text.RegularExpressions;
 using Cysharp.Threading.Tasks;
-using System.Threading.Tasks;
 using System.Threading;
-using System.Xml;
 using System.Reflection.Emit;
-using System.ComponentModel;
-using System.Diagnostics;
 using Thread = NeedyXML.Thread;
 using Component = UnityEngine.Component;
-using UnityEngine.UI;
-using System.Xml.Linq;
 using TMPro;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.ResourceLocations;
-using static NeedyMintsOverdose.Alternates;
 using ngov3.Effect;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using DG.Tweening;
 using UnityEngine.Rendering;
-using UnityEngine.PlayerLoop;
-using System.Security.Cryptography.X509Certificates;
 using Extensions;
-using Rewired.UI.ControlMapper;
-using static ES3Spreadsheet;
-using static System.Net.Mime.MediaTypeNames;
-using static UnityEngine.Networking.UnityWebRequest;
-using static UnityEngine.Rendering.DebugUI;
 using UnityEngine.Audio;
-using Newtonsoft.Json;
-using System.Runtime.InteropServices;
-using Rewired.Demos;
-using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets.ResourceLocators;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
-    [BepInPlugin(id, modName, ver)]
-    [HarmonyDebug]
-    public class NeedyMintsMod : BaseUnityPlugin
-    {
-        public const string id = "nso.needymintsoverdose";
-        public const string modName = "Needy Mints Overdose";
-        public const string ver = "0.0.1";
-        public const string assetdec = "NeedyMintsOD";
-        public static string FILEPATH;
-
-        public const int SLEEPS_BEFORE_SLEEPY = 6;
-        public const bool SHOWANIMSTREAM = false;
-
-        private static readonly Harmony harmony = new Harmony(id);
-        public static ManualLogSource log;
-        public static ModData DATA;
-
-        private static void FillXMLData()
-        {
-            string asmname = Assembly.GetAssembly(typeof(NeedyMintsMod)).GetName().Name + ".dll";
-            FILEPATH = Assembly.GetAssembly(typeof(NeedyMintsMod)).Location.Replace(asmname, "");
-
-            System.Xml.Serialization.XmlSerializer serializer = new XmlSerializer(typeof(ModData));
-            using (StreamReader sr = new StreamReader(FILEPATH + "Strings.xml"))
-            {
-                DATA = (ModData)serializer.Deserialize(sr);
-            }
-        }
-
-        private void SetCatalogPath()
-        {
-            Assembly asm = this.GetType().Assembly;
-            string catalogPath = new Uri(asm.CodeBase).LocalPath.Replace(asm.GetName().Name + ".dll", "catalog.json");
-            string assetPath = new Uri(asm.CodeBase).LocalPath.Replace(asm.GetName().Name + ".dll", "nmo_assets.bundle");
-            string catalogData;
-            using (StreamReader sr = new StreamReader(catalogPath))
-            {
-                catalogData = sr.ReadToEndAsync().GetAwaiter().GetResult();
-                if (!catalogData.Contains("nmo_assets.bundle") && catalogData.Contains("\"m_InternalIds\":[\"Advanced_Pressed_mini"))
-                {
-                    NeedyMintsMod.log.LogMessage("Fresh install, setting asset path!");
-                    catalogData = catalogData.Replace("\"m_InternalIds\":[\"Advanced_Pressed_mini", $"\"m_InternalIds\":[\"{assetPath.Replace("\\", "/")}\",\"Advanced_Pressed_mini");
-                }
-            }
-
-            using (StreamWriter sw = new StreamWriter(catalogPath))
-            {
-                sw.Write(catalogData);
-            }
-
-            Addressables.LoadContentCatalogAsync(catalogPath).WaitForCompletion();
-            log.LogMessage("Path is " + catalogPath);
-        }
-
-        private async void Awake()
-        {
-            FillXMLData();
-
-            // Plugin startup logic
-            HarmonyFileLog.Enabled = true;
-            log = Logger;
-            try
-            {
-                SetCatalogPath();
-                harmony.PatchAll();
-                //foreach (MethodBase patch in harmony.GetPatchedMethods())
-                //{
-                //    log.LogMessage($"{patch.DeclaringType}.{patch.Name}");
-                //}
-
-                NeedyMintsMod.log.LogMessage($"Patched {harmony.GetPatchedMethods().Count()} methods...");
-
-                log.LogMessage("Patched NSO, press to continue...");
-                Console.ReadKey();
-            }
-            catch (Exception e)
-            {
-                log.LogMessage("Failed to patch NSO, press to quit");
-                log.LogWarning(e);
-                Console.ReadKey();
-                System.Environment.Exit(0);
-            }
-        }
-    }
-
-    internal partial class MintyOverdosePatches
+    internal partial class AAPatches
     {
         [HarmonyPatch(typeof(StatusManager))]
         public static class StatusManagerPatches
@@ -158,8 +55,8 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(StatusManager.Diffs))]
             public static void DiffsPrefix(CmdMaster.Param cmd, ref StatusManager __instance, ref List<StatusDiff> __result)
             {
-                NeedyMintsMod.log.LogMessage($"Diffing!");
-                NeedyMintsMod.log.LogMessage($"Getting diff for {cmd.Id}");
+                AltAscMod.log.LogMessage($"Diffing!");
+                AltAscMod.log.LogMessage($"Getting diff for {cmd.Id}");
                 int stressMult = __instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap());
                 if (stressMult > 0 && (cmd.Id.StartsWith("Odekake")))
                 {
@@ -175,7 +72,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(StatusManager.UpdateStatusMaxToNumber))]
             public static void UpdateStatusMaxToNumberPrefix(ref StatusManager __instance, StatusType type, int to)
             {
-                if (type != StatusType.DayIndex || SingletonMonoBehaviour<NeedyMintsModManager>.Instance.lockDayCount) return;
+                if (type != StatusType.DayIndex || SingletonMonoBehaviour<AltAscModManager>.Instance.lockDayCount) return;
 
                 DayPassing2D dayPassing2D = GameObject.Find("DayPassingCover").GetComponent<DayPassing2D>();
                 //if (dayPassing2D.playingAnimation && to == 100) return;
@@ -185,7 +82,7 @@ namespace NeedyMintsOverdose
                 int destMax = Mathf.Max(30, to);
 
 
-                NeedyMintsMod.log.LogMessage($"Updating day max from {oldMax} to {to}");
+                AltAscMod.log.LogMessage($"Updating day max from {oldMax} to {to}");
                 if (oldMax == destMax) return;
 
                 // Get info / traversal info
@@ -217,7 +114,7 @@ namespace NeedyMintsOverdose
                 Vector3 arrowPos = arrowPrefab.transform.position;
 
 
-                NeedyMintsMod.log.LogMessage($"Calendar children: {Calendar.childCount}");
+                AltAscMod.log.LogMessage($"Calendar children: {Calendar.childCount}");
 
                 if (to > oldMax)
                 {
@@ -227,7 +124,7 @@ namespace NeedyMintsOverdose
                         Transform newDayObj = UnityEngine.Object.Instantiate(dayPrefab, dayPos + offset * (i - 30), Quaternion.identity, Calendar);
                         //TMP_Text newArrow = UnityEngine.Object.Instantiate(arrowPrefab, arrowPos + offset * (i - 30), Quaternion.identity, Calendar);
                         newDayObj.name = $"Day {i}";
-                        NeedyMintsMod.log.LogMessage($"newDayObj childcount: {newDayObj.transform.childCount}");
+                        AltAscMod.log.LogMessage($"newDayObj childcount: {newDayObj.transform.childCount}");
                         //Transform newArrowObj = UnityEngine.Object.Instantiate(arrowsPrefab, arrowsPos + offset * (i - 30), Quaternion.identity, Calendar);
 
                         // Add day text to opacity
@@ -248,7 +145,7 @@ namespace NeedyMintsOverdose
                 int today = __instance.statuses.Find(s => s.statusType == type).currentValue.Value;
                 dayIndex.Where((int d) => d != today).Subscribe(delegate (int t)
                 {
-                    if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.lockDayCount) return;
+                    if (SingletonMonoBehaviour<AltAscModManager>.Instance.lockDayCount) return;
                     dayPassMethod.Invoke(dayPassing2D, new object[] { dayIndex.Value, 0, 0 });
                     //nonRefDayPass2D.dayPass(dayIndex.Value, 0, 0);
                 }).AddTo(dayPassing2D.gameObject);
@@ -285,13 +182,13 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(NetaManager.fetchNextActionHint))]
             public static void fetchNextActionPrune(ref List<Tuple<ActionType, AlphaLevel>> __result)
             {
-                int sleeps = SingletonMonoBehaviour<NeedyMintsModManager>.Instance.sleepCount;
+                int sleeps = SingletonMonoBehaviour<AltAscModManager>.Instance.sleepCount;
                 for (int i = 0; i < __result.Count; i++)
                 {
                     // Remove "Sleep To Tomorrow" hints when a "Sleepy" ending is about to trigger
-                    if (__result[i].Item1 == ActionType.SleepToTomorrow && sleeps + 1 >= NeedyMintsMod.SLEEPS_BEFORE_SLEEPY)
+                    if (__result[i].Item1 == ActionType.SleepToTomorrow && sleeps + 1 >= AltAscMod.SLEEPS_BEFORE_SLEEPY)
                     {
-                        NeedyMintsMod.log.LogMessage($"Removing hint event!");
+                        AltAscMod.log.LogMessage($"Removing hint event!");
                         __result.RemoveAt(i);
                         i--;
                     }
@@ -315,7 +212,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(NetaManager.Haishined))]
             public static void HaishinedPrefix(AlphaType alpha, int level)
             {
-                NeedyMintsMod.log.LogMessage($"Haishined {alpha} level {level}");
+                AltAscMod.log.LogMessage($"Haishined {alpha} level {level}");
             }
         }
 
@@ -334,7 +231,7 @@ namespace NeedyMintsOverdose
             public static void getJineRawListPostfix(bool __state, ref List<LineMaster.Param> ___JineRawList, ref List<LineMaster.Param> __result)
             {
                 if (!__state) return;
-                foreach (Jine jine in NeedyMintsMod.DATA.Jines.Jine)
+                foreach (Jine jine in AltAscMod.DATA.Jines.Jine)
                 {
                     LineMaster.Param newParam = new LineMaster.Param()
                     {
@@ -355,7 +252,7 @@ namespace NeedyMintsOverdose
                         ArgumentType = "N/A",
                         ImageId = "N/A"
                     };
-                    NeedyMintsMod.log.LogMessage($"Adding jine {newParam.Id} to jines");
+                    AltAscMod.log.LogMessage($"Adding jine {newParam.Id} to jines");
                     __result.Add(newParam);
                 }
                 ___JineRawList = __result;
@@ -420,20 +317,20 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(NgoEx.ReasonTextFromEDType))]
             public static void ReasonTextFromEDTypePostfix(ModdedEndingType __state, ref string __result)
             {
-                NeedyMintsMod.log.LogMessage($"End: {__state}");
+                AltAscMod.log.LogMessage($"End: {__state}");
                 if (__state == 0) return;
 
                 // Get modded reason
                 switch (__state)
                 {
                     case ModdedEndingType.Ending_Sleepy:
-                        __result = NeedyMintsMod.DATA.Endings.Ending.Find(e => e.Id == "Ending_Sleepy").Osimai;
+                        __result = AltAscMod.DATA.Endings.Ending.Find(e => e.Id == "Ending_Sleepy").Osimai;
                         break;
                     case ModdedEndingType.Ending_Followers:
-                        __result = NeedyMintsMod.DATA.Endings.Ending.Find(e => e.Id == "Ending_Followers").Osimai;
+                        __result = AltAscMod.DATA.Endings.Ending.Find(e => e.Id == "Ending_Followers").Osimai;
                         break;
                     case ModdedEndingType.Ending_Love:
-                        __result = NeedyMintsMod.DATA.Endings.Ending.Find(e => e.Id == "Ending_Love").Osimai;
+                        __result = AltAscMod.DATA.Endings.Ending.Find(e => e.Id == "Ending_Love").Osimai;
                         break;
                     default: return;
                 }
@@ -452,7 +349,7 @@ namespace NeedyMintsOverdose
                     //NeedyMintsMod.log.LogMessage($"Found nat cmdtype {(CmdType)tuple.Item2} {type}");
                     v = ((CmdType)(int)tuple.Item2).ToString();
                 }
-                NeedyMintsMod.log.LogMessage($"{v} modded? {tuple} {type}");
+                AltAscMod.log.LogMessage($"{v} modded? {tuple} {type}");
 
 
                 __state = tuple.Item2;
@@ -507,7 +404,7 @@ namespace NeedyMintsOverdose
                         __result = ModdedCommandParams.SleepToEternityParam;
                         break;
                     default:
-                        NeedyMintsMod.log.LogMessage("Invalid modded cmd type!");
+                        AltAscMod.log.LogMessage("Invalid modded cmd type!");
                         break;
                 }
             }
@@ -655,7 +552,7 @@ namespace NeedyMintsOverdose
             {
                 if (!__state) return;
 
-                foreach (Stream stream in NeedyMintsMod.DATA.Streams.Stream)
+                foreach (Stream stream in AltAscMod.DATA.Streams.Stream)
                 {
                     foreach (Speak spk in stream.Dialogue.Speak)
                     {
@@ -696,22 +593,22 @@ namespace NeedyMintsOverdose
             {
                 if (!__state) return;
 
-                foreach (object obj in NeedyMintsMod.DATA.Endings.Ending)
+                foreach (object obj in AltAscMod.DATA.Endings.Ending)
 
-                foreach (Ending ending in NeedyMintsMod.DATA.Endings.Ending)
-                {
-                    if (!__result.Any(t => t.Id == ending.Id))
+                    foreach (Ending ending in AltAscMod.DATA.Endings.Ending)
                     {
-                        EndingMaster.Param newParam = new EndingMaster.Param()
+                        if (!__result.Any(t => t.Id == ending.Id))
                         {
-                            Id = ending.Id,
-                            EndingNameEn = ending.Name,
-                            ReasonEn = ending.Osimai,
-                            JissekiEn = ending.JissekiEn
-                        };
-                        __result.Add(newParam);
+                            EndingMaster.Param newParam = new EndingMaster.Param()
+                            {
+                                Id = ending.Id,
+                                EndingNameEn = ending.Name,
+                                ReasonEn = ending.Osimai,
+                                JissekiEn = ending.JissekiEn
+                            };
+                            __result.Add(newParam);
+                        }
                     }
-                }
                 ___Endings = __result;
             }
 
@@ -728,7 +625,7 @@ namespace NeedyMintsOverdose
                     //NeedyMintsMod.log.LogMessage($"Found nat cmdtype {(CmdType)tuple.Item2} {type}");
                     v = ((EndingType)(int)tuple.Item2).ToString();
                 }
-                NeedyMintsMod.log.LogMessage($"{v} modded? {tuple} {type}");
+                AltAscMod.log.LogMessage($"{v} modded? {tuple} {type}");
 
 
                 __state = tuple.Item2;
@@ -757,7 +654,7 @@ namespace NeedyMintsOverdose
             {
                 if (!__state) return;
 
-                foreach (Stream stream in NeedyMintsMod.DATA.Streams.Stream)
+                foreach (Stream stream in AltAscMod.DATA.Streams.Stream)
                 {
                     foreach (Msg msg in stream.Chat.Msg)
                     {
@@ -788,7 +685,7 @@ namespace NeedyMintsOverdose
             public static void getKitunesPostfix(bool __state, ref List<KituneMaster.Param> ___Kitunes, ref List<KituneMaster.Param> __result)
             {
                 if (!__state) return;
-                foreach (Thread thread in NeedyMintsMod.DATA.ST.Threads)
+                foreach (Thread thread in AltAscMod.DATA.ST.Threads)
                 {
                     foreach (Comment com in thread.Comments.Comment)
                     {
@@ -825,7 +722,7 @@ namespace NeedyMintsOverdose
             public static void getSuretaisPostfix(bool __state, ref List<KituneSuretaiMaster.Param> ___Suretais, ref List<KituneSuretaiMaster.Param> __result)
             {
                 if (!__state) return;
-                foreach (Thread thread in NeedyMintsMod.DATA.ST.Threads)
+                foreach (Thread thread in AltAscMod.DATA.ST.Threads)
                 {
 
                     KituneSuretaiMaster.Param newParam = new KituneSuretaiMaster.Param()
@@ -851,8 +748,8 @@ namespace NeedyMintsOverdose
             {
                 if (!__state) return;
 
-                NeedyMintsMod.log.LogMessage($"TESTING: {NeedyMintsMod.DATA.ST.Threads}");
-                foreach (Thread thread in NeedyMintsMod.DATA.ST.Threads)
+                AltAscMod.log.LogMessage($"TESTING: {AltAscMod.DATA.ST.Threads}");
+                foreach (Thread thread in AltAscMod.DATA.ST.Threads)
                 {
 
                     SystemTextMaster.Param newParam = new SystemTextMaster.Param()
@@ -860,18 +757,18 @@ namespace NeedyMintsOverdose
                         Id = "Suretai_" + thread.Id,
                         BodyEn = thread.Title.BodyEN
                     };
-                    NeedyMintsMod.log.LogMessage($"Adding new system type suretai {newParam.Id}");
+                    AltAscMod.log.LogMessage($"Adding new system type suretai {newParam.Id}");
                     __result.Add(newParam);
                 }
 
-                foreach (NeedyXML.String str in NeedyMintsMod.DATA.SysStrings.Strings)
+                foreach (NeedyXML.String str in AltAscMod.DATA.SysStrings.Strings)
                 {
                     SystemTextMaster.Param newParam = new SystemTextMaster.Param()
                     {
                         Id = str.Id,
                         BodyEn = str.BodyEN
                     };
-                    NeedyMintsMod.log.LogMessage($"Adding new system type {newParam.Id}");
+                    AltAscMod.log.LogMessage($"Adding new system type {newParam.Id}");
                     __result.Add(newParam);
                 }
                 ___systemTexts = __result;
@@ -881,7 +778,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(NgoEx.SystemTextFromTypeString))]
             public static void SystemTypeFromTextStringPrefix(string type)
             {
-                NeedyMintsMod.log.LogMessage($"Attempting to get system type {type}");
+                AltAscMod.log.LogMessage($"Attempting to get system type {type}");
             }
 
             [HarmonyPrefix]
@@ -945,7 +842,7 @@ namespace NeedyMintsOverdose
 
                 string id = ((ModdedTenCommentType)(int)type).ToString();
 
-                NeedyMintsMod.log.LogMessage(id);
+                AltAscMod.log.LogMessage(id);
                 if (id == "None")
                 {
                     __result = "";
@@ -992,7 +889,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(NgoEx.TenTalk), new Type[] { typeof(string), typeof(LanguageType) })]
             public static void TenTalk2Prefix(string id, LanguageType lang)
             {
-                NeedyMintsMod.log.LogMessage($"Tried to get {id}");
+                AltAscMod.log.LogMessage($"Tried to get {id}");
             }
 
             [HarmonyPostfix]
@@ -1001,7 +898,7 @@ namespace NeedyMintsOverdose
             {
                 try
                 {
-                    if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLoveLoop)
+                    if (SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop)
                     {
                         __result = NgoEx.SystemTextFromType(ModdedSystemTextType.System_LoveDay.Swap(), lang);
                     }
@@ -1031,7 +928,7 @@ namespace NeedyMintsOverdose
             {
                 Tuple<bool, int> data = CheckModdedPrefix(typeof(EndingType), typeof(ModdedEndingType), end);
                 if (!data.Item1) return;
-                __result = NeedyMintsMod.DATA.GetEndingByID(((ModdedEndingType)(int)end).ToString()).Name;
+                __result = AltAscMod.DATA.GetEndingByID(((ModdedEndingType)(int)end).ToString()).Name;
             }
 
             /*[HarmonyTranspiler]
@@ -1064,7 +961,7 @@ namespace NeedyMintsOverdose
                 List<EndingType> mitaEnd = SingletonMonoBehaviour<Settings>.Instance.mitaEnd;
 
                 string[] moddedNames = Enum.GetNames(typeof(ModdedEndingType));
-                for (int i = 0;  i < moddedNames.Length; i++)
+                for (int i = 0; i < moddedNames.Length; i++)
                 {
                     string id = moddedNames[i];
                     if (id == ((ModdedEndingType)(int)___end).ToString())
@@ -1086,9 +983,9 @@ namespace NeedyMintsOverdose
 
                 foreach (Component comp in endParent.GetComponents<Component>())
                 {
-                    NeedyMintsMod.log.LogMessage($"EndingManager Comp: {comp}");
+                    AltAscMod.log.LogMessage($"EndingManager Comp: {comp}");
                 }
-                
+
             }
         }
 
@@ -1130,7 +1027,8 @@ namespace NeedyMintsOverdose
                 }
 
                 ActionType replaceOdekakeType = ActionType.None;
-                switch (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap())) {
+                switch (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()))
+                {
                     case 0: return;
                     case 1:
                     case 2:
@@ -1153,7 +1051,7 @@ namespace NeedyMintsOverdose
                 {
                     replaceOdekakeType = ModdedActionType.OdekakeBreak.Swap();
                 }
-                NeedyMintsMod.log.LogMessage($"Found odekake replacement of {replaceOdekakeType}");
+                AltAscMod.log.LogMessage($"Found odekake replacement of {replaceOdekakeType}");
                 if (replaceOdekakeType == ActionType.None) return;
                 foreach (GameObject button in buttons)
                 {
@@ -1183,7 +1081,7 @@ namespace NeedyMintsOverdose
                 //NeedyMintsMod.log.LogMessage(__state);
                 if (!CheckModdedPrefix(typeof(ActionType), typeof(ModdedActionType), __state).Item1) return;
 
-                NeedyXML.Command com = NeedyMintsMod.DATA.Commands.Command.Find(c => c.Id == ((ModdedActionType)__state).ToString());
+                NeedyXML.Command com = AltAscMod.DATA.Commands.Command.Find(c => c.Id == ((ModdedActionType)__state).ToString());
                 __result = com.Name.BodyEN;
             }
         }
@@ -1211,7 +1109,7 @@ namespace NeedyMintsOverdose
 
                 if ((ActionType)__state == ActionType.Haishin)
                 {
-                    NeedyMintsMod.log.LogMessage($"Found modded haishin!");
+                    AltAscMod.log.LogMessage($"Found modded haishin!");
 
                     ModdedAlphaType alphaType = (ModdedAlphaType)(int)SingletonMonoBehaviour<EventManager>.Instance.alpha;
                     int level = SingletonMonoBehaviour<EventManager>.Instance.alphaLevel;
@@ -1232,10 +1130,10 @@ namespace NeedyMintsOverdose
 
                 else if ((ActionType)__state == ActionType.OkusuriDaypassModerate)
                 {
-                    NeedyMintsMod.log.LogMessage($"Took a moderate amount of depaz!");
+                    AltAscMod.log.LogMessage($"Took a moderate amount of depaz!");
                     bool usedNaturalHabitat = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.PostComiket;
                     bool isNight = SingletonMonoBehaviour<StatusManager>.Instance.isNight();
-                    NeedyMintsMod.log.LogMessage($"Starting Depaz rec dose event with flags {usedNaturalHabitat} {isNight}");
+                    AltAscMod.log.LogMessage($"Starting Depaz rec dose event with flags {usedNaturalHabitat} {isNight}");
                     if (usedNaturalHabitat && isNight)
                     {
                         __result = (CmdType)(int)ModdedCmdType.OkusuriDaypassStalk;
@@ -1245,7 +1143,7 @@ namespace NeedyMintsOverdose
 
                 else if ((ActionType)__state == ActionType.Internet2ch)
                 {
-                    NeedyMintsMod.log.LogMessage($"Found 2ch!");
+                    AltAscMod.log.LogMessage($"Found 2ch!");
                     int goOutBreak = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap());
                     int plotFlag = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
                     bool stressBreak = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.Stress) > 100;
@@ -1258,9 +1156,9 @@ namespace NeedyMintsOverdose
 
                 else if ((ActionType)__state == ActionType.SleepToTomorrow)
                 {
-                    if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.sleepCount >= NeedyMintsMod.SLEEPS_BEFORE_SLEEPY)
+                    if (SingletonMonoBehaviour<AltAscModManager>.Instance.sleepCount >= AltAscMod.SLEEPS_BEFORE_SLEEPY)
                     {
-                        NeedyMintsMod.log.LogMessage($"Found supersleep!");
+                        AltAscMod.log.LogMessage($"Found supersleep!");
                         __result = ModdedCmdType.SleepToEternity.Swap();
                     }
                     return;
@@ -1369,7 +1267,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(ActionButton.OnCommand))]
             public static bool OnCommandPrefix(ActionType ___actionType)
             {
-                NeedyMintsMod.log.LogMessage($"OnCommand!");
+                AltAscMod.log.LogMessage($"OnCommand!");
                 if (___actionType == ModdedActionType.OdekakeFuneral.Swap())
                 {
                     SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Action_OdekakeFuneral>();
@@ -1386,7 +1284,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(TooltipManager.ShowAction))]
             public static void ShowActionPrefix(ActionType a)
             {
-                NeedyMintsMod.log.LogMessage($"Showing tooltip for {a}");
+                AltAscMod.log.LogMessage($"Showing tooltip for {a}");
             }
         }
 
@@ -1397,7 +1295,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(EventManager.FetchNightEvent))]
             public static bool FetchNightEventPrefix(ref EventManager __instance)
             {
-                NeedyMintsMod.log.LogMessage("Fetching night...");
+                AltAscMod.log.LogMessage("Fetching night...");
                 int status = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
                 int status2 = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
 
@@ -1435,12 +1333,12 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(EventManager.FetchDayEvent))]
             public static bool FetchDayEventPrefix(ref EventManager __instance)
             {
-                NeedyMintsMod.log.LogMessage("DayEvent");
-                NeedyMintsModManager nmmm = SingletonMonoBehaviour<NeedyMintsModManager>.Instance;
-                NeedyMintsMod.log.LogMessage($"Love: {nmmm.isLove} {nmmm.isLoveLoop}");
+                AltAscMod.log.LogMessage("DayEvent");
+                AltAscModManager nmmm = SingletonMonoBehaviour<AltAscModManager>.Instance;
+                AltAscMod.log.LogMessage($"Love: {nmmm.isLove} {nmmm.isLoveLoop}");
                 int day = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
                 int plotflag = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
-                if (day == 2 && NeedyMintsMod.SHOWANIMSTREAM)
+                if (day == 2 && AltAscMod.SHOWANIMSTREAM)
                 {
                     __instance.AddEvent<Action_HaishinStart>();
                     return false;
@@ -1484,8 +1382,8 @@ namespace NeedyMintsOverdose
                     else __instance.AddEvent<Scenario_follower_day4_day>();
                     return false;
                 }
-                else if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLove &&
-                         SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLoveLoop)
+                else if (SingletonMonoBehaviour<AltAscModManager>.Instance.isLove &&
+                         SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop)
                 {
                     List<string> events = new List<string>
                     {
@@ -1500,7 +1398,7 @@ namespace NeedyMintsOverdose
                     SingletonMonoBehaviour<EventManager>.Instance.AddEvent(events[choice]);
                     return false;
                 }
-                else if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLove)
+                else if (SingletonMonoBehaviour<AltAscModManager>.Instance.isLove)
                 {
                     __instance.AddEvent<Scenario_love_day2_day>();
                     return false;
@@ -1533,7 +1431,7 @@ namespace NeedyMintsOverdose
             {
                 __instance.executingAction = CmdType.None;
 
-                __instance.transform.AddComponent<NeedyMintsModManager>();
+                __instance.transform.AddComponent<AltAscModManager>();
             }
 
             [HarmonyPrefix]
@@ -1552,7 +1450,7 @@ namespace NeedyMintsOverdose
                      {
                          SingletonMonoBehaviour<Settings>.Instance.isBackToLoad = false;
                      }
-                     else if (!SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLoveLoop)
+                     else if (!SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop)
                      {
                          inst.Save(day);
                      }
@@ -1592,7 +1490,7 @@ namespace NeedyMintsOverdose
                     __result = false;
                     return false;
                 }
-                if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLove)
+                if (SingletonMonoBehaviour<AltAscModManager>.Instance.isLove)
                 {
                     __result = false;
                     return false;
@@ -1607,13 +1505,13 @@ namespace NeedyMintsOverdose
                 StatusManager sm = SingletonMonoBehaviour<StatusManager>.Instance;
                 if (ac == ActionType.SleepToTomorrow)
                 {
-                    SingletonMonoBehaviour<NeedyMintsModManager>.Instance.sleepCount++;
+                    SingletonMonoBehaviour<AltAscModManager>.Instance.sleepCount++;
                 }
                 else
                 {
-                    SingletonMonoBehaviour<NeedyMintsModManager>.Instance.sleepCount = 0;
+                    SingletonMonoBehaviour<AltAscModManager>.Instance.sleepCount = 0;
                 }
-                NeedyMintsMod.log.LogMessage($"Sleeps after : {SingletonMonoBehaviour<NeedyMintsModManager>.Instance.sleepCount}");
+                AltAscMod.log.LogMessage($"Sleeps after : {SingletonMonoBehaviour<AltAscModManager>.Instance.sleepCount}");
             }
 
             [HarmonyPrefix]
@@ -1683,9 +1581,9 @@ namespace NeedyMintsOverdose
                     is150mil = __instance.is150mil,
                     is300mil = __instance.is300mil,
                     is500mil = __instance.is500mil,
-                    sleepCount = SingletonMonoBehaviour<NeedyMintsModManager>.Instance.sleepCount,
-                    isLove = SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLove,
-                    isLoveLoop = SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLoveLoop,
+                    sleepCount = SingletonMonoBehaviour<AltAscModManager>.Instance.sleepCount,
+                    isLove = SingletonMonoBehaviour<AltAscModManager>.Instance.isLove,
+                    isLoveLoop = SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop,
                 });
                 UnityEngine.Debug.Log("スロットデータ：" + text + "のセーブが完了しました。");
                 new Traverse(__instance).Method(nameof(EventManager.CleanPassingSaveData), new Type[] { typeof(string) }).GetValue(new object[] { text });
@@ -1701,16 +1599,16 @@ namespace NeedyMintsOverdose
 
                 if (slotData.sleepCount == null) return;
 
-                SingletonMonoBehaviour<NeedyMintsModManager>.Instance.sleepCount = slotData.sleepCount;
-                SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLove = slotData.isLove;
-                SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLoveLoop = slotData.isLoveLoop;
+                SingletonMonoBehaviour<AltAscModManager>.Instance.sleepCount = slotData.sleepCount;
+                SingletonMonoBehaviour<AltAscModManager>.Instance.isLove = slotData.isLove;
+                SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop = slotData.isLoveLoop;
             }
 
             [HarmonyPostfix]
             [HarmonyPatch(nameof(EventManager.StartOver))]
             public static void StartOverPostfix()
             {
-                NeedyMintsModManager nmmm = SingletonMonoBehaviour<NeedyMintsModManager>.Instance;
+                AltAscModManager nmmm = SingletonMonoBehaviour<AltAscModManager>.Instance;
                 nmmm.sleepCount = 0;
                 nmmm.isLove = false;
                 nmmm.isLoveLoop = false;
@@ -1720,14 +1618,14 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(EventManager.chooseMaturo))]
             public static bool chooseMaturoPrefix(ref EventManager __instance)
             {
-               StatusManager sm = SingletonMonoBehaviour<StatusManager>.Instance;
-               if (sm.GetMaxStatus(StatusType.Love) == 120 && sm.GetStatus(StatusType.Love) >= 100 && __instance.midokumushi == 0)
-               {
-                   __instance.SetShortcutState(false, 0.4f);
-                   __instance.AddEvent<EndingSeparator>();
-                   __instance.AddEvent<Scenario_love_day1_day>();
-                   return false;
-               }
+                StatusManager sm = SingletonMonoBehaviour<StatusManager>.Instance;
+                if (sm.GetMaxStatus(StatusType.Love) == 120 && sm.GetStatus(StatusType.Love) >= 100 && __instance.midokumushi == 0)
+                {
+                    __instance.SetShortcutState(false, 0.4f);
+                    __instance.AddEvent<EndingSeparator>();
+                    __instance.AddEvent<Scenario_love_day1_day>();
+                    return false;
+                }
                 return true;
             }
         }
@@ -1742,7 +1640,7 @@ namespace NeedyMintsOverdose
                 FieldInfo fieldInfo = typeof(TweetFetcher).GetField(nameof(TweetFetcher._tweetRawList), BindingFlags.Static | BindingFlags.NonPublic);
                 List<TweetMaster.Param> impTweets = new List<TweetMaster.Param>();
 
-                foreach (Tweet twt in NeedyMintsMod.DATA.Tweets.Tweet)
+                foreach (Tweet twt in AltAscMod.DATA.Tweets.Tweet)
                 {
                     TweetMaster.Param param = new TweetMaster.Param()
                     {
@@ -1765,7 +1663,7 @@ namespace NeedyMintsOverdose
                 FieldInfo fieldInfo = typeof(TweetFetcher).GetField(nameof(TweetFetcher._KusorepRawList), BindingFlags.Static | BindingFlags.NonPublic);
                 List<KRepMaster.Param> impKusos = new List<KRepMaster.Param>();
 
-                foreach (KusoRep kuso in NeedyMintsMod.DATA.KusoReps.KusoRep)
+                foreach (KusoRep kuso in AltAscMod.DATA.KusoReps.KusoRep)
                 {
                     KRepMaster.Param param = new KRepMaster.Param()
                     {
@@ -1836,11 +1734,11 @@ namespace NeedyMintsOverdose
                 if (tw.IsOmote)
                 {
                     __result = TweetFetcher.ConvertTypeToTweet(tw.Type).OmoteBodyEn.IsNotEmpty() || TweetFetcher.ConvertTypeToTweet(tw.Type).OmoteImageId.IsNotEmpty();
-                    NeedyMintsMod.log.LogMessage($"TweetData for {tw.Type} is {__result}");
+                    AltAscMod.log.LogMessage($"TweetData for {tw.Type} is {__result}");
                     return;
                 }
                 __result = TweetFetcher.ConvertTypeToTweet(tw.Type).UraBodyEn.IsNotEmpty();
-                NeedyMintsMod.log.LogMessage($"TweetData for {tw.Type} is {__result}");
+                AltAscMod.log.LogMessage($"TweetData for {tw.Type} is {__result}");
             }
 
         }
@@ -1854,7 +1752,7 @@ namespace NeedyMintsOverdose
             {
                 if (!CheckModdedPrefix(typeof(AlphaType), typeof(ModdedAlphaType), NetaType).Item1) return;
 
-                Stream stream = NeedyMintsMod.DATA.Streams.Stream.First(s => s.AlphaType == ((ModdedAlphaType)(int)NetaType).ToString() && s.AlphaLevel == (level).ToString());
+                Stream stream = AltAscMod.DATA.Streams.Stream.First(s => s.AlphaType == ((ModdedAlphaType)(int)NetaType).ToString() && s.AlphaLevel == (level).ToString());
 
                 ModdedTenCommentType tenComment = (ModdedTenCommentType)Enum.Parse(typeof(ModdedTenCommentType), stream.AlphaType + stream.AlphaLevel + "_STREAMNAME");
                 AlphaTypeToData data = new AlphaTypeToData()
@@ -1868,7 +1766,7 @@ namespace NeedyMintsOverdose
                     netaName = (TenCommentType)(int)tenComment
                 };
 
-                NeedyMintsMod.log.LogMessage($"Read neta content with netaname {data.netaName}");
+                AltAscMod.log.LogMessage($"Read neta content with netaname {data.netaName}");
                 __result = data;
             }
         }
@@ -1885,7 +1783,7 @@ namespace NeedyMintsOverdose
             [HarmonyPrefix]
             public static void startEventPrefix(NgoEvent __instance)
             {
-                NeedyMintsMod.log.LogMessage($"Starting event: {__instance.eventName} / {__instance.GetType().Name}");
+                AltAscMod.log.LogMessage($"Starting event: {__instance.eventName} / {__instance.GetType().Name}");
             }
         }
 
@@ -1902,17 +1800,17 @@ namespace NeedyMintsOverdose
 
                 public static bool Prefix(out bool __state)
                 {
-                    NeedyMintsMod.log.LogMessage("SetScenario patch!");
+                    AltAscMod.log.LogMessage("SetScenario patch!");
                     int status = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
                     int status2 = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
-                    NeedyMintsMod.log.LogMessage($"Haishin plotflag value: {(FollowerPlotFlagValues)status}");
+                    AltAscMod.log.LogMessage($"Haishin plotflag value: {(FollowerPlotFlagValues)status}");
 
                     bool streamValue = (FollowerPlotFlagValues)status == FollowerPlotFlagValues.AngelFuneral ||
                                        (FollowerPlotFlagValues)status == FollowerPlotFlagValues.AngelWatch ||
                                        (FollowerPlotFlagValues)status == FollowerPlotFlagValues.AngelDeath ||
                                        (FollowerPlotFlagValues)status == FollowerPlotFlagValues.PostComiket ||
-                                       SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLove ||
-                                       (status2 == 2 && NeedyMintsMod.SHOWANIMSTREAM);
+                                       SingletonMonoBehaviour<AltAscModManager>.Instance.isLove ||
+                                       (status2 == 2 && AltAscMod.SHOWANIMSTREAM);
 
                     __state = streamValue;
 
@@ -1921,7 +1819,7 @@ namespace NeedyMintsOverdose
 
                 public static void Postfix(ref Live __instance, ref LiveScenario __result, bool __state)
                 {
-                    NeedyMintsMod.log.LogMessage($"Follower stream: {__state}");
+                    AltAscMod.log.LogMessage($"Follower stream: {__state}");
                     if (__state)
                     {
                         SingletonMonoBehaviour<StatusManager>.Instance.isTodayHaishined = true;
@@ -1929,9 +1827,9 @@ namespace NeedyMintsOverdose
 
                         int status = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
                         int status2 = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
-                        NeedyMintsMod.log.LogMessage($"Haishin plot status: {(FollowerPlotFlagValues)status}");
-                        NeedyMintsMod.log.LogMessage($"Haishin love: {SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLove}");
-                        if (status2 == 2 && NeedyMintsMod.SHOWANIMSTREAM)
+                        AltAscMod.log.LogMessage($"Haishin plot status: {(FollowerPlotFlagValues)status}");
+                        AltAscMod.log.LogMessage($"Haishin love: {SingletonMonoBehaviour<AltAscModManager>.Instance.isLove}");
+                        if (status2 == 2 && AltAscMod.SHOWANIMSTREAM)
                         {
                             __result = __instance.SetScenario<Test_ShowAllAnim>();
                         }
@@ -1960,7 +1858,7 @@ namespace NeedyMintsOverdose
                         {
                             __result = __instance.SetScenario<Haishin_Comiket>();
                         }
-                        else if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLove)
+                        else if (SingletonMonoBehaviour<AltAscModManager>.Instance.isLove)
                         {
                             if (status2 > 30)
                             {
@@ -1974,7 +1872,7 @@ namespace NeedyMintsOverdose
 
 
 
-                    NeedyMintsMod.log.LogMessage($"SetScenarioPostfix!");
+                    AltAscMod.log.LogMessage($"SetScenarioPostfix!");
                     EventManager em = SingletonMonoBehaviour<EventManager>.Instance;
 
                     if (!CheckModdedPrefix(typeof(AlphaType), typeof(ModdedAlphaType), em.alpha).Item1) return;
@@ -1988,9 +1886,9 @@ namespace NeedyMintsOverdose
             public static bool isActiveReactionPrefix(ref Live __instance, ref bool __result)
             {
                 //NeedyMintsMod.log.LogMessage($"isActiveReactionPrefix: {__instance.isUncontrollable} {__instance.isOiwai} {AMAManager.isAMA}");
-                if (__instance.isUncontrollable && __instance.isOiwai && SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAMA)
+                if (__instance.isUncontrollable && __instance.isOiwai && SingletonMonoBehaviour<AltAscModManager>.Instance.isAMA)
                 {
-                    NeedyMintsMod.log.LogMessage($"AMA reroute!");
+                    AltAscMod.log.LogMessage($"AMA reroute!");
                     SingletonMonoBehaviour<CursorManager>.Instance.SetCursor(null, __instance.hotSpot, __instance.cursorMode);
                     __result = true;
                     return false;
@@ -2002,15 +1900,15 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(Live.RefreshYomuCommentLabel))]
             public static bool RefreshYomuCommentLabelPrefix(ref Live __instance)
             {
-                NeedyMintsMod.log.LogMessage("RefreshYomuCommentLabelPostfix");
-                if (!SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAMA) return true;
-                NeedyMintsMod.log.LogMessage("RefreshYomuCommentLabelPostfix modcheck");
+                AltAscMod.log.LogMessage("RefreshYomuCommentLabelPostfix");
+                if (!SingletonMonoBehaviour<AltAscModManager>.Instance.isAMA) return true;
+                AltAscMod.log.LogMessage("RefreshYomuCommentLabelPostfix modcheck");
                 LanguageType lang = SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value;
                 SystemTextType type = (SystemTextType)(int)ModdedSystemTextType.System_AMARead;
 
-                NeedyMintsMod.log.LogMessage($"AMA systext {type} {lang}!");
+                AltAscMod.log.LogMessage($"AMA systext {type} {lang}!");
                 string text = NgoEx.SystemTextFromType(type, lang);
-                NeedyMintsMod.log.LogMessage($"AMA systext {text}!");
+                AltAscMod.log.LogMessage($"AMA systext {text}!");
                 __instance.CommentLabel.text = text;
                 //__instance.CommentBg.color = new Color(0.8f, 0.85f, 0.8f, 1f);
                 return false;
@@ -2041,14 +1939,14 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(Live.UpdateDetail))]
             public static void UpdateDetail(ref Live __instance, ref TMP_Text ___haisinDetail, int ___watcher, LanguageType ____lang)
             {
-                if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.overnightStreamStartDay != 0)
+                if (SingletonMonoBehaviour<AltAscModManager>.Instance.overnightStreamStartDay != 0)
                 {
                     ___haisinDetail.text = string.Format("{0} {1} ・ {2} {3}", new object[]
                     {
                         ___watcher,
                         NgoEx.SystemTextFromType(SystemTextType.Haisin_Watching_Number, ____lang),
                         NgoEx.SystemTextFromType(SystemTextType.Haisin_Started_Day, ____lang),
-                        NgoEx.DayText(SingletonMonoBehaviour<NeedyMintsModManager>.Instance.overnightStreamStartDay, ____lang)
+                        NgoEx.DayText(SingletonMonoBehaviour<AltAscModManager>.Instance.overnightStreamStartDay, ____lang)
                     });
                 }
             }
@@ -2064,7 +1962,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(Live.bgView))]
             public static void bgViewPostfix(ref Live __instance)
             {
-                NeedyMintsModManager nmmm = SingletonMonoBehaviour<NeedyMintsModManager>.Instance;
+                AltAscModManager nmmm = SingletonMonoBehaviour<AltAscModManager>.Instance;
 
                 if (SingletonMonoBehaviour<EventManager>.Instance.nowEnding == ModdedEndingType.Ending_Followers.Swap())
                 {
@@ -2120,7 +2018,7 @@ namespace NeedyMintsOverdose
                         playing.color = SuperchatType.Red;
                         break;
                     default:
-                        NeedyMintsMod.log.LogMessage($"Attempted to set content of color {playing.color.Swap()}");
+                        AltAscMod.log.LogMessage($"Attempted to set content of color {playing.color.Swap()}");
                         return false;
                 }
                 return true;
@@ -2140,10 +2038,10 @@ namespace NeedyMintsOverdose
                 Live live = UnityEngine.Object.FindObjectOfType<Live>();
 
                 // Cancel AMA request if either asked already, message isn't a valid AMA, or isn't AMAing with the right stream settings
-                bool askedAlready = SingletonMonoBehaviour<NeedyMintsModManager>.Instance.playedQuestions.Contains(playing);
+                bool askedAlready = SingletonMonoBehaviour<AltAscModManager>.Instance.playedQuestions.Contains(playing);
                 bool isAMAChat = playing.henji != "";
-                NeedyMintsMod.log.LogMessage($"hirou activated for {playing}, while askedAlready is {askedAlready} and isAMAChat is {isAMAChat} with color {playing.color}");
-                if (!SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAMA || askedAlready ||
+                AltAscMod.log.LogMessage($"hirou activated for {playing}, while askedAlready is {askedAlready} and isAMAChat is {isAMAChat} with color {playing.color}");
+                if (!SingletonMonoBehaviour<AltAscModManager>.Instance.isAMA || askedAlready ||
                     !isAMAChat || !live.isOiwai) return;
 
                 //NeedyMintsMod.log.LogMessage($"Selected AMA \"{playing.nakami} with status {playing.diffStatusType} {playing.delta}\"");
@@ -2154,11 +2052,11 @@ namespace NeedyMintsOverdose
                 {
                     if (playing.delta != -99)
                     {
-                        SingletonMonoBehaviour<NeedyMintsModManager>.Instance.StressDelta += playing.delta;
+                        SingletonMonoBehaviour<AltAscModManager>.Instance.StressDelta += playing.delta;
                     }
                     else
                     {
-                        SingletonMonoBehaviour<NeedyMintsModManager>.Instance.deleteComment = __instance;
+                        SingletonMonoBehaviour<AltAscModManager>.Instance.deleteComment = __instance;
                         //NeedyMintsMod.log.LogMessage($"Deletecomment is {AMAManager.deleteComment.playing.nakami}");
                     }
                 }
@@ -2172,7 +2070,7 @@ namespace NeedyMintsOverdose
                 }
                 catch (Exception e)
                 {
-                    NeedyMintsMod.log.LogMessage("No AMAs currently in queue!");
+                    AltAscMod.log.LogMessage("No AMAs currently in queue!");
                 }
 
                 // Split multi-message responses and their associated expressions
@@ -2187,7 +2085,7 @@ namespace NeedyMintsOverdose
                 live.NowPlaying.playing.Insert(newAMAPos, new Playing(true, "", ModdedStatusType.AMAStatus.Swap(), 1, 0, "", "", playing.henjiAnim, true, SuperchatType.White, true, playing.nakami));
 
                 // Register AMA as asked
-                SingletonMonoBehaviour<NeedyMintsModManager>.Instance.playedQuestions.Add(playing);
+                SingletonMonoBehaviour<AltAscModManager>.Instance.playedQuestions.Add(playing);
 
 
                 // Change color of message to show its already been asked
@@ -2199,13 +2097,13 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(LiveComment.highlighted))]
             public static void highlightedPostfix(LiveComment __instance)
             {
-                if (!SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAMA) return;
+                if (!SingletonMonoBehaviour<AltAscModManager>.Instance.isAMA) return;
 
 
                 Live live = typeof(LiveComment).GetField(nameof(LiveComment._live), BindingFlags.NonPublic | BindingFlags.Instance).GetValue(__instance) as Live;
-                if (live.isUncontrollable && live.isOiwai && !SingletonMonoBehaviour<NeedyMintsModManager>.Instance.playedQuestions.Contains(__instance.playing))
+                if (live.isUncontrollable && live.isOiwai && !SingletonMonoBehaviour<AltAscModManager>.Instance.playedQuestions.Contains(__instance.playing))
                 {
-                    NeedyMintsMod.log.LogMessage($"AMA reroute!");
+                    AltAscMod.log.LogMessage($"AMA reroute!");
                     SingletonMonoBehaviour<CursorManager>.Instance.SetCursor(null, live.hotSpot, live.cursorMode);
                 }
                 //NeedyMintsMod.log.LogMessage("Highlighted!");
@@ -2220,7 +2118,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(LiveScenario.Play))]
             public static bool PlayPrefix(Playing context, ref LiveScenario __instance)
             {
-                NeedyMintsMod.log.LogMessage($"Playing {context.nakami}");
+                AltAscMod.log.LogMessage($"Playing {context.nakami}");
 
 
                 if (!CheckModdedPrefix(typeof(SuperchatType), typeof(ModdedSuperchatType), context.color).Item1) return true;
@@ -2230,11 +2128,11 @@ namespace NeedyMintsOverdose
                 switch (context.color.Swap())
                 {
                     case ModdedSuperchatType.AMA_START:
-                        SingletonMonoBehaviour<NeedyMintsModManager>.Instance.StartAMA(ref __instance);
+                        SingletonMonoBehaviour<AltAscModManager>.Instance.StartAMA(ref __instance);
                         break;
 
                     case ModdedSuperchatType.AMA_END:
-                        SingletonMonoBehaviour<NeedyMintsModManager>.Instance.FinishAMA(ref __instance);
+                        SingletonMonoBehaviour<AltAscModManager>.Instance.FinishAMA(ref __instance);
                         break;
 
                     case ModdedSuperchatType.EVENT_TIMEPASS:
@@ -2257,7 +2155,7 @@ namespace NeedyMintsOverdose
                         JineData data = new JineData((JineType)(int)sendType);
                         SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(data);
 
-                        NeedyMintsMod.log.LogMessage($"Jine send anim: {context.animation}");
+                        AltAscMod.log.LogMessage($"Jine send anim: {context.animation}");
 
                         if (context.animation != "" && data.user == JineUserType.ame)
                         {
@@ -2287,20 +2185,20 @@ namespace NeedyMintsOverdose
                     case ModdedSuperchatType.EVENT_CREATEDEPAZ:
                         IWindow pill = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow_NoInteractive((AppType)(int)ModdedAppType.PillDaypass_Follower);
                         pill.Uncloseable();
-                        NeedyMintsMod.log.LogMessage($"Created pill {pill}");
+                        AltAscMod.log.LogMessage($"Created pill {pill}");
                         pill.setRandomPosition();
-                        SingletonMonoBehaviour<NeedyMintsModManager>.Instance.pills.Add(pill);
+                        SingletonMonoBehaviour<AltAscModManager>.Instance.pills.Add(pill);
                         break;
 
                     case ModdedSuperchatType.EVENT_DOSE:
-                        IWindow takePill = SingletonMonoBehaviour<NeedyMintsModManager>.Instance.pills.Last();
+                        IWindow takePill = SingletonMonoBehaviour<AltAscModManager>.Instance.pills.Last();
                         SheetView sheet = takePill.nakamiApp.GetComponentInChildren<SheetView>();
 
                         takePill.Touched();
                         sheet.OnDose();
                         if (sheet.CurrentDoseCount.Value >= 3)
                         {
-                            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.pills.Remove(takePill);
+                            SingletonMonoBehaviour<AltAscModManager>.Instance.pills.Remove(takePill);
                             SingletonMonoBehaviour<WindowManager>.Instance.Close(takePill);
                         }
                         else
@@ -2311,7 +2209,7 @@ namespace NeedyMintsOverdose
 
                     case ModdedSuperchatType.EVENT_SHADERWAIT:
 
-                        bool shaderCompleted = SingletonMonoBehaviour<NeedyMintsModManager>.Instance.anim.IsComplete();
+                        bool shaderCompleted = SingletonMonoBehaviour<AltAscModManager>.Instance.anim.IsComplete();
 
                         if (!shaderCompleted)
                         {
@@ -2347,12 +2245,12 @@ namespace NeedyMintsOverdose
                         if (context.isLoopAnim)
                         {
                             float weight = 0f;
-                            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.anim = DOTween.To(() => weight, delegate (float x)
+                            SingletonMonoBehaviour<AltAscModManager>.Instance.anim = DOTween.To(() => weight, delegate (float x)
                             {
                                 PostEffectManager.Instance.SetShaderWeight(x);
                             }, endVal, duration).SetEase(Ease.InExpo).SetAutoKill(false);
 
-                            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.anim.Play<TweenerCore<float, float, FloatOptions>>();
+                            SingletonMonoBehaviour<AltAscModManager>.Instance.anim.Play<TweenerCore<float, float, FloatOptions>>();
                         }
                         else
                         {
@@ -2394,7 +2292,7 @@ namespace NeedyMintsOverdose
                         }
                         if (strs.Length > 1 && strs[1] == "EYES")
                         {
-                            SingletonMonoBehaviour<NeedyMintsModManager>.Instance.ChangeBG();
+                            SingletonMonoBehaviour<AltAscModManager>.Instance.ChangeBG();
                         }
 
 
@@ -2410,7 +2308,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(LiveScenario.Play))]
             public static void PlayPostfix(ref LiveScenario __instance, ref Playing context)
             {
-                if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex) == 2 && NeedyMintsMod.SHOWANIMSTREAM)
+                if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex) == 2 && AltAscMod.SHOWANIMSTREAM)
                 {
                     UnityEngine.UI.Image im = new Traverse(__instance).Field(nameof(LiveScenario._Live)).Field(nameof(Live.Tenchan)).GetValue<TenchanView>().GetComponent<UnityEngine.UI.Image>();
                     //im.sprite.texture.EncodeToPNG();
@@ -2419,9 +2317,9 @@ namespace NeedyMintsOverdose
                     return;
                 }
 
-                NeedyMintsMod.log.LogMessage($"PlayPostfix!");
-                NeedyMintsModManager nmmm = SingletonMonoBehaviour<NeedyMintsModManager>.Instance;
-                if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.deleteComment != null && context.antiComment == nmmm.deleteComment.playing.nakami)
+                AltAscMod.log.LogMessage($"PlayPostfix!");
+                AltAscModManager nmmm = SingletonMonoBehaviour<AltAscModManager>.Instance;
+                if (SingletonMonoBehaviour<AltAscModManager>.Instance.deleteComment != null && context.antiComment == nmmm.deleteComment.playing.nakami)
                 {
                     nmmm.deleteTime = true;
                 }
@@ -2450,7 +2348,7 @@ namespace NeedyMintsOverdose
                         __instance.BASESPEED = 1;
                         return;
                     case ModdedSuperchatType.EVENT_DELAYFRAME:
-                        NeedyMintsMod.log.LogMessage($"Delaying for {context.delta} ms");
+                        AltAscMod.log.LogMessage($"Delaying for {context.delta} ms");
                         __instance.BASESPEED = context.delta;
                         return;
                     default: break;
@@ -2474,8 +2372,8 @@ namespace NeedyMintsOverdose
                     float randMultiplier = (float)Math.Pow((double)(UnityEngine.Random.Range(1, 200) / 100f), 0.5f);
                     speed = (randMultiplier * nmmm.PlannedAMALength / nmmm.QUESTIONS);
 
-                    NeedyMintsMod.log.LogMessage($"deleteComment {nmmm.deleteComment}");
-                    NeedyMintsMod.log.LogMessage($"deleteTime {nmmm.deleteTime}");
+                    AltAscMod.log.LogMessage($"deleteComment {nmmm.deleteComment}");
+                    AltAscMod.log.LogMessage($"deleteTime {nmmm.deleteTime}");
 
                     if (nmmm.deleteComment != null && nmmm.deleteTime)
                     {
@@ -2488,7 +2386,7 @@ namespace NeedyMintsOverdose
                 }
                 __instance.BASESPEED = (int)(speed * Mathf.Pow(0.8f, (float)live.Speed));
 
-                NeedyMintsMod.log.LogMessage($"Adjusted BASESPEED for AMA question to {__instance.BASESPEED}");
+                AltAscMod.log.LogMessage($"Adjusted BASESPEED for AMA question to {__instance.BASESPEED}");
             }
         }
 
@@ -2502,16 +2400,16 @@ namespace NeedyMintsOverdose
             public static void GetMultiType(string typeName, ref Type __result)
             {
                 //NeedyMintsMod.log.LogMessage(Environment.StackTrace);
-                NeedyMintsMod.log.LogMessage($"Type {typeName} requested");
+                AltAscMod.log.LogMessage($"Type {typeName} requested");
                 if (typeName.StartsWith("ngov3.") && __result == null)
                 {
                     if (typeName.EndsWith("_0"))
                     {
-                        NeedyMintsMod.log.LogMessage("Found lvl 0 stream");
+                        AltAscMod.log.LogMessage("Found lvl 0 stream");
                         //NeedyMintsMod.log.LogError(System.Environment.StackTrace);
                     }
                     string tmpTypeName = typeName.Replace("ngov3.", "NeedyMintsOverdose.");
-                    NeedyMintsMod.log.LogMessage($"Temp type name: {tmpTypeName}");
+                    AltAscMod.log.LogMessage($"Temp type name: {tmpTypeName}");
                     Type nmoType = Type.GetType(tmpTypeName);
                     if (nmoType != null)
                     {
@@ -2536,7 +2434,7 @@ namespace NeedyMintsOverdose
 
                     string finalType = rx.Replace(tmpTypeName, moddedType, 1);
                     __result = Type.GetType(finalType);
-                    NeedyMintsMod.log.LogMessage($"Failed type get of {typeName} got replaced with {finalType} with return value {__result}");
+                    AltAscMod.log.LogMessage($"Failed type get of {typeName} got replaced with {finalType} with return value {__result}");
                 }
             }
         }
@@ -2593,7 +2491,7 @@ namespace NeedyMintsOverdose
 
                 FieldInfo mergedAppsInfo = typeof(AppTypeToDataAsset).GetField(nameof(AppTypeToDataAsset.mergedApps), BindingFlags.Instance | BindingFlags.NonPublic);
                 object mergedAppstmp = mergedAppsInfo.GetValue(app2data);
-                NeedyMintsMod.log.LogMessage($"HELPME {appType} {__result}");
+                AltAscMod.log.LogMessage($"HELPME {appType} {__result}");
                 List<AppTypeToData> mergedApps;
                 if (mergedAppstmp == null)
                 {
@@ -2601,7 +2499,8 @@ namespace NeedyMintsOverdose
                 }
                 else mergedApps = (mergedAppstmp as IEnumerable<AppTypeToData>).ToList();
 
-                if (!mergedApps.Any(app => app.appType == (AppType)(int)ModdedAppType.Follower_taiki)) {
+                if (!mergedApps.Any(app => app.appType == (AppType)(int)ModdedAppType.Follower_taiki))
+                {
                     AppTypeToData taiki = mergedApps.Find(App => App.appType == AppType.Ideon_taiki);
                     AppTypeToData followTaiki = new AppTypeToData(false)
                     {
@@ -2617,7 +2516,7 @@ namespace NeedyMintsOverdose
                         InnerContent = UnityEngine.Object.Instantiate(taiki.InnerContent)
                     };
                     UnityEngine.Object.DontDestroyOnLoad(followTaiki.InnerContent);
-                    NeedyMintsMod.log.LogMessage($"Taiki content: {taiki.InnerContent}");
+                    AltAscMod.log.LogMessage($"Taiki content: {taiki.InnerContent}");
                     Transform trans = followTaiki.InnerContent.transform.GetChild(0).GetChild(5);
 
                     GameObject.Destroy(trans.GetChild(0).gameObject);
@@ -2646,7 +2545,7 @@ namespace NeedyMintsOverdose
                     };
                     UnityEngine.Object.DontDestroyOnLoad(altPoketter.InnerContent);
                     PoketterView2D view = altPoketter.InnerContent.GetComponent<PoketterView2D>();
-                    NeedyMintsMod.log.LogMessage($"Poketter component: {view}");
+                    AltAscMod.log.LogMessage($"Poketter component: {view}");
 
                     AltPoketter newPoke = altPoketter.InnerContent.AddComponent<AltPoketter>();
 
@@ -2734,7 +2633,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(ngov3.Window_Compact.SetApp))]
             public static void SetApp(AppTypeToData a)
             {
-                NeedyMintsMod.log.LogMessage($"Window contents: {a.InnerContent == null}");
+                AltAscMod.log.LogMessage($"Window contents: {a.InnerContent == null}");
             }
         }
 
@@ -2767,7 +2666,7 @@ namespace NeedyMintsOverdose
             [HarmonyPatch(nameof(ngov3.Effect.DayPassing2D.yearsPass))]
             public static void yearsPassPrefix()
             {
-                SingletonMonoBehaviour<NeedyMintsModManager>.Instance.lockDayCount = true;
+                SingletonMonoBehaviour<AltAscModManager>.Instance.lockDayCount = true;
             }
         }
 
@@ -2796,7 +2695,7 @@ namespace NeedyMintsOverdose
             public static void SetDataPostfix(ref PoketterCell __instance, TweetDrawable nakami, ref TMP_Text ____dateText)
             {
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                NeedyMintsMod.log.LogMessage($"Tweet day max: {dayMax}");
+                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
 
 
                 if (dayMax >= nakami.Day && dayMax > 30)
@@ -2810,7 +2709,7 @@ namespace NeedyMintsOverdose
             public static void SetDataStaticPostfix(ref PoketterCell __instance, TweetDrawable nakami, ref TMP_Text ____dateText)
             {
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                NeedyMintsMod.log.LogMessage($"Tweet day max: {dayMax}");
+                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
 
                 if (dayMax >= nakami.Day && dayMax > 30)
                 {
@@ -2824,7 +2723,7 @@ namespace NeedyMintsOverdose
             {
                 TweetDrawable nakami = (TweetDrawable)(new Traverse(__instance).Field(nameof(PoketterCell.tweetDrawable)).GetValue());
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                NeedyMintsMod.log.LogMessage($"Tweet day max: {dayMax}");
+                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
 
                 if (dayMax >= nakami.Day && dayMax > 30)
                 {
@@ -2841,8 +2740,8 @@ namespace NeedyMintsOverdose
             public static void SetDataPostfix(ref PoketterCell __instance, TweetDrawable nakami, ref TMP_Text ____dateText)
             {
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                NeedyMintsMod.log.LogMessage($"Tweet day max: {dayMax}");
-                NeedyMintsMod.log.LogMessage($"Setting data: {nakami.FavNumber} favs & {nakami.RtNumber} rts");
+                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
+                AltAscMod.log.LogMessage($"Setting data: {nakami.FavNumber} favs & {nakami.RtNumber} rts");
 
 
                 if (dayMax >= nakami.Day && dayMax > 30)
@@ -2856,7 +2755,7 @@ namespace NeedyMintsOverdose
             public static void SetDataStaticPostfix(ref PoketterCell __instance, TweetDrawable nakami, ref TMP_Text ____dateText)
             {
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                NeedyMintsMod.log.LogMessage($"Tweet day max: {dayMax}");
+                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
 
                 if (dayMax >= nakami.Day && dayMax > 30)
                 {
@@ -2870,7 +2769,7 @@ namespace NeedyMintsOverdose
             {
                 TweetDrawable nakami = (TweetDrawable)(new Traverse(__instance).Field(nameof(PoketterCell.tweetDrawable)).GetValue());
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                NeedyMintsMod.log.LogMessage($"Tweet day max: {dayMax}");
+                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
 
                 if (dayMax >= nakami.Day && dayMax > 30)
                 {
@@ -2896,7 +2795,7 @@ namespace NeedyMintsOverdose
             {
                 PoketterCell2D inst = __instance;
                 if (!___tweetDrawable.IsOmote) return;
-                SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAmeDelete.Where((bool v) => v).Subscribe(delegate (bool _)
+                SingletonMonoBehaviour<AltAscModManager>.Instance.isAmeDelete.Where((bool v) => v).Subscribe(delegate (bool _)
                 {
                     inst.gameObject.SetActive(false);
                 }).AddTo(__instance.gameObject);
@@ -3070,29 +2969,29 @@ namespace NeedyMintsOverdose
 
 
                 ____currentShaderType.SkipLatestValueOnSubscribe<EffectType>().Subscribe(delegate (EffectType type)
-                 {
-                     NeedyMintsMod.log.LogMessage($"Switching to effect {type}");
-                     switch (type)
-                     {
-                         case (EffectType)(int)ModdedEffectType.Vengeful:
-                             _overdose.enabled = true;
-                             _psyche.enabled = false;
-                             _weed.enabled = false;
-                             _bleeding.enabled = true;
-                             _goCrazy.enabled = true;
-                             _anmaku.enabled = true;
-                             SingletonMonoBehaviour<NeedyMintsModManager>.Instance.loveEffect.GetComponent<Volume>().enabled = false;
-                             break;
+                {
+                    AltAscMod.log.LogMessage($"Switching to effect {type}");
+                    switch (type)
+                    {
+                        case (EffectType)(int)ModdedEffectType.Vengeful:
+                            _overdose.enabled = true;
+                            _psyche.enabled = false;
+                            _weed.enabled = false;
+                            _bleeding.enabled = true;
+                            _goCrazy.enabled = true;
+                            _anmaku.enabled = true;
+                            SingletonMonoBehaviour<AltAscModManager>.Instance.loveEffect.GetComponent<Volume>().enabled = false;
+                            break;
 
-                         case (EffectType)(int)ModdedEffectType.Love:
-                             SingletonMonoBehaviour<NeedyMintsModManager>.Instance.loveEffect.GetComponent<Volume>().enabled = true;
-                             break;
+                        case (EffectType)(int)ModdedEffectType.Love:
+                            SingletonMonoBehaviour<AltAscModManager>.Instance.loveEffect.GetComponent<Volume>().enabled = true;
+                            break;
 
-                         default:
-                             SingletonMonoBehaviour<NeedyMintsModManager>.Instance.loveEffect.GetComponent<Volume>().enabled = false;
-                             break;
-                     };
-                 }).AddTo(__instance.gameObject);
+                        default:
+                            SingletonMonoBehaviour<AltAscModManager>.Instance.loveEffect.GetComponent<Volume>().enabled = false;
+                            break;
+                    };
+                }).AddTo(__instance.gameObject);
             }
 
             [HarmonyPostfix]
@@ -3130,7 +3029,7 @@ namespace NeedyMintsOverdose
                 {
                     ____audioEffect.UpdateAudioEffect((EffectType)(int)ModdedEffectType.Hazy, weight);
                 }
-                SingletonMonoBehaviour<NeedyMintsModManager>.Instance.loveEffect.GetComponent<Volume>().weight = weight;
+                SingletonMonoBehaviour<AltAscModManager>.Instance.loveEffect.GetComponent<Volume>().weight = weight;
             }
 
 
@@ -3205,20 +3104,20 @@ namespace NeedyMintsOverdose
                         ____audioMixer.SetFloat("Highpass_Cutoff", 10f);
                         return;
                     case ModdedEffectType.Love:
-                       ____audioMixer.SetFloat("Master_Pitch", 1f + 0.2f * weight); // DF 1
-                       ____audioMixer.SetFloat("Dist_Level", 0f + 0.1f * weight);
-                       ____audioMixer.SetFloat("PS_Pitch", 1f);
-                       ____audioMixer.SetFloat("Flange_Drymix", 1f);
-                       ____audioMixer.SetFloat("Flange_WetMix", 0f);
-                       ____audioMixer.SetFloat("Flange_Depth", 1f);
-                       ____audioMixer.SetFloat("Flange_Rate", 0.1f);
-                       ____audioMixer.SetFloat("Lowpass_Cutoff", 22000f);
-                       ____audioMixer.SetFloat("Lowpass_Resonance", 1f);
-                       ____audioMixer.SetFloat("Echo_Delay", 500f);
-                       ____audioMixer.SetFloat("Echo_Decay", 0f);
-                       ____audioMixer.SetFloat("Echo_DryMix", 1f - 0.15f * weight);
-                       ____audioMixer.SetFloat("Echo_WetMix", 0.15f * weight);
-                       ____audioMixer.SetFloat("Highpass_Cutoff", 10f);
+                        ____audioMixer.SetFloat("Master_Pitch", 1f + 0.2f * weight); // DF 1
+                        ____audioMixer.SetFloat("Dist_Level", 0f + 0.1f * weight);
+                        ____audioMixer.SetFloat("PS_Pitch", 1f);
+                        ____audioMixer.SetFloat("Flange_Drymix", 1f);
+                        ____audioMixer.SetFloat("Flange_WetMix", 0f);
+                        ____audioMixer.SetFloat("Flange_Depth", 1f);
+                        ____audioMixer.SetFloat("Flange_Rate", 0.1f);
+                        ____audioMixer.SetFloat("Lowpass_Cutoff", 22000f);
+                        ____audioMixer.SetFloat("Lowpass_Resonance", 1f);
+                        ____audioMixer.SetFloat("Echo_Delay", 500f);
+                        ____audioMixer.SetFloat("Echo_Decay", 0f);
+                        ____audioMixer.SetFloat("Echo_DryMix", 1f - 0.15f * weight);
+                        ____audioMixer.SetFloat("Echo_WetMix", 0.15f * weight);
+                        ____audioMixer.SetFloat("Highpass_Cutoff", 10f);
                         return;
                     default: return;
                 }
@@ -3250,13 +3149,13 @@ namespace NeedyMintsOverdose
                 //        for the Load called at the end of EventManager.Awake
                 // Solution: Either create NMMM in a scene, or move it to before EventManagerPatches.AwakePostfix (maybe in a transpiler?)
                 PoketterView2D inst = __instance;
-                if (!inst.HasComponent<AltPoketter>() || SingletonMonoBehaviour<NeedyMintsModManager>.Instance == null) return;
-                NeedyMintsMod.log.LogMessage("StartPostfix1");
-                SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isAmeDelete.Where((bool v) => v).Subscribe(delegate (bool _)
+                if (!inst.HasComponent<AltPoketter>() || SingletonMonoBehaviour<AltAscModManager>.Instance == null) return;
+                AltAscMod.log.LogMessage("StartPostfix1");
+                SingletonMonoBehaviour<AltAscModManager>.Instance.isAmeDelete.Where((bool v) => v).Subscribe(delegate (bool _)
                 {
                     Alternates.showDeleteModeAme(inst);
                 }).AddTo(__instance.gameObject);
-                NeedyMintsMod.log.LogMessage("StartPostfix2");
+                AltAscMod.log.LogMessage("StartPostfix2");
 
             }
 
@@ -3277,7 +3176,7 @@ namespace NeedyMintsOverdose
                 {
                     foreach (Component c in __instance.gameObject.GetComponents<Component>())
                     {
-                        NeedyMintsMod.log.LogMessage($"Mode component: {c}");
+                        AltAscMod.log.LogMessage($"Mode component: {c}");
                     }
 
 
@@ -3375,11 +3274,11 @@ namespace NeedyMintsOverdose
             public static void StartPostfix(ref DayBaketter __instance)
             {
                 DayBaketter baketter = __instance;
-                (from n in SingletonMonoBehaviour<NeedyMintsModManager>.Instance.ObserveEveryValueChanged((NeedyMintsModManager n) => n.isLoveLoop, FrameCountType.Update, false)
+                (from n in SingletonMonoBehaviour<AltAscModManager>.Instance.ObserveEveryValueChanged((AltAscModManager n) => n.isLoveLoop, FrameCountType.Update, false)
                  where n
                  select n).Subscribe(delegate (bool _)
                  {
-                     NeedyMintsMod.log.LogMessage("Love bake!");
+                     AltAscMod.log.LogMessage("Love bake!");
                      baketter.AddLoveBake();
                  }).AddTo(__instance.gameObject);
             }
@@ -3453,4 +3352,3 @@ namespace NeedyMintsOverdose
         }*/
     }
 }
-

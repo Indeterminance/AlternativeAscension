@@ -2,13 +2,13 @@
 using ngov3;
 using System.Threading;
 using NeedyEnums;
-using static NeedyMintsOverdose.MintyOverdosePatches;
+using static AlternativeAscension.AAPatches;
 using NGO;
 using System.Collections.Generic;
 using UniRx;
 using System;
 
-namespace NeedyMintsOverdose
+namespace AlternativeAscension
 {
     public class Scenario_love_loop1_day : Scenario_love_loopbase
     {
