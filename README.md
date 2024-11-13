@@ -41,9 +41,11 @@ Reach Day 30 after raising the Affection cap with at least 100 Affection and no 
 
 
 ## Credits
-Indeterminance - That's me, the creator!\
-ghostthedog - Playtester!\
-Comrade Flan - Playtester!\
-[Audrey Belrose](https://twitter.com/FreakyAme) - Playtester!\
-[Frostworth](https://github.com/amazeedaizee) - Your modding guides made this possible!\
-And you - for playing!
+Indeterminance - That's me, the creator!<br>
+ghostthedog - Playtester!<br>
+[Comrade Flan](https://github.com/ComradeFlan) - Playtester!<br>
+[Audrey Belrose](https://twitter.com/FreakyAme) - Playtester!<br>
+
+Also special thanks to [Frostworth](https://github.com/amazeedaizee), I never could've made this without your [custom asset guide](https://github.com/amazeedaizee/CustomStreamMaker/wiki)!<br>
+
+And finally, thanks to you for playing!

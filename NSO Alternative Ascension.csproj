@@ -227,9 +227,6 @@
     <Compile Include="Viewer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="demo\Demo1.png" />
-    <Content Include="demo\Demo2.png" />
-    <Content Include="demo\Demo3.png" />
     <Content Include="Licencing.txt" />
     <Content Include="AltAsc_strings.xml" />
   </ItemGroup>
