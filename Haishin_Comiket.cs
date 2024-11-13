@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static AlternativeAscension.AAPatches;
 
 namespace AlternativeAscension
 {
@@ -80,6 +81,7 @@ namespace AlternativeAscension
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_mainloop_happyarranged, true);
             await base.StartScenario();
             this._Live.EndHaishin();
+            SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.PostComiket);
         }
     }
 }

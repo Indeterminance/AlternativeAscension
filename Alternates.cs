@@ -202,14 +202,18 @@ namespace AlternativeAscension
             TooltipCaller _tooltip = new Traverse(shortcut).Field(nameof(Shortcut._tooltip)).GetValue<TooltipCaller>();
             Traverse _dayPart = new Traverse(shortcut).Field(nameof(Shortcut._dayPart));
 
+            if (shortcut.appType == AppType.Login) shortcut.appType = ModdedAppType.ScriptableLogin.Swap();
+
             SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(ModdedStatusType.FollowerPlotFlag.Swap()).Subscribe(delegate (int _)
             {
                 AltAscMod.log.LogMessage($"Plot observable {_}");
+                AltAscMod.log.LogMessage($"Shortcut {shortcut}");
+                AltAscMod.log.LogMessage($"Apptype {shortcut?.appType}");
                 if (_ == (int)FollowerPlotFlagValues.AngelFuneral)
                 {
                     if (shortcut.appType != AppType.GoOut) _shortcut.interactable = false;
                     else _shortcut.interactable = true;
-                    _tooltip.isShowTooltip = false;
+                    if (_tooltip != null) _tooltip.isShowTooltip = false;
                     return;
                 }
             }).AddTo(shortcut.gameObject);

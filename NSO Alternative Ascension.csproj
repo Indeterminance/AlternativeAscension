@@ -170,17 +170,20 @@
     <Compile Include="Action_SleepToEternity.cs" />
     <Compile Include="Action_OdekakeFuneral.cs" />
     <Compile Include="Action_OdekakeBreak.cs" />
+    <Compile Include="AltBoot.cs" />
     <Compile Include="AlternativeAscensionPatches.cs" />
     <Compile Include="Event_MV_kowai.cs" />
     <Compile Include="Event_ComiketAlert.cs" />
     <Compile Include="Haishin_AngelFuneral_dark.cs" />
+    <Compile Include="Scenario_loop1_day0_night_multi_AfterLogin.cs" />
+    <Compile Include="Scenario_loop1_day0_night_multi.cs" />
     <Compile Include="Scenario_follower_day4_night.cs" />
     <Compile Include="Test_ShowAllAnim.cs" />
     <Compile Include="Haishin_LoveFinale.cs" />
     <Compile Include="Haishin_Love.cs" />
     <Compile Include="Haishin_AngelFuneral.cs" />
     <Compile Include="AltPoketter.cs" />
-    <Compile Include="Login_Hacked.cs" />
+    <Compile Include="ScriptableLogin.cs" />
     <Compile Include="Haishin_AngelDeath.cs" />
     <Compile Include="Scenario_love_finale_Afterhaishin.cs" />
     <Compile Include="Scenario_love_finale_beforeHaishin.cs" />
@@ -224,11 +227,14 @@
     <Compile Include="Viewer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="demo\Demo1.png" />
+    <Content Include="demo\Demo2.png" />
+    <Content Include="demo\Demo3.png" />
     <Content Include="Licencing.txt" />
-    <Content Include="Strings.xml" />
+    <Content Include="AltAsc_strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="nmo_assets.bundle" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="catalog.json">
@@ -243,7 +249,7 @@
   <PropertyGroup>
     <PostBuildEvent>mkdir "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"
 copy /Y "$(TargetPath)" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"
-copy /Y "$(ProjectDir)\\nmo_assets.bundle" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"</PostBuildEvent>
+copy /Y "$(ProjectDir)\\altasc_assets.bundle" "C:\\Program Files (x86)\\Steam\\steamapps\\common\\NEEDY GIRL OVERDOSE\\BepInEx\\plugins\\$(TargetName)"</PostBuildEvent>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

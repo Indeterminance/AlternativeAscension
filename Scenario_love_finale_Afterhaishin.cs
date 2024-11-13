@@ -25,7 +25,7 @@ namespace ngov3
             base.startEvent(cancellationToken);
             SingletonMonoBehaviour<EventManager>.Instance.nowEnding = ModdedEndingType.Ending_Love.Swap();
             SingletonMonoBehaviour<JineManager>.Instance.Uncontrolable();
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_talk_e");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_talk_e");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_FINALE_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_FINALE_JINE002.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_FINALE_JINE003.Swap());

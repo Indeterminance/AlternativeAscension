@@ -100,6 +100,8 @@ namespace AlternativeAscension
         public Sprite followerEndBG = Addressables.LoadAssetAsync<Sprite>("stream_ame_follower_end_bg.png").WaitForCompletion();
         public Sprite followerDarkEndBG = Addressables.LoadAssetAsync<Sprite>("stream_ame_follower_end_dark_bg.png").WaitForCompletion();
 
+        public Sprite desktop_icon_love = Addressables.LoadAssetAsync<Sprite>("icon_desktop_neru_love.png").WaitForCompletion();
+
         public TweenerCore<float, float, FloatOptions> anim;
         public List<IWindow> pills = new List<IWindow>();
 

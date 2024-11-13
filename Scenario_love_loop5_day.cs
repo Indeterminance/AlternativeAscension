@@ -29,7 +29,8 @@ namespace AlternativeAscension
             await TimeoutJINE(ModdedJineType.ENDING_LOVE_LOOP5_JINE004, cts);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_LOOP5_JINE005.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_LOOP5_JINE006.Swap());
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_positive_g");
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_positive_g");
+            await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
 
             await SingletonMonoBehaviour<Poem>.Instance.StartPoem(NgoEx.SystemTextFromType(ModdedSystemTextType.Poem_Love.Swap(), SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value));
             await NgoEvent.DelaySkippable(Constants.SLOW);

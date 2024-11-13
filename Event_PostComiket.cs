@@ -22,7 +22,6 @@ namespace AlternativeAscension
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0.4f);
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
             SingletonMonoBehaviour<EventManager>.Instance.alpha = (AlphaType)(int)ModdedAlphaType.FollowerAlpha;
-            SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.PostComiket);
             SingletonMonoBehaviour<EventManager>.Instance.alphaLevel = 1;
             SingletonMonoBehaviour<EventManager>.Instance.AddEventQueue<Action_HaishinStart>();
             base.endEvent();

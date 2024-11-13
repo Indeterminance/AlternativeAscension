@@ -19,12 +19,13 @@ using System.Linq;
 using TMPro;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
+using UnityEngine.PlayerLoop;
 
 namespace AlternativeAscension
 {
     public class Scenario_follower_day3_day : NgoEvent
     {
-        private LoginHacked loginComp;
+        private ScriptableLogin loginComp;
         public override void Awake()
         {
             base.Awake();
@@ -43,11 +44,11 @@ namespace AlternativeAscension
             SingletonMonoBehaviour<WindowManager>.Instance.CleanAll();
 
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_b");
-            await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
+            //SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_b");
+            //await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE002.Swap());
-            SetupLogin();
+            await SetupLogin();
             await NgoEvent.DelaySkippable(800);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE003.Swap());
             await NgoEvent.DelaySkippable(1000);
@@ -57,12 +58,14 @@ namespace AlternativeAscension
             loginComp._input.interactable = true;
         }
 
-        private void SetupLogin()
+        private async UniTask SetupLogin()
         {
-            IWindow window = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow((AppType)(int)ModdedAppType.Login_Hacked);
+            IWindow window = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow((AppType)(int)ModdedAppType.ScriptableLogin);
             window.Uncloseable();
 
-            loginComp = window.nakamiApp.GetComponent<LoginHacked>();
+            loginComp = window.nakamiApp.GetComponent<ScriptableLogin>();
+            await UniTask.Delay(5, false, PlayerLoopTiming.Update, default, false);
+            loginComp.isBadLogin.Value = true;
             Queue<Func<UniTask>> actionQueue = loginComp.loginActions;
             actionQueue.Enqueue(new Func<UniTask>(async () => await attempt1()));
             actionQueue.Enqueue(new Func<UniTask>(async () => await attempt2()));
@@ -71,10 +74,11 @@ namespace AlternativeAscension
 
         public async UniTask attempt1(CancellationToken cancellationToken = default(CancellationToken))
         {
+            loginComp.isInvalidLogin.Value = true;
             PostEffectManager.Instance.SetShader(EffectType.OD);
             PostEffectManager.Instance.SetShaderWeight(0.01f);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_c");
-            await UniTask.Delay(Constants.FAST);
+            //SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_c");
+            //await UniTask.Delay(Constants.FAST);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE007.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE008.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE009.Swap());
@@ -91,7 +95,7 @@ namespace AlternativeAscension
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE012.Swap());
             
             await UniTask.Delay(Constants.FAST);
-            IWindow login = SingletonMonoBehaviour<WindowManager>.Instance.GetWindowFromApp((AppType)(int)ModdedAppType.Login_Hacked);
+            IWindow login = SingletonMonoBehaviour<WindowManager>.Instance.GetWindowFromApp((AppType)(int)ModdedAppType.ScriptableLogin);
             login.Touched();
 
             for (int i = 0; i < 13; i++)
@@ -115,13 +119,13 @@ namespace AlternativeAscension
             GameObject.Find("MainPanel").GetComponent<Image>().color = Color.red;
             PostEffectManager.Instance.SetShader(EffectType.Kakusei);
             PostEffectManager.Instance.SetShaderWeight(0.1f);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_c");
+            //SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_c");
             await UniTask.Delay(Constants.FAST);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE013.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE014.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE015.Swap());
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_craziness");
-            await UniTask.Delay(Constants.MIDDLE * 2, false, PlayerLoopTiming.Update, default, false);
+            //SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_craziness");
+            //await UniTask.Delay(Constants.MIDDLE * 2, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE016.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE017.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE018.Swap());
@@ -129,7 +133,7 @@ namespace AlternativeAscension
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE020.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE021.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE022.Swap());
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_craziness");
+            //SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_craziness");
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
             {
                 ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE023.Swap()
@@ -159,7 +163,7 @@ namespace AlternativeAscension
             DOTween.To(() => weight, x => {
                 PostEffectManager.Instance.SetShaderWeight(x);
             }, 0.03f, 2).SetEase(Ease.InSine).Play();
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_d");
+            //SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_d");
             await UniTask.Delay(2000);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine).Uncloseable();
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE024.Swap());
@@ -219,8 +223,8 @@ namespace AlternativeAscension
 
         public async UniTask attempt3_6(CancellationToken cancellationToken = default(CancellationToken))
         {
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_g");
-            await NgoEvent.DelaySkippable(Constants.FAST);
+            //SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_g");
+            //await NgoEvent.DelaySkippable(Constants.FAST);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE034.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
             {
@@ -234,8 +238,8 @@ namespace AlternativeAscension
 
         public async UniTask attempt3_7(CancellationToken cancellationToken = default(CancellationToken))
         {
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_g");
-            await NgoEvent.DelaySkippable(Constants.FAST);
+            //SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_g");
+            //await NgoEvent.DelaySkippable(Constants.FAST);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE036.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE037.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
@@ -257,7 +261,7 @@ namespace AlternativeAscension
             // Queue the event ahead of time, just in case
             loginComp.loginActions.Enqueue(new Func<UniTask>(async () => { await attempt4(); }));
 
-            IWindow login = SingletonMonoBehaviour<WindowManager>.Instance.GetWindowFromApp((AppType)(int)ModdedAppType.Login_Hacked);
+            IWindow login = SingletonMonoBehaviour<WindowManager>.Instance.GetWindowFromApp((AppType)(int)ModdedAppType.ScriptableLogin);
             login.Touched();
             for (int i = 0; i < 13; i++)
             {
@@ -280,8 +284,8 @@ namespace AlternativeAscension
             float startColor = 1.0f;
             DOTween.To(() => startColor, x => GameObject.Find("MainPanel").GetComponent<Image>().color = new Color(x, 0f, 0f, 1f), 0f, 2).SetEase(Ease.InSine).Play();
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Webcam);
-            SingletonMonoBehaviour<WindowManager>.Instance.CloseApp((AppType)(int)ModdedAppType.Login_Hacked);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_normal_g");
+            SingletonMonoBehaviour<WindowManager>.Instance.CloseApp((AppType)(int)ModdedAppType.ScriptableLogin);
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_normal_g");
             await UniTask.Delay(2000);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE041.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE042.Swap());

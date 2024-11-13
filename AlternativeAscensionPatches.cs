@@ -32,6 +32,9 @@ using Extensions;
 using UnityEngine.Audio;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.UI;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.ComponentModel;
 
 namespace AlternativeAscension
 {
@@ -56,7 +59,7 @@ namespace AlternativeAscension
             public static void DiffsPrefix(CmdMaster.Param cmd, ref StatusManager __instance, ref List<StatusDiff> __result)
             {
                 AltAscMod.log.LogMessage($"Diffing!");
-                AltAscMod.log.LogMessage($"Getting diff for {cmd.Id}");
+                AltAscMod.log.LogMessage($"Getting diff for {cmd?.Id}");
                 int stressMult = __instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap());
                 if (stressMult > 0 && (cmd.Id.StartsWith("Odekake")))
                 {
@@ -183,16 +186,8 @@ namespace AlternativeAscension
             public static void fetchNextActionPrune(ref List<Tuple<ActionType, AlphaLevel>> __result)
             {
                 int sleeps = SingletonMonoBehaviour<AltAscModManager>.Instance.sleepCount;
-                for (int i = 0; i < __result.Count; i++)
-                {
-                    // Remove "Sleep To Tomorrow" hints when a "Sleepy" ending is about to trigger
-                    if (__result[i].Item1 == ActionType.SleepToTomorrow && sleeps + 1 >= AltAscMod.SLEEPS_BEFORE_SLEEPY)
-                    {
-                        AltAscMod.log.LogMessage($"Removing hint event!");
-                        __result.RemoveAt(i);
-                        i--;
-                    }
-                }
+
+                if (sleeps + 1 >= AltAscMod.SLEEPS_BEFORE_SLEEPY) __result.RemoveAll(t => t.Item1 == ActionType.SleepToTomorrow);
                 if (CheckTokyoAvailable())
                 {
                     AlphaLevel alpha = new AlphaLevel((AlphaType)(int)ModdedAlphaType.FollowerAlpha, 1);
@@ -286,17 +281,21 @@ namespace AlternativeAscension
             {
                 if (!CheckModdedPrefix(typeof(EndingType), typeof(ModdedEndingType), ___end).Item1) return;
 
-                if ((ModdedEndingType)(int)___end == ModdedEndingType.Ending_Followers)
+                if (___end == ModdedEndingType.Ending_Followers.Swap())
                 {
                     if (!(SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 7 &&
                         SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.AMAStress.Swap()) >= 15))
                     {
-                        ____submitButton.GetComponentInChildren<TMP_Text>().text = NgoEx.SystemTextFromType((SystemTextType)(int)ModdedSystemTextType.System_InternetYamero, SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
+                        ____submitButton.GetComponentInChildren<TMP_Text>().text = NgoEx.SystemTextFromType(ModdedSystemTextType.System_InternetYamero.Swap(), SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
                     }
                     else
                     {
-                        ____submitButton.GetComponentInChildren<TMP_Text>().text = NgoEx.SystemTextFromType((SystemTextType)(int)ModdedSystemTextType.System_RealYamero, SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
+                        ____submitButton.GetComponentInChildren<TMP_Text>().text = NgoEx.SystemTextFromType(ModdedSystemTextType.System_RealYamero.Swap(), SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
                     }
+                }
+                else if (___end == ModdedEndingType.Ending_Love.Swap())
+                {
+                    ____submitButton.GetComponentInChildren<TMP_Text>().text = NgoEx.SystemTextFromType(ModdedSystemTextType.System_LoveConfirm.Swap(), SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
                 }
             }
         }
@@ -1009,6 +1008,7 @@ namespace AlternativeAscension
                     ActionButton actionButtonTokyo = OdekakeTokyo.GetComponent<ActionButton>();
                     actionTypeField.SetValue(actionButtonTokyo, (int)ModdedActionType.OdekakeTokyo);
                     OdekakeTokyo.transform.position = new Vector3(0.65f, -2.5f, 100f);
+                    new Traverse(actionButtonTokyo).Method(nameof(actionButtonTokyo.SetStatus), new object[] { ActionStatus.Executable });
                     buttons.Add(OdekakeTokyo);
                 }
                 if (angelFuneral)
@@ -1296,33 +1296,39 @@ namespace AlternativeAscension
             public static bool FetchNightEventPrefix(ref EventManager __instance)
             {
                 AltAscMod.log.LogMessage("Fetching night...");
-                int status = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
-                int status2 = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
+                int day = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
+                int plotflag = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
 
-                if (!__instance.isHorror && status2 == (int)FollowerPlotFlagValues.OdekakeBreak)
+                if (!__instance.isTestScene && day == 1)
+                {
+                    __instance.AddEvent<Scenario_loop1_day0_night_multi>();
+                    return false;
+                }
+
+                if (!__instance.isHorror && plotflag == (int)FollowerPlotFlagValues.OdekakeBreak)
                 {
                     SingletonMonoBehaviour<StatusManager>.Instance.timePassingToNextMorning();
                     return false;
                 }
 
-                if (status == 16 && status2 == (int)FollowerPlotFlagValues.VisitedComiket &&
+                if (day == 16 && plotflag == (int)FollowerPlotFlagValues.VisitedComiket &&
                     !(__instance.isWristCut && __instance.beforeWristCut) &&
                     !(__instance.isHakkyo && SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.Stress) == 100))
                 {
                     __instance.AddEvent<Event_PostComiket>();
                     return false;
                 }
-                if (status2 == (int)FollowerPlotFlagValues.AngelWatch)
+                if (plotflag == (int)FollowerPlotFlagValues.AngelWatch)
                 {
                     return false;
                 }
-                if (status2 == (int)FollowerPlotFlagValues.AngelDeath)
+                if (plotflag == (int)FollowerPlotFlagValues.AngelDeath)
                 {
                     __instance.AddEvent<Scenario_follower_day3_night>();
                     return false;
                 }
 
-                if (status2 == (int)FollowerPlotFlagValues.AngelFuneral)
+                if (plotflag == (int)FollowerPlotFlagValues.AngelFuneral)
                 {
                     return false;
                 }
@@ -1343,12 +1349,7 @@ namespace AlternativeAscension
                     __instance.AddEvent<Action_HaishinStart>();
                     return false;
                 }
-                else if (!__instance.isHorror && day == 27 && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.Follower) >= 500000 &&
-                    SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 0)
-                {
-                    __instance.AddEvent<Event_MV_kowai>();
-                    return false;
-                }
+                
                 else if (plotflag == (int)FollowerPlotFlagValues.VisitedComiket && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex) == 16)
                 {
                     __instance.AddEvent<Event_ComiketAlert>();
@@ -1380,6 +1381,12 @@ namespace AlternativeAscension
                         __instance.AddEvent<Scenario_follower_day4_night>();
                     }
                     else __instance.AddEvent<Scenario_follower_day4_day>();
+                    return false;
+                }
+                else if (!__instance.isHorror && day == 27 && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.Follower) >= 500000 &&
+                    SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 0)
+                {
+                    __instance.AddEvent<Event_MV_kowai>();
                     return false;
                 }
                 else if (SingletonMonoBehaviour<AltAscModManager>.Instance.isLove &&
@@ -1418,7 +1425,8 @@ namespace AlternativeAscension
             [HarmonyPatch(nameof(EventManager.FetchDialog))]
             public static bool FetchDialogPrefix()
             {
-                if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelWatch)
+                if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.AngelWatch ||
+                    SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop)
                 {
                     return false;
                 }
@@ -1458,7 +1466,7 @@ namespace AlternativeAscension
 
                      (new Traverse(inst).Method(nameof(EventManager.AwakePsycheDiary))).GetValue();
                      (new Traverse(inst).Method(nameof(EventManager.AwakeLoveDiary))).GetValue();
-                     inst.AddEventQueue<Event_CheckBGM>();
+                     if (!SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop) inst.AddEventQueue<Event_CheckBGM>();
                      await inst.FetchDayEvent();
                  }).AddTo(inst.gameObject);
                 (from part in SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(StatusType.DayPart).DistinctUntilChanged<int>()
@@ -1624,6 +1632,17 @@ namespace AlternativeAscension
                     __instance.SetShortcutState(false, 0.4f);
                     __instance.AddEvent<EndingSeparator>();
                     __instance.AddEvent<Scenario_love_day1_day>();
+                    return false;
+                }
+                return true;
+            }
+
+            [HarmonyPrefix]
+            [HarmonyPatch(nameof(EventManager.FetchUzagarami))]
+            public static bool FetchUzagaramiPrefix()
+            {
+                if (SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop)
+                {
                     return false;
                 }
                 return true;
@@ -1801,16 +1820,16 @@ namespace AlternativeAscension
                 public static bool Prefix(out bool __state)
                 {
                     AltAscMod.log.LogMessage("SetScenario patch!");
-                    int status = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
-                    int status2 = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
-                    AltAscMod.log.LogMessage($"Haishin plotflag value: {(FollowerPlotFlagValues)status}");
+                    int plotFlag = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
+                    int day = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
+                    AltAscMod.log.LogMessage($"Haishin plotflag value: {(FollowerPlotFlagValues)plotFlag}");
 
-                    bool streamValue = (FollowerPlotFlagValues)status == FollowerPlotFlagValues.AngelFuneral ||
-                                       (FollowerPlotFlagValues)status == FollowerPlotFlagValues.AngelWatch ||
-                                       (FollowerPlotFlagValues)status == FollowerPlotFlagValues.AngelDeath ||
-                                       (FollowerPlotFlagValues)status == FollowerPlotFlagValues.PostComiket ||
+                    bool streamValue = (FollowerPlotFlagValues)plotFlag == FollowerPlotFlagValues.AngelFuneral ||
+                                       (FollowerPlotFlagValues)plotFlag == FollowerPlotFlagValues.AngelWatch ||
+                                       (FollowerPlotFlagValues)plotFlag == FollowerPlotFlagValues.AngelDeath ||
+                                       ((FollowerPlotFlagValues)plotFlag == FollowerPlotFlagValues.VisitedComiket && day == 16) ||
                                        SingletonMonoBehaviour<AltAscModManager>.Instance.isLove ||
-                                       (status2 == 2 && AltAscMod.SHOWANIMSTREAM);
+                                       (day == 2 && AltAscMod.SHOWANIMSTREAM);
 
                     __state = streamValue;
 
@@ -1825,27 +1844,28 @@ namespace AlternativeAscension
                         SingletonMonoBehaviour<StatusManager>.Instance.isTodayHaishined = true;
                         SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatus(StatusType.RenzokuHaishinCount, 1);
 
-                        int status = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
-                        int status2 = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
-                        AltAscMod.log.LogMessage($"Haishin plot status: {(FollowerPlotFlagValues)status}");
+                        int plotFlag = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
+                        int day = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
+                        AltAscMod.log.LogMessage($"Day: {day}");
+                        AltAscMod.log.LogMessage($"Haishin plot status: {(FollowerPlotFlagValues)plotFlag}");
                         AltAscMod.log.LogMessage($"Haishin love: {SingletonMonoBehaviour<AltAscModManager>.Instance.isLove}");
-                        if (status2 == 2 && AltAscMod.SHOWANIMSTREAM)
+                        if (day == 2 && AltAscMod.SHOWANIMSTREAM)
                         {
                             __result = __instance.SetScenario<Test_ShowAllAnim>();
                         }
-                        else if (status == (int)FollowerPlotFlagValues.PostComiket)
+                        else if (plotFlag == (int)FollowerPlotFlagValues.VisitedComiket && day == 16)
                         {
                             __result = __instance.SetScenario<Haishin_Comiket>();
                         }
-                        else if (status == (int)FollowerPlotFlagValues.AngelWatch)
+                        else if (plotFlag == (int)FollowerPlotFlagValues.AngelWatch)
                         {
                             __result = __instance.SetScenario<Haishin_AngelWatch>();
                         }
-                        else if (status == (int)FollowerPlotFlagValues.AngelDeath)
+                        else if (plotFlag == (int)FollowerPlotFlagValues.AngelDeath)
                         {
                             __result = __instance.SetScenario<Haishin_AngelDeath>();
                         }
-                        else if (status == (int)FollowerPlotFlagValues.AngelFuneral)
+                        else if (plotFlag == (int)FollowerPlotFlagValues.AngelFuneral)
                         {
                             if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 7 &&
                                 SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.AMAStress.Swap()) >= 15)
@@ -1854,13 +1874,9 @@ namespace AlternativeAscension
                             }
                             else __result = __instance.SetScenario<Haishin_AngelFuneral>();
                         }
-                        else if (status == (int)FollowerPlotFlagValues.PostComiket)
-                        {
-                            __result = __instance.SetScenario<Haishin_Comiket>();
-                        }
                         else if (SingletonMonoBehaviour<AltAscModManager>.Instance.isLove)
                         {
-                            if (status2 > 30)
+                            if (day > 30)
                             {
                                 __result = __instance.SetScenario<Haishin_LoveFinale>();
                                 return;
@@ -1901,17 +1917,22 @@ namespace AlternativeAscension
             public static bool RefreshYomuCommentLabelPrefix(ref Live __instance)
             {
                 AltAscMod.log.LogMessage("RefreshYomuCommentLabelPostfix");
-                if (!SingletonMonoBehaviour<AltAscModManager>.Instance.isAMA) return true;
-                AltAscMod.log.LogMessage("RefreshYomuCommentLabelPostfix modcheck");
                 LanguageType lang = SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value;
-                SystemTextType type = (SystemTextType)(int)ModdedSystemTextType.System_AMARead;
-
-                AltAscMod.log.LogMessage($"AMA systext {type} {lang}!");
-                string text = NgoEx.SystemTextFromType(type, lang);
-                AltAscMod.log.LogMessage($"AMA systext {text}!");
-                __instance.CommentLabel.text = text;
-                //__instance.CommentBg.color = new Color(0.8f, 0.85f, 0.8f, 1f);
-                return false;
+                if (SingletonMonoBehaviour<AltAscModManager>.Instance.isAMA)
+                {
+                    SystemTextType type = ModdedSystemTextType.System_AMARead.Swap();
+                    string text = NgoEx.SystemTextFromType(type, lang);
+                    __instance.CommentLabel.text = text;
+                    return false;
+                }
+                else if (SingletonMonoBehaviour<EventManager>.Instance.nowEnding == ModdedEndingType.Ending_Followers.Swap())
+                {
+                    SystemTextType type = ModdedSystemTextType.System_NoRead.Swap();
+                    string text = NgoEx.SystemTextFromType(type, lang);
+                    __instance.CommentLabel.text = text;
+                    return false;
+                }
+                else return true;
             }
 
             [HarmonyPostfix]
@@ -1941,12 +1962,22 @@ namespace AlternativeAscension
             {
                 if (SingletonMonoBehaviour<AltAscModManager>.Instance.overnightStreamStartDay != 0)
                 {
+
+                    string day;
+                    if (SingletonMonoBehaviour<AltAscModManager>.Instance.overnightStreamStartDay != -1)
+                    {
+                        day = NgoEx.DayText(SingletonMonoBehaviour<AltAscModManager>.Instance.overnightStreamStartDay, ____lang);
+                    }
+                    else day = $"{NgoEx.SystemTextFromType(SystemTextType.Day_Live, ____lang)} ????";
+
+
+
                     ___haisinDetail.text = string.Format("{0} {1} ・ {2} {3}", new object[]
                     {
                         ___watcher,
                         NgoEx.SystemTextFromType(SystemTextType.Haisin_Watching_Number, ____lang),
                         NgoEx.SystemTextFromType(SystemTextType.Haisin_Started_Day, ____lang),
-                        NgoEx.DayText(SingletonMonoBehaviour<AltAscModManager>.Instance.overnightStreamStartDay, ____lang)
+                        day
                     });
                 }
             }
@@ -1963,7 +1994,7 @@ namespace AlternativeAscension
             public static void bgViewPostfix(ref Live __instance)
             {
                 AltAscModManager nmmm = SingletonMonoBehaviour<AltAscModManager>.Instance;
-
+                AltAscMod.log.LogMessage($"BGVIEW: {SingletonMonoBehaviour<EventManager>.Instance.nowEnding}");
                 if (SingletonMonoBehaviour<EventManager>.Instance.nowEnding == ModdedEndingType.Ending_Followers.Swap())
                 {
                     if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.OdekakeStressMultiplier.Swap()) > 7 &&
@@ -2141,8 +2172,9 @@ namespace AlternativeAscension
 
                     case ModdedSuperchatType.JINE_INIT:
                         IWindow jine = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine);
+                        jine.Uncloseable();
+                        SingletonMonoBehaviour<JineManager>.Instance.Uncontrolable();
                         jine.GameObjectTransform.position = Vector3.zero;
-                        SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Jine);
                         break;
 
                     case ModdedSuperchatType.JINE_DESTROY:
@@ -2335,7 +2367,7 @@ namespace AlternativeAscension
                         return;
                     case ModdedSuperchatType.EVENT_CREATEDEPAZ:
                     case ModdedSuperchatType.EVENT_DOSE:
-                        __instance.BASESPEED = 1000; //30
+                        __instance.BASESPEED = 30; //30
                         return;
                     case ModdedSuperchatType.JINE_INIT:
                     case ModdedSuperchatType.JINE_DESTROY:
@@ -2408,7 +2440,7 @@ namespace AlternativeAscension
                         AltAscMod.log.LogMessage("Found lvl 0 stream");
                         //NeedyMintsMod.log.LogError(System.Environment.StackTrace);
                     }
-                    string tmpTypeName = typeName.Replace("ngov3.", "NeedyMintsOverdose.");
+                    string tmpTypeName = typeName.Replace("ngov3.", nameof(AlternativeAscension)+".");
                     AltAscMod.log.LogMessage($"Temp type name: {tmpTypeName}");
                     Type nmoType = Type.GetType(tmpTypeName);
                     if (nmoType != null)
@@ -2421,14 +2453,14 @@ namespace AlternativeAscension
 
                     int val = int.Parse(intStr);
                     string moddedType = null;
-                    if (tmpTypeName.StartsWith("NeedyMintsOverdose.Netatip") ||
-                        tmpTypeName.StartsWith("NeedyMintsOverdose.ChipGet"))
+                    if (tmpTypeName.StartsWith(nameof(AlternativeAscension) +".Netatip") ||
+                        tmpTypeName.StartsWith(nameof(AlternativeAscension) +".ChipGet"))
                     {
 
                         moddedType = "_" + (ModdedAlphaType)val;
 
                     }
-                    else if (tmpTypeName.StartsWith("NeedyMintsOverdose.Action")) moddedType = "_" + (ModdedCmdType)val;
+                    else if (tmpTypeName.StartsWith(nameof(AlternativeAscension) + ".Action")) moddedType = "_" + (ModdedCmdType)val;
 
 
 
@@ -2576,7 +2608,7 @@ namespace AlternativeAscension
                     retryLoad = appType == (AppType)(int)ModdedAppType.PillDaypass_Follower || retryLoad;
                 }
 
-                if (!mergedApps.Any(app => app.appType == (AppType)(int)ModdedAppType.Login_Hacked))
+                if (!mergedApps.Any(app => app.appType == (AppType)(int)ModdedAppType.ScriptableLogin))
                 {
                     AppTypeToData login = mergedApps.Find(App => App.appType == AppType.Login);
                     AppTypeToData hackedLogin = new AppTypeToData(false)
@@ -2584,7 +2616,7 @@ namespace AlternativeAscension
                         appIcon = login.appIcon,
                         AppName = login.AppName,
                         AppNameJP = login.AppNameJP,
-                        appType = (AppType)(int)ModdedAppType.Login_Hacked,
+                        appType = (AppType)(int)ModdedAppType.ScriptableLogin,
                         FirstHeight = login.FirstHeight,
                         FirstWidth = login.FirstWidth,
                         FirstPosX = login.FirstPosX,
@@ -2594,21 +2626,23 @@ namespace AlternativeAscension
                     };
 
                     Login loginComponent = hackedLogin.InnerContent.GetComponent<Login>();
-                    LoginHacked hackedComponent = hackedLogin.InnerContent.AddComponent<LoginHacked>();
+                    ScriptableLogin hackedComponent = hackedLogin.InnerContent.AddComponent<ScriptableLogin>();
                     Traverse loginTrav = new Traverse(loginComponent);
 
-                    hackedComponent._badge = loginTrav.Field(nameof(Login._badge)).GetValue<GameObject>();
-                    hackedComponent._input = loginTrav.Field(nameof(Login._input)).GetValue<TMP_InputField>();
-                    hackedComponent._login = loginTrav.Field(nameof(Login._login)).GetValue<UnityEngine.UI.Button>();
-                    hackedComponent._passText = loginTrav.Field(nameof(Login._passText)).GetValue<TMP_Text>();
-                    hackedComponent._placeholderText = loginTrav.Field(nameof(Login._placeholderText)).GetValue<TMP_Text>();
+                    hackedComponent._badge                    = loginTrav.Field(nameof(Login._badge)).GetValue<GameObject>();
+                    hackedComponent._input                    = loginTrav.Field(nameof(Login._input)).GetValue<TMP_InputField>();
+                    hackedComponent._login                    = loginTrav.Field(nameof(Login._login)).GetValue<UnityEngine.UI.Button>();
+                    hackedComponent._passText                 = loginTrav.Field(nameof(Login._passText)).GetValue<TMP_Text>();
+                    hackedComponent._placeholderText          = loginTrav.Field(nameof(Login._placeholderText)).GetValue<TMP_Text>();
                     hackedComponent._placeholderText.transform.position += new Vector3(0, -50, 0);
                     hackedComponent._placeholderText.fontSize = 16;
-                    hackedComponent._placeholderText.color = Color.red;
-                    hackedComponent._imageContainer = hackedLogin.InnerContent.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>();
-                    hackedComponent.baseImage = Addressables.LoadAssetAsync<Sprite>("login_bad.png").WaitForCompletion();
-                    hackedComponent.invalidPasswordImage = Addressables.LoadAssetAsync<Sprite>("login_bad_invalid.png").WaitForCompletion();
-                    hackedComponent._imageContainer.sprite = hackedComponent.baseImage;
+                    hackedComponent._placeholderText.color    = Color.red;
+                    hackedComponent._imageContainer           = hackedLogin.InnerContent.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>();
+                    hackedComponent.baseImage                 = (Sprite)hackedLogin.InnerContent.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().sprite;
+                    hackedComponent.baseImageBad              = Addressables.LoadAssetAsync<Sprite>("login_bad.png").WaitForCompletion();
+                    hackedComponent.invalidPasswordImage      = Addressables.LoadAssetAsync<Sprite>("login_invalid.png").WaitForCompletion();
+                    hackedComponent.invalidPasswordImageBad   = Addressables.LoadAssetAsync<Sprite>("login_bad_invalid.png").WaitForCompletion();
+                    hackedComponent._imageContainer.sprite    = hackedComponent.baseImage;
 
                     UnityEngine.Object.DontDestroyOnLoad(hackedLogin.InnerContent);
                     GameObject.Destroy(loginComponent);
@@ -2626,14 +2660,14 @@ namespace AlternativeAscension
             }
         }
 
-        [HarmonyPatch(typeof(ngov3.Window_Compact))]
-        public static class Window_CompactPatches
+        [HarmonyPatch(typeof(ngov3.Login))]
+        public static class LoginPatches
         {
             [HarmonyPostfix]
-            [HarmonyPatch(nameof(ngov3.Window_Compact.SetApp))]
-            public static void SetApp(AppTypeToData a)
+            [HarmonyPatch(nameof(ngov3.Login.Awake))]
+            public static void AwakePostfix()
             {
-                AltAscMod.log.LogMessage($"Window contents: {a.InnerContent == null}");
+                AltAscMod.log.LogMessage($"Login stacktrace: {Environment.StackTrace}");
             }
         }
 
@@ -2684,6 +2718,31 @@ namespace AlternativeAscension
                 }
                 ____dayText.text = NgoEx.DayText(index, SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
                 return false;
+            }
+
+            [HarmonyPrefix]
+            [HarmonyPatch(nameof(DayView.UpdateIcon))]
+            public static bool UpdateIconPrefix(int index, ref Image ____dayIcon)
+            {
+                AltAscMod.log.LogMessage($"Updating icon...");
+                if (SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop)
+                {
+                    ____dayIcon.sprite = SingletonMonoBehaviour<AltAscModManager>.Instance.desktop_icon_love;
+                    return false;
+                }
+                return true;
+            }
+
+            [HarmonyPostfix]
+            [HarmonyPatch(nameof(DayView.Start))]
+            public static void StartPostfix(ref DayView __instance)
+            {
+                DayView inst = __instance;
+                SingletonMonoBehaviour<AltAscModManager>.Instance.ObserveEveryValueChanged((AltAscModManager n) => n.isLoveLoop, FrameCountType.Update, false).Subscribe(delegate (bool b)
+                {
+                    int dayPart = new Traverse(inst).Field(nameof(DayView.dayPart)).GetValue<Status>().currentValue.Value;
+                    new Traverse(inst).Method(nameof(DayView.UpdateIcon), new object[] { dayPart }).GetValue();
+                }).AddTo(__instance.gameObject);
             }
         }
 
@@ -2842,6 +2901,67 @@ namespace AlternativeAscension
                     }
                 }
                 return newIns;
+            }
+
+            [HarmonyPrefix]
+            [HarmonyPatch(nameof(Boot.Awake))]
+            public static void AwakePrefix(Boot __instance)
+            {
+                __instance.gameObject.AddComponent<AltBoot>();
+            }
+
+            [HarmonyPrefix]
+            [HarmonyPatch(nameof(Boot.waitAccept))]
+            public static bool waitAcceptPrefix(ref Boot __instance, CanvasGroup ___Login, CanvasGroup ___ChooseDay, CanvasGroup ___ChooseUser, CanvasGroup ___Welcome,
+                                                Button ___Ok, Button ___Cancel, TMP_Text ___Caution_Header, TMP_Text ___Caution_Nakami)
+            {
+                AltBoot altBoot = __instance.GetComponent<AltBoot>();
+                Boot instance = __instance;
+                if (altBoot.shownModIntro) return true;
+                Debug.Log("waitAcceptModded:1");
+                AudioManager.Instance.PlaySeByType(SoundType.SE_Boot_Caution, false);
+                AudioManager.Instance.PlayBgmById("BGM_OP_PV", true);
+                ___Login.alpha = 1f;
+                ___Login.interactable = true;
+                ___ChooseDay.alpha = 0f;
+                ___ChooseDay.interactable = false;
+                ___ChooseDay.blocksRaycasts = false;
+                ___ChooseUser.alpha = 0f;
+                ___ChooseUser.interactable = false;
+                ___ChooseUser.blocksRaycasts = false;
+                ___Welcome.alpha = 0f;
+                ___Welcome.interactable = false;
+                ___Welcome.blocksRaycasts = false;
+                if (SingletonMonoBehaviour<ControllerGuideManager>.Instance != null)
+                {
+                    SingletonMonoBehaviour<ControllerGuideManager>.Instance.IsReady = true;
+                }
+                Debug.Log("waitAcceptModded:2");
+                Rect r = (___Caution_Header.transform as RectTransform).rect;
+                r.width = 999;
+                ___Caution_Header.overflowMode = TextOverflowModes.Overflow;
+                ___Caution_Header.enableWordWrapping = false;
+                ___Caution_Header.text = NgoEx.SystemTextFromType(ModdedSystemTextType.AltAsc_ModTitle.Swap(), SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
+                ___Caution_Nakami.text = NgoEx.SystemTextFromType(ModdedSystemTextType.Boot_ModIntro.Swap(), SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
+
+                Vector3 returnPos = ___Ok.transform.position;
+                Vector3 centerPos = (___Ok.transform.position + ___Cancel.transform.position) / 2f;
+
+
+
+                ___Ok.transform.position = centerPos;
+                ___Ok.OnClickAsObservable().Subscribe(delegate (Unit _)
+                {
+                    if (altBoot.shownModIntro) return;
+                    ___Ok.transform.position = returnPos;
+                    ___Cancel.gameObject.SetActive(true);
+                    Debug.Log("waitAcceptModded:3");
+                    altBoot.shownModIntro = true;
+                    new Traverse(instance).Method(nameof(Boot.waitAccept)).GetValue();
+                }).AddTo(___Ok);
+                ___Cancel.gameObject.SetActive(false);
+                Debug.Log("waitAcceptModded:END");
+                return false;
             }
 
             /*[HarmonyTranspiler]
@@ -3284,70 +3404,39 @@ namespace AlternativeAscension
             }
         }
 
-        /*[HarmonyPatch(typeof(Event_CheckBGM))]
-        public static class Event_CheckBGMPatches
+        /*[HarmonyPatch(typeof(DayAndNight))]
+        public static class DayAndNightPatches
         {
             [HarmonyPrefix]
-            [HarmonyPatch(nameof(Event_CheckBGM.startEvent))]
-            public static bool startEventPrefix(ref Event_CheckBGM __instance, ref CancellationToken cancellationToken)
+            [HarmonyPatch(nameof(DayAndNight.DayToNight))]
+            public static bool DayToNightPrefix(ref DayAndNight __instance, ref Image ___Right, ref Image ___Left)
             {
-                __instance.startEvent(cancellationToken);
-                if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex) == 1)
+                if (SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop)
                 {
-                    __instance.endEvent();
+                    AltAscMod.log.LogMessage("Skipping DayToNight, as we're in love.");
+                    Sprite s = SingletonMonoBehaviour<AltAscModManager>.Instance.desktop_icon_love;
+                    ___Right.sprite = s;
+                    ___Left.sprite = s;
+                    return false;
                 }
-                else if (SingletonMonoBehaviour<EventManager>.Instance.isHorror && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex) > 27)
-                {
-                    __instance.endEvent();
-                }
-                else if (SingletonMonoBehaviour<NeedyMintsModManager>.Instance.isLove)
-                {
-                    AudioManager instance = AudioManager.Instance;
-                    if (instance != null)
-                    {
-                        instance.PlayBgmByType(SoundType.BGM_endng_normal, true);
-                    }
-                }
-                else
-                {
-                    SoundType soundType = SoundType.BGM_mainloop_kenjo;
-                    int status = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.Follower);
-                    if (status >= 5000)
-                    {
-                        soundType = SoundType.BGM_mainloop_normal;
-                    }
-                    if (status >= 10000)
-                    {
-                        soundType = SoundType.BGM_mainloop_yami;
-                    }
-                    if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex) >= 11)
-                    {
-                        soundType = SoundType.BGM_mainloop_middle;
-                    }
-                    if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex) >= 20)
-                    {
-                        soundType = SoundType.BGM_mainloop_shuban;
-                    }
-                    if (AudioManager.Instance != null)
-                    {
-                        if (AudioManager.Instance.PlayingBgm.Value != null)
-                        {
-                            AudioManager instance = AudioManager.Instance;
-                            if (!(((instance != null) ? instance.PlayingBgm.Value.Sound.Id : null) != soundType.ToString()))
-                            {
+                return true;
+            }
 
-                                __instance.endEvent();
-                                return false;
-                            }
-                        }
-                        AudioManager instance2 = AudioManager.Instance;
-                        if (instance2 != null)
-                        {
-                            instance2.PlayBgmByType(soundType, true);
-                        }
-                    }
-                }
-                return false;
+            [HarmonyPostfix]
+            [HarmonyPatch(nameof(DayAndNight.Start))]
+            public static void StartPostfix(ref DayAndNight __instance, ref Image ___Right, ref Image ___Left)
+            {
+                Image Left = ___Left;
+                Image Right = ___Right;
+                SingletonMonoBehaviour<AltAscModManager>.Instance.ObserveEveryValueChanged((AltAscModManager n) => n.isLoveLoop, FrameCountType.Update, false).Subscribe(delegate (bool b)
+                {
+                    AltAscMod.log.LogMessage("Observing love loop...");
+                    if (!b) return;
+                    AltAscMod.log.LogMessage("Observed love loop!");
+                    Sprite s = SingletonMonoBehaviour<AltAscModManager>.Instance.desktop_icon_love;
+                    Left.sprite = s;
+                    Right.sprite = s;
+                }).AddTo(__instance.gameObject);
             }
         }*/
     }

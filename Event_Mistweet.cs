@@ -28,14 +28,14 @@ namespace AlternativeAscension
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Jine);
             PostEffectManager.Instance.SetShader(EffectType.GoCrazy);
             PostEffectManager.Instance.SetShaderWeight(2);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_craziness");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_craziness");
             await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE002.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE003.Swap());
             await UniTask.Delay(Constants.MIDDLE);
             DeleteTweet();
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_talk_c");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_talk_c");
             await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
 
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.FOLLOW_MISTWEET_JINE004.Swap());

@@ -22,7 +22,7 @@ namespace AlternativeAscension
         // Token: 0x06001CF3 RID: 7411 RVA: 0x000BC20C File Offset: 0x000BA40C
         public override async UniTask attemptLoop(CancellationTokenSource cts)
         {
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_happy_g");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_happy_g");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_LOOP4_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_LOOP4_JINE002.Swap());
             await TimeoutJINE(ModdedJineType.ENDING_LOVE_LOOP4_JINE003, cts);
@@ -34,7 +34,7 @@ namespace AlternativeAscension
             SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_out_f");
             await UniTask.Delay(3400, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             await SingletonMonoBehaviour<WindowManager>.Instance.GetNakamiFromApp(AppType.Webcam).GetComponent<App_Webcam>().Yusayusa();
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("");
             await NgoEvent.DelaySkippable(Constants.FAST);
 
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_LOOP4_JINE004.Swap());

@@ -85,6 +85,11 @@ namespace NeedyEnums
         {
             return kusoRepTypes.Select(k => (k.Swap())).ToList();
         }
+
+        public static AppType Swap(this ModdedAppType kusoRepType)
+        {
+            return (AppType)(int)kusoRepType;
+        }
     }
 
 
@@ -525,6 +530,11 @@ namespace NeedyEnums
         ENDING_LOVE_FINALE_JINE008,
         ENDING_LOVE_FINALE_JINE009,
         ENDING_LOVE_FINALE_JINE010,
+
+        EVENT_ALTLOGIN001,
+        EVENT_ALTLOGIN002,
+        EVENT_ALTLOGIN003,
+        EVENT_ALTLOGIN004
     }
 
     public enum ModdedActionType
@@ -575,6 +585,7 @@ namespace NeedyEnums
         System_ComiketStreamUpcoming = 1000,
         System_AMARead,
         Login_BadPassword,
+        System_NoRead,
         System_InternetYamero,
         System_RealYamero,
         Poketter_AmeQuit,
@@ -582,6 +593,8 @@ namespace NeedyEnums
         Poem_Love,
         System_LoveConfirm,
         System_LoveDay,
+        AltAsc_ModTitle,
+        Boot_ModIntro
     }
 
     public enum ModdedSuperchatType
@@ -943,7 +956,7 @@ namespace NeedyEnums
     public enum ModdedAppType
     {
         PillDaypass_Follower = 1000,
-        Login_Hacked,
+        ScriptableLogin,
         Follower_taiki,
         AltPoketter
     }

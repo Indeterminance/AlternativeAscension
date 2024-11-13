@@ -49,7 +49,7 @@ namespace AlternativeAscension
             PostEffectManager.Instance.SetShaderWeight(0.3f);
 
 
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_craziness");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_craziness");
             await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY2_JINE001.Swap());
             await NgoEvent.DelaySkippable(Constants.FAST);
@@ -69,7 +69,7 @@ namespace AlternativeAscension
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY2_JINE003.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY2_JINE004.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY2_JINE005.Swap());
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_c");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_iraira_c");
             await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY2_JINE006.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY2_JINE007.Swap());
@@ -152,7 +152,7 @@ namespace AlternativeAscension
             JINE.Touched();
 
             await NgoEvent.DelaySkippable(Constants.FAST);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_c");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_anxiety_c");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY2_JINE022.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY2_JINE023.Swap());
             await NgoEvent.DelaySkippable(Constants.MIDDLE);
@@ -169,7 +169,7 @@ namespace AlternativeAscension
 
         private async void eventContinue4()
         {
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_normal_c");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_normal_c");
             float startColor = 0f;
             DOTween.To(() => startColor, x => GameObject.Find("MainPanel").GetComponent<Image>().color = new Color(1f, x, x, 1f), 1f, 5).SetEase(Ease.InSine).Play();
             await UniTask.Delay(7000);
@@ -217,7 +217,7 @@ namespace AlternativeAscension
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY2_JINE039.Swap());
             SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.BadPassword);
             BumpDayMax();
-            SingletonMonoBehaviour<NotificationManager>.Instance.AddDayPassingNotifier();
+            SingletonMonoBehaviour<StatusManager>.Instance.timePassingToNextMorning();
             PostEffectManager.Instance.ResetShaderCalmly();
             base.endEvent();
         }

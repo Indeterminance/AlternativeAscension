@@ -1576,6 +1576,18 @@ id probably get attacked</bodyEN>
     <jine id="ENDING_LOVE_FINALE_JINE010" speaker="pi">
       <bodyEN>You got this.</bodyEN>
     </jine>
+    <jine id="EVENT_ALTLOGIN001" speaker="ame">
+      <bodyEN>what</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN002" speaker="ame">
+      <bodyEN>this cant be right???</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN003" speaker="ame">
+      <bodyEN>i swear it was "angelkawaii2"</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN004" speaker="ame">
+      <bodyEN>can you try again, p-chan?</bodyEN>
+    </jine>
   </jines>
   <streams>
     <stream name="Natural Habitat" genre="Special Event" alphaType="FollowerAlpha" level="1"  actionType="HaishinComiket" cmdType="HaishinComiket">
@@ -3375,6 +3387,10 @@ Ask me anything!!!</bodyEN>
     <string id="Login_BadPassword">
       <bodyEN>Invalid password.</bodyEN>
     </string>
+    <string id="System_NoRead">
+      <bodyEN>Don't ever say anything
+to me again.</bodyEN>
+    </string>
     <string id="System_InternetYamero">
       <bodyEN>Quit the internet.</bodyEN>
     </string>
@@ -3410,6 +3426,14 @@ Rest for eternity</bodyEN>
     </string>
     <string id="System_LoveDay">
       <bodyEN>LOVE</bodyEN>
+    </string>
+    <string id="AltAsc_ModTitle">
+      <bodyEN>Alternative Ascension</bodyEN>
+    </string>
+    <string id="Boot_ModIntro">
+      <bodyEN>You've installed Alternative Ascension! Modded content can now be seen (like this!), some of which may not only spoil canon material, but not even be canon-compliant! If you're not okay with this... well, why did you install this?
+      
+Otherwise, have fun! :)</bodyEN>
     </string>
   </sysstrings>
 </moddata>

@@ -115,6 +115,7 @@ namespace AlternativeAscension
 
         public override async UniTask StartScenario()
         {
+            SingletonMonoBehaviour<AltAscModManager>.Instance.overnightStreamStartDay = -1;
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_event_emo, true);
             PostEffectManager.Instance.ResetShader();
             await base.StartScenario();

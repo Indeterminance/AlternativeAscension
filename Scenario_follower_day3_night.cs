@@ -34,7 +34,7 @@ namespace AlternativeAscension
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine, true);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Jine);
 
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_normal_c");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_normal_c");
             await UniTask.Delay(Constants.MIDDLE);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE002.Swap());
@@ -58,14 +58,14 @@ namespace AlternativeAscension
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE008.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE009.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE010.Swap());
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_happy_d");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_happy_d");
             await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE011.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE012.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE013.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY3_PRESTREAM_JINE014.Swap());
 
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim(SingletonMonoBehaviour<EventManager>.Instance.PlatformDiffAnimationMaster.GetAnimationNameFromKey(PlatformDiffAnimationKey.DAYPASS));
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim(SingletonMonoBehaviour<EventManager>.Instance.PlatformDiffAnimationMaster.GetAnimationNameFromKey(PlatformDiffAnimationKey.DAYPASS));
             await UniTask.Delay(Constants.FAST,false, PlayerLoopTiming.Update, default, false);
             Queue<IWindow> pillWindows = new Queue<IWindow> { };
             for (int i = 0; i < 20; i++)

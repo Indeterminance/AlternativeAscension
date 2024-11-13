@@ -23,7 +23,7 @@ namespace AlternativeAscension
         public override async UniTask startEvent(CancellationToken token = default)
         {
             base.startEvent(token);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim(SingletonMonoBehaviour<EventManager>.Instance.PlatformDiffAnimationMaster.GetAnimationNameFromKey(PlatformDiffAnimationKey.DAYPASS));
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim(SingletonMonoBehaviour<EventManager>.Instance.PlatformDiffAnimationMaster.GetAnimationNameFromKey(PlatformDiffAnimationKey.DAYPASS));
             await NgoEvent.DelaySkippable(Constants.MIDDLE);
             SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.DARKNIGHT_TWEET001.Swap(), null, null);
             SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.DARKNIGHT_TWEET002.Swap(), null, null);

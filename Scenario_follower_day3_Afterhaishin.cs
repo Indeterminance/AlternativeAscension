@@ -30,7 +30,7 @@ namespace AlternativeAscension
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0.4f);
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
             //await UniTask.Delay(Constants.MIDDLE);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_d");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_anxiety_d");
             SingletonMonoBehaviour<WindowManager>.Instance.CleanOnCommand();
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_wind, true);
             IWindow tweeter = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter);

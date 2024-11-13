@@ -25,13 +25,14 @@ namespace AlternativeAscension
         {
             SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop = false;
             PostEffectManager.Instance.ResetShaderCalmly();
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_a");
+            AudioManager.Instance.StopBgm();
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_anxiety_a");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE002.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE003.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE004.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE005.Swap());
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_normal_a");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_normal_a");
             await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE006.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE007.Swap());
@@ -49,7 +50,7 @@ namespace AlternativeAscension
 
         private async UniTask eventContinue1()
         {
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_b");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_iraira_b");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE010.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE011.Swap());
             await UniTask.Delay(Constants.FAST, false, PlayerLoopTiming.Update, default, false);
@@ -69,7 +70,7 @@ namespace AlternativeAscension
 
         private async UniTask eventContinue2()
         {
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_e");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_anxiety_e");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE016.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_BREAKUP_JINE017.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>

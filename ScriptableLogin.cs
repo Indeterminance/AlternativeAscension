@@ -16,10 +16,11 @@ using NeedyEnums;
 using NGO;
 using UnityEngine.AddressableAssets;
 using System.Threading;
+using static AlternativeAscension.AAPatches;
 
 namespace AlternativeAscension
 {
-    public class LoginHacked : MonoBehaviour
+    public class ScriptableLogin : MonoBehaviour
     {
         public GameObject LoginButtonObj
         {
@@ -31,24 +32,32 @@ namespace AlternativeAscension
 
         private void Start()
         {
-            //NeedyMintsMod.log.LogMessage("LoginHacked!");
+            // Set login button positions
+            initLoginButtonPos = _login.transform.position;
+            invalidLoginButtonPos = initLoginButtonPos + new Vector3(0, -0.25f, 0);
+
+            // Set initial values
             _input.interactable = false;
-            //NeedyMintsMod.log.LogMessage("LoginHacked2!");
             _passText.gameObject.SetActive(false);
-            //NeedyMintsMod.log.LogMessage("LoginHacked!3");
             _placeholderText.text = NgoEx.SystemTextFromType((SystemTextType)(int)ModdedSystemTextType.Login_BadPassword, SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
-            //NeedyMintsMod.log.LogMessage("LoginHacked4!");
             _placeholderText.gameObject.SetActive(false);
-            //NeedyMintsMod.log.LogMessage("LoginHacked5!");
             SteamInput();
 
-            Transform trans = this.transform.parent;
-            //for (int i = 0; i < trans.childCount; i++)
-            //{
-            //    NeedyMintsMod.log.LogMessage($"LoginChild: {trans.GetChild(i)}");
-            //}
+            // Set observables
+            isBadLogin.Where((bool b) => b).Subscribe(delegate (bool bad)
+            {
+                AltAscMod.log.LogMessage("Observed change to isBadLogin");
+                SetLoginState(bad, isInvalidLogin.Value);
+            }).AddTo(gameObject);
+            isInvalidLogin.Where((bool b) => b).Subscribe(delegate (bool invalid)
+            {
+                AltAscMod.log.LogMessage("Observed change to isInvalidLogin");
+                SetLoginState(isBadLogin.Value, invalid);
+            }).AddTo(gameObject);
 
-            _imageContainer.sprite = baseImage;
+
+            // Initialize login state
+            SetLoginState(isBadLogin.Value, isInvalidLogin.Value);
         }
 
         private void SteamInput()
@@ -62,23 +71,16 @@ namespace AlternativeAscension
             _login.interactable = false;
             _login.OnClickAsObservable().Subscribe(async delegate (Unit _)
             {
-                await SetInvalid();
+                await ProcessLoginAttempt();
                 attempts++;
-                AltAscMod.log.LogMessage($"Attempted to log in {attempts} times");
+                //AltAscMod.log.LogMessage($"Attempted to log in {attempts} times");
             }).AddTo(gameObject);
         }
 
-        public async UniTask SetInvalid()
+        public async UniTask ProcessLoginAttempt()
         {
-            if (attempts == 0)
-            {
-                _placeholderText.gameObject.SetActive(true);
-                _login.transform.position += new Vector3(0, -0.25f, 0);
-            }
             _input.text = string.Empty;
-            _imageContainer.sprite = invalidPasswordImage;
             _input.interactable = false;
-            LanguageType lang = SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value;
 
             Func<UniTask> action = loginActions.Dequeue();
             await action();
@@ -98,25 +100,37 @@ namespace AlternativeAscension
             this._login.interactable = false;
         }
 
+        private void SetLoginState(bool isBad, bool isInvalid)
+        {
+            if (isInvalid && isBad) _imageContainer.sprite = invalidPasswordImageBad;
+            else if (isInvalid && !isBad) _imageContainer.sprite = invalidPasswordImage;
+            else if (!isInvalid && isBad) _imageContainer.sprite = baseImageBad;
+            else if (!isInvalid && !isBad) _imageContainer.sprite = baseImage;
+
+            _placeholderText.gameObject.SetActive(isInvalid);
+
+            if (isInvalid)
+            {
+                _login.transform.position = invalidLoginButtonPos;
+            }
+            else _login.transform.position = initLoginButtonPos;
+        }
+
         [SerializeField]
         private int attempts = 0;
 
         [SerializeField]
         public Button _login;
 
-        // Token: 0x0400232D RID: 9005
         [SerializeField]
         public GameObject _badge;
 
-        // Token: 0x0400232E RID: 9006
         [SerializeField]
         public TMP_InputField _input;
 
-        // Token: 0x0400232F RID: 9007
         [SerializeField]
         public TMP_Text _passText;
 
-        // Token: 0x04002330 RID: 9008
         [SerializeField]
         public TMP_Text _placeholderText;
 
@@ -127,9 +141,25 @@ namespace AlternativeAscension
         public Sprite baseImage;
 
         [SerializeField]
+        public Sprite baseImageBad;
+
+        [SerializeField]
         public Sprite invalidPasswordImage;
 
         [SerializeField]
+        public Sprite invalidPasswordImageBad;
+
+        [SerializeField]
+        public ReactiveProperty<bool> isBadLogin = new ReactiveProperty<bool>(false);
+
+        [SerializeField]
+        public ReactiveProperty<bool> isInvalidLogin = new ReactiveProperty<bool>(false);
+
+        [SerializeField]
         public Queue<Func<UniTask>> loginActions = new Queue<Func<UniTask>>();
+
+        public Vector3 initLoginButtonPos;
+
+        public Vector3 invalidLoginButtonPos;
     }
 }

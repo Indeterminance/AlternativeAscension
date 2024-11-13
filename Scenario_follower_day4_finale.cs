@@ -28,16 +28,18 @@ namespace AlternativeAscension
             SingletonMonoBehaviour<EventManager>.Instance.nowEnding = (EndingType)(int)ModdedEndingType.Ending_Followers;
             IWindow poke = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter);
             poke.Uncloseable();
-            poke.GameObjectTransform.position = new Vector2(-10, 5);
+            poke.GameObjectTransform.position = new Vector2(-1, 2);
+            poke.Touched();
             await UniTask.Delay(1000);
             IWindow altPoke = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow((AppType)(int)ModdedAppType.AltPoketter);
-            altPoke.GameObjectTransform.position = new Vector2(10, -5);
+            altPoke.GameObjectTransform.position = new Vector2(1, -2);
             altPoke.Uncloseable();
+            altPoke.Touched();
             //altPoke.nakamiApp.transform.position = poke.nakamiApp.transform.position + new Vector3(10, 10);
             AltAscMod.log.LogMessage($"old pos: {poke.nakamiApp.transform.position}");
             await UniTask.Delay(Constants.FAST);
             SingletonMonoBehaviour<PoketterManager>.Instance.isDeleted.Value = true;
-            await UniTask.Delay(1000);
+            await UniTask.Delay(Constants.FAST);
             SingletonMonoBehaviour<AltAscModManager>.Instance.isAmeDelete.Value = true;
             await UniTask.Delay(Constants.FAST);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.TaskManager).Uncloseable();
@@ -46,7 +48,7 @@ namespace AlternativeAscension
                 SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(StatusType.Follower, x);
             }, 0, 1).Play();
             await UniTask.Delay(Constants.MIDDLE);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_out_b");
+            //SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_out_b");
             await UniTask.Delay(Constants.SLOW);
             SingletonMonoBehaviour<NotificationManager>.Instance.osimai();
         }

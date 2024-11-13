@@ -64,7 +64,7 @@ namespace ngov3
         private async UniTask eventContinue2()
         {
 
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_happy_f");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_happy_f");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_POSTSTREAM_JINE012.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_POSTSTREAM_JINE013.Swap());
             await NgoEvent.DelaySkippable(Constants.MIDDLE);
@@ -74,10 +74,10 @@ namespace ngov3
             PostEffectManager.Instance.SetShader(EffectType.Otona);
             IWindow ame = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Webcam, true);
             ame.Uncloseable();
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_out_e");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_out_e");
             await UniTask.Delay(3400, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             await SingletonMonoBehaviour<WindowManager>.Instance.GetNakamiFromApp(AppType.Webcam).GetComponent<App_Webcam>().Yusayusa();
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("");
             PostEffectManager.Instance.ResetShaderCalmly(true);
             await NgoEvent.DelaySkippable(Constants.FAST);
 
@@ -109,7 +109,7 @@ namespace ngov3
 
         private async UniTask eventContinue3()
         {
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_happy_f");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_happy_f");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_AFTERGLOW_JINE005.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_AFTERGLOW_JINE006.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_AFTERGLOW_JINE007.Swap());

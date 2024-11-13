@@ -27,6 +27,7 @@ namespace AlternativeAscension
             //this._Live._HaisinSkip.gameObject.SetActive(false);
             this._Live._HaisinSpeed.gameObject.SetActive(false);
             this._Live.CommentParent.gameObject.SetActive(false);
+            this._Live.CommentLabel.text = NgoEx.SystemTextFromType(ModdedSystemTextType.System_NoRead.Swap(), SingletonMonoBehaviour<Settings>.Instance.CurrentLanguage.Value);
 
             string pre = ModdedAlphaType.FollowerAlpha.ToString()+"4_";
             this.title = NgoEx.TenTalk(pre+"STREAMNAME", this._lang);
@@ -68,13 +69,13 @@ namespace AlternativeAscension
         // Token: 0x06000FD6 RID: 4054 RVA: 0x0004A57C File Offset: 0x0004877C
         public override async UniTask StartScenario()
         {
-            await SingletonMonoBehaviour<AltAscModManager>.Instance.SetViewersInactive();
+            SingletonMonoBehaviour<EventManager>.Instance.nowEnding = ModdedEndingType.Ending_Followers.Swap();
+            //await SingletonMonoBehaviour<AltAscModManager>.Instance.SetViewersInactive();
             GameObject.Find("stack").SetActive(false);
             PostEffectManager.Instance.ResetShader();
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_heartbeat, true);
             
             PostEffectManager.Instance.ResetShader();
-            SingletonMonoBehaviour<EventManager>.Instance.nowEnding = (EndingType)(int)ModdedEndingType.Ending_Followers;
             await base.StartScenario();
             SingletonMonoBehaviour<NotificationManager>.Instance.osimai();
         }

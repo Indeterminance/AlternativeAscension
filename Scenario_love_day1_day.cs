@@ -34,7 +34,7 @@ namespace ngov3
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Webcam).Uncloseable();
             SingletonMonoBehaviour<JineManager>.Instance.Uncontrolable();
             await UniTask.Delay(Constants.FAST, false, PlayerLoopTiming.Update, default, false);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_happy_f");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_happy_f");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_JINE002.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_JINE003.Swap());
@@ -58,7 +58,7 @@ namespace ngov3
 
         private async UniTask eventContinue1()
         {
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_normal_f");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_normal_f");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_JINE011.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_JINE012.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_JINE013.Swap());
@@ -81,7 +81,8 @@ namespace ngov3
 
         private async UniTask eventContinue2()
         {
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_positive_f");
+            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_positive_f");
+            await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_JINE020.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_JINE021.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_JINE022.Swap());
@@ -100,7 +101,7 @@ namespace ngov3
                 ModdedKusoRepType.ENDING_LOVE_DAY1_TWEET002_KUSO005,
             }.Swap(), null);
             await UniTask.Delay(13000, false, PlayerLoopTiming.Update, default, false);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_normal_e");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_normal_e");
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_POSTTWEET_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_POSTTWEET_JINE002.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_LOVE_DAY1_POSTTWEET_JINE003.Swap());

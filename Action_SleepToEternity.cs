@@ -21,7 +21,7 @@ namespace AlternativeAscension
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
             base.startEvent(cancellationToken, true);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_sleep");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_sleep");
             await NgoEvent.DelaySkippable(Constants.MIDDLE);
             PostEffectManager.Instance.AnmakuWeight(1f);
             GameObject.Find("ShortCutParent").GetComponent<CanvasGroup>().alpha = 0f;

@@ -56,10 +56,10 @@ namespace AlternativeAscension
                     TrainTime = AppType.Train;
                     break;
                 case 1:
-                    TrainTime = AppType.Train_night;
+                    TrainTime = AppType.Train_twilight;
                     break;
                 case 2:
-                    TrainTime = AppType.Train_twilight;
+                    TrainTime = AppType.Train_night;
                     break;
                 default: goto case 0;
             }

@@ -20,7 +20,7 @@ namespace AlternativeAscension
         public override void Awake()
         {
             base.Awake();
-            this._Live.isOiwai = false;
+            this._Live.isOiwai = true;
             this._Live.isUncontrollable = true;
             this._Live.SetSpeedLock(true);
             this._Live.Speed = 0;
@@ -65,12 +65,12 @@ namespace AlternativeAscension
         // Token: 0x06000FD6 RID: 4054 RVA: 0x0004A57C File Offset: 0x0004877C
         public override async UniTask StartScenario()
         {
+            SingletonMonoBehaviour<EventManager>.Instance.nowEnding = ModdedEndingType.Ending_Followers.Swap();
             await SingletonMonoBehaviour<AltAscModManager>.Instance.SetViewersInactive();
             GameObject.Find("stack").SetActive(false);
             PostEffectManager.Instance.ResetShader();
             AudioManager.Instance.StopBgm();
             PostEffectManager.Instance.ResetShader();
-            SingletonMonoBehaviour<EventManager>.Instance.nowEnding = (EndingType)(int)ModdedEndingType.Ending_Followers;
             await base.StartScenario();
             SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_follower_day4_finale>();
         }

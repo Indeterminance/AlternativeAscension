@@ -71,7 +71,7 @@ namespace AlternativeAscension
         {
             Assembly asm = this.GetType().Assembly;
             string catalogPath = new Uri(asm.CodeBase).LocalPath.Replace(asm.GetName().Name + ".dll", "catalog.json");
-            string assetPath = new Uri(asm.CodeBase).LocalPath.Replace(asm.GetName().Name + ".dll", "nmo_assets.bundle");
+            string assetPath = new Uri(asm.CodeBase).LocalPath.Replace(asm.GetName().Name + ".dll", "altasc_assets.bundle");
 
             bool generateCatalog = true;
             if (File.Exists(catalogPath))

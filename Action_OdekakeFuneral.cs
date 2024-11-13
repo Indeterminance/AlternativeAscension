@@ -39,7 +39,7 @@ namespace AlternativeAscension
                 PostEffectManager.Instance.SetShader(EffectType.Bleeding);
                 PostEffectManager.Instance.SetShaderWeight(0.8f);
                 GameObject.Find("ShortCutParent").GetComponent<CanvasGroup>().alpha = 0.5f;
-                SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_out_d");
+                SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_out_d");
                 await UniTask.Delay(3000, false, PlayerLoopTiming.Update, default, false);
             }
             GameObject.Find("ShortCutParent").GetComponent<CanvasGroup>().alpha = 0f;
@@ -73,9 +73,6 @@ namespace AlternativeAscension
             {
                 case 0:
                     TrainTime = AppType.Train;
-                    break;
-                case 1:
-                    TrainTime = AppType.Train_twilight;
                     break;
                 case 2:
                     TrainTime = AppType.Train_night;

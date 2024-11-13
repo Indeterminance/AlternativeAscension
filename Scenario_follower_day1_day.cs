@@ -33,7 +33,7 @@ namespace AlternativeAscension
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Jine);
 
 
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_anxiety_c");
+            SingletonMonoBehaviour<WebCamManager>.Instance. PlayAnim("stream_ame_idle_anxiety_c");
             await UniTask.Delay(Constants.MIDDLE, false, PlayerLoopTiming.Update, default, false);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE001.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE002.Swap());
@@ -55,7 +55,7 @@ namespace AlternativeAscension
             JineData data = new JineData(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE013.Swap());
             data.user = JineUserType.pi;
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(data);
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_anxiety_c");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_anxiety_c");
             await NgoEvent.DelaySkippable(Constants.MIDDLE);
             List<ModdedJineType> dlg2 = new List<ModdedJineType>() {
                 ModdedJineType.ENDING_FOLLOWER_DAY1_JINE014,
@@ -68,7 +68,7 @@ namespace AlternativeAscension
             }
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE017.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ENDING_FOLLOWER_DAY1_JINE018.Swap());
-            SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_talk_c");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_talk_c");
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Poketter, true);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Poketter);
             SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.PREANGELWATCH_TWEET001.Swap(), new List<ModdedKusoRepType>
