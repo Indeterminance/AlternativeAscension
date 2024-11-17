@@ -32,10 +32,6 @@ namespace AlternativeAscension
 
         private void Start()
         {
-            // Set login button positions
-            initLoginButtonPos = _login.transform.position;
-            invalidLoginButtonPos = initLoginButtonPos + new Vector3(0, -0.25f, 0);
-
             // Set initial values
             _input.interactable = false;
             _passText.gameObject.SetActive(false);
@@ -46,15 +42,23 @@ namespace AlternativeAscension
             // Set observables
             isBadLogin.Where((bool b) => b).Subscribe(delegate (bool bad)
             {
-                AltAscMod.log.LogMessage("Observed change to isBadLogin");
+                //AltAscMod.log.LogMessage("Observed change to isBadLogin");
                 SetLoginState(bad, isInvalidLogin.Value);
             }).AddTo(gameObject);
             isInvalidLogin.Where((bool b) => b).Subscribe(delegate (bool invalid)
             {
-                AltAscMod.log.LogMessage("Observed change to isInvalidLogin");
+                //AltAscMod.log.LogMessage("Observed change to isInvalidLogin");
                 SetLoginState(isBadLogin.Value, invalid);
             }).AddTo(gameObject);
 
+            isInvalidLogin.ObserveEveryValueChanged((ReactiveProperty<bool> b) => b.Value, FrameCountType.Update, false).Subscribe(delegate (bool _)
+            {
+                if (_) _login.transform.position -= new Vector3(0f, 0.25f, 0f);
+                else   _login.transform.position += new Vector3(0f, 0.25f, 0f);
+                _placeholderText.gameObject.SetActive(_);
+            }).AddTo(gameObject);
+
+            _login.transform.position -= new Vector3(0f, 0.25f, 0f);
 
             // Initialize login state
             SetLoginState(isBadLogin.Value, isInvalidLogin.Value);
@@ -90,7 +94,7 @@ namespace AlternativeAscension
 
         private void couldLogin(string text)
         {
-            if ((text == "angelkawaii2" || text == "angelikawaii2"))
+            if ((text == SingletonMonoBehaviour<AltAscModManager>.Instance.password || text == "angelikawaii2"))
             {
                 this._badge.SetActive(true);
                 this._login.interactable = true;
@@ -106,14 +110,6 @@ namespace AlternativeAscension
             else if (isInvalid && !isBad) _imageContainer.sprite = invalidPasswordImage;
             else if (!isInvalid && isBad) _imageContainer.sprite = baseImageBad;
             else if (!isInvalid && !isBad) _imageContainer.sprite = baseImage;
-
-            _placeholderText.gameObject.SetActive(isInvalid);
-
-            if (isInvalid)
-            {
-                _login.transform.position = invalidLoginButtonPos;
-            }
-            else _login.transform.position = initLoginButtonPos;
         }
 
         [SerializeField]

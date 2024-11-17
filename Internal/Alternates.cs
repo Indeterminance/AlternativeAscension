@@ -38,7 +38,7 @@ namespace AlternativeAscension
         public static async UniTask BackFromPanicOdekake(int weight)
         {
             bool stalkOdekake = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.StalkReveal;
-            AltAscMod.log.LogMessage($"Follower plot flag: {stalkOdekake}");
+            //AltAscMod.log.LogMessage($"Follower plot flag: {stalkOdekake}");
             if (!stalkOdekake)
             {
                 switch (weight)
@@ -206,9 +206,6 @@ namespace AlternativeAscension
 
             SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(ModdedStatusType.FollowerPlotFlag.Swap()).Subscribe(delegate (int _)
             {
-                AltAscMod.log.LogMessage($"Plot observable {_}");
-                AltAscMod.log.LogMessage($"Shortcut {shortcut}");
-                AltAscMod.log.LogMessage($"Apptype {shortcut?.appType}");
                 if (_ == (int)FollowerPlotFlagValues.AngelFuneral)
                 {
                     if (shortcut.appType != AppType.GoOut) _shortcut.interactable = false;
@@ -220,7 +217,6 @@ namespace AlternativeAscension
 
             SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(ModdedStatusType.OdekakeCountdown.Swap()).Subscribe(delegate (int _)
             {
-                AltAscMod.log.LogMessage($"Odekake countdown: {_}");
                 if (_ == 0 && shortcut.appType == AppType.GoOut && SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) != (int)FollowerPlotFlagValues.AngelFuneral)
                 {
                     _shortcut.interactable = false;
@@ -278,7 +274,6 @@ namespace AlternativeAscension
         {
             // I'm not actually sure this is ever used, but this is here for consistency's sake just in case.
             // ...in fact, I'm not sure if any of the "non-2D" variants of objects are used...
-            AltAscMod.log.LogMessage("DayPassing");
             dayPass._dayIndex = SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(StatusType.DayIndex);
             dayPass._dayPart = SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(StatusType.DayPart);
             dayPass._dayIndex.Where((int d) => true).Subscribe(delegate (int t)
@@ -294,7 +289,6 @@ namespace AlternativeAscension
 
         public static async void DayPassing2DStartAlternate(this ngov3.Effect.DayPassing2D dayPass)
         {
-            AltAscMod.log.LogMessage("DayPassing2D");
             // Get (a lot) of private fields
             Traverse _dayIndex = new Traverse(dayPass).Field(nameof(DayPassing2D._dayIndex));
             Traverse _dayPart = new Traverse(dayPass).Field(nameof(DayPassing2D._dayPart));
@@ -596,6 +590,25 @@ namespace AlternativeAscension
             int day;
             int.TryParse(label.text, out day);
             if (day > 31) label.text = "❤❤";
+        }
+
+        public static void AddModdedDayDialog(this List<string> eventString)
+        {
+            //AltAscMod.log.LogMessage("Patched dialog!");
+            int stress = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.Stress);
+            int love = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.Love);
+            int yami = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.Yami);
+            bool stressCap = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.Stress) == 120;
+
+            
+            if (love > 40 && stress < 40)  eventString.Add(nameof(Event_Awakening));
+            if (stress > 80)               eventString.Add(nameof(Event_Sick));
+            if (love > 60)                 eventString.Add(nameof(Event_Starving));
+            if (!stressCap && stress < 60) eventString.Add(nameof(Event_Snail));
+            if (yami > 80)                 eventString.Add(nameof(Event_ICanFixHer));
+            if (yami > 20)                 eventString.Add(nameof(Event_News));
+            
+            
         }
     }
 }

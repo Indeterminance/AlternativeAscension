@@ -1592,6 +1592,7 @@ namespace AlternativeAscension
                     sleepCount = SingletonMonoBehaviour<AltAscModManager>.Instance.sleepCount,
                     isLove = SingletonMonoBehaviour<AltAscModManager>.Instance.isLove,
                     isLoveLoop = SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop,
+                    password = SingletonMonoBehaviour<AltAscModManager>.Instance.password,
                 });
                 UnityEngine.Debug.Log("スロットデータ：" + text + "のセーブが完了しました。");
                 new Traverse(__instance).Method(nameof(EventManager.CleanPassingSaveData), new Type[] { typeof(string) }).GetValue(new object[] { text });
@@ -1610,6 +1611,7 @@ namespace AlternativeAscension
                 SingletonMonoBehaviour<AltAscModManager>.Instance.sleepCount = slotData.sleepCount;
                 SingletonMonoBehaviour<AltAscModManager>.Instance.isLove = slotData.isLove;
                 SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop = slotData.isLoveLoop;
+                SingletonMonoBehaviour<AltAscModManager>.Instance.password = slotData.password;
             }
 
             [HarmonyPostfix]
@@ -1620,6 +1622,7 @@ namespace AlternativeAscension
                 nmmm.sleepCount = 0;
                 nmmm.isLove = false;
                 nmmm.isLoveLoop = false;
+                nmmm.password = "angelkawaii2";
             }
 
             [HarmonyPrefix]
@@ -2494,9 +2497,10 @@ namespace AlternativeAscension
         {
             [HarmonyPostfix]
             [HarmonyPatch(nameof(Shortcut.Start))]
-            public static void StartPostfix(Shortcut __instance)
+            public static void StartPostfix(ref Shortcut __instance)
             {
-                Alternates.ShortcutStartAlternate(__instance);
+                Shortcut inst = __instance;
+                Alternates.ShortcutStartAlternate(inst);
             }
 
             /*[HarmonyPostfix]
@@ -2523,13 +2527,17 @@ namespace AlternativeAscension
 
                 FieldInfo mergedAppsInfo = typeof(AppTypeToDataAsset).GetField(nameof(AppTypeToDataAsset.mergedApps), BindingFlags.Instance | BindingFlags.NonPublic);
                 object mergedAppstmp = mergedAppsInfo.GetValue(app2data);
-                AltAscMod.log.LogMessage($"HELPME {appType} {__result}");
+                //AltAscMod.log.LogMessage($"HELPME {appType} {__result}");
                 List<AppTypeToData> mergedApps;
+
                 if (mergedAppstmp == null)
                 {
                     mergedApps = new List<AppTypeToData>();
                 }
                 else mergedApps = (mergedAppstmp as IEnumerable<AppTypeToData>).ToList();
+
+
+                AppTypeToData login = mergedApps.Find(App => App.appType == AppType.Login);
 
                 if (!mergedApps.Any(app => app.appType == (AppType)(int)ModdedAppType.Follower_taiki))
                 {
@@ -2548,7 +2556,7 @@ namespace AlternativeAscension
                         InnerContent = UnityEngine.Object.Instantiate(taiki.InnerContent)
                     };
                     UnityEngine.Object.DontDestroyOnLoad(followTaiki.InnerContent);
-                    AltAscMod.log.LogMessage($"Taiki content: {taiki.InnerContent}");
+                    //AltAscMod.log.LogMessage($"Taiki content: {taiki.InnerContent}");
                     Transform trans = followTaiki.InnerContent.transform.GetChild(0).GetChild(5);
 
                     GameObject.Destroy(trans.GetChild(0).gameObject);
@@ -2561,7 +2569,7 @@ namespace AlternativeAscension
                 if (!mergedApps.Any(app => app.appType == (AppType)(int)ModdedAppType.AltPoketter))
                 {
                     AppTypeToData poketter = mergedApps.Find(App => App.appType == AppType.Poketter);
-                    AppTypeToData altPoketter = new AppTypeToData(false)
+                    AppTypeToData altPoketter = new AppTypeToData(true)
                     {
                         appIcon = poketter.appIcon,
                         AppName = poketter.AppName,
@@ -2572,12 +2580,11 @@ namespace AlternativeAscension
                         FirstPosX = poketter.FirstPosX,
                         FirstPosY = poketter.FirstPosY,
                         is2DWindow = poketter.is2DWindow,
-                        InnerContent = UnityEngine.Object.Instantiate(poketter.InnerContent),
-                        isOnly = true
+                        InnerContent = UnityEngine.Object.Instantiate(poketter.InnerContent)
                     };
                     UnityEngine.Object.DontDestroyOnLoad(altPoketter.InnerContent);
                     PoketterView2D view = altPoketter.InnerContent.GetComponent<PoketterView2D>();
-                    AltAscMod.log.LogMessage($"Poketter component: {view}");
+                    //AltAscMod.log.LogMessage($"Poketter component: {view}");
 
                     AltPoketter newPoke = altPoketter.InnerContent.AddComponent<AltPoketter>();
 
@@ -2610,8 +2617,11 @@ namespace AlternativeAscension
 
                 if (!mergedApps.Any(app => app.appType == (AppType)(int)ModdedAppType.ScriptableLogin))
                 {
-                    AppTypeToData login = mergedApps.Find(App => App.appType == AppType.Login);
-                    AppTypeToData hackedLogin = new AppTypeToData(false)
+                    // TEST STUFF: Get login object :)
+                    //ExploreGameObject(login.InnerContent);
+
+
+                    AppTypeToData hackedLogin = new AppTypeToData(true)
                     {
                         appIcon = login.appIcon,
                         AppName = login.AppName,
@@ -2650,6 +2660,36 @@ namespace AlternativeAscension
                     mergedApps.Add(hackedLogin);
                     retryLoad = appType == (AppType)(int)ModdedAppType.Follower_taiki || retryLoad;
                 }
+
+                if (!mergedApps.Any(app => app.appType == ModdedAppType.ChangePassword.Swap()))
+                {
+                    AppTypeToData changePassApp = new AppTypeToData(true)
+                    {
+                        appIcon = login.appIcon,
+                        AppName = ModdedSystemTextType.System_ChangePasswordApp.Swap(),
+                        AppNameJP = null,
+                        appType = ModdedAppType.ChangePassword.Swap(),
+                        FirstHeight = login.FirstHeight, //422
+                        FirstWidth = login.FirstWidth, // 641
+                        FirstPosX = login.FirstPosX,
+                        FirstPosY = login.FirstPosY,
+                        is2DWindow = login.is2DWindow,
+                        InnerContent = Addressables.LoadAssetAsync<GameObject>("App_ChangePassword.prefab").WaitForCompletion()
+                    };
+
+                    changePassApp.InnerContent.AddComponent<ChangePassword>();
+                    UnityEngine.Object.DontDestroyOnLoad(changePassApp.InnerContent);
+
+                    //AltAscMod.log.LogMessage("ChangePass render mode: " + changePassApp.InnerContent.GetComponent<Canvas>().renderMode);
+                    //AltAscMod.log.LogMessage("ChangePass image type: " + changePassApp.InnerContent.GetComponent<Image>().type);
+
+                    mergedApps.Add(changePassApp);
+                    retryLoad = appType == (AppType)(int)ModdedAppType.PillDaypass_Follower || retryLoad;
+                }
+
+                login.InnerContent.transform.GetChild(0).gameObject.SetActive(false);
+
+
                 mergedAppsInfo.SetValue(app2data, mergedApps);
                 app2DataInfo.SetValue(null, app2data);
 
@@ -2657,17 +2697,6 @@ namespace AlternativeAscension
                 {
                     __result = LoadAppData.ReadAppContent(appType);
                 }
-            }
-        }
-
-        [HarmonyPatch(typeof(ngov3.Login))]
-        public static class LoginPatches
-        {
-            [HarmonyPostfix]
-            [HarmonyPatch(nameof(ngov3.Login.Awake))]
-            public static void AwakePostfix()
-            {
-                AltAscMod.log.LogMessage($"Login stacktrace: {Environment.StackTrace}");
             }
         }
 
@@ -2754,7 +2783,7 @@ namespace AlternativeAscension
             public static void SetDataPostfix(ref PoketterCell __instance, TweetDrawable nakami, ref TMP_Text ____dateText)
             {
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
+                //AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
 
 
                 if (dayMax >= nakami.Day && dayMax > 30)
@@ -2768,7 +2797,7 @@ namespace AlternativeAscension
             public static void SetDataStaticPostfix(ref PoketterCell __instance, TweetDrawable nakami, ref TMP_Text ____dateText)
             {
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
+                //AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
 
                 if (dayMax >= nakami.Day && dayMax > 30)
                 {
@@ -2782,7 +2811,7 @@ namespace AlternativeAscension
             {
                 TweetDrawable nakami = (TweetDrawable)(new Traverse(__instance).Field(nameof(PoketterCell.tweetDrawable)).GetValue());
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
+                //AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
 
                 if (dayMax >= nakami.Day && dayMax > 30)
                 {
@@ -2799,7 +2828,7 @@ namespace AlternativeAscension
             public static void SetDataPostfix(ref PoketterCell __instance, TweetDrawable nakami, ref TMP_Text ____dateText)
             {
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
+                //AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
                 AltAscMod.log.LogMessage($"Setting data: {nakami.FavNumber} favs & {nakami.RtNumber} rts");
 
 
@@ -2814,7 +2843,7 @@ namespace AlternativeAscension
             public static void SetDataStaticPostfix(ref PoketterCell __instance, TweetDrawable nakami, ref TMP_Text ____dateText)
             {
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
+                //AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
 
                 if (dayMax >= nakami.Day && dayMax > 30)
                 {
@@ -2828,7 +2857,7 @@ namespace AlternativeAscension
             {
                 TweetDrawable nakami = (TweetDrawable)(new Traverse(__instance).Field(nameof(PoketterCell.tweetDrawable)).GetValue());
                 int dayMax = SingletonMonoBehaviour<StatusManager>.Instance.GetMaxStatus(StatusType.DayIndex);
-                AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
+                //AltAscMod.log.LogMessage($"Tweet day max: {dayMax}");
 
                 if (dayMax >= nakami.Day && dayMax > 30)
                 {
@@ -3270,12 +3299,10 @@ namespace AlternativeAscension
                 // Solution: Either create NMMM in a scene, or move it to before EventManagerPatches.AwakePostfix (maybe in a transpiler?)
                 PoketterView2D inst = __instance;
                 if (!inst.HasComponent<AltPoketter>() || SingletonMonoBehaviour<AltAscModManager>.Instance == null) return;
-                AltAscMod.log.LogMessage("StartPostfix1");
                 SingletonMonoBehaviour<AltAscModManager>.Instance.isAmeDelete.Where((bool v) => v).Subscribe(delegate (bool _)
                 {
                     Alternates.showDeleteModeAme(inst);
                 }).AddTo(__instance.gameObject);
-                AltAscMod.log.LogMessage("StartPostfix2");
 
             }
 
@@ -3294,14 +3321,7 @@ namespace AlternativeAscension
 
                 public static bool Prefix(ref PoketterView2D __instance)
                 {
-                    foreach (Component c in __instance.gameObject.GetComponents<Component>())
-                    {
-                        AltAscMod.log.LogMessage($"Mode component: {c}");
-                    }
-
-
-
-
+                    
                     return !__instance.gameObject.HasComponent<AltPoketter>();
                 }
             }
@@ -3368,7 +3388,8 @@ namespace AlternativeAscension
                     stats = ES3.Load<List<Status>>("STATUS", fileName),
                     sleepCount = ES3.Load<int>("SLEEPCOUNT", fileName, 0),
                     isLove = ES3.Load<bool>("ISLOVE", fileName, false),
-                    isLoveLoop = ES3.Load<bool>("ISLOVELOOP", fileName, false)
+                    isLoveLoop = ES3.Load<bool>("ISLOVELOOP", fileName, false),
+                    password = ES3.Load<string>("PASSWORD", fileName, "angelkawaii2"),
                 };
                 return false;
             }
@@ -3383,6 +3404,7 @@ namespace AlternativeAscension
                 ES3.Save<int>("SLEEPCOUNT", modData.sleepCount, fileName);
                 ES3.Save<bool>("ISLOVE", modData.isLove, fileName);
                 ES3.Save<bool>("ISLOVELOOP", modData.isLoveLoop, fileName);
+                ES3.Save<string>("PASSWORD", modData.password, fileName);
             }
         }
 
@@ -3401,6 +3423,32 @@ namespace AlternativeAscension
                      AltAscMod.log.LogMessage("Love bake!");
                      baketter.AddLoveBake();
                  }).AddTo(__instance.gameObject);
+            }
+        }
+
+        [HarmonyPatch(typeof(Event_Uzagarami_Kaiwa))]
+        public static class Event_Uzagarami_KaiwaPatches
+        {
+            [HarmonyTranspiler]
+            [HarmonyPatch(nameof(Event_Uzagarami_Kaiwa.getUniqueUzagaramiId))]
+            public static IEnumerable<CodeInstruction> getUniqueUzagaramiIdTranspiler(IEnumerable<CodeInstruction> instructions)
+            {
+                List<CodeInstruction> ins = instructions.ToList();
+                List<CodeInstruction> outs = new List<CodeInstruction>();
+                bool addedInsertion = false;
+                for (int i = 0; i < ins.Count; i++)
+                {
+                    outs.Add(ins[i]);
+                    if (ins[i].opcode == OpCodes.Stloc_S && !addedInsertion)
+                    {
+                        AltAscMod.log.LogMessage($"Added day dialog patch!");
+                        addedInsertion = true;
+                        outs.Add(new CodeInstruction(OpCodes.Ldloc_0));
+                        outs.Add(new CodeInstruction(OpCodes.Callvirt, typeof(Alternates).GetMethod(nameof(Alternates.AddModdedDayDialog))));
+                    }
+                }
+
+                return outs;
             }
         }
 

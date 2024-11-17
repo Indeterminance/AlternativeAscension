@@ -93,6 +93,7 @@ namespace AlternativeAscension
         public bool isLove;
         public bool isLoveLoop;
         public int sleepCount;
+        public string password;
 
         public Sprite defaultBG;
         public Sprite followerBG = Addressables.LoadAssetAsync<Sprite>("eyes_bg.png").WaitForCompletion();

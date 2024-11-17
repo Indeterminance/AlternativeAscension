@@ -531,10 +531,51 @@ namespace NeedyEnums
         ENDING_LOVE_FINALE_JINE009,
         ENDING_LOVE_FINALE_JINE010,
 
-        EVENT_ALTLOGIN001,
-        EVENT_ALTLOGIN002,
-        EVENT_ALTLOGIN003,
-        EVENT_ALTLOGIN004
+        EVENT_ALTLOGIN_JINE001,
+        EVENT_ALTLOGIN_JINE002,
+        EVENT_ALTLOGIN_JINE003,
+        EVENT_ALTLOGIN_JINE004,
+        EVENT_ALTLOGIN_JINE005,
+        EVENT_ALTLOGIN_JINE006,
+        EVENT_ALTLOGIN_JINE007,
+        EVENT_ALTLOGIN_JINE008,
+        EVENT_ALTLOGIN_JINE009,
+        EVENT_ALTLOGIN_JINE010,
+        EVENT_ALTLOGIN_JINE011,
+        EVENT_ALTLOGIN_JINE012,
+        EVENT_ALTLOGIN_JINE013,
+        ENDING_FOLLOWER_DAY3_ALTLOGIN_JINE001,
+        ENDING_FOLLOWER_DAY3_ALTLOGIN_JINE002,
+
+        EVENT_SNAIL_JINE001,
+        EVENT_SNAIL_JINE002,
+        EVENT_SNAIL_JINE003,
+        EVENT_SNAIL_JINE004,
+        EVENT_SNAIL_JINE005,
+        EVENT_SNAIL_JINE006,
+
+        EVENT_SICK_JINE001,
+        EVENT_SICK_JINE002,
+        EVENT_SICK_JINE003,
+        EVENT_SICK_JINE004,
+        EVENT_SICK_JINE005,
+        EVENT_SICK_JINE006,
+        EVENT_SICK_JINE007,
+
+        EVENT_AWAKENING_JINE001,
+
+        EVENT_STARVING_JINE001,
+        EVENT_STARVING_JINE002,
+        EVENT_STARVING_JINE003,
+        EVENT_STARVING_JINE004,
+
+        EVENT_NEWS_JINE001,
+        EVENT_NEWS_JINE002,
+        EVENT_NEWS_JINE003,
+
+        EVENT_ICANFIXHER_JINE001,
+        EVENT_ICANFIXHER_JINE002,
+        EVENT_ICANFIXHER_JINE003,
     }
 
     public enum ModdedActionType
@@ -594,7 +635,8 @@ namespace NeedyEnums
         System_LoveConfirm,
         System_LoveDay,
         AltAsc_ModTitle,
-        Boot_ModIntro
+        Boot_ModIntro,
+        System_ChangePasswordApp
     }
 
     public enum ModdedSuperchatType
@@ -958,7 +1000,8 @@ namespace NeedyEnums
         PillDaypass_Follower = 1000,
         ScriptableLogin,
         Follower_taiki,
-        AltPoketter
+        AltPoketter,
+        ChangePassword
     }
 
     public enum ModdedEffectType

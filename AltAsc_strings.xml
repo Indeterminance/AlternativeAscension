@@ -992,7 +992,7 @@ id probably get attacked</bodyEN>
       <bodyEN>u think it wouldnt be that hard to stay logged in</bodyEN>
     </jine>
     <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE006" speaker="ame">
-      <bodyEN>can u log me in again? the password is still "angelkawaii2"</bodyEN>
+      <bodyEN>can u log me in again? the password is still "{}"</bodyEN>
     </jine>
     <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE007" speaker="ame">
       <bodyEN>p-chan please</bodyEN>
@@ -1020,6 +1020,12 @@ id probably get attacked</bodyEN>
     </jine>
     <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE015" speaker="ame">
       <bodyEN>i never changed it</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_DAY3_ALTLOGIN_JINE001" speaker="ame">
+      <bodyEN>even though we changed it</bodyEN>
+    </jine>
+    <jine id="ENDING_FOLLOWER_DAY3_ALTLOGIN_JINE002" speaker="ame">
+      <bodyEN>HOW?!</bodyEN>
     </jine>
     <jine id="ENDING_FOLLOWER_DAY3_LOGIN_JINE016" speaker="ame">
       <bodyEN>WHY THE FUCK DOES THIS KEEP HAPPENING TO ME??????</bodyEN>
@@ -1576,17 +1582,119 @@ id probably get attacked</bodyEN>
     <jine id="ENDING_LOVE_FINALE_JINE010" speaker="pi">
       <bodyEN>You got this.</bodyEN>
     </jine>
-    <jine id="EVENT_ALTLOGIN001" speaker="ame">
+    <jine id="EVENT_ALTLOGIN_JINE001" speaker="ame">
       <bodyEN>what</bodyEN>
     </jine>
-    <jine id="EVENT_ALTLOGIN002" speaker="ame">
+    <jine id="EVENT_ALTLOGIN_JINE002" speaker="ame">
       <bodyEN>this cant be right???</bodyEN>
     </jine>
-    <jine id="EVENT_ALTLOGIN003" speaker="ame">
+    <jine id="EVENT_ALTLOGIN_JINE003" speaker="ame">
       <bodyEN>i swear it was "angelkawaii2"</bodyEN>
     </jine>
-    <jine id="EVENT_ALTLOGIN004" speaker="ame">
-      <bodyEN>can you try again, p-chan?</bodyEN>
+    <jine id="EVENT_ALTLOGIN_JINE004" speaker="ame">
+      <bodyEN>now that i think about it</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN_JINE005" speaker="ame">
+      <bodyEN>thats a kinda shitty password</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN_JINE006" speaker="ame">
+      <bodyEN>okay p-chan, try logging in again first</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN_JINE007" speaker="ame">
+      <bodyEN>alright</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN_JINE008" speaker="ame">
+      <bodyEN>now time to change the password</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN_JINE009" speaker="ame">
+      <bodyEN>ive always sucked at making passwords, so...</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN_JINE010" speaker="ame">
+      <bodyEN>p-chan, i can trust you with this, right?</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN_JINE011" speaker="ame">
+      <bodyEN>that's better</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN_JINE012" speaker="ame">
+      <bodyEN>surely theres no way they can hack "{}", right?</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN_JINE013" speaker="ame">
+      <bodyEN>surely no way, its impossible</bodyEN>
+    </jine>
+    <jine id="EVENT_ALTLOGIN_JINE014" speaker="ame">
+      <bodyEN>nobody could hack you p-chan, you're so smart</bodyEN>
+    </jine>
+    <jine id="EVENT_SNAIL_JINE001" speaker="ame">
+      <bodyEN>hey p-chan</bodyEN>
+    </jine>
+    <jine id="EVENT_SNAIL_JINE002" speaker="ame">
+      <bodyEN>what would you do if we got a million yen</bodyEN>
+    </jine>
+    <jine id="EVENT_SNAIL_JINE003" speaker="ame">
+      <bodyEN>and an immortal snail chased us?</bodyEN>
+    </jine>
+    <jine id="EVENT_SNAIL_JINE004" speaker="ame">
+      <bodyEN>but nobody seems to ask</bodyEN>
+    </jine>
+    <jine id="EVENT_SNAIL_JINE005" speaker="ame">
+      <bodyEN>what would an immortal snail do with a million yen?</bodyEN>
+    </jine>
+    <jine id="EVENT_SNAIL_JINE006" speaker="ame">
+      <bodyEN>snails cant use money</bodyEN>
+    </jine>
+    <jine id="EVENT_SICK_JINE001" speaker="ame">
+      <bodyEN>p-chan i don't feel too good...</bodyEN>
+    </jine>
+    <jine id="EVENT_SICK_JINE002" speaker="ame">
+      <bodyEN>i think im gonna throw up</bodyEN>
+    </jine>
+    <jine id="EVENT_SICK_JINE003" speaker="ame">
+      <bodyEN>bleeeeghh</bodyEN>
+    </jine>
+    <jine id="EVENT_SICK_JINE004" speaker="ame">
+      <bodyEN>uuuugh that felt horrible</bodyEN>
+    </jine>
+    <jine id="EVENT_SICK_JINE005" speaker="ame">
+      <bodyEN>i almost forgot that taste</bodyEN>
+    </jine>
+    <jine id="EVENT_SICK_JINE006" speaker="ame">
+      <bodyEN>i think</bodyEN>
+    </jine>
+    <jine id="EVENT_SICK_JINE007" speaker="ame">
+      <bodyEN>im gonna take a break for today...</bodyEN>
+    </jine>
+    <jine id="EVENT_AWAKENING_JINE001" speaker="ame">
+      <bodyEN>PICK A GOD AND PRAY!</bodyEN>
+    </jine>
+    <jine id="EVENT_STARVING_JINE001" speaker="ame">
+      <bodyEN>omg i just saw the most amazing food on my feed</bodyEN>
+    </jine>
+    <jine id="EVENT_STARVING_JINE002" speaker="ame">
+      <bodyEN>kinda hungry now ngl</bodyEN>
+    </jine>
+    <jine id="EVENT_STARVING_JINE003" speaker="ame">
+      <bodyEN>feed me, p-chaaaaan</bodyEN>
+    </jine>
+    <jine id="EVENT_STARVING_JINE004" speaker="ame">
+      <bodyEN>im starviiiing</bodyEN>
+    </jine>
+    <jine id="EVENT_NEWS_JINE001" speaker="ame">
+      <bodyEN>apparently something big happened on the news</bodyEN>
+    </jine>
+    <jine id="EVENT_NEWS_JINE002" speaker="ame">
+      <bodyEN>who actually watches the news lol</bodyEN>
+    </jine>
+    <jine id="EVENT_NEWS_JINE003" speaker="ame">
+      <bodyEN>the real drama happens on tweeter</bodyEN>
+    </jine>
+    <jine id="EVENT_ICANFIXHER_JINE001" speaker="ame">
+      <bodyEN>hearing people say "i can fix her" is really funny somehow</bodyEN>
+    </jine>
+    <jine id="EVENT_ICANFIXHER_JINE002" speaker="ame">
+      <bodyEN>you really think you can fix me?</bodyEN>
+    </jine>
+    <jine id="EVENT_ICANFIXHER_JINE003" speaker="ame">
+      <bodyEN>i'd like to see you try</bodyEN>
     </jine>
   </jines>
   <streams>
@@ -3434,6 +3542,9 @@ Rest for eternity</bodyEN>
       <bodyEN>You've installed Alternative Ascension! Modded content can now be seen (like this!), some of which may not only spoil canon material, but not even be canon-compliant! If you're not okay with this... well, why did you install this?
       
 Otherwise, have fun! :)</bodyEN>
+    </string>
+    <string id="System_ChangePasswordApp">
+      <bodyEN>Change Password</bodyEN>
     </string>
   </sysstrings>
 </moddata>

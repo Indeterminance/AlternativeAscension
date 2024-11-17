@@ -71,6 +71,7 @@ namespace AlternativeAscension
             public int sleepCount;
             public bool isLove;
             public bool isLoveLoop;
+            public string password;
         }
 
         public static bool CheckTokyoAvailable()
@@ -174,6 +175,46 @@ namespace AlternativeAscension
             grid.spacing = new Vector2(8, 8);
             grid.childAlignment = TextAnchor.MiddleCenter;
             grid.cellSize = vals;
+        }
+
+        public static List<Tuple<int, string>> ExploreGameObject(GameObject go, int indent = 0, bool noDescend = false)
+        {
+            RectTransform rt = go.transform as RectTransform;
+            List<Tuple<int, string>> info = new List<Tuple<int, string>>
+            {
+                new Tuple<int, string>(indent, go.name + "->" + rt.localPosition + rt.localScale + $"({rt.rect.width},{rt.rect.height})")
+            };
+
+
+
+            foreach (Component c in go.GetComponents<Component>())
+            {
+                info.Add(new Tuple<int, string>(indent, "() " + c.GetType().Name));
+                info.AddRange(ExploreComponent(c, indent+4));
+            }
+            if (!noDescend) for (int i = 0; i < go.transform.childCount; i++)
+            {
+                info.AddRange(ExploreGameObject(go.transform.GetChild(i).gameObject, indent + 4));
+            }
+
+            if (indent == 0 || noDescend)
+            {
+                foreach (Tuple<int, string> line in info)
+                {
+                    AltAscMod.log.LogMessage($"{new string(" ".ToCharArray().First(), line.Item1)}{line.Item2}");
+                }
+            }
+            return info;
+        }
+
+        public static List<Tuple<int, string>> ExploreComponent(Component co, int index)
+        {
+            List<Tuple<int, string>> info = new List<Tuple<int, string>>();
+            foreach (FieldInfo field in co.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance))
+            {
+                info.Add(new Tuple<int, string>(index + 4, $"{field.Name} = {field.GetValue(co)}"));
+            }
+            return info;
         }
     }
 }

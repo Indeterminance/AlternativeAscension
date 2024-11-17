@@ -10,11 +10,14 @@ using UnityEngine;
 using System;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace AlternativeAscension
 {
     public class Scenario_loop1_day0_night_multi : NgoEvent
     {
+        bool DEBUG = false;
+        bool changedPass = false;
         ScriptableLogin login;
         bool finishEvent = false;
 
@@ -62,13 +65,19 @@ namespace AlternativeAscension
             // But if FOLLOWERS was the last ending obtained, guarantee an invalid login.
             bool lastFollowers = endings.Last() == ModdedEndingType.Ending_Followers.Swap() && endings.FindAll(e => e == ModdedEndingType.Ending_Followers.Swap()).Count() == 1;
 
-            if (genericActivation || lastFollowers)
+            if ((genericActivation || lastFollowers || DEBUG) && !changedPass)
             {
                 login.loginActions.Enqueue(new Func<UniTask>(async () =>
                 {
                     SingletonMonoBehaviour<WindowManager>.Instance.GetWindowFromApp(ModdedAppType.ScriptableLogin.Swap()).Uncloseable();
                     await Invalidate();
                 }));
+                login.loginActions.Enqueue(new Func<UniTask>(async () =>
+                {
+                    SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(ModdedAppType.ScriptableLogin.Swap());
+                    await ChangePass();
+                }));
+
 
                 if (UnityEngine.Random.Range(0, 10) == 0)
                 {
@@ -78,7 +87,7 @@ namespace AlternativeAscension
                     }));
                 }
             }
-            login.loginActions.Enqueue(new Func<UniTask>(async () =>
+            else login.loginActions.Enqueue(new Func<UniTask>(async () =>
             {
                 SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_loop1_day0_night_multi_AfterLogin>();
                 base.endEvent();
@@ -89,12 +98,62 @@ namespace AlternativeAscension
         private async UniTask Invalidate()
         {
             login.isInvalidLogin.Value = true;
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN001.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN002.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN003.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN004.Swap());
+            login._login.interactable = false;
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE001.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE002.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE003.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE004.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE005.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE006.Swap());
+
+            login._login.interactable = true;
         }
 
+        private async UniTask ChangePass()
+        {
+            await UniTask.Delay(Constants.FAST, false, PlayerLoopTiming.Update, default, false);
+            IWindow changePassWin = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(ModdedAppType.ChangePassword.Swap());
+            changePassWin.Uncloseable();
+            GameObject.Find("LoginShortCut").GetComponent<CanvasGroup>().alpha = 0.4f;
+            GameObject.Find("LoginShortCut").GetComponent<CanvasGroup>().interactable = false;
+            GameObject.Find("LoginShortCut").GetComponent<CanvasGroup>().blocksRaycasts = true;
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE007.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE008.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE009.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE010.Swap());
 
+            SingletonMonoBehaviour<AltAscModManager>.Instance.ObserveEveryValueChanged((AltAscModManager a) => a.password, FrameCountType.Update, false).Subscribe(async delegate (string pass)
+            {
+                if (pass == "angelkawaii2") return;
+                await ConfirmedPass();
+            }).AddTo(this.compositeDisposable);
+        }
+
+        private async UniTask ConfirmedPass()
+        {
+            //await UniTask.Delay(Constants.FAST, false, PlayerLoopTiming.Update, default, false);
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE011.Swap());
+            string password = SingletonMonoBehaviour<AltAscModManager>.Instance.password;
+            string baseMessage = JineDataConverter.GetJineTextFromTypeId(ModdedJineType.EVENT_ALTLOGIN_JINE012.Swap());
+            //AltAscMod.log.LogMessage($"Original message: {baseMessage}");
+            string message = baseMessage.Replace(@"{}",$"\"{password}\"");
+
+
+            JineData d = new JineData()
+            {
+                day = 1,
+                id = JineType.None,
+                responseType = ResponseType.Freeform,
+                stampType = StampType.None,
+                user = JineUserType.ame,
+                freeMessage = message
+            };
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(d);
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.EVENT_ALTLOGIN_JINE013.Swap());
+            GameObject.Find("LoginShortCut").GetComponent<CanvasGroup>().alpha = 1f;
+            GameObject.Find("LoginShortCut").GetComponent<CanvasGroup>().interactable = true;
+            GameObject.Find("LoginShortCut").GetComponent<CanvasGroup>().blocksRaycasts = true;
+            changedPass = true;
+        }
     }
 }
