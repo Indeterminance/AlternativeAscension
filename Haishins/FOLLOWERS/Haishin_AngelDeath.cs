@@ -129,6 +129,10 @@ namespace AlternativeAscension
             PostEffectManager.Instance.ResetShader();
             await base.StartScenario();
             this._Live.HaishinClean();
+            SingletonMonoBehaviour<AltAscModManager>.Instance.anim.Kill();
+            PostEffectManager.Instance.SetShaderWeight(0f);
+            PostEffectManager.Instance.ResetShader();
+            PostEffectManager.Instance.ResetShaderCalmly();
             SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_follower_day3_Afterhaishin>();
         }
     }

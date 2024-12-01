@@ -20,10 +20,10 @@ namespace AlternativeAscension
         {
             base.startEvent(cancellationToken);
             SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_normal_e");
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.TOKYO_JINE001.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.TOKYO_JINE002.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.TOKYO_JINE003.Swap());
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.TOKYO_JINE004.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ARIAKE_JINE001.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ARIAKE_JINE002.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ARIAKE_JINE003.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(ModdedJineType.ARIAKE_JINE004.Swap());
             base.endEvent();
         }
     }

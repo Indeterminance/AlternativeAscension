@@ -27,6 +27,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Security.Policy;
 using UnityEngine.AddressableAssets;
 using System.Threading;
+using static AlternativeAscension.AAPatches;
 
 namespace AlternativeAscension
 {
@@ -55,8 +56,14 @@ namespace AlternativeAscension
 
         public void InitViewers()
         {
+            viewerCover = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("GamenForViewers.prefab").WaitForCompletion(), new Vector3(0,0,50), Quaternion.identity);
+
             Viewer = Addressables.LoadAssetAsync<GameObject>("ViewerContainer.prefab").WaitForCompletion();
             Viewer.transform.GetChild(0).gameObject.AddComponent<Viewer>();
+
+            LargeViewer = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("LargeContainer.prefab").WaitForCompletion());
+
+            LargeViewer.SetActive(false);
         }
 
         public void InitEffects()
@@ -89,6 +96,8 @@ namespace AlternativeAscension
         public ReactiveProperty<bool> viewing = new ReactiveProperty<bool>(false);
         public ReactiveProperty<int> viewInterval = new ReactiveProperty<int>(160);
         public ReactiveProperty<Color> viewColor = new ReactiveProperty<Color>(Color.red);
+        public GameObject viewerCover;
+        public GameObject LargeViewer;
 
         public bool isLove;
         public bool isLoveLoop;
@@ -105,6 +114,8 @@ namespace AlternativeAscension
 
         public TweenerCore<float, float, FloatOptions> anim;
         public List<IWindow> pills = new List<IWindow>();
+
+
 
         public int GetAMAStressDelta(string question)
         {
@@ -224,24 +235,21 @@ namespace AlternativeAscension
 
         public void CreateViewer()
         {
-            RectTransform mainPanel = GameObject.Find("MainPanel").transform as RectTransform;
-            float maxX = mainPanel.rect.width / mainPanel.localScale.x;
-            float maxY = mainPanel.rect.height / mainPanel.localScale.y;
-            float num = UnityEngine.Random.Range(0, maxX);
-            float num2 = UnityEngine.Random.Range(0, maxY);
-
-            GameObject obj = null;
-            if (transform.childCount < 300)
+            Transform obj = null;
+            float num = UnityEngine.Random.Range(-960f, 960f);
+            float num2 = UnityEngine.Random.Range(-540f, 540f);
+            AltAscMod.log.LogMessage($"Viewers: {viewerCover.transform.childCount}");
+            if (viewerCover.transform.childCount < 300)
             {
-                obj = UnityEngine.Object.Instantiate(Viewer, new Vector2(num, num2), Quaternion.identity, transform);
+                obj = UnityEngine.Object.Instantiate(Viewer, new Vector3(num, num2, 50), Quaternion.identity, viewerCover.transform).transform;
             }
             else
             {
                 bool foundObject = false;
-                for (int i = 0; i < transform.childCount; i++)
+                for (int i = 0; i < viewerCover.transform.childCount; i++)
                 {
-                    obj = transform.GetChild(i).gameObject;
-                    if (!obj.activeSelf)
+                    obj = viewerCover.transform.GetChild(i);
+                    if (!obj.gameObject.activeSelf)
                     {
                         foundObject = true;
                         break;
@@ -249,17 +257,16 @@ namespace AlternativeAscension
                 }
                 if (!foundObject) return;
             }
-            obj.transform.GetChild(0).position = new Vector2(num, num2);
-
+            obj.GetChild(0).localPosition = new Vector2(num, num2);
         }
 
         public async UniTask SetViewersInactive()
         {
             viewing.Value = false;
             await UniTask.Delay(viewInterval.Value);
-            for (int i = 0; i < transform.childCount; i++)
+            for (int i = 0; i < viewerCover.transform.childCount; i++)
             {
-                transform.GetChild(i).gameObject.SetActive(false);
+                viewerCover.transform.GetChild(i).gameObject.SetActive(false);
             }
         }
 

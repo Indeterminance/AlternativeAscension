@@ -20,6 +20,7 @@ using TMPro;
 using DG.Tweening.Core;
 using DG.Tweening.Plugins.Options;
 using UnityEngine.PlayerLoop;
+using UnityEngine.AddressableAssets;
 
 namespace AlternativeAscension
 {
@@ -58,7 +59,6 @@ namespace AlternativeAscension
             string baseMessage = JineDataConverter.GetJineTextFromTypeId(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE006.Swap());
             string message = baseMessage.Replace(@"{}", password);
 
-
             JineData d = new JineData()
             {
                 day = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex),
@@ -68,7 +68,7 @@ namespace AlternativeAscension
                 user = JineUserType.ame,
                 freeMessage = message
             };
-            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE006.Swap());
+            await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistory(d);
             loginComp._input.interactable = true;
         }
 
@@ -113,7 +113,7 @@ namespace AlternativeAscension
             login.Touched();
 
             string pass = SingletonMonoBehaviour<AltAscModManager>.Instance.password;
-            for (int i = 0; i < pass.Length; i++)
+            for (int i = 0; i < pass.Length+1; i++)
             {
                 string input = string.Concat(pass.Take(i));
                 await UniTask.Delay(60);
@@ -189,6 +189,7 @@ namespace AlternativeAscension
             }, 0.03f, 2).SetEase(Ease.InSine).Play();
             //SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_d");
             await UniTask.Delay(2000);
+            SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.SetActive(true);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine).Uncloseable();
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE024.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
@@ -287,9 +288,10 @@ namespace AlternativeAscension
 
             IWindow login = SingletonMonoBehaviour<WindowManager>.Instance.GetWindowFromApp((AppType)(int)ModdedAppType.ScriptableLogin);
             login.Touched();
-            for (int i = 0; i < 13; i++)
+            string password = SingletonMonoBehaviour<AltAscModManager>.Instance.password;
+            for (int i = 0; i < password.Length+1; i++)
             {
-                string input = string.Concat("angelkawaii2".Take(i));
+                string input = string.Concat(password.Take(i));
                 await UniTask.Delay(60);
                 loginComp._input.text = input;
                 //await loginComp._input.ObserveEveryValueChanged((TMP_InputField t) => t.text, FrameCountType.Update, false);
@@ -309,7 +311,7 @@ namespace AlternativeAscension
             DOTween.To(() => startColor, x => GameObject.Find("MainPanel").GetComponent<Image>().color = new Color(x, 0f, 0f, 1f), 0f, 2).SetEase(Ease.InSine).Play();
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Webcam);
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp((AppType)(int)ModdedAppType.ScriptableLogin);
-            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_normal_g");
+            SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_idle_anxiety_d");
             await UniTask.Delay(2000);
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE041.Swap());
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE042.Swap());
@@ -329,7 +331,8 @@ namespace AlternativeAscension
             SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.BADPASSWORD_TWEET002.Swap());
             BumpDayMax();
             SingletonMonoBehaviour<StatusManager>.Instance.UpdateStatusToNumber(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.AngelDeath);
-            SingletonMonoBehaviour<NotificationManager>.Instance.AddTimePassingNotifier(1);
+            await UniTask.Delay(8000);
+            await SingletonMonoBehaviour<StatusManager>.Instance.timePassing(1);
             base.endEvent();
         }
     }

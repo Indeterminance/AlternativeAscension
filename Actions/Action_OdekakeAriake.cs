@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AlternativeAscension
 {
-    public class Action_OdekakeTokyo : NgoEvent
+    public class Action_OdekakeAriake : NgoEvent
     {
         // Token: 0x06001CF2 RID: 7410 RVA: 0x000843F9 File Offset: 0x000825F9
         public override void Awake()
@@ -24,14 +24,14 @@ namespace AlternativeAscension
             bool firstTime = sm.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) == (int)FollowerPlotFlagValues.None;
             if (firstTime)
             {
-                SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.TOKYO_TWEET001.Swap(), new List<ModdedKusoRepType>
+                SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.ARIAKE_TWEET001.Swap(), new List<ModdedKusoRepType>
                 {
-                    ModdedKusoRepType.TOKYO_TWEET001_KUSO001,
-                    ModdedKusoRepType.TOKYO_TWEET001_KUSO002,
-                    ModdedKusoRepType.TOKYO_TWEET001_KUSO003,
-                    ModdedKusoRepType.TOKYO_TWEET001_KUSO004,
+                    ModdedKusoRepType.ARIAKE_TWEET001_KUSO001,
+                    ModdedKusoRepType.ARIAKE_TWEET001_KUSO002,
+                    ModdedKusoRepType.ARIAKE_TWEET001_KUSO003,
+                    ModdedKusoRepType.ARIAKE_TWEET001_KUSO004,
                 }.Swap(), null);
-                SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.TOKYO_TWEET002.Swap(), null, null);
+                SingletonMonoBehaviour<PoketterManager>.Instance.AddQueueWithKusoreps(ModdedTweetType.ARIAKE_TWEET002.Swap(), null, null);
             }
             await sm.UpdateStatus(ModdedStatusType.FollowerPlotFlag.Swap(), (int)FollowerPlotFlagValues.VisitedComiket);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Webcam, true);

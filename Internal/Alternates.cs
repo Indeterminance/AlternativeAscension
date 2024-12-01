@@ -200,7 +200,7 @@ namespace AlternativeAscension
             // Get private fields
             Button _shortcut = new Traverse(shortcut).Field(nameof(Shortcut._shortcut)).GetValue<Button>();
             TooltipCaller _tooltip = new Traverse(shortcut).Field(nameof(Shortcut._tooltip)).GetValue<TooltipCaller>();
-            Traverse _dayPart = new Traverse(shortcut).Field(nameof(Shortcut._dayPart));
+            ReactiveProperty<int> _dayPart = new Traverse(shortcut).Field(nameof(Shortcut._dayPart)).GetValue<ReactiveProperty<int>>();
 
             if (shortcut.appType == AppType.Login) shortcut.appType = ModdedAppType.ScriptableLogin.Swap();
 
@@ -224,7 +224,36 @@ namespace AlternativeAscension
                     _tooltip.type = TooltipType.Tooltip_Angel;
                 }
             }).AddTo(shortcut.gameObject);
-
+            if (shortcut.appType == AppType.NetaChoose)
+            {
+                _shortcut.onClick.RemoveAllListeners();
+                _shortcut.onClick.AddListener(delegate
+                {
+                    int day = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
+                    int plotflag = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap());
+                    if (SingletonMonoBehaviour<EventManager>.Instance.isGedatsu)
+                    {
+                        SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Action_HaishinStart>();
+                        return;
+                    }
+                    if (day == 16 && plotflag == (int)FollowerPlotFlagValues.VisitedComiket)
+                    {
+                        SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Event_PostComiket>();
+                        return;
+                    }
+                    SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(shortcut.appType, true);
+                    return;
+                });
+                _dayPart.Subscribe(delegate (int v)
+                {
+                    if (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) >= (int)FollowerPlotFlagValues.AngelFuneral)
+                    {
+                        _shortcut.interactable = false;
+                        _tooltip.isShowTooltip = false;
+                        return;
+                    }
+                }).AddTo(shortcut.gameObject);
+            }
 
 
             /*/ Redo click listeners

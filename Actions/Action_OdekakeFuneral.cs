@@ -35,18 +35,18 @@ namespace AlternativeAscension
             if (dark)
             {
                 PostEffectManager.Instance.SetShader(EffectType.WristCut);
-                PostEffectManager.Instance.SetShaderWeight(1f);
                 PostEffectManager.Instance.SetShader(EffectType.Bleeding);
-                PostEffectManager.Instance.SetShaderWeight(0.8f);
+                PostEffectManager.Instance.SetShaderWeight(1f, EffectType.WristCut);
+                PostEffectManager.Instance.SetShaderWeight(1f, EffectType.Bleeding);
+                PostEffectManager.Instance.SetShaderWeight(0.1f, EffectType.BloomLight);
+                PostEffectManager.Instance.AnmakuWeight(0f);
                 GameObject.Find("ShortCutParent").GetComponent<CanvasGroup>().alpha = 0.5f;
-                SingletonMonoBehaviour<WebCamManager>.Instance.SetBaseAnim("stream_ame_out_d");
-                await UniTask.Delay(3000, false, PlayerLoopTiming.Update, default, false);
             }
             GameObject.Find("ShortCutParent").GetComponent<CanvasGroup>().alpha = 0f;
             GameObject.Find("ShortCutParent").GetComponent<CanvasGroup>().interactable = false;
             GameObject.Find("ShortCutParent").GetComponent<CanvasGroup>().blocksRaycasts = false;
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
-            SingletonMonoBehaviour<TaskbarManager>.Instance.TaskBarGroup.alpha = 0f;
+            //SingletonMonoBehaviour<TaskbarManager>.Instance.TaskBarGroup.alpha = 0f;
             //NeedyMintsMod.log.LogMessage($"Followers!");
             await GoOut();
 
@@ -64,30 +64,23 @@ namespace AlternativeAscension
             SingletonMonoBehaviour<JineManager>.Instance.Uncontrolable();
             AudioManager.Instance.PlaySeByType(SoundType.SE_Odekake_zazaza, false);
             SingletonMonoBehaviour<WebCamManager>.Instance.GoOut();
-            await UniTask.Delay(2000);
+            if (dark) await UniTask.Delay(Constants.SLOW);
+            else await UniTask.Delay(Constants.FAST);
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(AppType.Webcam);
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(AppType.GoOut);
-            AppType TrainTime = AppType.Train;
 
-            switch (SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayPart))
-            {
-                case 0:
-                    TrainTime = AppType.Train;
-                    break;
-                case 2:
-                    TrainTime = AppType.Train_night;
-                    break;
-                default: goto case 0;
+            IWindow train = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Train_night, true);
+            train.GameObjectTransform.position = new Vector3(-2.5f, 2f, 60f);
+            AltAscMod.log.LogMessage(train.GameObjectTransform.position);
+            if (dark) {
+                SingletonMonoBehaviour<AltAscModManager>.Instance.viewing.Value = true;
+                SingletonMonoBehaviour<AltAscModManager>.Instance.viewInterval.Value = 80;
             }
-
-            SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(TrainTime, true);
-            if (dark) SingletonMonoBehaviour<AltAscModManager>.Instance.viewing.Value = true;
-            if (dark) SingletonMonoBehaviour<AltAscModManager>.Instance.viewInterval.Value = 80;
             this.ClickableAllScreen(true);
 
             AudioManager.Instance.PlayBgmByType(SoundType.BGM_Train, false);
             await UniTask.Delay(15000, false, PlayerLoopTiming.Update);
-            SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(TrainTime);
+            SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(AppType.Train_night);
 
             this.ClickableAllScreen(false);
             //SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewing.Value = false;

@@ -18,7 +18,7 @@ namespace AlternativeAscension
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
             base.startEvent(cancellationToken);
-            await UniTask.Delay(Constants.MIDDLE);
+            //await UniTask.Delay(Constants.MIDDLE);
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0.4f);
             SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
             SingletonMonoBehaviour<EventManager>.Instance.alpha = (AlphaType)(int)ModdedAlphaType.FollowerAlpha;

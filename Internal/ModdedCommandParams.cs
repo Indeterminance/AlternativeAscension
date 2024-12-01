@@ -10,12 +10,12 @@ namespace AlternativeAscension
 {
     internal class ModdedCommandParams
     {
-        public static CmdMaster.Param OdekakeTokyoParam = new CmdMaster.Param()
+        public static CmdMaster.Param OdekakeAriakeParam = new CmdMaster.Param()
         {
-            ParentAct = "OdekakeTokyo",
-            Id = "OdekakeTokyo",
-            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeTokyo").Name.BodyEN,
-            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeTokyo").Desc.BodyEN,
+            ParentAct = "OdekakeAriake",
+            Id = "OdekakeAriake",
+            LabelEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeAriake").Name.BodyEN,
+            DescEn = AltAscMod.DATA.Commands.Command.Find(s => s.Id == "OdekakeAriake").Desc.BodyEN,
             PassingTime = 2,
             StressDelta = 5,
             YamiDelta = 10,
@@ -181,10 +181,10 @@ namespace AlternativeAscension
 
     internal class ModdedActionParams
     {
-        public static ActMaster.Param OdekakeTokyoParam = new ActMaster.Param()
+        public static ActMaster.Param OdekakeAriakeParam = new ActMaster.Param()
         {
-            Id = "OdekakeTokyo",
-            TitleEn = "Tokyo"
+            Id = "OdekakeAriake",
+            TitleEn = "Ariake"
         };
 
         public static ActMaster.Param OdekakePanic1Param = new ActMaster.Param()

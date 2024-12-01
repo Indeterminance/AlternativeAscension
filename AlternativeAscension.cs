@@ -41,7 +41,7 @@ namespace AlternativeAscension
     {
         public const string id = "nso.altascension";
         public const string modName = "Needy Streamer Overload: Alternative Ascension";
-        public const string ver = "0.1.0";
+        public const string ver = "1.0.0";
         public const string assetdec = "NSOAltAsc";
         public static string FILEPATH;
 
@@ -130,7 +130,7 @@ namespace AlternativeAscension
                 AltAscMod.log.LogMessage($"Patched {harmony.GetPatchedMethods().Count()} methods...");
 
                 log.LogMessage("Patched NSO, press to continue...");
-                Console.ReadKey();
+                //Console.ReadKey();
             }
             catch (Exception e)
             {

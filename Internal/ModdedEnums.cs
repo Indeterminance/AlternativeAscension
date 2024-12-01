@@ -136,10 +136,10 @@ namespace NeedyEnums
         ENDING_SLEEPY_JINE020,
         ENDING_SLEEPY_JINE021,
 
-        TOKYO_JINE001,
-        TOKYO_JINE002,
-        TOKYO_JINE003,
-        TOKYO_JINE004,
+        ARIAKE_JINE001,
+        ARIAKE_JINE002,
+        ARIAKE_JINE003,
+        ARIAKE_JINE004,
 
         FOLLOW_ST_JINE001,
         FOLLOW_ST_JINE002,
@@ -580,7 +580,7 @@ namespace NeedyEnums
 
     public enum ModdedActionType
     {
-        OdekakeTokyo = 43,
+        OdekakeAriake = 43,
         HaishinComiket,
         HaishinAngelWatch,
         HaishinAngelDeath,
@@ -598,7 +598,7 @@ namespace NeedyEnums
 
     public enum ModdedCmdType
     {
-        OdekakeTokyo = 130,
+        OdekakeAriake = 130,
         HaishinComiket,
         HaishinAngelWatch,
         HaishinAngelDeath,
@@ -616,7 +616,7 @@ namespace NeedyEnums
 
     public enum ModdedCommandType
     {
-        OdekakeTokyo = 1000,
+        OdekakeAriake = 1000,
         OkusuriStalk,
         Internet2chStalk
     }
@@ -664,12 +664,13 @@ namespace NeedyEnums
         EVENT_SHADER,
         EVENT_SHADERWAIT,
         EVENT_MAINPANELCOLOR,
+        TOGGLELARGEVIEWER,
     }
 
     public enum ModdedTweetType
     {
-        TOKYO_TWEET001 = 2001,
-        TOKYO_TWEET002,
+        ARIAKE_TWEET001 = 2001,
+        ARIAKE_TWEET002,
         DARKNIGHT_TWEET001,
         DARKNIGHT_TWEET002,
         DARKNIGHT_TWEET003,
@@ -708,10 +709,10 @@ namespace NeedyEnums
 
     public enum ModdedKusoRepType
     {
-        TOKYO_TWEET001_KUSO001 = 1000,
-        TOKYO_TWEET001_KUSO002,
-        TOKYO_TWEET001_KUSO003,
-        TOKYO_TWEET001_KUSO004,
+        ARIAKE_TWEET001_KUSO001 = 1000,
+        ARIAKE_TWEET001_KUSO002,
+        ARIAKE_TWEET001_KUSO003,
+        ARIAKE_TWEET001_KUSO004,
         STALKODEKAKE2_TWEET001_KUSO001,
         STALKODEKAKE2_TWEET001_KUSO002,
         STALKODEKAKE2_TWEET001_KUSO003,

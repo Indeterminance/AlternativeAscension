@@ -23,12 +23,10 @@ namespace AlternativeAscension
         // Token: 0x06001CF3 RID: 7411 RVA: 0x000BC20C File Offset: 0x000BA40C
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
-            //await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
+            //await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);;
             base.startEvent(cancellationToken);
             GameObject.Find("MainPanel").GetComponent<Image>().color = Color.black;
             SingletonMonoBehaviour<AltAscModManager>.Instance.isFollowerBG.Value = true;
-            SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(false, 0.4f);
-            SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(false);
             //await UniTask.Delay(Constants.MIDDLE);
             SingletonMonoBehaviour<WindowManager>.Instance.CleanOnCommand();
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine, true);

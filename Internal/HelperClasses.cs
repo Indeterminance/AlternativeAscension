@@ -74,7 +74,7 @@ namespace AlternativeAscension
             public string password;
         }
 
-        public static bool CheckTokyoAvailable()
+        public static bool CheckComiketAvailable()
         {
             int day = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayIndex);
             int dayPart = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(StatusType.DayPart);
@@ -177,7 +177,7 @@ namespace AlternativeAscension
             grid.cellSize = vals;
         }
 
-        public static List<Tuple<int, string>> ExploreGameObject(GameObject go, int indent = 0, bool noDescend = false)
+        public static List<Tuple<int, string>> ExploreGameObject(GameObject go, int indent = 0, bool noDescend = false, bool noComponentProperty = false)
         {
             RectTransform rt = go.transform as RectTransform;
             List<Tuple<int, string>> info = new List<Tuple<int, string>>
@@ -190,9 +190,9 @@ namespace AlternativeAscension
             foreach (Component c in go.GetComponents<Component>())
             {
                 info.Add(new Tuple<int, string>(indent, "() " + c.GetType().Name));
-                info.AddRange(ExploreComponent(c, indent+4));
+                if (!noComponentProperty) info.AddRange(ExploreComponent(c, indent+4));
             }
-            if (!noDescend) for (int i = 0; i < go.transform.childCount; i++)
+            for (int i = 0; i < go.transform.childCount; i++)
             {
                 info.AddRange(ExploreGameObject(go.transform.GetChild(i).gameObject, indent + 4));
             }

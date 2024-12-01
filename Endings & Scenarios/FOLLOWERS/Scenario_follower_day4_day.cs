@@ -28,6 +28,7 @@ namespace AlternativeAscension
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
             base.startEvent(cancellationToken);
+            SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.SetActive(false);
             await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
 
             SingletonMonoBehaviour<AltAscModManager>.Instance.isFollowerBG.Value = true;

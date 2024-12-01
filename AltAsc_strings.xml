@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <moddata>
   <commands>
-    <command id="OdekakeTokyo">
+    <command id="OdekakeAriake">
       <label>
-        <bodyEN>Tokyo</bodyEN>
+        <bodyEN>Ariake</bodyEN>
       </label>
       <description>
-        <bodyEN>Go to the most popular nerd convention in the world!!!</bodyEN>
+        <bodyEN>Let's go to the most popular nerd convention in the world!!!</bodyEN>
       </description>
     </command>
     <command id="OkusuriDaypassStalk">
@@ -102,10 +102,10 @@ isn't always the best idea.</osimai>
     </ending>
   </endings>
   <tweets>
-    <tweet id="TOKYO_TWEET001" user="kangel" cmdid="OdekakeTokyo">
+    <tweet id="ARIAKE_TWEET001" user="kangel" cmdid="OdekakeAriake">
       <bodyEN>I did something super special today 🎉  I can't say much yet, but I promise you guys are gonna hear all about it soon! 🤫</bodyEN>
     </tweet>
-    <tweet id="TOKYO_TWEET002" user="ame" cmdid="OdekakeTokyo">
+    <tweet id="ARIAKE_TWEET002" user="ame" cmdid="OdekakeAriake">
       <bodyEN>omg that was so scary, did i really think nobody would notice kangel at THE nerd convention? bet they don't know it was the real kangel tho 😆</bodyEN>
     </tweet>
     <tweet id="DARKNIGHT_TWEET001" user="kangel">
@@ -214,16 +214,16 @@ still not sure who won that, but god that was the best sex ever</bodyEN>
     </tweet>
   </tweets>
   <kusos>
-    <kuso id="TOKYO_TWEET001_KUSO001">
+    <kuso id="ARIAKE_TWEET001_KUSO001">
       <bodyEN>omg what is it kangel?????</bodyEN>
     </kuso>
-    <kuso id="TOKYO_TWEET001_KUSO002">
+    <kuso id="ARIAKE_TWEET001_KUSO002">
       <bodyEN>Please take a break, I'm running out of money for SuperChats...</bodyEN>
     </kuso>
-    <kuso id="TOKYO_TWEET001_KUSO003">
+    <kuso id="ARIAKE_TWEET001_KUSO003">
       <bodyEN>CANT WAIT</bodyEN>
     </kuso>
-    <kuso id="TOKYO_TWEET001_KUSO004">
+    <kuso id="ARIAKE_TWEET001_KUSO004">
       <bodyEN>ooh oooh ooh i bet she went out somewhere cool!</bodyEN>
     </kuso>
     <kuso id="STALKODEKAKE2_TWEET001_KUSO001">
@@ -465,16 +465,16 @@ still not sure who won that, but god that was the best sex ever</bodyEN>
     <jine id="ENDING_SLEEPY_JINE021" speaker="ame">
       <bodyEN>mwah ❤</bodyEN>
     </jine>
-    <jine id="TOKYO_JINE001" speaker="ame">
+    <jine id="ARIAKE_JINE001" speaker="ame">
       <bodyEN>ngl that was really fun</bodyEN>
     </jine>
-    <jine id="TOKYO_JINE002" speaker="ame">
+    <jine id="ARIAKE_JINE002" speaker="ame">
       <bodyEN>seeing all the nerds in their natural habitat was really eye-opening</bodyEN>
     </jine>
-    <jine id="TOKYO_JINE003" speaker="ame">
+    <jine id="ARIAKE_JINE003" speaker="ame">
       <bodyEN>no way im not talking about this as soon as comiket ends</bodyEN>
     </jine>
-    <jine id="TOKYO_JINE004" speaker="ame">
+    <jine id="ARIAKE_JINE004" speaker="ame">
       <bodyEN>but ill let the nerds have their fun first</bodyEN>
     </jine>
     <jine id="ODEKAKEPANIC1_POST001" speaker="ame">
@@ -3449,7 +3449,7 @@ this got a little too intense for me.</bodyEN>
           <bodyEN>Yeah, what about it?</bodyEN>
         </comment>
         <comment id="COM003">
-          <bodyEN>so someone who looked like she could be kangel was spotten leaving the tokyo station later that day</bodyEN>
+          <bodyEN>so someone who looked like she could be kangel was spotten leaving the ariake station later that day</bodyEN>
         </comment>
         <comment id="COM004">
           <bodyEN>i saw her too</bodyEN>

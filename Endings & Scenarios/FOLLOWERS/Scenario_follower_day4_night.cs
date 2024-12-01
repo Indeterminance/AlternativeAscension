@@ -27,8 +27,19 @@ namespace AlternativeAscension
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
             base.startEvent(cancellationToken);
+            SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.SetActive(true);
             await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
-            
+            PostEffectManager.Instance.ResetShader();
+            AudioManager.Instance.StopBgm();
+            float weight = 0f;
+            PostEffectManager.Instance.SetShader(EffectType.Anmaku);
+            PostEffectManager.Instance.SetShaderWeight(0.4f,EffectType.Anmaku);
+            //DOTween.To(() => weight, delegate (float x)
+            //{
+            //    PostEffectManager.Instance.SetShaderWeight(x);
+            //}, 1f, 30f).Play().WaitForCompletion();
+            //SingletonMonoBehaviour<ChanceEffectController>.Instance.OnReach(ChanceEffectType.None);
+
             SingletonMonoBehaviour<AltAscModManager>.Instance.isFollowerBG.Value = true;
             SingletonMonoBehaviour<JineManager>.Instance.Uncontrolable();
 
@@ -74,9 +85,7 @@ namespace AlternativeAscension
 
             SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(true, 0.1f);
             //SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(true);
-            // TODO: The below "end event" function isn't running. Figure out why.
             base.endEvent();
-            //AltAscMod.log.LogMessage($"Ended event!");
         }
     }
 }

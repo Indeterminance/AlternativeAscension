@@ -496,13 +496,8 @@ namespace AlternativeAscension
             await base.StartScenario();
             this._Live.HaishinClean();
             SingletonMonoBehaviour<JineManager>.Instance.StartStamp();
-            SingletonMonoBehaviour<EventManager>.Instance.AddEventQueue<Scenario_follower_day2_AfterAllNighterhaishin>();
-        }
-
-        public new async UniTask EndScenario()
-        {
             SingletonMonoBehaviour<AltAscModManager>.Instance.overnightStreamStartDay = 0;
-            await base.EndScenario();
+            SingletonMonoBehaviour<EventManager>.Instance.AddEventQueue<Scenario_follower_day2_AfterAllNighterhaishin>();
         }
     }
 }
