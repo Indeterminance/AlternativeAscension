@@ -12,6 +12,7 @@ using HarmonyLib;
 using DG.Tweening;
 using System.Collections.Generic;
 using static AlternativeAscension.Alternates;
+using UnityEngine.UI;
 
 namespace AlternativeAscension
 {
@@ -71,18 +72,14 @@ namespace AlternativeAscension
 
             IWindow train = SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Train_night, true);
             train.GameObjectTransform.position = new Vector3(-2.5f, 2f, 60f);
-            AltAscMod.log.LogMessage(train.GameObjectTransform.position);
             if (dark) {
                 SingletonMonoBehaviour<AltAscModManager>.Instance.viewing.Value = true;
-                SingletonMonoBehaviour<AltAscModManager>.Instance.viewInterval.Value = 80;
+                SingletonMonoBehaviour<AltAscModManager>.Instance.viewInterval.Value = 30; //80
             }
-            this.ClickableAllScreen(true);
 
-            AudioManager.Instance.PlayBgmByType(SoundType.BGM_Train, false);
+            AudioManager.Instance.PlayBgmByType(SoundType.BGM_Train, true);
             await UniTask.Delay(15000, false, PlayerLoopTiming.Update);
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(AppType.Train_night);
-
-            this.ClickableAllScreen(false);
             //SingletonMonoBehaviour<NeedyMintsModManager>.Instance.viewing.Value = false;
         }
     }

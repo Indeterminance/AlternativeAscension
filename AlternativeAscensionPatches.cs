@@ -35,6 +35,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.ComponentModel;
+using UnityEngine.SceneManagement;
 
 namespace AlternativeAscension
 {
@@ -1499,8 +1500,7 @@ namespace AlternativeAscension
                 SingletonMonoBehaviour<StatusManager>.Instance.GetStatusObservable(StatusType.DayPart).DistinctUntilChanged<int>().Subscribe(delegate (int _)
                 {
                     inst.fetchNextActionHint();
-                })
-                    .AddTo(inst.gameObject);
+                }).AddTo(inst.gameObject);
                 return false;
             }
 
@@ -1909,6 +1909,7 @@ namespace AlternativeAscension
                             }
                             __result = __instance.SetScenario<Haishin_Love>();
                         }
+                        SingletonMonoBehaviour<AltAscModManager>.Instance.CurrentHaishin = __result;
                         return;
                     }
 
@@ -1920,6 +1921,7 @@ namespace AlternativeAscension
                     if (!CheckModdedPrefix(typeof(AlphaType), typeof(ModdedAlphaType), em.alpha).Item1) return;
                     string text = string.Format("Netatip_{0}_Level{1}", (ModdedAlphaType)(int)em.alpha, em.alphaLevel);
                     __result = __instance.SetScenario(text);
+                    SingletonMonoBehaviour<AltAscModManager>.Instance.CurrentHaishin = __result;
                 }
             }
 
@@ -2332,8 +2334,15 @@ namespace AlternativeAscension
                         GameObject.Find("MainPanel").GetComponent<UnityEngine.UI.Image>().color = color;
                         break;
 
-                    case ModdedSuperchatType.TOGGLELARGEVIEWER:
+                    case ModdedSuperchatType.EVENT_TOGGLELARGEVIEWER:
                         SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.SetActive(context.isLoopAnim);
+                        break;
+
+                    case ModdedSuperchatType.EVENT_RUNHAISHINFUNC:
+                        LiveScenario haishin = SingletonMonoBehaviour<AltAscModManager>.Instance.CurrentHaishin;
+                        Type t = haishin.GetType();
+                        UniTask task = new Traverse(haishin).Method(context.nakami).GetValue<UniTask>();
+                        task.GetAwaiter().GetResult();
                         break;
 
                     default: return true;
@@ -2382,7 +2391,7 @@ namespace AlternativeAscension
                     case ModdedSuperchatType.EVENT_MUSICCHANGE:
                     case ModdedSuperchatType.EVENT_SHADER:
                     case ModdedSuperchatType.EVENT_MAINPANELCOLOR:
-                    case ModdedSuperchatType.TOGGLELARGEVIEWER:
+                    case ModdedSuperchatType.EVENT_TOGGLELARGEVIEWER:
                         __instance.BASESPEED = 1;
                         return;
                     case ModdedSuperchatType.EVENT_DELAYFRAME:
@@ -3567,6 +3576,17 @@ namespace AlternativeAscension
                 }
             }
         }
+
+        //[HarmonyPatch(typeof(JineWrapper))]
+        //public static class JineWrapperPatches
+        //{
+        //    [HarmonyPrefix]
+        //    [HarmonyPatch(nameof(JineWrapper.Wrap))]
+        //    public static void WrapPrefix(ref LayoutElement ___layout, ref TMP_Text ___content)
+        //    {
+        //        If you see this, I'm planning to do a bugfix patch at some point!
+        //    }
+        //}
 
 
         /*[HarmonyPatch(typeof(DayAndNight))]

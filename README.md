@@ -20,7 +20,7 @@ Alternative Ascension is a mod for Needy Streamer Overload aiming to expand the 
 1. Go to a specific location available between Days 14-16. This location is only available above 250K followers.<br>
 2. Anytime after Day 16, take a recommended dose of Depaz at night.<br>
 3. Go out twice.<br>
-4. Check /st/.<br>
+4. Check /st/ for a special thread.<br>
 5. Go out until you can't anymore. <br>
 <br>
 (Note that there's an alternative path, good luck finding it!)
@@ -34,7 +34,7 @@ Sleep To Tomorrow seven times in a row.
 <details>
 <summary>An Angel's Love</summary>
 
-Reach Day 30 after raising the Affection cap with at least 100 Affection and no missed JINE messages.
+Reach Day 30 after raising the Affection cap to 120 with at least 100 Affection and no missed JINE messages.
 
 (Note that there's an extra scene at the end if you've already completed the game's true ending, which you should have already done if you're playing a mod!)
 </details>
@@ -49,3 +49,8 @@ ghostthedog - Playtester!<br>
 Also special thanks to [Frostworth](https://github.com/amazeedaizee), I never could've made this without your [custom asset guide](https://github.com/amazeedaizee/CustomStreamMaker/wiki)!<br>
 
 And finally, thanks to you for playing!
+
+## Notice
+Alternative Ascension seems to flag as a virus for some users. While these are false positives, a VirusTotal scan is provided [here](https://www.virustotal.com/gui/file/aa0a5136efa55dcd741ac24e2dbc5d4671f404ef78463af34d6b5021f3caedc3/details), and I encourage you to run your own scans as well if you're not confident. Stay safe!
+
+Additionally, I can't promise Alternative Ascension is compatible with any other mod (although hopefully it is!) If you're running multiple mods through BepInEx and AltAsc isn't working, try running with only AltAsc active!

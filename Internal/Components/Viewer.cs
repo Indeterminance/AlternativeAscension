@@ -39,9 +39,7 @@ namespace AlternativeAscension
 
         public async UniTask Animate()
         {
-            Color oldColor = behindMask.color;
-            behindMask.color = new Color(1, 1, 1, 0);
-
+            transform.rotation = transform.parent.rotation;
             AnimateAlpha(0, 1, 0.33333f);
             await UniTask.Delay(2000 / 6 * closedLoops);
             animator.Play("viewer_opening");
@@ -50,7 +48,7 @@ namespace AlternativeAscension
             animator.Play("viewer_closing");
             AnimateAlpha(1, 0, 0.66666f);
             await UniTask.Delay(2000 / 3);
-            transform.parent.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
         public async UniTask AnimateAlpha(float startVal = 0f, float endVal = 1f, float seconds = 1f)

@@ -56,12 +56,14 @@ namespace AlternativeAscension
 
         public void InitViewers()
         {
-            viewerCover = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("GamenForViewers.prefab").WaitForCompletion(), new Vector3(0,0,50), Quaternion.identity);
+            viewerCover = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("GamenForViewers.prefab").WaitForCompletion(), Vector3.zero, Quaternion.identity, null);
+            SingletonMonoBehaviour<EventManager>.Instance.hakkyoRotationObjectTr.Add(viewerCover.transform);
+            Viewer = Addressables.LoadAssetAsync<GameObject>("Viewer.prefab").WaitForCompletion();
+            Viewer.AddComponent<Viewer>();
+            //(Viewer.transform as RectTransform).localScale = Vector3.one * 0.25f;
 
-            Viewer = Addressables.LoadAssetAsync<GameObject>("ViewerContainer.prefab").WaitForCompletion();
-            Viewer.transform.GetChild(0).gameObject.AddComponent<Viewer>();
-
-            LargeViewer = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("LargeContainer.prefab").WaitForCompletion());
+            LargeViewer = UnityEngine.Object.Instantiate(Addressables.LoadAssetAsync<GameObject>("LargeViewer.prefab").WaitForCompletion(), GameObject.Find("EndingCover").transform);
+            LargeViewer.GetComponent<Image>().color = new Color(0.2f, 0f, 0f, 0.2f);
 
             LargeViewer.SetActive(false);
         }
@@ -98,6 +100,7 @@ namespace AlternativeAscension
         public ReactiveProperty<Color> viewColor = new ReactiveProperty<Color>(Color.red);
         public GameObject viewerCover;
         public GameObject LargeViewer;
+        public LiveScenario CurrentHaishin;
 
         public bool isLove;
         public bool isLoveLoop;
@@ -241,7 +244,7 @@ namespace AlternativeAscension
             AltAscMod.log.LogMessage($"Viewers: {viewerCover.transform.childCount}");
             if (viewerCover.transform.childCount < 300)
             {
-                obj = UnityEngine.Object.Instantiate(Viewer, new Vector3(num, num2, 50), Quaternion.identity, viewerCover.transform).transform;
+                obj = UnityEngine.Object.Instantiate(Viewer, Vector3.zero, Quaternion.identity, viewerCover.transform).transform;
             }
             else
             {
@@ -257,7 +260,7 @@ namespace AlternativeAscension
                 }
                 if (!foundObject) return;
             }
-            obj.GetChild(0).localPosition = new Vector2(num, num2);
+            obj.localPosition = new Vector2(num, num2);
         }
 
         public async UniTask SetViewersInactive()

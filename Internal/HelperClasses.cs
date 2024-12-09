@@ -179,22 +179,29 @@ namespace AlternativeAscension
 
         public static List<Tuple<int, string>> ExploreGameObject(GameObject go, int indent = 0, bool noDescend = false, bool noComponentProperty = false)
         {
+            //AltAscMod.log.LogMessage($"Exploring: {go}");
             RectTransform rt = go.transform as RectTransform;
             List<Tuple<int, string>> info = new List<Tuple<int, string>>
             {
-                new Tuple<int, string>(indent, go.name + "->" + rt.localPosition + rt.localScale + $"({rt.rect.width},{rt.rect.height})")
+                new Tuple<int, string>(indent, go.name + "->" + rt?.position + " / " + rt?.localPosition + rt?.localScale + $"({rt?.rect.width},{rt?.rect.height})")
             };
 
 
-
-            foreach (Component c in go.GetComponents<Component>())
+            try
             {
-                info.Add(new Tuple<int, string>(indent, "() " + c.GetType().Name));
-                if (!noComponentProperty) info.AddRange(ExploreComponent(c, indent+4));
+                foreach (Component c in go.GetComponents<Component>())
+                {
+                    info.Add(new Tuple<int, string>(indent + 4, "() " + c.GetType().Name));
+                    if (!noComponentProperty) info.AddRange(ExploreComponent(c, indent + 4));
+                }
+                for (int i = 0; i < go.transform.childCount; i++)
+                {
+                    info.AddRange(ExploreGameObject(go.transform.GetChild(i).gameObject, indent + 4, noDescend, noComponentProperty));
+                }
             }
-            for (int i = 0; i < go.transform.childCount; i++)
+            catch
             {
-                info.AddRange(ExploreGameObject(go.transform.GetChild(i).gameObject, indent + 4));
+                info.Add(new Tuple<int, string>(indent + 4, "Invalid component info"));
             }
 
             if (indent == 0 || noDescend)

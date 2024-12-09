@@ -12,6 +12,7 @@ using UnityEngine.UI;
 using HarmonyLib;
 using UniRx.Triggers;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 namespace AlternativeAscension
 {
@@ -27,7 +28,13 @@ namespace AlternativeAscension
         public override async UniTask startEvent(CancellationToken cancellationToken = default(CancellationToken))
         {
             base.startEvent(cancellationToken);
+
             SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.SetActive(true);
+            //foreach (GameObject go in UnityEngine.Object.FindObjectsOfType<GameObject>().Where(g => g.transform.parent == null))
+            //{
+            //    ExploreGameObject(go, noComponentProperty: true);
+            //}
+
             await UniTask.Delay(2700, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             PostEffectManager.Instance.ResetShader();
             AudioManager.Instance.StopBgm();
@@ -83,9 +90,20 @@ namespace AlternativeAscension
             await UniTask.Delay(10000);
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(AppType.Poketter);
 
-            SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(true, 0.1f);
             //SingletonMonoBehaviour<TaskbarManager>.Instance.SetTaskbarInteractive(true);
+            float vW = 0.1f;
+            Image vCol = SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.GetComponent<Image>();
+            DOTween.To(() => vW, delegate (float x)
+            {
+                vCol.color = new Color(x, 0f, 0f, 0.2f);
+            }, 0.5f, 12f).Play();
+            SingletonMonoBehaviour<EventManager>.Instance.SetShortcutState(true, 0.1f);
             base.endEvent();
+        }
+
+        public async UniTask View()
+        {
+
         }
     }
 }

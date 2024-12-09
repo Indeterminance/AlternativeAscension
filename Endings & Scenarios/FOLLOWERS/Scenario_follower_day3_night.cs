@@ -88,11 +88,14 @@ namespace AlternativeAscension
             PostEffectManager.Instance.SetShader(EffectType.BloomLight);
             PostEffectManager.Instance.SetShaderWeight(0.1f);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Bank);
+            Image viewColor = SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.GetComponent<Image>();
+            viewColor.color = new Color(0, 0, 0, 0.8f);
             AudioManager.Instance.PlayBgmByType(SoundType.BANK_bank, false);
             await UniTask.Delay(6000, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             await UniTask.Delay(10000, false, PlayerLoopTiming.Update, default(CancellationToken), false);
             SingletonMonoBehaviour<WindowManager>.Instance.CloseApp(AppType.Bank);
             // Follower plot flag is set to AngelDeath, so LiveScenario.SetScenario should find the correct stream
+            viewColor.color = new Color(0, 0, 0, 0.2f);
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Broadcast, true);
             SingletonMonoBehaviour<WindowManager>.Instance.Uncloseable(AppType.Broadcast);
             SingletonMonoBehaviour<WindowManager>.Instance.UnMovable(AppType.Broadcast);

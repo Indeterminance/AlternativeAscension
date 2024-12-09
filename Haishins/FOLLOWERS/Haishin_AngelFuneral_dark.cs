@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 using static AlternativeAscension.AAPatches;
 
 namespace AlternativeAscension
@@ -59,7 +60,9 @@ namespace AlternativeAscension
             tenTalk("FAULT022", "stream_ame_follower_end_dark");
             playing.Add(new Playing(false, "", delta: 300, color: ModdedSuperchatType.EVENT_DELAYFRAME.Swap()));
             playing.Add(new Playing(false, "", color: ModdedSuperchatType.EVENT_MUSICCHANGE.Swap()));
-            playing.Add(new Playing(false, "", color: ModdedSuperchatType.TOGGLELARGEVIEWER.Swap(), isLoopAnim: false));
+            playing.Add(new Playing(false, nameof(Overview), color: ModdedSuperchatType.EVENT_RUNHAISHINFUNC.Swap()));
+            playing.Add(new Playing(false, "", delta: 1000, color: ModdedSuperchatType.EVENT_DELAYFRAME.Swap()));
+            playing.Add(new Playing(false, "", color: ModdedSuperchatType.EVENT_TOGGLELARGEVIEWER.Swap(), isLoopAnim: false));
             tenTalk("FAULT023", "stream_ame_follower_end_dark2");
 
             playing.Add(new Playing(false, "", delta: 500, color: ModdedSuperchatType.EVENT_DELAYFRAME.Swap()));
@@ -72,14 +75,27 @@ namespace AlternativeAscension
         {
             SingletonMonoBehaviour<EventManager>.Instance.nowEnding = ModdedEndingType.Ending_Followers.Swap();
             await SingletonMonoBehaviour<AltAscModManager>.Instance.SetViewersInactive();
+            SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 0.05f);
             GameObject.Find("stack").SetActive(false);
             PostEffectManager.Instance.ResetShader();
-            AudioManager.Instance.PlayBgmByType(SoundType.BGM_heartbeat, true);
-            
+            AudioManager.Instance.PlayBgmByType(SoundType.BGM_heartbeat, true);       
             PostEffectManager.Instance.ResetShader();
             await base.StartScenario();
             SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.SetActive(false);
             SingletonMonoBehaviour<NotificationManager>.Instance.osimai();
         }
+
+        public async UniTask Overview()
+        {
+            Image viewer = SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.GetComponent<Image>();
+            float w = 0.0f;
+            DOTween.To(() => w, delegate (float v)
+            {
+                viewer.color = new Color(0.5f + v, 0.5f - v, 0.5f - v, 0.05f + 1.9f * v);
+            }, 0.5f, 1f).SetEase(Ease.InExpo).Play();
+            float w2 = 0.0f;
+        }
+
+
     }
 }

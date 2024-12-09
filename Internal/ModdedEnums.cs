@@ -664,7 +664,8 @@ namespace NeedyEnums
         EVENT_SHADER,
         EVENT_SHADERWAIT,
         EVENT_MAINPANELCOLOR,
-        TOGGLELARGEVIEWER,
+        EVENT_TOGGLELARGEVIEWER,
+        EVENT_RUNHAISHINFUNC,
     }
 
     public enum ModdedTweetType

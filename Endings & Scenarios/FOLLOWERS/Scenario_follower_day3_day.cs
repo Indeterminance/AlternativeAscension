@@ -190,6 +190,13 @@ namespace AlternativeAscension
             //SingletonMonoBehaviour<WebCamManager>.Instance.PlayAnim("stream_ame_idle_iraira_d");
             await UniTask.Delay(2000);
             SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.SetActive(true);
+            Image viewColor = SingletonMonoBehaviour<AltAscModManager>.Instance.LargeViewer.GetComponent<Image>();
+            viewColor.color = new Color(0, 0, 0, 0);
+            float viewWeight = 0.0f;
+            DOTween.To(() => viewWeight, delegate (float x)
+            {
+                viewColor.color = new Color(0, 0, 0, x);
+            }, 0.06f, 10f).SetEase(Ease.InOutSine).Play();
             SingletonMonoBehaviour<WindowManager>.Instance.NewWindow(AppType.Jine).Uncloseable();
             await SingletonMonoBehaviour<JineManager>.Instance.AddJineHistoryFromType(ModdedJineType.ENDING_FOLLOWER_DAY3_LOGIN_JINE024.Swap());
             SingletonMonoBehaviour<JineManager>.Instance.StartOption(new List<JineType>
