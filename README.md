@@ -9,7 +9,7 @@ Alternative Ascension is a mod for Needy Streamer Overload aiming to expand the 
 4. Enjoy!
 
 ## Gallery
-![Demo1](https://github.com/user-attachments/assets/5c43adb8-cef2-4483-9801-61ef1987899a)
+![Demo1](https://github.com/user-attachments/assets/6266eaea-af5f-4694-b2d6-e1c958ea26c9)
 ![Demo2](https://github.com/user-attachments/assets/22ff8316-843e-49d6-b655-eea3a296eb21)
 ![Demo3](https://github.com/user-attachments/assets/3f5f6951-53ce-463a-843f-cb7d3cdc2bc7)
 
