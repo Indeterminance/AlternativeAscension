@@ -53,17 +53,21 @@ namespace AlternativeAscension
 
         private async UniTask HookLoginWindow()
         {
+            //AltAscMod.log.LogMessage($"Hooking!");
             login = SingletonMonoBehaviour<WindowManager>.Instance.GetNakamiFromApp(ModdedAppType.ScriptableLogin.Swap())?.GetComponent<ScriptableLogin>();
 
             if (login == null) return;
+            //AltAscMod.log.LogMessage($"Hooked!");
 
             List<EndingType> endings = SingletonMonoBehaviour<Settings>.Instance.mitaEnd;
-            
+
             // 20% chance of activating invalid login if FOLLOWERS has been obtained...
             bool genericActivation = UnityEngine.Random.Range(0, 5) == 0 && endings.Contains(ModdedEndingType.Ending_Followers.Swap());
 
             // But if FOLLOWERS was the last ending obtained, guarantee an invalid login.
-            bool lastFollowers = endings.Last() == ModdedEndingType.Ending_Followers.Swap() && endings.FindAll(e => e == ModdedEndingType.Ending_Followers.Swap()).Count() == 1;
+            bool lastFollowers;
+            if (endings.Count > 0) lastFollowers = endings.Last() == ModdedEndingType.Ending_Followers.Swap() && endings.FindAll(e => e == ModdedEndingType.Ending_Followers.Swap()).Count() == 1;
+            else lastFollowers = false;
 
             if ((genericActivation || lastFollowers || DEBUG) && !changedPass)
             {
@@ -87,11 +91,14 @@ namespace AlternativeAscension
                     }));
                 }
             }
-            else login.loginActions.Enqueue(new Func<UniTask>(async () =>
+            else
             {
-                SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_loop1_day0_night_multi_AfterLogin>();
-                base.endEvent();
-            }));
+                login.loginActions.Enqueue(new Func<UniTask>(async () =>
+                {
+                    SingletonMonoBehaviour<EventManager>.Instance.AddEvent<Scenario_loop1_day0_night_multi_AfterLogin>();
+                    base.endEvent();
+                }));
+            }
             login._input.interactable = true;
         }
 
