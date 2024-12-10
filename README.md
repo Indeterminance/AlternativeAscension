@@ -51,6 +51,6 @@ Also special thanks to [Frostworth](https://github.com/amazeedaizee), I never co
 And finally, thanks to you for playing!
 
 ## Notice
-Alternative Ascension seems to flag as a virus for some users. While these are false positives, a VirusTotal scan is provided [here](https://www.virustotal.com/gui/file/aa0a5136efa55dcd741ac24e2dbc5d4671f404ef78463af34d6b5021f3caedc3/details), and I encourage you to run your own scans as well if you're not confident. Stay safe!
+Alternative Ascension seems to flag as a virus for some users. While these are false positives, a VirusTotal scan is provided [here](https://www.virustotal.com/gui/file/94955665be30e7678028cda2eb5ed4b50531437a856feee34369fccd1fa86b06), and I encourage you to run your own scans as well if you're not confident. Stay safe!
 
 Additionally, I can't promise Alternative Ascension is compatible with any other mod (although hopefully it is!) If you're running multiple mods through BepInEx and AltAsc isn't working, try running with only AltAsc active!
