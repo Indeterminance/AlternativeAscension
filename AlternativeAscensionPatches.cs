@@ -186,6 +186,7 @@ namespace AlternativeAscension
             [HarmonyPatch(nameof(NetaManager.fetchNextActionHint))]
             public static void fetchNextActionPrune(ref List<Tuple<ActionType, AlphaLevel>> __result)
             {
+                //AltAscMod.log.LogMessage("Pruning!");
                 int sleeps = SingletonMonoBehaviour<AltAscModManager>.Instance.sleepCount;
 
                 if (sleeps + 1 >= AltAscMod.SLEEPS_BEFORE_SLEEPY) __result.RemoveAll(t => t.Item1 == ActionType.SleepToTomorrow);
@@ -1005,9 +1006,9 @@ namespace AlternativeAscension
                 if (CheckComiketAvailable())
                 {
                     GameObject obj = __instance.SelectableObjects.First();
-                    GameObject OdekakeAriake = obj as GameObject;
+                    GameObject OdekakeAriake = (obj as GameObject);
                     ActionButton actionButtonAriake = OdekakeAriake.GetComponent<ActionButton>();
-                    actionTypeField.SetValue(actionButtonAriake, (int)ModdedActionType.OdekakeAriake);
+                    actionTypeField.SetValue(actionButtonAriake, ModdedActionType.OdekakeAriake.Swap());
                     OdekakeAriake.transform.position = new Vector3(0.25f, -3.4f, 100f); //new Vector3(0.65f, -2.5f, 100f);
                     new Traverse(actionButtonAriake).Method(nameof(actionButtonAriake.SetStatus), new object[] { ActionStatus.Executable });
 
@@ -1016,7 +1017,6 @@ namespace AlternativeAscension
                     symbol.GetComponent<Image>().sprite = Addressables.LoadAssetAsync<Sprite>("odekake_map_ariake.png").WaitForCompletion();
                     label.localPosition = new Vector3(0f,45f, 0f);
                     //AltAscMod.log.LogMessage(label.localPosition);
-
 
                     buttons.Add(OdekakeAriake);
                 }
@@ -1481,7 +1481,7 @@ namespace AlternativeAscension
                      bool isLoveLoop = SingletonMonoBehaviour<AltAscModManager>.Instance.isLoveLoop;
                      bool isDarkFollowers = SingletonMonoBehaviour<StatusManager>.Instance.GetStatus(ModdedStatusType.FollowerPlotFlag.Swap()) >= (int)FollowerPlotFlagValues.AngelFuneral;
 
-
+                     inst.fetchNextActionHint();
                      if (!(isLoveLoop || isDarkFollowers)) inst.AddEventQueue<Event_CheckBGM>();
                      await inst.FetchDayEvent();
                  }).AddTo(inst.gameObject);
