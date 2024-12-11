@@ -18,7 +18,7 @@ Alternative Ascension is a mod for Needy Streamer Overload aiming to expand the 
 <details>
 <summary>FOLLOWERS</summary>
 1. Go to a specific location available between Days 14-16. This location is only available above 250K followers, and should give a stream idea.<br>
-2. On Day 16, stream the idea you obtained from the prior event.
+2. On Day 16, stream the idea you obtained from the prior event.<br>
 3. Anytime after Day 16, take a recommended dose of Depaz at night.<br>
 4. Go out twice.<br>
 5. Check /st/ for a special thread.<br>
