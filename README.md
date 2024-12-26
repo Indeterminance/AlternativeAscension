@@ -21,7 +21,7 @@ Alternative Ascension is a mod for Needy Streamer Overload aiming to expand the 
 2. On Day 16, stream the idea you obtained from the prior event.<br>
 3. Anytime after Day 16, take a recommended dose of Depaz at night.<br>
 4. Go out twice.<br>
-5. Check /st/ for a special thread.<br>
+5. Check /st/ for a special thread after breaking stress cap.<br>
 6. Go out until you can't anymore. <br>
 <br>
 (Note that there's an alternative path, good luck finding it!)
